@@ -1,0 +1,205 @@
+/* 主体内容 */
+.order-content {
+  width: 96%;
+  margin: 30px auto 0;
+}
+
+.order-proinfo {
+  padding: 85px 40px 40px;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #fff;
+}
+
+@order_search_width: 978px;
+@button_width: 140px;
+@order_search_height: 60px;
+.order-search {
+  width: @order_search_width;
+  margin: 0 auto 35px;
+  height: @order_search_height;
+  input {
+    border: 1px solid #ff4242;
+    width: @order_search_width - @button_width;
+    height: @order_search_height;
+    box-sizing: border-box;
+    float: left;
+    font-size: 24px;
+    text-indent: 2em;
+  }
+  input:focus {
+    outline: 1px solid #ff4242;
+  }
+  button {
+    width: @button_width;
+    height: @order_search_height;
+    text-align: center;
+    line-height: 60px;
+    background-color: #ff4242;
+    color: #fff;
+    font-size: 24px;
+    float: left;
+  }
+}
+
+/* 商品列表 */
+@first_span_width: 170px;
+@sec_span_width: 250px;
+@addbtn_width: 80px;
+@li_margin_left: 40px;
+.order-prolist {
+  width: (@first_span_width + @sec_span_width + @addbtn_width + @li_margin_left)*2;
+  margin: 0 auto;
+  li {
+    //width: @first_span_width + @sec_span_width + @addbtn_width;
+    height: 40px;
+    font-size: 0;
+    margin-top: -1px;
+    float: left;
+    margin-left: @li_margin_left;
+    span {
+      border: 1px solid #dadada;
+      box-sizing: border-box;
+      display: inline-block;
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+      margin-left: -1px;
+      text-align: center;
+      vertical-align: middle;
+      min-width: @sec_span_width;
+    }
+    & > span:first-child {
+      min-width: @first_span_width;
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+    input {
+      width: @addbtn_width;
+      vertical-align: middle;
+      text-align: center;
+      display: inline-block;
+      border: 1px solid #ff7623;
+      box-sizing: border-box;
+      color: #ff7623;
+      font-size: 16px;
+      background-color: #fcf6f6;
+      height: 40px;
+      line-height: 40px;
+      margin-left: -1px;
+    }
+  }
+  li:nth-child(odd) {
+    margin-left: 0;
+  }
+}
+
+/* 商品表格 */
+.order-table {
+  background-color: #fff;
+  border-top: 2px solid red;
+  margin-top: 10px;
+  padding: 10px 0 20px;
+  /* 采购数量单元格样式 */
+  .purchasenum-orderinput {
+    input,
+    span {
+      display: inline-block;
+      line-height: 24px;
+      float: left;
+    }
+    input {
+      //width: 100px;
+      width: 80%;
+      margin-left: 10%;
+      font-size: 16px;
+      text-align: center;
+      height: 32px;
+      border: 1px solid #dadada;
+    }
+    input.table-input-warning {
+      border: 1px solid red;
+    }
+    .noteaddbtn,
+    .notereducebtn {
+      height: 32px;
+      width: 32px;
+      line-height: 34px;
+      text-align: center;
+      border: 1px solid #dadada;
+      cursor: pointer;
+      font-size: 20px;
+    }
+  }
+  /* 折扣小计 */
+  .discount-input {
+    input {
+      width: 124px;
+      height: 32px;
+      line-height: 32px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #ff4242;
+      border: 1px solid #dadada;
+    }
+  }
+  /* 进货价 */
+  .buying-td {
+    font-size: 30px;
+    color: #ff7623;
+  }
+  /* 商品合计 */
+  .order-prototal {
+    background-color: #f0f1f1;
+    height: 70px;
+    line-height: 70px;
+    width: 100%;
+    margin-top: 10px;
+    padding-left: 500px;
+    box-sizing: border-box;
+  }
+  /* 表格删除功能 */
+  .order-delete {
+    color: #000;
+    font-size: 14px;
+    &:hover {
+      color: #ff4242;
+    }
+  }
+  /* 商品合计 */
+  .rebate-info {
+    float: left;
+    p {
+      display: inline-block;
+    }
+  }
+  .order-btn {
+    float: right;
+    li {
+      float: left;
+      width: 150px;
+      margin-left: 10px;
+      line-height: 56px;
+      font-size: 30px;
+      height: 70px;
+      strong {
+        color: #ff4242;
+        font-size: 30px;
+      }
+    }
+    li:first-child {
+      font-size: 24px;
+    }
+    button {
+      display: inline-block;
+      width: @button_width;
+      height: 70px;
+      text-align: center;
+      line-height: 70px;
+      background-color: #ff4242;
+      color: #fff;
+      font-size: 30px;
+      float: right;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.inventory.account.microservice";
+option java_outer_classname = "ProductInventoryStructure";
+
+import "gongxiao.global.structure.proto";
+
+message ProductInventory{
+    string id=1;                       //主键id
+    int32 purchaseType=2;                //采购方式
+    int32 inventoryStatus=3;             //库存类型 良品/残次品/机损/箱损/冻结/在途
+    int64 projectId=4;                  //项目id
+    string batchNo=5;                  //批次
+    string productId=6;                //商品Id
+    string productCode=7;              //商品编码
+    string productModel=8;             //商品型号
+    string productName=9;              //商品名称
+    int64 purchaseGuidPrice=10;            //采购价格
+    int64 purchasePrice=11;            //采购价格
+    string material=12;                 //物料
+    int64 costPrice=13;                //成本价
+    string warehouseId=14;              //仓库id
+    string warehouseCode=15;            //仓库编码
+    string warehouseName=16;            //仓库名称
+    int32 onHandQuantity=17;              //当前在库总数量(良品/残次品/机损/箱损/冻结/在途)
+    int32 onSalesOrderQuantity=18;        //已销售待出库数量
+    string onSalesOrderInfo=19;         //已销售待出库相关信息(JSON)
+    double shouldRebate=20;                   //应收返利
+    double actualRebate=21;             //实收返利
+    double salesTotalPrice=22;          //销售总价
+    int32 dataVersion=23;                 //数据版本
+    int64 createTime=24;                 //创建时间
+    string inboundOrderNo=25;           //入库单号
+    string purchaseOrderNo=26;          //采购单号
+    int32 inboundQuantity=27;          //入库数量
+}

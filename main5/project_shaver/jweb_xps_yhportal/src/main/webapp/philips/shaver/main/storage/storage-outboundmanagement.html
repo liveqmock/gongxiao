@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <title>出库单管理</title>
+</head>
+
+<body>
+    <div class="wrapper clearfix">
+        <!-- 侧边栏 -->
+        <div id="sidebar" class="sidebar"></div>
+        <!-- 主体内容 -->
+        <div class="yh-content">
+            <!-- 头部内容 -->
+            <div class="fenxiao-header clearfix">
+                <h2>分销协同平台</h2>
+                <div class="shape-box">
+                    <select id="projectlist"></select>
+                    <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                    <span></span>
+                    <a href="javascript:void(0);">注销</a>
+                </div>
+            </div>
+            <!-- 主要内容 -->
+            <div class="yh-container">
+                <!-- 面包屑菜单 -->
+                <div class="fenxiao-nav">
+                    <span>当前位置：</span>
+                    <a href="javascript:void(0);">仓储管理</a> &gt; <a href="javascript:void(0);">出库单管理</a>
+                </div>
+                <!-- 表单 -->
+                <div class="form-box">
+                    <div class="fx-form clearfix">
+                        <div class="form-inputs" id="form-input">
+                            <ul class="clearfix">
+                                <li><label for="outbound-no">出库单号</label>
+                                    <input type="text" id="outbound-no">
+                                </li>
+                                <li><label for="sales-number">销售单号</label>
+                                    <input type="text" id="sales-number">
+                                </li>
+                                <li><label for="document-type">单据类型</label>
+                                    <select name="document-type" id="document-type">
+                                        <option value="">请选择</option>
+                                        <option value="1">采购入库</option>
+                                        <option value="2">退货入库</option>
+                                    </select>
+                                </li>
+                                <li><label for="customer">客户</label>
+                                    <select id="customer"></select>
+                                </li>
+                                <li><label for="create-time1">创建时间</label>
+                                    <input type="text" id="create-time1" class="yhdate-input">
+                                    <i>至</i>
+                                    <input type="text" id="create-time2" class="yhdate-input">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="form-btn">
+                            <button id="query-btn" class="yhquery-btn">查询</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 操作表格 -->
+                <div class="yhtable-header clearfix">
+                    <div class="opera-btn">
+                        <a class="yhhandle-btn" href="javascript:void(0);" id="yhexport-btn">导出</a>
+                    </div>
+                </div>
+                <!-- 渲染表格 -->
+                <div class="yh-table">
+                    <table id="yhtable" class="yhtable"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/storage/outbound-management.js?v=055f735d6c"></script>
+</body>
+
+</html>

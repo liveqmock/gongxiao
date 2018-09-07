@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./js/file.js"></script>
+    <link rel="stylesheet" href="./css/orderlist.css">
+    <title>订单管理</title>
+</head>
+
+<body>
+<div class="customer-wrapper">
+    <!-- 顶部内容 -->
+    <div class="customer-header">
+        <img src="" alt="">
+    </div>
+    <!-- 导航栏 -->
+    <div class="customer-nav clearfix">
+        <div class="accountname">
+            <img src="" alt="">
+            <span>账户名称</span>
+        </div>
+        <div class="customer-navlist clearfix">
+            <a href="./ordermanagement.html">商品查询</a>
+            <a href="./orderlistmanagement.html">订单管理</a>
+            <a href="./addressmanagement.html">收货地址维护</a>
+            <a href="./accountquery.html">账户查询</a>
+        </div>
+    </div>
+    <!--主体内容-->
+    <div class="orderlist-content">
+        <div class="orderquerybox clearfix">
+            <div class="orderlist-queryinfo">
+                <ul class="clearfix">
+                    <li><label for="purchaseno">采购单号</label><input type="text" id="purchaseno"></li>
+                    <li><label for="productcode">产品类型</label><input type="text" id="productcode"></li>
+                    <li><label for="status">订单状态</label><input type="text" id="status"></li>
+                    <li><label for="datestart">订单时间</label><input type="text" id="datestart"><i>至</i><input type="text" id="dateend"></li>
+                </ul>
+            </div>
+            <div class="orderlist-btn">
+                <button class="yhquery-btn" id="orderlist-querybtn">查询</button>
+            </div>
+        </div>
+        <div class="orderlist-table">
+            <div class="table-opera">
+                <a class="yhhandle-btn" href="javascript:void(0);" id="export-btn">导出</a>
+            </div>
+            <table id="table" class="table"></table>
+        </div>
+    </div>
+    <!--遮罩层-->
+    <div class="mask ordermask mask-hide" id="ordermask">
+        <div class="mask-content">
+            <div class="mask-menu">
+                <h3>采购订单明细</h3>
+                <a href="javascript:void(0);" id="mask-close">×</a>
+            </div>
+            <div class="mask-container">
+                <div class="maskinfo order-detailinfo" id="order-detailinfo">
+                    <p><i>采购单号：</i><span></span></p>
+                    <p><i>订单金额：</i><span></span></p>
+                    <p><i>收货金额：</i><span></span></p>
+                    <p><i>订单状态：</i><span></span></p>
+                    <p><i>收货负责人：</i><span></span></p>
+                    <p><i>收货电话：</i><span></span></p>
+                    <p><i>更新时间：</i><span></span></p>
+                    <p><i>收货地址：</i><span></span></p>
+                </div>
+                <div class="masktable order-detailtable">
+                    <table id="order-detailtable"></table>
+                </div>
+                <button class="maskclose-btn yhcancel-btn" id="maskclose-btn">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./js/laydate/laydate.js"></script>
+<script src="./js/customer/orderlist.js"></script>
+</body>
+
+</html>

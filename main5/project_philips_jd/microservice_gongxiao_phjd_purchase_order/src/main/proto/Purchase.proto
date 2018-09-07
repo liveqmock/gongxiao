@@ -1,0 +1,581 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.purchase.microservice";
+option java_outer_classname = "PurchaseStructure";
+
+import "gongxiao.global.structure.proto";
+
+service PurchaseService {
+    //1. 通过采购单号获取采购详情
+    rpc getPurchaseDetail (GetPurchaseDetailReq) returns (GetPurchaseDetailResp) {
+    }
+    //2. 获取采购单货品列表信息
+    rpc getItemList (GetItemListReq) returns (GetItemListResp) {
+    }
+    //3. 获取采购订单信息
+    rpc getPurchaseOrderList (GetPurchaseOrderListReq) returns (GetPurchaseOrderListResp) {
+    }
+    //4. 获取入库货品列表
+    rpc getInboundItemList (GetInboundItemListReq) returns (GetInboundItemListResp) {
+    }
+    //5. 生成采购单
+    rpc generatePurchaseOrder (GeneratePurchaseOrderReq) returns (GeneratePurchaseOrderResp) {
+    }
+    //6. 生成预约入库单
+    rpc planInbound (PlanInboundReq) returns (PlanInboundResp) {
+    }
+    //7. 获取采购详情
+    rpc getPurchaseEditDetail (GetPurchaseEditDetailReq) returns (GetPurchaseEditDetailResp) {
+    }
+    //8. 更新采购单信息
+    rpc updatePurchaseOrder (UpdatePurchaseOrderReq) returns (UpdatePurchaseOrderResp) {
+    }
+    //9. 添加文件信息到数据库
+    rpc addFileInfo (AddFileInfoReq) returns (AddFileInfoResp) {
+    }
+    //10. 取消采购单
+    rpc cancelPurchaseOrder (CancelPurchaseOrderReq) returns (CancelPurchaseOrderResp) {
+    }
+    //11. 新增采购单
+    rpc createPurchaseOrder (CreatePurchaseOrderReq) returns (CreatePurchaseOrderResp) {
+    }
+}
+//
+message CreatePurchaseOrderReq {
+    RpcHeader rpcHeader = 1;
+    CreatePurchaseBasicInfo purchaseBasicInfo = 2;
+    repeated CreatePurchaseItemInfo purchaseItemInfoList = 3;
+    int64 projectId = 4;
+}
+
+message CreatePurchaseOrderResp {
+    RpcResult rpcResult = 1;
+}
+
+//11
+message GetPurchaseOrderByPurchaseNoReq {
+    RpcHeader rpcHeader = 1;
+    string purchaseOrderNo = 2;
+    int64 projectId = 7;
+}
+
+message GetPurchaseOrderByPurchaseNoResp {
+    RpcResult rpcResult = 1;
+}
+
+//10
+message CancelPurchaseOrderReq {
+    string purchaseOrderNumber = 1;
+    RpcHeader rpcHeader = 2;
+    int64 projectId = 7;
+}
+
+message CancelPurchaseOrderResp {
+    int32 number = 1;
+}
+
+//9
+message AddFileInfoReq {
+    RpcHeader rpcHeader = 1;
+    string realFileName = 2;
+    string fileName = 3;
+    string filePath = 4;
+    string creatorId = 5;
+    string creatorName = 6;
+    int64 projectId = 7;
+
+}
+
+message AddFileInfoResp {
+    int32 number = 1;
+}
+
+//8
+message UpdatePurchaseOrderReq {
+    RpcHeader rpcHeader = 1;
+    CreatePurchaseBasicInfo purchaseBasicInfo = 2;
+    repeated CreatePurchaseItemInfo purchaseItemInfoList = 3;
+    int64 projectId = 4;
+}
+
+message UpdatePurchaseOrderResp {
+    int32 number = 1;
+}
+
+//7
+message GetPurchaseEditDetailReq {
+    RpcHeader rpcHeader = 1;
+    string purchaseNo = 2;
+    int64 projectId = 4;
+}
+
+message GetPurchaseEditDetailResp {
+    PurchaseEditDetail purchaseEditDetail = 1;
+}
+
+//6
+message PlanInboundReq {
+    RpcHeader rpcHeader = 1;
+    PlanInboundBasicInfo planInboundBasicInfo = 2;
+    repeated PlanInboundItem planInboundItemList = 3;
+    int64 projectId = 4;
+}
+
+message PlanInboundResp {
+    RpcResult rpcResult = 1;
+}
+
+//5
+message GeneratePurchaseOrderReq {
+    RpcHeader rpcHeader = 1;
+    CreatePurchaseBasicInfo purchaseBasicInfo = 2;
+    repeated CreatePurchaseItemInfo purchaseItemInfoList = 3;
+    int64 projectId = 4;
+}
+
+message GeneratePurchaseOrderResp {
+    int32 number = 1;
+}
+
+//4
+message GetInboundItemListReq {
+    RpcHeader rpcHeader = 1;
+    string purchaseNo = 2;
+    string productCode = 3;
+    int64 projectId = 4;
+}
+
+message GetInboundItemListResp {
+    repeated PlanInboundItem planInboundList = 1;
+}
+
+//3
+message GetPurchaseOrderListReq {
+    RpcHeader rpcHeader = 1;
+    string projectId = 2;
+    string purchaseOrderNo = 3;
+    string brandId = 4;
+    string warehouseId = 5;
+    string productCode = 6;
+    string requireArrivalDate = 7;
+    string arrivalDeadline = 8;
+    string businessDate = 9;
+    int32 pageNumber = 10;
+    int32 pageSize = 11;
+}
+
+message GetPurchaseOrderListResp {
+    PageInfoPurchaseOrderList pageInfoPurchaseOrderList = 1;
+}
+
+//2
+message GetItemListReq {
+    RpcHeader rpcHeader = 1;
+    string purchaseOrderNo = 2;
+    int64 projectId = 3;
+}
+
+message GetItemListResp {
+    repeated PurchaseOrderItem purchaseOrderItemList = 1;
+}
+
+//1
+message GetPurchaseDetailReq {
+    RpcHeader rpcHeader = 1;
+    string purchaseOrderNo = 2;
+    int64 projectId = 3;
+}
+
+
+message GetPurchaseDetailResp {
+    PurchaseOrderDetailVo purchaseOrderDetailVo = 1;
+}
+
+// model
+message PurchaseEditDetail {
+    //basic data
+    string projectId = 1; //1
+    string projectName = 2; //1
+    string supplierId = 3;
+    string supplierName = 4;
+    string warehouseId = 5;
+    string warehouseName = 6;
+    string warehouseAddress = 7;
+    int64 businessDate = 8; //1
+    string purchaseType = 9; //1
+    int64 expectedInboundDate = 10;
+    int64 orderDeadlineDate = 11;
+    string supplierOrderNo = 12; //1
+    string contractReferenceOrderNo = 13; //1
+
+    //余额
+    string accountCouponAmount = 14;
+    string accountPrepaidAmount = 15;
+    //money
+    int32 purchaseCategory = 16; //1
+    int32 purchaseTotalNumber = 17; //1
+    string couponAmountUse = 18; //1
+    string prepaidAmountUse = 19; //1
+    string adCouponAmountUse = 20; //1
+    string adPrepaidAmountUse = 21; //1
+    string purchaseGuideAmount = 22; //采购指导金额 //1
+    string purchaseShouldPayAmount = 23; //采购应付金额    //1
+    string purchasePrivilegeAmount = 24; //采购优惠   //1
+    string purchaseActualPayAmount = 25; //采购实付   //1
+    string returnCash = 26; //现金返点金额    //1
+    string cashAmountUse = 27; //现金使用金额
+
+    repeated PurchaseItemVo itemList = 28; //1
+}
+
+message PlanInboundBasicInfo {
+    //项目ID
+    string projectId = 1;
+    //采购单号
+    string purchaseOrderNo = 2;
+    //仓库ID
+    string warehouseId = 3;
+    //仓库名称
+    string warehouseName = 4;
+    //各种类商品本次入库数量总和
+    int32 totalQuantity = 5;
+    //在途商品数量
+    int32 planInstockNumberTotal = 6;
+    //要求到货日期
+    int64 requireInboundDate = 7;
+}
+
+message CreatePurchaseItemInfo {
+    //货品ID
+    string productID = 1;
+    //货品编码
+    string productCode = 2;
+    //货品名称
+    string productName = 3;
+    //指导价
+    double guidePrice = 4;
+    //采购数量
+    int32 purchaseNumber = 5;
+    //采购折扣点
+    double purchaseDiscount = 6;
+    //使用返利
+    double couponAmount = 7;
+    //使用代垫
+    double prepaidAmount = 8;
+    //采购单价
+    double purchasePrice = 9;
+    //成本价
+    double costPrice = 10;
+    //返利单价基数
+    double couponBasePrice = 11;
+    //单价折扣
+    double priceDiscount = 12;
+    //进货价
+    double factoryPrice = 13;
+}
+
+message CreatePurchaseBasicInfo {
+    string purchaseOrderNo = 1;
+    string userId = 2;
+    string userName = 3;
+    //项目ID
+    string projectId = 4;
+    //仓库ID
+    string warehouseId = 5;
+    //品牌商ID
+    string brandId = 6; //非必传
+    //供应商编码
+    string supplierCode = 7;
+    //付款方式
+    int32 paymentMode = 8;
+    //物流方式 0,自提 1,第三方物流
+    int32 logisticType = 9;
+    //采购类型 0,普通采购
+    int32 purchaseType = 10;
+    //业务发生日期
+    int64 businessDate = 11;
+    //要求到货日期
+    int64 requirArrivalDate = 12;
+    //到货截止日期
+    int64 arrivalDeadline = 13;
+    //品牌商订单号
+    string brandOrderNo = 14;
+    //合同参考号
+    string contractReferenceOrderNo = 15;
+    //备注
+    string remark = 16;
+    //采购种类数目
+    int32 purchaseCategory = 17;
+    //采购总数量
+    int32 purchaseNumber = 18;
+    //返利使用金额
+    double couponAmountUse = 19;
+    //代垫使用金额
+    double prepaidAmountUse = 20;
+    //现金使用金额
+    //采购指导金额
+    double purchaseGuideAmount = 21;
+    //采购优惠金额
+    double purchasePrivilegeAmount = 22;
+    //现金返点金额
+    double returnCash = 23;
+    //采购应付金额
+    double purchaseShouldPayAmount = 24;
+    //采购实付金额
+    double purchaseActualPayAmount = 25;
+    double adCouponAmountUse = 26;
+    double adPrepaidAmountUse = 27;
+    int32 supplierReceipt = 28;
+    double cashAmount = 29;
+}
+
+message PlanInboundItem {
+    //采购单货品id
+    int64 purchaseItemId = 1;
+    //品牌ID
+    string brandId = 2;
+    //品牌名称
+    string brandName = 3;
+    //商品id
+    string productId = 4;
+    //商品编码
+    string productCode = 5;
+    //商品名称
+    string productName = 6;
+    //商品单位
+    string productUnit = 7;
+    //货币编码
+    string currencyCode = 8;
+    //货货币名称
+    string currencyName = 9;
+    //采购数量
+    int32 purchaseNumber = 10;
+    //剩余需入库数量
+    int32 needInstockNumber = 11;
+    //本次预约数量
+    int32 planInstockNumber = 12;
+    //指导价
+    string guidePrice = 13;
+    //成本价
+    string costValue = 14;
+    //备注
+    string remark = 15;
+    int64 requireInboundDate = 16;
+    double priceDiscount = 17;
+}
+
+message PageInfoPurchaseOrderList {
+    int64 total = 1;
+    repeated PurchaseOrderInfo purchaseOrderlist = 2;
+}
+
+message PurchaseOrderInfo {
+
+    string createPerson = 1;
+    //采购单号
+    string purchaseOrderNumber = 2;
+    //品牌ID
+    string brandId = 3;
+    //品牌名称
+    string brandName = 4;
+    //供应商ID
+    string supplierId = 5;
+    //供应商名称
+    string supplierName = 6;
+    //订单金额
+    string orderAmount = 7;
+    //采购种类数目
+    int32 purchaseCategory = 8;
+    //采购总数量
+    int32 purchaseNumber = 9;
+    //付款方式
+    int32 paymentMode = 10;
+    //仓库ID
+    int32 warehouseId = 11;
+    //收货仓库
+    string warehouseName = 12;
+    //采购单状态
+    string purchaseStatus = 13;
+    //采购单状态 int
+    int32 purchaseStatusInt = 14;
+    //要求到货日期
+    int64 requirArrivalDate = 15;
+    //业务发生日期
+    string businessDate = 16;
+
+    string supplierOrderNo = 17;
+
+    string contractReferenceOrderNo = 18;
+
+    bool planInstockComplete = 19;
+    //显示编辑按钮
+    bool enableEdit = 20;
+    //显示作废按钮
+    bool enableCancel = 21;
+    //显示预约入库按钮
+    bool enablePlanInStock = 22;
+    //显示入库详情按钮
+    bool enableDetail = 23;
+}
+
+message PurchaseOrderItem {
+    int64 purchaseItemId = 1;
+    int32 orderStatus = 2;
+    string purchaseOrderNo = 3;
+    string productId = 4;
+    string productCode = 5;
+    string productName = 6;
+    string productUnit = 7;
+    int32 warehouseId = 8;
+    string warehouseName = 9;
+    int32 shippingMode = 10;
+    int32 discountPercent = 11;
+    int64 couponAmount = 12;
+    int64 prepaidAmount = 13;
+    int64 guidePrice = 14;
+    int64 purchasePrice = 15;
+    int64 costPrice = 16;
+    int64 couponBasePrice = 17;
+    int64 factoryPrice = 18;
+    int32 purchaseNumber = 19;
+    int32 inTransitQuantity = 20;
+    int32 inStockQuantity = 21;
+    int32 imperfectQuantity = 22;
+    int32 canceledQuantity = 23;
+    int32 returnedQuantity = 24;
+    string ongoingInboundOrderInfo = 25;
+    string finishedInboundOrderInfo = 26;
+    int64 dataVersion = 27;
+    int64 createTime = 28;
+    int64 lastUpdateTime = 29;
+    // 新增字段 easEntryId  easMateriaCode
+    //*/
+    string tracelog = 30;
+    string easEntryId = 31;
+    string easMateriaCode = 32;
+}
+
+message PurchaseOrderDetailVo {
+
+    //采购单ID
+    int64 purchaseOrderId = 1;
+    //采购单状态
+    int32 orderStatus = 2;
+    //采购单号
+    string purchaseOrderNo = 3;
+    //项目id
+    int64 projectId = 4;
+    //项目名称
+    string projectName = 5;
+    //品牌Id
+    int32 brandId = 6;
+    //品牌名称
+    string brandName = 7;
+
+    string supplierId = 8;
+
+    string supplierName = 9;
+    //付款模式: 1预付费 2后付费
+    int32 paymentMode = 10;
+    //物流方式 0:不详 1:自提 2:第三方物流
+    int32 shippingMode = 11;
+    //业务发生时间
+    int64 businessDate = 12;
+    //期望入库(到货)日期
+    int64 expectedInboundDate = 13;
+    //采购单截止时间
+    int64 orderDeadlineDate = 14;
+    //仓库ID
+    int32 warehouseId = 15;
+    //仓库名称
+    string warehouseName = 16;
+    //仓库地址
+    string address = 17;
+    //品牌商订单号
+    string brandOrderNo = 18;
+    //合同参考号
+    string contractReferenceOrderNo = 19;
+    //备注
+    string remark = 20;
+    //采购商品种类
+    int32 purchaseCategory = 21;
+    //采购单总数量
+    string totalQuantity = 22;
+    //返利使用金额
+    string couponAmountUse = 23;
+    //代垫使用金额
+    string prepaidAmountUse = 24;
+    //采购指导金额
+    string purchaseGuideAmount = 25;
+    //采购优惠金额
+    string purchasePrivilegeAmount = 26;
+    //现金返点金额
+    string returnCash = 27;
+    //采购应付金额
+    string purchaseShouldPayAmount = 28;
+    //采购实付金额
+    string purchaseActualPayAmount = 29;
+    //操作日志
+    repeated OperateHistoryRecord traceLogList = 30;
+    //采购货品列表
+    repeated PurchaseItemVo itemList = 31;
+    string purchaseType = 32;
+    int32 supplierReceipt = 33;
+}
+
+message PurchaseItemVo {
+    //采购单货品id
+    int64 purchaseItemId = 1;
+    //商品采购状态
+    int32 orderStatus = 2;
+    //采购单号
+    string purchaseOrderNo = 3;
+    //商品id
+    string productId = 4;
+    //商品编码
+    string productCode = 5;
+    //商品名称
+    string productName = 6;
+    //商品单位
+    string productUnit = 7;
+    //目标仓库id
+    int32 warehouseId = 8;
+    //目标仓库名称
+    string warehouseName = 9;
+    //物流方式 0:不详 1:自提 2:第三方物流
+    int32 shippingMode = 10;
+    //采购折扣
+    string discountPercent = 11;
+    //使用的返利金额
+    string couponAmount = 12;
+    //使用的代垫金额
+    string prepaidAmount = 13;
+    //指导价
+    string guidePrice = 14;
+    //采购价
+    string purchasePrice = 15;
+    //进货价
+    string factoryPrice = 16;
+    //成本价
+    string costPrice = 17;
+    //返利单价基数
+    string couponBasePrice = 18;
+    //商品采购数量
+    int32 purchaseNumber = 19;
+    //现金折扣
+    string cashAmount = 20;
+}
+
+message OperateHistoryRecord {
+    //状态 0.新建 1.等待退货到仓 2.退货完成
+    int32 operateStatus = 1;
+    //操作功能
+    string operateFunction = 2;
+    //操作时间
+    int64 operateTime = 3;
+
+    string operateTimestring = 4;
+    //才做人ID
+    string operateId = 5;
+    //操作人名称
+    string operateName = 6;
+}

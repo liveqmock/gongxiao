@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api_eas" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api_xps_coupon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api_xps_gross_profit" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api_xps_prepaid" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api_xps_transportation" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api_xps_warehouse" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/japp_xps_foundation_data" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/japp_xps_inventory_management" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jweb_tms_notify_gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jweb_wms_notify_gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jweb_xps_coupon_management" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jweb_xps_gross_profit_management" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jweb_xps_prepaid_management" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jweb_xps_transportation_management" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jweb_xps_warehouse_management" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib_global" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib_http" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib_rpc_server_config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib_xps_warehouse" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice_xps_common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice_xps_foundation_data" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice_xps_inventory" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_philips_jd" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_philips_jd/ediClient" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_philips_jd/gRpcClientJd" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_philips_jd/japp_gongxiao_phjd_payment_management" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_philips_jd/japp_gongxiao_phjd_purchase_order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_philips_jd/japp_gongxiao_phjd_sales_order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_philips_jd/jweb_gongxiao_phjd_yhportal" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_philips_jd/lib_common_phjd" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_philips_jd/microservice_gongxiao_phjd_payment_management" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_philips_jd/microservice_gongxiao_phjd_purchase_order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_philips_jd/microservice_gongxiao_phjd_sales_order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_shaver" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_shaver/gRpcClient" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_shaver/japp_xps_payment_management" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_shaver/japp_xps_purchase_order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_shaver/japp_xps_sales_order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_shaver/jweb_xps_distributor_portal" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_shaver/jweb_xps_warehouse_notify_gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_shaver/jweb_xps_yhportal" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_shaver/lib_common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_shaver/microservice_xps_payment_management" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_shaver/microservice_xps_purchase_order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project_shaver/microservice_xps_sales_order" charset="UTF-8" />
+  </component>
+</project>

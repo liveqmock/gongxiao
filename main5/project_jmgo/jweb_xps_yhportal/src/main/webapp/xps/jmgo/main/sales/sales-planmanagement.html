@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <link rel="stylesheet" href="../css/bootstrap-editable.css?v=699bed7b25">
+    <script src="../js/bootstrap-table-editable.js?v=fa67b11583"></script>
+    <script src="../js/bootstrap-editable.min.js?v=9d82c97764"></script>
+    <title>预售管理</title>
+    <style type="text/css">
+        .yhmask-rightbox .fixed-table-container {
+            top: 54px;
+        }
+
+        .yhmask-div {
+            width: 1200px;
+        }
+
+        .yhmask-rightbox {
+            width: 652px;
+        }
+
+        .rightbox-table input {
+            width: 100px;
+        }
+        .revise-mask {
+            width: 900px;
+            height: 240px;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #286090;
+            border-color: #204d74;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper clearfix">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="sidebar"></div>
+    <!-- 主体内容 -->
+    <div class="yh-content">
+        <!-- 头部内容 -->
+        <div class="fenxiao-header clearfix">
+            <h2>分销协同平台</h2>
+            <div class="shape-box">
+                <select id="projectlist"></select>
+                <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                <span></span>
+                <a href="javascript:void(0);">注销</a>
+            </div>
+        </div>
+        <!-- 主要内容 -->
+        <div class="yh-container">
+            <!-- 面包屑菜单 -->
+            <div class="fenxiao-nav">
+                <span>当前位置：</span>
+                <a href="javascript:void(0);">销售管理</a> &gt; <a href="javascript:void(0);">预售管理</a>
+            </div>
+            <!-- 表单 -->
+            <div class="form-box">
+                <div class="fx-form clearfix">
+                    <div class="form-inputs" id="form-input">
+                        <ul class="clearfix">
+                            <li><label for="productcode">货品编码</label>
+                                <input type="text" id="productcode">
+                            </li>
+                            <li><label for="productname">货品名称</label>
+                                <input type="text" id="productname">
+                            </li>
+                            <li><label for="yhcreate-date">创建时间</label>
+                                <input type="text" id="yhcreate-date" class="yhdate-input">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-btn">
+                        <button id="yhquery-btn" class="yhquery-btn">查询</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 操作表格 -->
+            <div class="yhtable-header clearfix">
+                <div class="opera-btn">
+                    <a class="yhhandle-btn" id="yhadd-btn">新增</a>
+                    <!--<a class="yhhandle-btn" id="yhcancelblank-btn">取消作废</a>-->
+                    <button class="yhhandle-btn yh-handle-btn" disabled="disabled" id="yhcancel-btn">作废</button>
+                    <!--<a class="yhhandle-btn" id="yhexport-btn">导出</a>-->
+                </div>
+            </div>
+            <!-- 渲染表格 -->
+            <div class="yh-table">
+                <table id="yhtable" class="yhtable"></table>
+            </div>
+        </div>
+    </div>
+    <!-- 遮罩层 -->
+    <!-- 新增遮罩层 -->
+    <div class="yhmask yhmask-hide" id="yhmask">
+        <div class="yhmask-div">
+            <div class="yhmask-menu" id="yhmask-menu">
+                <span>添加预售计划</span>
+                <a href="javascript:void(0);" id="yhmask-switch">×</a>
+            </div>
+            <div class="yhmask-content clearfix" id="add-mask">
+                <div class="yhmask-leftbox">
+                    <h3>请选择要添加的货品</h3>
+                    <div class="leftbox-input">
+                        <input type="text" placeholder="请输入货品编码" id="newproductcode">
+                        <input type="text" placeholder="请输入货品名称" id="newproductname">
+                        <button id="yhmask-query">查询</button>
+                    </div>
+                    <div class="leftbox-table">
+                        <table id="tobeaddtable" class="table"></table>
+                    </div>
+                </div>
+                <div class="yhmask-rightbox">
+                    <h3>已选的货品<span id="yhmask-pronum">(0)</span></h3>
+                    <div class="rightbox-table">
+                        <table id="addedtable" class="table"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="yhmask-content" id="revise-mask">
+                <div class="repair-table">
+                    <table id="revise-table"></table>
+                </div>
+            </div>
+            <div class="yhmask-btn">
+                <button class="yhsubmit-btn" id="yhmask-submit">确认</button>
+                <button class="yhcancel-btn" id="yhmask-cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/sales/plansalesmanagement.js?v=297824cdde"></script>
+</body>
+
+</html>

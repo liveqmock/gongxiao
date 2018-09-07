@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.yhglobal.gongxiao</groupId>
+    <artifactId>gongxiao</artifactId>
+    <packaging>pom</packaging>
+    <version>2.0</version>
+
+    <!-- 分销协同平台公共模块 -->
+    <modules>
+
+        <module>microservice_xps_common</module>
+
+        <!--返利的生成与核销-->
+        <module>api_xps_coupon</module>
+        <module>jweb_xps_coupon_management</module>
+
+        <!--代垫的生成与核销-->
+        <module>api_xps_prepaid</module>
+        <module>jweb_xps_prepaid_management</module>
+
+        <!--毛利的生成与核销-->
+        <module>api_xps_gross_profit</module>
+        <module>jweb_xps_gross_profit_management</module>
+
+        <!-- 全局基础数据 -->
+        <module>microservice_xps_foundation_data</module>
+        <module>japp_xps_foundation_data</module>
+
+        <!-- 库存服务 -->
+        <module>microservice_xps_inventory</module>
+        <module>japp_xps_inventory_management</module>
+
+        <!-- 仓储服务 -->
+        <module>api_xps_warehouse</module>
+        <module>lib_xps_warehouse</module>
+        <module>jweb_xps_warehouse_management</module>
+        <module>jweb_wms_notify_gateway</module>
+
+        <!-- 运输服务 -->
+        <module>api_xps_transportation</module>
+        <module>jweb_xps_transportation_management</module>
+        <module>jweb_tms_notify_gateway</module>
+
+        <!-- eas模块 -->
+        <module>api_eas</module>
+
+
+        <!-- 全局lib模块 -->
+        <module>lib_global</module>
+        <module>lib_http</module>
+        <module>lib_rpc_server_config</module>
+
+        <!--<module>project_philips_jd</module>-->
+        <!--<module>project_shaver</module>-->
+        <!--<module>project_jmgo</module>-->
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>1.8</jdk.version>
+        <spring.version>3.2.10.RELEASE</spring.version>
+        <mybatis.version>3.4.5</mybatis.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
+        <maven-dependency-plugin.version>3.1.0</maven-dependency-plugin.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- log4j2 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.24</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-jcl</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

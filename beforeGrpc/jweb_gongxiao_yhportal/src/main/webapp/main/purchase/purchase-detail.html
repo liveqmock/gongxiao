@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=f1463f4aab"></script>
+    <link rel="stylesheet" href="../css/purchase/purchase-detail.css?v=9d03b86301">
+    <title>采购单详情</title>
+</head>
+
+<body>
+    <div class="wrapper clearfix">
+        <!-- 侧边栏 -->
+        <div id="sidebar" class="sidebar"></div>
+        <!-- 主体内容 -->
+        <div class="yh-content">
+            <!-- 头部内容 -->
+            <div class="fenxiao-header clearfix">
+                <h2>分销协同平台</h2>
+                <div class="shape-box">
+                    <input type="text" id="projectid" disabled>
+                    <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                    <span></span>
+                    <a href="javascript:void(0);">注销</a>
+                </div>
+            </div>
+            <div class="yh-container">
+                <!-- 面包屑 -->
+                <div class="fenxiao-nav">
+                    <span>当前位置：</span>
+                    <a href="javascript:void(0);">采购管理</a> &gt; <a href="javascript:void(0);">采购单管理</a> &gt; <a href="javascript:void(0);">采购单详情</a>
+                </div>
+                <div class="infolist-wrap">
+                    <!-- 基本信息 -->
+                    <h3 class="title-h3">基本信息</h3>
+                    <div class="infobox infolist">
+                        <div class="info-inputlayout purdetail-info clearfix">
+                            <p><i><span class="must-span">供应商</span></i>
+                                <input type="text" id="supplier" disabled>
+                            </p>
+                            <p>
+                                <i><span class="must-span">仓库</span></i>
+                                <input type="text" id="warehouse" disabled>
+                            </p>
+                            <p>
+                                <i><span class="must-span">物流方式</span></i>
+                                <input type="text" id="logistic" disabled>
+                            </p>
+                            <p><i><span class="must-span">收货地址</span></i>
+                                <input type="text" id="shopaddress" disabled>
+                            </p>
+                            <p><i><span class="must-span">业务日期</span></i>
+                                <input type="text" id="business-date" class="yhdate-input" disabled>
+                            </p>
+                            <p><i><span class="must-span">采购方式</span></i>
+                                <input type="text" id="purchase-style" disabled>
+                            </p>
+                            <p><i><span class="must-span">品牌商订单号</span></i>
+                                <input type="text" id="brandno" disabled>
+                            </p>
+                            <p><i><span class="must-span">合同参考号</span></i>
+                                <input type="text" id="orderno" disabled>
+                            </p>
+                            <p><i><span>要求到货日期</span></i>
+                                <input type="text" id="received-date" class="yhdate-input" disabled>
+                            </p>
+                            <p><i><span>到货截至日期</span></i>
+                                <input type="text" id="cutoff-date" class="yhdate-input" disabled>
+                            </p>
+                        </div>
+                        <div class="info-inputlayout total-box">
+                            <p><span>备注</span>
+                                <textarea name="" id="remark" cols="30" rows="10" disabled></textarea>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 货品信息 -->
+                    <h3 class="title-h3">货品信息</h3>
+                    <div class="edit-infobox">
+                        <div class="yh-table">
+                            <table id="yhtable" class="yhtable"></table>
+                        </div>
+                        <div class="detail-info clearfix">
+                            <div>
+                                <ul class="number-info">
+                                    <li><span>采购品种</span><b id="pro-type"></b>种</li>
+                                    <li><span>采购总数量</span><b id="pro-number"></b>个</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="money-info" id="detailmoney">
+                                    <li><span>采购指导金额</span><b></b></li>
+                                    <!--<li><span>扣减采购优惠金额</span><b></b></li>-->
+                                    <li><span>扣减代垫使用金额</span><b></b></li>
+                                    <li><span>扣减返利使用金额</span><b></b></li>
+                                    <li><span>扣减现金折扣金额</span><b></b></li>
+                                    <li><span>采购实付金额</span><b id="payamount"></b></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 操作日志 -->
+                    <h3 class="title-h3">操作日志</h3>
+                    <div class="edit-infobox">
+                        <div class="yh-table">
+                            <table class="opera-log table" id="yhlogtable"></table>
+                        </div>
+                    </div>
+                    <div class="sub-btn">
+                        <a class="yhreturn-btn" href="purchase-management.html">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/purchase/detail.js?v=0b2a9069e4"></script>
+</body>
+
+</html>

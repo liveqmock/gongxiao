@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <context:annotation-config />
+
+    <context:component-scan base-package="com.yhglobal.gongxiao"/>
+
+    <context:property-placeholder location="classpath:jappconfig_${server.mode}.properties" />
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="${dubbo.application.name}"/>
+    <!-- 使用redis广播注册中心暴露服务地址 -->
+    <dubbo:registry address="${dubbo.registry.address}"/>
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="21880"/>
+
+    <dubbo:annotation package="com.yhglobal.gongxiao" />
+
+    <bean id="applicationContextProvider" class="com.yhglobal.gongxiao.common.spring.ApplicationContextProvider"/>
+
+    <bean id="dataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://${jdbc.url}/${jdbc.database}?useUnicode=true&amp;characterEncoding=utf-8"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="poolPingEnabled" value="true"/>
+        <property name="poolPingQuery" value="select now()"/>
+        <property name="poolPingConnectionsNotUsedFor" value="25200000"/>
+        <property name="defaultAutoCommit" value="true" />
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 注意其他配置 -->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <!--使用下面的方式配置参数，一行配置一个 -->
+                        <value>
+                            params=value1
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
+    <!-- mybatis mapping -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.yhglobal.gongxiao"/>
+        <property name="markerInterface" value="com.yhglobal.gongxiao.common.mapper.BaseMapper"/>
+    </bean>
+
+
+    <bean id="threadPoolTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="2"/>
+        <property name="keepAliveSeconds" value="180"/>
+        <property name="maxPoolSize" value="10"/>
+        <property name="queueCapacity" value="256"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=f1463f4aab"></script>
+    <title>新增入库单</title>
+    <style type="text/css">
+        .info-inputlayout{
+            padding-left: 130px;
+        }
+        .purchaseadd-header{
+            margin-bottom: 20px;
+        }
+        .sub-btn{
+            width: 360px;
+            margin: 20px auto;
+        }
+        .sub-btn button{
+            float: left;
+            margin-left: 20px;
+        }
+        .sub-btn a{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper clearfix">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="sidebar"></div>
+    <!-- 主体内容 -->
+    <div class="yh-content">
+        <!-- 头部内容 -->
+        <div class="fenxiao-header clearfix">
+            <h2>分销协同平台</h2>
+            <div class="shape-box">
+                <select name="projectList" id="projectlist"></select>
+                <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                <span></span>
+                <a href="javascript:void(0);">注销</a>
+            </div>
+        </div>
+        <!-- 主要内容 -->
+        <div class="yh-container">
+            <!-- 面包屑菜单 -->
+            <div class="fenxiao-nav">
+                <span>当前位置：</span>
+                <a href="javascript:void(0);">仓储管理</a> &gt; <a href="javascript:void(0);">入库单管理</a> &gt; <a
+                    href="javascript:void(0);">新增入库单</a>
+            </div>
+            <!-- 编辑页 -->
+            <div class="infolist-wrap">
+                <div class="infobox">
+                    <div class="infolist">
+                        <ul class="clearfix">
+                            <li>
+                                <span class="label-span"><label class="limit-label">供应商</label></span>
+                                <select id="supplierlist"></select>
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">仓库</label></span>
+                                <select id="warehouselist" class="pur-select"></select>
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">业务日期</label></span>
+                                <input type="text" id="yhbusiness-date" class="yhdate-input">
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">收货地址</label></span>
+                                <input type="text" id="shopaddress" disabled="true">
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">入库类型</label></span>
+                                <select id="inboundtype" class="pur-select">
+                                    <option value="">请选择</option>
+                                    <!--<option value="101">采购入库</option>-->
+                                    <!--<option value="102">调拨入库</option>-->
+                                    <!--<option value="103">退货入库</option>-->
+                                    <option value="90006">其它入库</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="info-inputlayout total-box">
+                        <p><span>备注</span>
+                            <textarea name="" cols="30" rows="10" id="remask"></textarea>
+                        </p>
+                    </div>
+                </div>
+                <div class="otheraddtable">
+                    <div class="purchaseadd-header">
+                        <a class="yhhandle-btn" id="entry-addbtn">添加商品</a>
+                        <a class="yhhandle-btn">导入商品</a>
+                    </div>
+                    <!-- 渲染表格 -->
+                    <div class="yh-table">
+                        <table id="otheraddtable" class="yhtable"></table>
+                    </div>
+                </div>
+
+                <div class="sub-btn clearfix">
+                    <button class="yhsubmit-btn">保存</button>
+                    <button class="yhsubmit-btn" id="entry-submit">保存并提交</button>
+                    <a class="yhcancel-btn" href="./storage-notice-entrymanagement.html">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 遮罩层 -->
+    <div class="yhmask yhmask-hide" id="yhmask">
+        <div class="yhmask-div">
+            <div class="yhmask-menu">
+                <span>添加货品</span>
+                <a href="javascript:void(0);" id="yhmask-switch">×</a>
+            </div>
+            <div class="yhmask-content clearfix">
+                <div class="yhmask-leftbox">
+                    <h3>请选择要添加的货品</h3>
+                    <div class="leftbox-input">
+                        <input type="text" id="productCode" placeholder="请输入货品编码">
+                        <input type="text" id="productName" placeholder="请输入货品名称">
+                        <button id="searchProduct">查询</button>
+                    </div>
+                    <div class="tobeaddtable">
+                        <table id="leftbox-table" class="table"></table>
+                    </div>
+                </div>
+                <div class="yhmask-rightbox">
+                    <h3>已选的货品<span id="right-addnum">(0)</span></h3>
+                    <div class="rightbox-table">
+                        <table id="rightbox-table" class="table"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="yhmask-btn sub-btn">
+                <a class="yhsubmit-btn" id="yhmask-submit">确认</a>
+                <a class="yhcancel-btn" id="yhmask-cancel" target="_blank">取消</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/storage/add-newentry.js?v=f743e46aef"></script>
+</body>
+
+</html>

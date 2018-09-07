@@ -1,0 +1,147 @@
+.purdetail-info {
+  width: 700px;
+}
+.purdetail-info i {
+  font-style: normal;
+  display: inline-block;
+  width: 84px;
+  text-align: right;
+}
+.purdetail-info p {
+  float: left;
+}
+.purdetail-info p:nth-child(even) {
+  margin-left: 36px;
+}
+.total-box ul {
+  margin-top: 20px;
+}
+.total-box li {
+  font-size: 12px;
+  float: left;
+  margin-left: 100px;
+  /* width: 150px; */
+  width: 200px;
+}
+.total-box span {
+  width: 84px;
+  text-align: right;
+}
+.total-box p span {
+  width: 78px;
+}
+.total-box ul > li:first-child {
+  margin-left: -6px;
+}
+.info-inputlayout textarea {
+  border: 1px solid #d4d4d4;
+  text-indent: 2em;
+  width: 520px;
+  vertical-align: top;
+  resize: none;
+}
+.salesadd-header{
+  border-top: none;
+}
+.sub-btn{
+  font-size: 0;
+  width: 340px;
+  margin: 30px auto 0;
+}
+.sub-btn button{
+  margin-left: 20px;
+}
+.sub-btn button:first-child{
+  margin-left: 0;
+}
+.yhtable-header{border-bottom: none;}
+.sales-addinfo{width: 1180px;}
+.sales-addinfo input{width:70px;margin-right: 4px;}
+.sales-addinfo li.pur-spli{margin-left: 146px;}
+.yhmask-rightbox h3 span{color:#ed5564;}
+/*客户信息*/
+.review-cus {
+  border-top: none;
+  padding-bottom: 10px;
+}
+.sub-btn3 {
+  margin-top: 80px;
+}
+.customer-info {
+  width: 850px;
+  padding-left: 110px;
+  box-sizing: border-box;
+}
+.customer-info i {
+  display: inline-block;
+  font-style: normal;
+  width: 60px;
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 16px;
+}
+.customer-info p {
+  float: left;
+  width: 300px;
+  margin-left: 130px;
+}
+.customer-info p:nth-child(odd) {
+  margin-left: 0;
+}/*客户信息*/
+.review-cus {
+  border-top: none;
+  padding-bottom: 10px;
+}
+.sub-btn3 {
+  margin-top: 80px;
+}
+.customer-info {
+  width: 850px;
+  padding-left: 110px;
+  box-sizing: border-box;
+}
+.customer-info i {
+  display: inline-block;
+  font-style: normal;
+  width: 60px;
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 16px;
+}
+.customer-info p {
+  float: left;
+  width: 300px;
+  margin-left: 130px;
+}
+.customer-info p:nth-child(odd) {
+  margin-left: 0;
+}
+/*客户信息*/
+.review-cus {
+  border-top: none;
+  padding-bottom: 10px;
+}
+.sub-btn3 {
+  margin-top: 80px;
+}
+.customer-info {
+  width: 850px;
+  padding-left: 110px;
+  box-sizing: border-box;
+}
+.customer-info i {
+  display: inline-block;
+  font-style: normal;
+  width: 60px;
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 16px;
+}
+.customer-info p {
+  float: left;
+  width: 300px;
+  margin-left: 130px;
+}
+.customer-info p:nth-child(odd) {
+  margin-left: 0;
+}

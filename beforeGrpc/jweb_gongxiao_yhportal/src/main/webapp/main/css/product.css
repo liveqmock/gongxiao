@@ -1,0 +1,41 @@
+/**
+ * @authors {len} (http://csshack.org)
+ * @date    2018/5/24
+ */
+.info-inputlayout {
+  padding-left: 80px;
+}
+.product-info li {
+  float: left;
+}
+.product-info li:not(:first-child) {
+  margin-left: 110px;
+}
+.product-info label.limit-label {
+  position: relative;
+}
+.product-info label.limit-label:before {
+  content: "*";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -10px;
+  color: #ff0000;
+  font-size: 12px;
+}
+.rate-info label {
+  width: 78px;
+  text-align: right;
+}
+.rate-info ul:last-child li:last-child {
+  margin-left: 174px;
+}
+.rate-info ul:last-child li:last-child label {
+  width: 100px;
+}
+.rate-info ul:last-child li:last-child input {
+  width: auto;
+}
+.rate-info label.limit-label:before {
+  left: 0;
+}

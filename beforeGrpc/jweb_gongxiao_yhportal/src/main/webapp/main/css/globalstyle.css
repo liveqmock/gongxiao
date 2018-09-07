@@ -1,0 +1,199 @@
+@charset "UTF-8";
+/*清除默认样式*/
+html{overflow-y:scroll;overflow-x:auto;min-width:960px;/* max-width:1920px; */width:100%;margin:0 auto}body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,p,pre,form,fieldset,legend,input,textarea,blockquote,img,article{padding:0;margin:0}body{font-family:"Microsoft YaHei",Helbetica}html,body{font-size:22px}input,select{font-size:12px;vertical-align:middle}textarea,input{word-wrap:break-word;word-break:break-all}dl,ul,li{list-style:none}a,button,input{-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:transparent}input,textarea,img{border:0}input[type="submit"],input[type="reset"],input[type="button"],button{-webkit-appearance:none}img{display:block;vertical-align:middle}a,area{blr:expression(this.onFocus=this.blur())}h1,h2,h3,h4,h5,h6{font-weight:normal}a{outline:none}a:link,a:visited,a:hover,a:active{text-decoration:none}i{font-style:normal}.clear{clear:both;height:0;font-size:0;line-height:0;overflow:hidden}.clearfix{*zoom:1}.clearfix:after{display:block;overflow:hidden;clear:both;height:0;visibility:hidden;content:"."}
+select{appearance:none;-moz-appearance:none;-webkit-appearance:none}
+select::-ms-expand{display:none}
+select{outline:none!important;border-radius: 0!important;}
+select:focus{outline:none!important;}
+a,button,input[type="button"]{cursor:pointer;}
+button{border:0;outline:0;margin:0;padding:0;}
+button:focus{outline:none;}
+body{background-color:#eef1f6;}
+label{font-weight: normal;}
+
+
+/*button按钮*/
+button,.sub-btn>a{/*width:100px;height:30px;*/font-size:14px;line-height:30px;color:#fff;border-radius:2px;}
+textarea{border:1px solid #d4d4d4;text-indent:2em;width:500px;vertical-align:top;resize:none;background-color:#fff;height: 48px;}
+
+/*一般为详情页里的按钮*/
+.sub-btn a{display:block;float:left;text-align:center;margin-left:36px;}
+.sub-btn a:first-child{margin-left:0;}
+.sub-btn2{width:272px;margin:14px auto;}
+.sub-btn3{width:372px;margin:14px auto;}
+
+/*查询按钮*/
+.yhquery-btn,.yhsubmit-btn,.sub-btn a.yhquery-btn,.sub-btn a.yhsubmit-btn{border-radius:2px;border:1px solid #3c9fa3;width:100px;height:30px;color: #fff;}
+.yhquery-btn:hover,.yhsubmit-btn:hover,.sub-btn a.yhquery-btn,.sub-btn a.yhsubmit-btn:hover{background-color:#61CFD4;}
+.yhquery-btn:active,.yhsubmit-btn:active,.sub-btn a.yhquery-btn,.sub-btn a.yhsubmit-btn:active{background-color:#47A9AD;}
+.yhquery-btn{text-indent:26px;background:#52B4B8 url(../images/fadajing.png) 26px center no-repeat;background-size:16px 16px;}
+
+/*提交按钮*/
+.yhsubmit-btn,.sub-btn a.yhsubmit-btn{background-color:#52B4B8;width:100px;height:30px;color:#fff;}
+
+/*取消按钮*/
+.yhcancel-btn,.sub-btn a.yhcancel-btn{color:#444;background-color:#EDEEEF;border:1px solid #CDCDCD;width:100px;height:30px;}
+.yhcancel-btn:hover,.sub-btn a.yhcancel-btn:hover{background-color:#F5F6F7}
+.yhcancel-btn:active,.sub-btn a.yhcancel-btn:active{background-color:#ddd;}
+
+/*返回按钮*/
+.yhreturn-btn,.sub-btn a.yhreturn-btn{color:#444;background-color:#fff;border:1px solid #B2B2B2;width:100px;height:30px;}
+.yhreturn-btn:hover,.sub-btn a.yhreturn-btn:hover{background-color:#F5F6F7}
+.yhreturn-btn:active,.sub-btn a.yhreturn-btn:active{background-color:#E5E6E7;}
+
+/*驳回按钮*/
+.yhrebut-btn,.sub-btn a.yhrebut-btn{background-color:#ED7581;border:1px solid #DD5F6C;width:100px;height:30px;}
+.yhrebut-btn:hover,.sub-btn a.yhrebut-btn:hover{background-color:#F4929C;}
+.yhrebut-btn:active,.sub-btn a.yhrebut-btn:active{background-color:#E35B68;}
+
+/*操作按钮*/
+.yhhandle-btn{color:#686b6d;font-size:12px;display:inline-block;padding:6px 16px;border:1px solid #d4d4d4;box-shadow:0 1px 1px #c3c3c3;border-radius: 2px;}
+.yhhandle-btn:hover{color:#469ca1;background-color:#ecf7f8;border:1px solid #469ca1;}
+.yhbtn-box{font-size:0;margin-left:280px;width:220px;}
+.yhbtn-box button{float:left;margin-left:20px;}
+.yhbtn-box button:first-child{margin-left:0;}
+
+/*字体图标*/
+.icon{fill:currentColor;overflow:hidden;}
+.wrapper{width:100%;height:100%;min-width:960px;margin:0 auto;background-color:#eef1f6;padding-bottom:50px;}
+
+
+/*输入框警告*/
+input.warning-input{
+	border: 1px solid #f76d6d;
+}
+
+
+/*主体内容*/
+.yh-content{padding-left:180px;font-size:12px;min-width: 1600px;}
+
+/*主体内容头部*/
+.fenxiao-header{height:50px;line-height:50px;background-color:#fff;border-bottom:1px solid #e8eaed;}
+.fenxiao-header > h2{height:50px;line-height:50px;margin-top:0;margin-bottom:0;color:#27303A;font-size:22px;padding-left:10px;float:left;}
+.fenxiao-header .shape-box{float:right;padding-right:20px;}
+.fenxiao-header .shape-box > img{display:inline-block;}
+.fenxiao-header .shape-box > span{margin-left:10px;margin-right:14px;}
+.fenxiao-header .shape-box > span,.fenxiao-header .shape-box > a{font-size:14px;color:#96a4b4;display:inline-block;}
+.yh-container{margin-left:10px;margin-right:10px;}
+
+/*面包屑导航*/
+.fenxiao-nav{height:30px;line-height:30px;color:#686a6c;font-size:12px;text-align:left;}
+.fenxiao-nav > span,.fenxiao-nav > a{display:inline-block;color:#686a6c;font-size:12px;}
+
+/* 必填提示 */
+i.prompt-text span{position: relative;}
+i.prompt-text span:before{content:"*";display:block;position:absolute;top:0;left:-10px;color:#ff0000;font-size:12px;}
+
+
+/*遮罩层*/
+.yhmask{width:100%;height:100%;background-color:rgba(0,0,0,0.46);position:fixed;left:0;top:0;z-index:99999;}
+.yhmask-hide{display:none;}
+.yhmask-div{width:1000px;padding-bottom:40px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background-color:#fff;}
+/* 内容自适应高度 */
+.yhmask-spdiv{width:1000px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background-color:#fff;padding-bottom: 20px;}
+.yhmask-spdiv p{font-size: 12px;}
+.queryradio p span{margin-left: 12px;display: inline-block;}
+
+.yhmask-menu{position:relative;font-size:0;height:50px;background-color:#e7ebf0;border-bottom:3px solid #d0d6dd;}
+.yhmask-menu a,.yhmask-menu span{display:inline-block;}
+.yhmask-menu span{color:#444;font-size:14px;line-height:50px;text-indent:16px;}
+.yhmask-menu a{position:absolute;width:47px;height:47px;text-align:center;line-height:47px;right:0;top:0;font-size:30px;color:#444;}
+.yhmask-menu a:hover{color:#fff;background-color:#ed5564;}
+.yhmask-content{padding:20px 30px 10px 30px;box-sizing:border-box;}
+.yhmask-content h3{color:#444;font-size:16px;}
+.yhmask-leftbox{border-right:1px solid #e8eaed;width:468px;float:left;padding-right: 10px;}
+/*.leftbox-input{margin-top:32px;}*/
+.leftbox-input{margin-top:10px;}
+.leftbox-input input{width:180px;height:24px;}
+.yhmask-rightbox{margin-left:484px;}
+.leftbox-input button{border:1px solid #d4d4d4;border-radius:2px;width:80px;height:26px;font-size:12px;color:#686b6d;line-height:26px;background-color:#fafafa;vertical-align: top;}
+.leftbox-input button:hover{color:#469ca1;background-color:#ecf7f8;border:1px solid #469ca1;}
+.yhmask-btn{width:210px;margin:0 auto;}
+.yhmask-rightbox h3 span{color:#ed5564;}
+/* 遮罩层单独的查询按钮 */
+.maskquery-div{color:#444;font-size:16px;/*width: 500px;*/width: 360px;margin:20px auto;}
+.maskquery-div input{width: 300px;height: 30px;line-height: 30px;margin-left: 10px;}
+.maskquery-div p,.maskquery-div button{float:left;margin:12px 0 12px 10px;}
+.maskquery-div button{width: 100px;}
+
+/*单元格内的输入框*/
+/*input.yhtable-input{width:64px;}*/
+/*.yhmask thead,.yhmask thead tr{width:450px;}*/
+/*.yhmask thead tr th:first-child{width:120px;}*/
+/*.yhmask thead tr th:nth-child(2){width:250px;}*/
+/*.yhmask thead tr th:last-child{width:80px;}*/
+.yhmask-div .fixed-table-toolbar .search{width:180px;height:24px;}
+.yhmask-div .fixed-table-toolbar .search input.form-control{width:180px;height:24px;border:1px solid #d4d4d4;text-indent:6px;font-size:12px;vertical-align:middle;line-height:24px;border-radius:0;box-shadow:none;padding:0;}
+.yhmask-rightbox .fixed-table-toolbar{display:none;}
+.yhmask-rightbox{position:relative;width:452px;height:414px;}
+.yhmask-rightbox .fixed-table-container{position:absolute;top:52px;width:100%;height:260px;}
+
+
+
+/*操作表格*/
+.yhtable-header{margin-top:10px;background-color:#fff;padding:18px 0 18px 10px;border-top:2px solid #e8eaed;border-bottom:3px solid #e8eaed;}
+.opera-btn{float:left;font-size:0;}
+.opera-btn > a{margin-left:16px;}
+
+/* 操作表格右边按钮部分 */
+.table-btnbox{float:right;position:relative;margin-right:25px;color:#71757b;font-size:14px;}
+.table-btnbox p{display:inline-block;}
+.table-btnbox p.toggle-p button{width:56px;height:20px;line-height:20px;border:1px solid #d5d6d5;background-color:#fff;margin-left:4px;margin-right:4px;vertical-align:middle;text-align:center;color:#71757b;}
+.table-btnbox p:last-child{margin-left:4px;}
+.table-btnbox p:last-child button{border:1px solid #d7dde3;background-color:#fff;color:#cdcfd1;margin-left:-4px;width:20px;height:20px;line-height:18px;vertical-align:middle;}
+.toggle-numul{position:absolute;top:22px;left:92px;z-index:1000;display:none;min-width:80px;padding:2px 0;margin:2px 0 0;font-size:14px;text-align:left;list-style:none;background-color:#fff;background-clip:padding-box;border:1px solid #ccc;border:1px solid rgba(0,0,0,0.15);border-radius:2px;box-shadow:0 3px 6px rgba(0,0,0,0.175);cursor:pointer;}
+.toggle-numul li{padding:0 20px;box-sizing:border-box;width:100%;}
+.toggle-numul li:hover{background-color:#e5f4f6;}
+.toggle-numul li.linked{background-color:#97d7da;}
+.toggle-numshow{display:block;}
+
+
+
+
+/*详情页边框线*/
+.edit-infobox{
+	border-top: 1px solid #e6e8ed;
+	padding-top: 30px;
+}
+.borderline{
+  width: 100%;
+  height: 1px;
+  background-color: #e6e8ed;
+  margin-bottom: 30px;
+}
+
+
+/* 管理界面 */
+.management-btn{padding-left:18px;border-bottom:2px solid #e8eaed;}
+.management-btn a{float:left;margin-left:14px;display: block;height: 30px;line-height: 30px;}
+.management-btn a.managementoperalink {
+	box-shadow: 0 2px 0 0 red;
+}
+.management-btn span{color:#fd6103;}
+
+
+/* 验证 */
+.verification{
+    font-size: 12px;
+    position: absolute;
+    top: 22px;
+    left: 0;
+    color: #ff0000;
+    font-weight: 100;
+}
+
+
+/* 账户遮罩层 */
+.account-mask{
+    width: 320px;
+    position: relative;
+    margin: 0 auto;
+}
+.account-mask .verification{
+    font-size: 12px;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    color: #ff0000;
+    font-weight: 100;
+}

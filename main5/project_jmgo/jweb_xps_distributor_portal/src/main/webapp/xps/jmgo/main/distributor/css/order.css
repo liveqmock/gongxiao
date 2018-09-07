@@ -1,0 +1,188 @@
+/* 主体内容 */
+.order-content {
+  width: 96%;
+  margin: 30px auto 0;
+}
+.order-proinfo {
+  padding: 85px 40px 40px;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #fff;
+}
+.order-search {
+  width: 978px;
+  margin: 0 auto 35px;
+  height: 60px;
+}
+.order-search input {
+  border: 1px solid #ff4242;
+  width: 838px;
+  height: 60px;
+  box-sizing: border-box;
+  float: left;
+  font-size: 24px;
+  text-indent: 2em;
+}
+.order-search input:focus {
+  outline: 1px solid #ff4242;
+}
+.order-search button {
+  width: 140px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  background-color: #ff4242;
+  color: #fff;
+  font-size: 24px;
+  float: left;
+}
+/* 商品列表 */
+.order-prolist {
+  width: 1080px;
+  margin: 0 auto;
+}
+.order-prolist li {
+  height: 40px;
+  font-size: 0;
+  margin-top: -1px;
+  float: left;
+  margin-left: 40px;
+}
+.order-prolist li span {
+  border: 1px solid #dadada;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  margin-left: -1px;
+  text-align: center;
+  vertical-align: middle;
+  min-width: 250px;
+}
+.order-prolist li > span:first-child {
+  min-width: 170px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.order-prolist li input {
+  width: 80px;
+  vertical-align: middle;
+  text-align: center;
+  display: inline-block;
+  border: 1px solid #ff7623;
+  box-sizing: border-box;
+  color: #ff7623;
+  font-size: 16px;
+  background-color: #fcf6f6;
+  height: 40px;
+  line-height: 40px;
+  margin-left: -1px;
+}
+.order-prolist li:nth-child(odd) {
+  margin-left: 0;
+}
+/* 商品表格 */
+.order-table {
+  background-color: #fff;
+  border-top: 2px solid red;
+  margin-top: 10px;
+  padding: 10px 0 20px;
+  /* 采购数量单元格样式 */
+  /* 折扣小计 */
+  /* 进货价 */
+  /* 商品合计 */
+  /* 表格删除功能 */
+  /* 商品合计 */
+}
+.order-table .purchasenum-orderinput input,
+.order-table .purchasenum-orderinput span {
+  display: inline-block;
+  line-height: 24px;
+  float: left;
+}
+.order-table .purchasenum-orderinput input {
+  width: 80%;
+  margin-left: 10%;
+  font-size: 16px;
+  text-align: center;
+  height: 32px;
+  border: 1px solid #dadada;
+}
+.order-table .purchasenum-orderinput input.table-input-warning {
+  border: 1px solid red;
+}
+.order-table .purchasenum-orderinput .noteaddbtn,
+.order-table .purchasenum-orderinput .notereducebtn {
+  height: 32px;
+  width: 32px;
+  line-height: 34px;
+  text-align: center;
+  border: 1px solid #dadada;
+  cursor: pointer;
+  font-size: 20px;
+}
+.order-table .discount-input input {
+  width: 124px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #ff4242;
+  border: 1px solid #dadada;
+}
+.order-table .buying-td {
+  font-size: 30px;
+  color: #ff7623;
+}
+.order-table .order-prototal {
+  background-color: #f0f1f1;
+  height: 70px;
+  line-height: 70px;
+  width: 100%;
+  margin-top: 10px;
+  padding-left: 500px;
+  box-sizing: border-box;
+}
+.order-table .order-delete {
+  color: #000;
+  font-size: 14px;
+}
+.order-table .order-delete:hover {
+  color: #ff4242;
+}
+.order-table .rebate-info {
+  float: left;
+}
+.order-table .rebate-info p {
+  display: inline-block;
+}
+.order-table .order-btn {
+  float: right;
+}
+.order-table .order-btn li {
+  float: left;
+  width: 150px;
+  margin-left: 10px;
+  line-height: 56px;
+  font-size: 30px;
+  height: 70px;
+}
+.order-table .order-btn li strong {
+  color: #ff4242;
+  font-size: 30px;
+}
+.order-table .order-btn li:first-child {
+  font-size: 24px;
+}
+.order-table .order-btn button {
+  display: inline-block;
+  width: 140px;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  background-color: #ff4242;
+  color: #fff;
+  font-size: 30px;
+  float: right;
+}

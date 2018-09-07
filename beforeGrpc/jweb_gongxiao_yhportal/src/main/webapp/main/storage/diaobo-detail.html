@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=f1463f4aab"></script>
+    <title>调拨单详情</title>
+    <style type="text/css">
+        .info-inputlayout{
+            padding-left: 80px;
+        }
+        /*.purdetail-info{*/
+            /*width: 840px;*/
+        /*}*/
+        /*.purdetail-info p,.purdetail-info p:nth-child(even){*/
+            /*margin-left: 0;*/
+        /*}*/
+        /*.purdetail-info p:not(:nth-child(3n+1)){*/
+            /*margin-left: 36px;*/
+        /*}*/
+    </style>
+</head>
+<body>
+    <div class="wrapper clearfix">
+        <!-- 侧边栏 -->
+        <div id="sidebar" class="sidebar"></div>
+        <!-- 主体内容 -->
+        <div class="yh-content">
+            <!-- 头部内容 -->
+            <div class="fenxiao-header clearfix">
+                <h2>分销协同平台</h2>
+                <div class="shape-box">
+                    <input type="text" id="projecttext">
+                    <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                    <span></span>
+                    <a href="javascript:void(0);">注销</a>
+                </div>
+            </div>
+            <div class="yh-container">
+                <!-- 面包屑 -->
+                <div class="fenxiao-nav">
+                    <span>当前位置：</span>
+                    <a href="javascript:void(0);">仓储管理</a> &gt; <a href="javascript:void(0);">调拨单管理</a> &gt; <a href="javascript:void(0);">调拨单详情</a>
+                </div>
+                <div class="infolist-wrap">
+                    <!-- 基本信息 -->
+                    <h3 class="title-h3">基本信息</h3>
+                    <div class="infobox">
+                        <div class="info-inputlayout purdetail-info clearfix" id="storageinfo">
+                            <p><i><span class="must-span">调出公司主体</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">调入公司主体</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">调出项目</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">调入项目</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">调出仓库</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">调入仓库</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">发货地址</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">收货地址</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">调拨方式</span></i><input type="text" disabled>
+                            <p><i><span class="must-span">业务时间</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">要求到货时间</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">到货截止时间</span></i><input type="text" disabled></p>
+                        </div>
+                    </div>
+                    <!-- 货品信息 -->
+                    <h3 class="title-h3">明确信息</h3>
+                    <div class="edit-infobox">
+                        <table class="yh-table" id="stodetable"></table>
+                    </div>
+                    <!-- 操作日志 -->
+                    <h3 class="title-h3">操作日志</h3>
+                    <div class="edit-infobox">
+                        <table class="opera-log" id="storagelog"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/storage/diaobo-detail.js?v=e3396691bc"></script>
+
+</body>
+</html>

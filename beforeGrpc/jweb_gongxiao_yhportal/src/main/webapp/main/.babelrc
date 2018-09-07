@@ -1,0 +1,7 @@
+{
+	"presets": ["env"],
+	"comments": false,
+	"plugins": [["transform-remove-console",{
+		"exclude": ["error","warn"]
+	}]]
+}

@@ -1,0 +1,130 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+ http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <context:component-scan base-package="com.yhglobal.gongxiao"/>
+
+    <task:annotation-driven/>
+
+    <context:property-placeholder location="classpath:yhportalconfig_${server.mode}.properties"/>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <!-- fastjson converter -->
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json</value>
+                    </list>
+                </property>
+                <property name="features">
+                    <list>
+                        <value>WriteMapNullValue</value>
+                        <value>QuoteFieldNames</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- for swagger  -->
+    <mvc:resources mapping="/api/**" location="/api/"/>
+    <mvc:resources mapping="/main/**" location="/main/"/>
+
+    <bean id="dataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://${jdbc.url}/${jdbc.database}?useUnicode=true&amp;characterEncoding=utf-8"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="poolPingEnabled" value="true"/>
+        <property name="poolPingQuery" value="select now()"/>
+        <property name="poolPingConnectionsNotUsedFor" value="30000"/>
+        <property name="defaultAutoCommit" value="true" />
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- mybatis mapping -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.yhglobal"/>
+        <property name="markerInterface" value="com.yhglobal.gongxiao.common.mapper.BaseMapper"/>
+    </bean>
+
+    <!-- transaction manager -->
+    <bean id="txManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <!-- enable transaction annotation support -->
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <mvc:annotation-driven/>
+    <!--开通静态资源的访问-->
+    <mvc:default-servlet-handler/>
+    <mvc:resources mapping="/main/**" location="/main/"/>
+
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+    <!--<property name="prefix" value="/WEB-INF/pages/"/>-->
+    <!--<property name="suffix" value=".html"/>-->
+    <!--</bean>-->
+
+
+    <dubbo:application name="${dubbo.application.name}"/>
+
+    <dubbo:registry address="${dubbo.registry.address}"/>
+
+    <dubbo:protocol name="dubbo" port="12000"/>
+
+    <dubbo:annotation package="com.yhglobal.gongxiao"/>
+
+    <dubbo:consumer retries="0"/>
+    <dubbo:provider retries="0"/>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="*.html"/>
+            <mvc:exclude-mapping path="/user/*"/>
+            <mvc:exclude-mapping path="/api/*"/>
+            <mvc:exclude-mapping path="/js/**"/>
+            <mvc:exclude-mapping path="/css/**"/>
+            <mvc:exclude-mapping path="/images/**"/>
+            <mvc:exclude-mapping path="/main/css/**"/>
+            <mvc:exclude-mapping path="/main/js/**"/>
+            <mvc:exclude-mapping path="/main/images/**"/>
+            <mvc:exclude-mapping path="/main/login.html"/>
+            <bean class="com.yhglobal.gongxiao.base.interceptor.PortalUserInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <bean class="com.yhglobal.gongxiao.base.model.PortalUserInfo" scope="request">
+        <aop:scoped-proxy/>
+    </bean>
+
+</beans>

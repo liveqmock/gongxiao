@@ -1,0 +1,56 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.inventory.inventorybatch.microservice";
+option java_outer_classname = "InventorybatchStructure";
+
+import "gongxiao.global.structure.proto";
+
+service InventoryBatchService{
+
+    //2 返回同一个项目下，同一种商品的，每个批次的记录
+    rpc getBatchDetail (GetBatchDetailRequest) returns (BatchDetailPageInfo) {}
+    //3 根据所选的仓库和商品查询
+    rpc getBatchDetailByWarehouse (GetBatchDetailByWarehouseRequest) returns (BatchDetailPageInfo) {}
+}
+
+//2
+message GetBatchDetailRequest{
+    RpcHeader rpcHeader=1;
+    string projectId=2;
+    string productCode=3;
+    int32 pageNumber=4;
+    int32 pageSize=5;
+}
+
+message BatchDetailPageInfo{
+    int32 pageNum = 1; // 页码
+    int32 pageSize = 2; // 页面条数
+    int64 total = 3; // 总数
+    repeated InventoryBatch list=4;
+}
+//3
+message GetBatchDetailByWarehouseRequest{
+    RpcHeader rpcHeader=1;
+    string projectId=2;
+    string productCode=3;
+    string warehouseId=4;
+    int32 pageNumber=5;
+    int32 pageSize=6;
+}
+
+
+message InventoryBatch{
+    string projectId=1;           //项目id
+    string batchNo=2;             //批次
+    int32 purchaseType=3;           //采购类型(0:赠品 1:非赠品)
+    int32 inventoryStatus=4;        //库存类型
+    string productId=5;       //货品id
+    string productName=6;         //商品名称
+    string productCode=7;         //商品编码
+    string warehouseId=8;         //仓库id
+    string warehouseName=9;       //仓库
+    int32 inventoryTotalAmount=10;   //货品库存
+    int32 inventoryBatchAmount=11;   //批次库存
+    int64 createTime=12;            //入库时间
+    double purchasePrice=13;       //采购价格
+    double costPrice=14;           //成本价
+}

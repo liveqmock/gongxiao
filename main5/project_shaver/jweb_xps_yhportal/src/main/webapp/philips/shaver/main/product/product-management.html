@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <link rel="stylesheet" href="../css/sales/sales-management.css?v=dfce0dbac4">
+    <title>货品管理</title>
+</head>
+
+<body>
+<div class="wrapper clearfix">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="sidebar"></div>
+    <!-- 主体内容 -->
+    <div class="yh-content">
+        <!-- 头部内容 -->
+        <div class="fenxiao-header clearfix">
+            <h2>分销协同平台</h2>
+            <div class="shape-box">
+                <select id="projectlist"></select>
+                <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                <span></span>
+                <a href="javascript:void(0);">注销</a>
+            </div>
+        </div>
+        <!-- 主要内容 -->
+        <div class="yh-container">
+            <!-- 面包屑菜单 -->
+            <div class="fenxiao-nav">
+                <span>当前位置：</span>
+                <a href="javascript:void(0);">商品中心</a> &gt; <a href="javascript:void(0);">货品管理</a>
+            </div>
+            <!-- 表单 -->
+            <div class="form-box">
+                <div class="fx-form clearfix">
+                    <div class="form-inputs" id="form-input">
+                        <ul class="clearfix">
+                            <li><label>型号</label>
+                                <input type="text" id="product-code">
+                            </li>
+                            <li><label>货品名称</label>
+                                <input type="text" id="product-name">
+                            </li>
+                            <li><label>物料编码</label>
+                                <input type="text" id="material-code">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-btn">
+                        <button id="yhquery-btn" class="yhquery-btn">查询</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 操作表格 -->
+            <div class="yhtable-header clearfix">
+                <div class="management-btn clearfix" id="salesinfo">
+                    <a class="managementoperalink"><b>全部</b> <span>(0)</span></a>
+                    <a>驳回 <span>(0)</span></a>
+                    <a>待审核 <span>(0)</span></a>
+                    <a>待收款 <span>(0)</span></a>
+                    <a>待发货 <span>(0)</span></a>
+                    <a>待出库 <span>(0)</span></a>
+                    <a>待签收 <span>(0)</span></a>
+                    <a>已签收 <span>(0)</span></a>
+                </div>
+                <div class="opera-btn">
+                    <a class="yhhandle-btn" href="./product-add.html">创建货品</a>
+                    <a class="yhhandle-btn" href="javascript:void(0);" id="yhsubmit-btn">提交</a>
+                    <a class="yhhandle-btn" href="javascript:void(0);" id="yhexport-btn">导出</a>
+                </div>
+            </div>
+            <!-- 渲染表格 -->
+            <div class="yh-table">
+                <table id="yhtable" class="yhtable"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/product/product-management.js?v=a040c8aedb"></script>
+</body>
+
+</html>

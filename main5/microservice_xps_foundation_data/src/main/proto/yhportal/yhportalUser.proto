@@ -1,0 +1,62 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.foundation.yhportal.microservice";
+option java_outer_classname = "YhportalUserStructure";
+
+import "gongxiao.global.structure.proto";
+
+service YhportalUserService {
+    //1 核对账号妈咪是否争取
+    rpc checkAccount (CheckAccountReq) returns (CheckAccountResp) {
+    }
+    //2 通过用户名获取用户信息
+    rpc getUserByUserName (GetUserByUserNameReq) returns (GetUserByUserNameResp) {
+    }
+    //3
+    rpc getUserListByAccount (GetUserListByAccountReq) returns (GetUserListByAccountResp) {
+    }
+}
+//3
+message GetUserListByAccountReq {
+    RpcHeader rpcHeader = 1;
+    string userName = 2;
+}
+
+message GetUserListByAccountResp {
+   repeated PortalUser portalUser = 1;
+}
+//2
+
+message CheckAccountReq {
+    RpcHeader rpcHeader = 1;
+    string userName = 2;
+    string password = 3;
+}
+
+message CheckAccountResp {
+    //true 通过  false 没通过
+    bool passCheck = 1;
+}
+
+message GetUserByUserNameReq {
+    RpcHeader rpcHeader = 1;
+    string userName = 2;
+}
+
+message GetUserByUserNameResp {
+    PortalUser portalUser = 1;
+}
+
+message PortalUser {
+    int64 userId = 1;
+    string userName = 2;
+    string passwd = 3;
+    int32 userStatus = 4;
+    string phoneNumber = 5;
+    int32 isAdmin = 6;
+    string roleInfo = 7;
+    int64 createTime = 8;
+    int64 lastUpdateTime = 9;
+    string tracelog = 10;
+    int64 projectId = 11;
+    string projectName = 12;
+}

@@ -1,0 +1,24 @@
+/**
+ * @authors {len} (http://csshack.org)
+ * @date    2018/4/19
+ * @version $
+ */
+.data-show {
+  padding-left: 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e8eaed;
+}
+.data-show span {
+  color: #fd6103;
+}
+.data-show li {
+  float: left;
+  margin-left: 14px;
+}
+.opera-btn {
+  margin-top: 10px;
+  padding-left: 18px;
+}
+.yhtable-header {
+  padding-left: 0;
+}

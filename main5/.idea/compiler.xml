@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="api_eas" />
+        <module name="api_xps_coupon" />
+        <module name="api_xps_gross_profit" />
+        <module name="api_xps_prepaid" />
+        <module name="api_xps_transportation" />
+        <module name="api_xps_warehouse" />
+        <module name="japp_xps_foundation_data" />
+        <module name="japp_xps_inventory_management" />
+        <module name="jweb_tms_notify_gateway" />
+        <module name="jweb_wms_notify_gateway" />
+        <module name="jweb_xps_coupon_management" />
+        <module name="jweb_xps_gross_profit_management" />
+        <module name="jweb_xps_prepaid_management" />
+        <module name="jweb_xps_transportation_management" />
+        <module name="jweb_xps_warehouse_management" />
+        <module name="lib_global" />
+        <module name="lib_http" />
+        <module name="lib_rpc_server_config" />
+        <module name="lib_xps_warehouse" />
+        <module name="microservice_xps_common" />
+        <module name="microservice_xps_foundation_data" />
+        <module name="microservice_xps_inventory" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api_eas" target="1.8" />
+      <module name="api_xps_coupon" target="1.8" />
+      <module name="api_xps_gross_profit" target="1.8" />
+      <module name="api_xps_prepaid" target="1.8" />
+      <module name="api_xps_transportation" target="1.8" />
+      <module name="api_xps_warehouse" target="1.8" />
+      <module name="ediClient" target="1.8" />
+      <module name="gongxiao" target="1.5" />
+      <module name="gRpcClient" target="1.5" />
+      <module name="gRpcClientJd" target="1.5" />
+      <module name="japp_gongxiao_phjd_payment_management" target="1.8" />
+      <module name="japp_gongxiao_phjd_purchase_order" target="1.8" />
+      <module name="japp_gongxiao_phjd_sales_order" target="1.8" />
+      <module name="japp_xps_foundation_data" target="1.8" />
+      <module name="japp_xps_inventory_management" target="1.8" />
+      <module name="japp_xps_payment_management" target="1.8" />
+      <module name="japp_xps_purchase_order" target="1.8" />
+      <module name="japp_xps_sales_order" target="1.8" />
+      <module name="jweb_gongxiao_phjd_yhportal" target="1.8" />
+      <module name="jweb_tms_notify_gateway" target="1.8" />
+      <module name="jweb_wms_notify_gateway" target="1.8" />
+      <module name="jweb_xps_coupon_management" target="1.8" />
+      <module name="jweb_xps_distributor_portal" target="1.8" />
+      <module name="jweb_xps_gross_profit_management" target="1.8" />
+      <module name="jweb_xps_prepaid_management" target="1.8" />
+      <module name="jweb_xps_transportation_management" target="1.8" />
+      <module name="jweb_xps_warehouse_management" target="1.8" />
+      <module name="jweb_xps_warehouse_notify_gateway" target="1.8" />
+      <module name="jweb_xps_yhportal" target="1.8" />
+      <module name="lib_common" target="1.8" />
+      <module name="lib_common_phjd" target="1.8" />
+      <module name="lib_global" target="1.8" />
+      <module name="lib_http" target="1.8" />
+      <module name="lib_rpc_server_config" target="1.8" />
+      <module name="lib_xps_warehouse" target="1.8" />
+      <module name="microservice_gongxiao_phjd_payment_management" target="1.8" />
+      <module name="microservice_gongxiao_phjd_purchase_order" target="1.8" />
+      <module name="microservice_gongxiao_phjd_sales_order" target="1.8" />
+      <module name="microservice_xps_common" target="1.5" />
+      <module name="microservice_xps_foundation_data" target="1.8" />
+      <module name="microservice_xps_inventory" target="1.8" />
+      <module name="microservice_xps_payment_management" target="1.8" />
+      <module name="microservice_xps_purchase_order" target="1.8" />
+      <module name="microservice_xps_sales_order" target="1.8" />
+      <module name="project_philips_jd" target="1.5" />
+      <module name="project_shaver" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,22 @@
+@charset "UTF-8";
+.data-show li{
+	float: left;
+	margin-left: 14px;
+}
+.data-show span{
+	color: #fd6103;
+}
+.opera-btn{
+	margin-top: 10px;
+}
+.yhtable-header{
+	padding-left: 0;
+}
+.opera-btn{
+	padding-left: 18px;
+}
+.data-show{
+	padding-left: 18px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #e8eaed;
+}

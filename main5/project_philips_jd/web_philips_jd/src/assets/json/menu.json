@@ -1,0 +1,6 @@
+{
+	"sidebarMenu":[
+        {"sortname": "采购管理","path": "/PurchaseManagement"},
+        {"sortname": "销售管理","path": "/SalesManagement"}
+    ]
+}

@@ -1,0 +1,117 @@
+/**
+ * @authors {len} (http://csshack.org)
+ * @date    2018/4/10
+ * @version $
+ */
+.login-bg,
+.login-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 990px;
+  min-height: 500px;
+}
+.login-wrapper {
+  z-index: 2;
+}
+.login-bg {
+  background: url("../images/customer/login.jpg") center top no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+/* 登录窗口 */
+.login-frames {
+  width: 430px;
+  height: 460px;
+  background-color: #e0e1e7;
+  position: absolute;
+  top: 50%;
+  right: 17%;
+}
+.login-frames h3 {
+  font-size: 30px;
+  color: #444;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.login-frames .input-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.login-frames .input-box .login-input {
+  position: relative;
+  margin-bottom: 20px;
+  width: 300px;
+  height: 40px;
+}
+.login-frames .input-box .login-input > label {
+  width: 24px;
+  height: 24px;
+  display: block;
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+.login-frames .input-box .login-input > input {
+  display: block;
+  height: 38px;
+  margin: 0 auto 20px;
+  font-size: 20px;
+  padding-left: 50px;
+  line-height: 40px;
+  color: #9a9a9a;
+  border: 1px solid #c2c2c2;
+}
+.login-frames .input-box .login-input > input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 400px #fff inset;
+  -webkit-text-fill-color: #9a9a9a;
+}
+.login-frames .input-box .login-username > label {
+  background: #fff url("../images/customer/username1.png") center center no-repeat;
+}
+.login-frames .input-box .login-pwd > label {
+  background: #fff url("../images/customer/pwd1.png") center center no-repeat;
+}
+.login-frames .input-box .login-username > label.loginfocus {
+  background: #fff url("../images/customer/username2.png") center center no-repeat;
+}
+.login-frames .input-box .login-pwd > label.loginfocus {
+  background: #fff url("../images/customer/pwd2.png") center center no-repeat;
+}
+.login-frames .input-box > button {
+  height: 40px;
+  width: 300px;
+  background-color: #e94040;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  line-height: 40px;
+  margin: 0 auto;
+  display: block;
+}
+.login-frames .remember-password {
+  width: 300px;
+  margin: 0 auto 20px;
+  font-size: 0;
+  line-height: 18px;
+  height: 18px;
+}
+.login-frames .remember-password input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #c2c2c2;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: -2px;
+}
+.login-frames .remember-password label {
+  font-size: 18px;
+  color: #666;
+  height: 18px;
+  display: inline-block;
+  line-height: 18px;
+}

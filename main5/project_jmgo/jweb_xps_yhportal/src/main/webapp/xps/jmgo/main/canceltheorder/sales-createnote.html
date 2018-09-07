@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="#"/>
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <title>创建销售退货单</title>
+    <style type="text/css">
+
+        .fareselect {
+            width: 96px;
+            margin-right: 10px;
+        }
+
+        input.freightpai {
+            width: 80px;
+            height: 28px;
+            line-height: 28px;
+            margin-left: 10px;
+        }
+
+        input.freightpai + strong {
+            font-size: 12px;
+            font-weight: normal;
+            vertical-align: middle;
+        }
+
+        .numberinput {
+            font-size: 0;
+        }
+
+        .numberinput input,
+        .numberinput span {
+            display: inline-block;
+            line-height: 24px;
+        }
+
+        .numberinput input {
+            width: 100px;
+            vertical-align: 0;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .noteaddbtn,
+        .notereducebtn {
+            height: 22px;
+            line-height: 24px;
+            text-align: center;
+            width: 24px;
+            border: 1px solid red;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .review-cus {
+            border-top: none;
+            padding-bottom: 10px;
+        }
+
+        .sub-btn2 {
+            margin-top: 80px;
+        }
+
+        .customer-info {
+            width: 850px;
+            padding-left: 110px;
+            box-sizing: border-box;
+        }
+
+        .customer-info i {
+            display: inline-block;
+            font-style: normal;
+            width: 84px;
+            text-align: right;
+            margin-right: 10px;
+            margin-top: 16px;
+        }
+
+        .customer-info p {
+            float: left;
+            width: 300px;
+            margin-left: 130px;
+        }
+
+        .customer-info p:nth-child(odd) {
+            margin-left: 0;
+        }
+        span.select-item{
+            font-size: 12px;
+        }
+        .yhmask input[type="text"]{
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper clearfix">
+    <div id="sidebar" class="sidebar"></div>
+    <!-- 主体内容 -->
+    <div class="yh-content">
+        <!-- 头部内容 -->
+        <div class="fenxiao-header clearfix">
+            <h2>分销协同平台</h2>
+            <div class="shape-box">
+                <select id="projectlist"></select>
+                <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                <span></span>
+                <a href="javascript:void(0)">注销</a>
+            </div>
+        </div>
+        <!-- 主要内容 -->
+        <div class="yh-container">
+            <!-- 面包屑菜单 -->
+            <div class="fenxiao-nav">
+                <span>当前位置：</span>
+                <a href="javascript:void(0)">销售管理</a> &gt; <a href="javascript:void(0)">销售退货退货单管理</a> &gt; <a
+                    href="javascript:void(0)">创建销售退货单</a>
+            </div>
+            <!-- 操作表格 -->
+            <div class="yhtable-header clearfix">
+                <div class="opera-btn">
+                    <a class="yhhandle-btn" href="javascript:void(0)" id="choosebtn">选择退货单商品</a>
+                    <a class="yhhandle-btn" href="javascript:void(0)">添加非原单货品</a>
+                </div>
+            </div>
+            <div class="infolist-wrap review-box">
+                <!-- 基本信息 -->
+                <h3 class="title-h3">基本信息</h3>
+                <div class="edit-infobox review-info">
+                    <!-- 渲染表格 -->
+                    <div class="yh-table">
+                        <table id="yhtable" class="yhtable"></table>
+                    </div>
+                </div>
+                <!-- 品牌商退货及物流信息 -->
+                <h3 class="title-h3">品牌商退货及物流信息</h3>
+                <div class="infobox">
+                    <div class="infolist">
+                        <ul class="clearfix">
+                            <li><span class="label-span"><label for="recipientname"
+                                                                class="limit-label">退货人</label></span>
+                                <input type="text" id="recipientname">
+                            </li>
+                            <li><span class="label-span"><label for="shippingmode"
+                                                                class="limit-label">物流方式</label></span>
+                                <select id="shippingmode">
+                                    <option value="1">自提</option>
+                                    <option value="2">第三方物流</option>
+                                </select>
+                            </li>
+                            <!--<div style="position: relative;left: 210px;top:-40px;">-->
+                            <!--<input readonly type="text" placeholder="点击从下拉面板中选择省/市/区" id="yharea-info"-->
+                            <!--class="styles.pickerInput" style="width: 30%;">-->
+                            <!--</div>-->
+                            <li style="position: relative;">
+                                <span class="label-span"><label for="recipientaddress" class="limit-label">退货人地址</label></span>
+                                <input readonly type="text" id="recipientaddress" class="styles.pickerInput">
+                            </li>
+                            <li><span class="label-span"><label for="logistic">返回物流公司</label></span>
+                                <input type="text" id="logistic">
+                            </li>
+                            <li>
+                                <span class="label-span">
+                                    <label for="recipientaddressdetail" class="limit-label">详细地址</label>
+                                </span>
+                                <input type="text" id="recipientaddressdetail" value="福华一路88号中心商务大厦2001">
+                            </li>
+                            <li><span class="label-span"><label for="logisticno">物流运单号</label></span>
+                                <input type="text" id="logisticno">
+                            </li>
+                            <li><span class="label-span"><label for="iphoneno">手机</label></span>
+                                <input type="text" id="iphoneno">
+                            </li>
+                            <li><span class="label-span">
+                                <label for="warehouselist" class="limit-label">退回仓库</label></span>
+                                <select id="warehouselist"></select>
+                            </li>
+                            <li><span class="label-span"><label for="recipientcompany">退货公司名称</label></span>
+                                <input type="text" id="recipientcompany">
+                            </li>
+                            <li style="margin-left:0"><span class="label-span"><label for="fareselect">运费承担方</label></span>
+                                <select id="fareselect" class="fareselect">
+                                    <option value="1">买方</option>
+                                    <option value="2">卖方</option>
+                                </select>
+                                <input type="text" id="freightpai" class="freightpai"><strong> 元</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sub-btn sub-btn2">
+                    <button class="yhsubmit-btn" id="createnote-submit">提交</button>
+                    <button class="yhcancel-btn">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 遮罩层 -->
+    <div class="yhmask yhmask-hide" id="yhmask">
+        <div class="yhmask-spdiv revise-mask">
+            <div class="yhmask-menu">
+                <span>选择退货单商品</span>
+                <a href="javascript:void(0)" id="yhmask-switch">×</a>
+            </div>
+            <div class="yhmask-content">
+                <div class="maskquery-div clearfix">
+                    <p><span>单号</span>
+                        <input type="text" id="orderno">
+                    </p>
+                    <button id="yhmask-query">查询</button>
+                </div>
+                <div class="queryradio" id="queryradio"></div>
+                <div class="createnote-table">
+                    <table id="yhmask-table"></table>
+                </div>
+            </div>
+            <div class="yhmask-btn">
+                <button class="yhsubmit-btn" id="ymask-submit">确认</button>
+                <button class="yhcancel-btn" id="yhmask-cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/yhcity/area.picker.data.6.0.14.js?v=5df0fb5d4e"></script>
+<script src="../js/yhcity/regions.picker.data.6.0.14.js?v=8112033c7e"></script>
+<script src="../js/yhcity/app-d56f574adc.js?v=b127619162"></script>
+<script src="../js/canceltheorder/sales/createnote.js?v=a380c84243"></script>
+</body>
+
+</html>

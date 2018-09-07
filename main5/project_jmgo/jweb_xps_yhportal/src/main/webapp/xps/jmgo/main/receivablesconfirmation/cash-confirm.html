@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <title>现金收款确认处理</title>
+    <style type="text/css">
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: #fff;
+        }
+
+        .table-striped > tbody > tr:nth-of-type(even) {
+            background-color: #fff;
+        }
+
+        .fixed-table-container tbody .selected td {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper clearfix">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="sidebar"></div>
+    <!-- 主体内容 -->
+    <div class="yh-content">
+        <!-- 头部内容 -->
+        <div class="fenxiao-header clearfix">
+            <h2>分销协同平台</h2>
+            <div class="shape-box">
+                <select id="projectlist"></select>
+                <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                <span></span>
+                <a href="javascript:void(0);">注销</a>
+            </div>
+        </div>
+        <!-- 主要内容 -->
+        <div class="yh-container">
+            <!-- 面包屑菜单 -->
+            <div class="fenxiao-nav">
+                <span>当前位置：</span>
+                <a href="javascript:void(0);">收付款管理</a> &gt; <a href="javascript:void(0);">收款确认处理</a>
+            </div>
+            <!-- 表单 -->
+            <div class="form-box">
+                <div class="fx-form clearfix">
+                    <div class="form-inputs" id="form-input">
+                        <ul class="clearfix">
+                            <li><label>订单时间</label>
+                                <input type="text" id="orderstarttime" placeholder="请选择时间" class="yhdate-input"><i>
+                                    至 </i>
+                                <input type="text" id="orderendtime" placeholder="请选择时间" class="yhdate-input">
+                            </li>
+                            <li>
+                                <label for="salesno">销售单号</label>
+                                <input type="text" id="salesno">
+                            </li>
+                            <li><label>确认时间</label>
+                                <input type="text" id="confirmstarttime" placeholder="请选择时间" class="yhdate-input"><i>
+                                    至 </i>
+                                <input type="text" id="confirmendtime" placeholder="请选择时间" class="yhdate-input">
+                            </li>
+                            <li>
+                                <label for="switchnumber">客户名称</label>
+                                <input type="text" id="switchnumber">
+                            </li>
+                            <li><label>收款银行</label>
+                                <select id="bankName">
+                                    <option value="">请选择</option>
+                                    <option value="中信银行">中信银行</option>
+                                    <option value="江苏银行">江苏银行</option>
+                                    <option value="交通银行">交通银行</option>
+                                    <option value="浦发银行">浦发银行</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-btn">
+                        <button id="salesquery-btn" class="yhquery-btn">查询</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 操作表格 -->
+            <div class="yhtable-header clearfix">
+                <div class="opera-btn">
+                    <button class="yhhandle-btn yh-handle-btn" href="javascript:void(0);" disabled="disabled" id="prepaid-btn">收款确认</button>
+                    <a class="yhhandle-btn" href="javascript:void(0);">导出</a>
+                </div>
+                <div class="addup-info" id="addup-info">
+                    <ul class="clearfix">
+                        <li>应收金额总计：</li>
+                        <li id="receive-amount-total"></li>
+                        <li>未收金额总计：</li>
+                        <li id="to-receive-amount-total"></li>
+                        <li>确认金额总计：</li>
+                        <li id="confirm-amount-total"></li>
+                        <li>实收金额总计：</li>
+                        <li id="receipt-amount-total"></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 渲染表格 -->
+            <div class="yh-table">
+                <table id="yhtable" class="table yhtable"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/receivablesconfirmation/cashconfirm.js?v=ef9b90349d"></script>
+</body>
+
+</html>

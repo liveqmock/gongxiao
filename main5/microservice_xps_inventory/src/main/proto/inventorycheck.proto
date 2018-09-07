@@ -1,0 +1,53 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.inventory.inventorycheck.microservice";
+option java_outer_classname = "InventorycheckStructure";
+
+import "gongxiao.global.structure.proto";
+
+service InventoryCheckService{
+    //1 查询库存核对的结果
+    rpc getInventoryCheck (GetInventoryCheckRequest) returns (InventoryCheckPageInfo) {}
+
+}
+//1
+message GetInventoryCheckRequest{
+    RpcHeader rpcHeader=1;
+    string projectId=2;
+    string warehouseId=3;
+    string productCode=4;
+    string productName=5;
+    int32 pageNumber=6;
+    int32 pageSize=7;
+}
+message InventoryCheckPageInfo{
+    int32 pageNum = 1; // 页码
+    int32 pageSize = 2; // 页面条数
+    int64 total = 3; // 总数
+    repeated InventoryCheckModel list=4;
+}
+
+message InventoryCheckModel{
+    int64 dateTime=1;
+    string projectId=2;
+    string projectName=3;
+    string warehouseId=4;
+    string warehouseName=5;
+    string productId=6;
+    string productCode=7;
+    string productName=8;
+    int32 fenxiaoPerfectQuantity=9;
+    int32 wmsPerfectQuantity=10;
+    int32 perfectDifferent=11;
+    int32 fenxiaoImperfectQuantity=12;
+    int32 wmsImperfectQuantity=13;
+    int32 imPerfectDifferent=14;
+    int32 fenxiaoEngineDamage=15;
+    int32 wmsEngineDamage=16;
+    int32 engineDamageDifferent=17;
+    int32 fenxiaoBoxDamage=18;
+    int32 wmsBoxDamage=19;
+    int32 boxDamageDifferent=20;
+    int32 fenxiaoFrozenStock=21;
+    int32 wmsFrozenStock=22;
+    int32 frozenStockDifferent=23;
+}

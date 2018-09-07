@@ -1,0 +1,211 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.payment.microservice";
+option java_outer_classname = "SupplierAccountServiceStructure";
+
+import "gongxiao.global.structure.proto";
+import "payment.account.common.proto";
+
+service SupplierAccountService {
+    //查询供应商过账ad账户余额
+    rpc getSupplierCouponBufferToDistributor (GetSupplierCouponBufferToDistributorRequest) returns (AccountAmountResponse) {
+    }
+
+    //查询供应商上账账户余额
+    rpc getSupplierAccountAmount (GetSupplierAccountAmountRequest) returns (AccountAmountResponse) {
+    }
+
+    //返利上账
+    rpc postSupplierCouponAccount (PostSupplierCouponAccountRequest) returns (RpcResult) {
+    }
+
+    //代垫上账
+    rpc postSupplierPrepaidAccount (PostSupplierPrepaidAccountRequest) returns (RpcResult) {
+    }
+
+    //上账账户暂扣返利、代垫
+    rpc payForPurchase (PayForPurchaseRequest) returns (PayForPurchaseResponse) {
+    }
+
+    //查询 ad返利过账账户 流水
+    rpc selectBufferCouponFlowList (SelectSupplierAccountFlowListRequest) returns (FrontPageFlowPageInfo) {
+    }
+
+    //查询 ad代垫过账账户 流水
+    rpc selectBufferPrepaidFlowList (SelectSupplierAccountFlowListRequest) returns (FrontPageFlowPageInfo) {
+    }
+
+    //查询 ad返利过账账户 流水小计
+    rpc getCouponBufferToDistributorSubtotal (GetSupplierAccountSubtotalRequest) returns (FrontPageFlowSubtotal) {
+    }
+
+    //查询 ad代垫过账账户 流水小计
+    rpc getPrepaidBufferToDistributorSubtotal (GetSupplierAccountSubtotalRequest) returns (FrontPageFlowSubtotal) {
+    }
+
+    //查询供应商差价账户余额
+    rpc getSellHighAccount (GetSellHighAccountRequest) returns (GetSellHighAccountResponse) {
+    }
+
+    // 坚果项目修改差价账户
+    rpc updateSupplierSellHighAccountOnJmgo (UpdateSupplierSellHighAccountOnJmgoRequest) returns (RpcResult);
+
+    //查询 供应商低买高卖账户 流水
+    rpc selectSupplierSellHighFlowList (SelectSupplierAccountFlowListRequest) returns (SelectSupplierSellHighFlowListResponse) {
+    }
+    //查询 供应商低买高卖账户 小计
+    rpc getSellHighSubtotal (GetSupplierAccountSubtotalRequest) returns (FrontPageFlowSubtotal) {
+    }
+    rpc selectPrepaidBySupplierId (SelectPrepaidBySupplierIdRequest) returns (FrontPageFlowPageInfo) {
+    }
+    rpc selectIncomeAndExpenditure (SelectIncomeAndExpenditureRequest) returns (FrontPageFlowSubtotal) {
+    }
+}
+
+// 查询差价账户流水分页结果
+message SelectSupplierSellHighFlowListResponse {
+    int32 pageNum = 1; // 页码
+    int32 pageSize = 2; // 单页条数
+    int64 total = 3; // 总条数
+    repeated SelectSupplierSellHighFlow flows = 4; // 流水数据
+}
+
+// 查询差价账户流水
+message SelectSupplierSellHighFlow {
+    string flowNo = 1; // 流水号
+    int32 type = 2; // 流水类型
+    string currencyCode = 3; // 货币编码
+    string transactionAmount = 4; // 交易前金额
+    string amountAfterTransaction = 5; // 交易后金额
+    int64 createTime = 6; // 创建时间
+    string createByName = 7; // 创建人
+    string distirbutorName = 8; // 客户名称
+    string remark = 9; // 备注
+}
+
+message UpdateSupplierSellHighAccountOnJmgoRequest {
+    RpcHeader rpcHeader = 1; // 头
+    int64 projectId = 2; // 项目id
+    string currencyCode = 3; // 货币编码
+    int64 distributorId = 4; // 经销商id
+    string distributorName = 5; // 经销商名称
+    int64 amount = 6; // 修改的金额
+    string salesOrderNo = 7; // 销售单号
+    int64 transactionTime = 8; // 交易时间
+    string remark = 9; // 备注
+}
+
+message SelectPrepaidBySupplierIdRequest {
+    string currencyCode = 1;
+    int64 supplierId = 2;
+    int64 projectId = 3;
+    int32 moneyFlow = 4;
+    string beginDate = 5;
+    string endDate = 6;
+    int32 pageNum = 7;
+    int32 pageSize = 8;
+    RpcHeader rpcHeader = 9;
+}
+message SelectIncomeAndExpenditureRequest {
+    string currencyCode = 1;
+    int64 supplierId = 2;
+    int64 projectId = 3;
+    int32 moneyFlow = 4;
+    string beginDate = 5;
+    string endDate = 6;
+    RpcHeader rpcHeader = 7;
+}
+
+message GetSupplierCouponBufferToDistributorRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 3; // 项目id
+}
+
+message GetSupplierAccountAmountRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 3; // 项目id
+}
+
+message PostSupplierCouponAccountRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 3; // 项目id
+    int64 amount = 4; // 返利金额
+    string remark = 5; // 备注
+}
+
+message PostSupplierPrepaidAccountRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 3; // 项目id
+    int64 amount = 4; // 返利金额
+    string remark = 5; // 备注
+}
+
+message PayForPurchaseRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 3; // 项目id
+    int64 couponToYh = 4; // 返利越海使用金额
+    int64 couponToAd = 5; // 返利过账ad金额
+    int64 prepaidToYh = 6; // 代垫越海使用金额
+    int64 prepaidToAd = 7; // 代垫过账ad金额
+    string purchaseOrderNo = 8; // 采购单号
+    int64 transactionTime = 9; // 交易时间
+}
+
+message PayForPurchaseResponse {
+    int32 code = 1; // 返回码
+    string msg = 2; // 错误信息
+    PurchaseFlowCollections result = 3; // 流水集合
+}
+message PurchaseFlowCollections {
+    string couponFlowNoToDistributor = 1; // 返利过账ad流水
+    string prepaidFlowNoToDistributor = 2; // 代垫过账ad流水
+    string couponFlowNoToYhglobal = 3; // 返利越海流水
+    string prepaidFlowNoToYhglobal = 4; // 代垫越海流水
+}
+
+message SelectSupplierAccountFlowListRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 4; // 项目id
+    int32 moneyFlow = 5; // 资金流向
+    string beginDate = 6; // 开始日期
+    string endDate = 7; // 截止日期
+    int32 pageNum = 8; // 页码
+    int32 pageSize = 9; // 页面条数
+}
+
+
+message GetSupplierAccountSubtotalRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 4; // 项目id
+    int32 moneyFlow = 5; // 资金流向
+    string beginDate = 6; // 开始日期
+    string endDate = 7; // 截止日期
+}
+
+message GetSellHighAccountRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 3; // 项目id
+}
+
+message GetSellHighAccountResponse {
+    int64 totalAmount = 1; // 账户余额
+    string totalAmountDoubleStr = 2; // 账户余额
+}
+
+message SalesUpdateSellHighAccountRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 3; // 项目id
+    int64 amount = 4; // 金额
+    string salesOrderNo = 5; // 销售单号
+    int64 transactionTime = 6; // 交易时间
+}
+

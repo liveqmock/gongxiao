@@ -1,0 +1,127 @@
+/**
+ * @authors {len} (http://csshack.org)
+ * @date    2018/4/10
+ * @version $
+ */
+.login-bg,.login-wrapper{
+  position: absolute;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  min-width: 990px;
+  min-height: 500px;
+}
+.login-wrapper{
+  z-index: 2;
+}
+.login-bg{
+  background: url("../images/customer/login.jpg") center top no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+/* 登录窗口 */
+@login_width: 430px;
+@login_height: 460px;
+// 输入框和按钮的大小
+@input_height: 40px;
+@input_width: 300px;
+
+.login-frames {
+  width: @login_width;
+  height: @login_height;
+  background-color:#e0e1e7;
+  position: absolute;
+  top: 50%;
+  right: 17%;
+  //margin-top: -300px;
+  h3{
+    font-size: 30px;
+    color: #444;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .input-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .login-input {
+      position: relative;
+      margin-bottom: 20px;
+      width: @input_width;
+      height: @input_height;
+      &>label {
+        width: 24px;
+        height: 24px;
+        display: block;
+        position: absolute;
+        top: (@input_height - 24)/2;
+        left: 16px;
+      }
+      &>input {
+        display: block;
+        //width: @input_width - 2;
+        height: @input_height - 2;
+        margin: 0 auto 20px;
+        font-size: 20px;
+        padding-left: 50px;
+        line-height: @input_height;
+        color: #9a9a9a;
+        border: 1px solid #c2c2c2;
+      }
+      &>input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 400px #fff inset;
+        -webkit-text-fill-color: #9a9a9a;
+      }
+    }
+    .login-username>label {
+      background: #fff url("../images/customer/username1.png") center center no-repeat;
+    }
+    .login-pwd>label {
+      background: #fff url("../images/customer/pwd1.png") center center no-repeat;
+    }
+    .login-username>label.loginfocus {
+      background: #fff url("../images/customer/username2.png") center center no-repeat;
+    }
+    .login-pwd>label.loginfocus {
+      background: #fff url("../images/customer/pwd2.png") center center no-repeat;
+    }
+    &>button {
+      height: @input_height;
+      width: @input_width;
+      background-color: #e94040;
+      color: #fff;
+      font-size: 24px;
+      text-align: center;
+      line-height: @input_height;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+  //记住密码
+  @remember_height:18px;
+  .remember-password {
+    width: @input_width;
+    margin: 0 auto 20px;
+    font-size: 0;
+    line-height: @remember_height;
+    height: @remember_height;
+    input[type="checkbox"] {
+      width: @remember_height;
+      height: @remember_height;
+      border: 1px solid #c2c2c2;
+      margin-right: 10px;
+      //margin-bottom: 12px;
+      display: inline-block;
+      vertical-align: -2px;
+    }
+    label {
+      font-size: @remember_height;
+      color: #666;
+      height: @remember_height;
+      display: inline-block;
+      line-height: @remember_height;
+    }
+  }
+}

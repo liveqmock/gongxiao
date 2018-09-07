@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=f1463f4aab"></script>
+    <title>收货通知</title>
+    <style type="text/css">
+        .wrapper {
+            padding-bottom: 0;
+        }
+        .sub-btn .yhsubmit-btn {
+            float: left;
+        }
+
+        .sales-box {
+            height: 100%;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper clearfix">
+        <!-- 侧边栏 -->
+        <div id="sidebar" class="sidebar"></div>
+        <!-- 主体内容 -->
+        <div class="yh-content">
+            <!-- 头部内容 -->
+            <div class="fenxiao-header clearfix">
+                <h2>分销协同平台</h2>
+                <div class="shape-box">
+                    <input type="text" id="projectid" disabled="true">
+                    <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                    <span></span>
+                    <a href="javascript:void(0);">注销</a>
+                </div>
+            </div>
+            <!-- 主要内容 -->
+            <div class="yh-container">
+                <!-- 面包屑菜单 -->
+                <div class="fenxiao-nav">
+                    <span>当前位置：</span>
+                    <a href="javascript:void(0);">采购管理</a> &gt; <a href="javascript:void(0);">采购订单管理</a> &gt; <a href="javascript:void(0);">收货通知</a>
+                </div>
+                <div class="sales-box" id="sales-box">
+                    <!-- 表单 -->
+                    <div class="form-box">
+                        <div class="fx-form clearfix">
+                            <div class="form-inputs" id="form-input">
+                                <ul class="clearfix">
+                                    <li><label for="productcode">货品编码</label>
+                                        <input type="text" id="productcode">
+                                    </li>
+                                    <li><label for="warehouselist">仓库</label>
+                                        <input type="text" id="warehouselist" disabled>
+                                    </li>
+                                    <li><label for="yhdate">要求到货时间</label>
+                                        <input type="text" id="yhdate" class="yhdate-input">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="form-btn">
+                                <button id="purgood-btn" class="yhquery-btn">查询</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 渲染表格 -->
+                    <div class="yh-table">
+                        <table id="purgood" class="yhtable"></table>
+                    </div>
+                    <div class="sub-btn sub-btn2 clearfix">
+                        <button class="yhsubmit-btn" id="yhsubmit-btn">提交</button>
+                        <a class="yhreturn-btn" href="purchase-management.html" id="review-return">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/purchase/goods.js?v=13b7e924c3"></script>
+</body>
+
+</html>

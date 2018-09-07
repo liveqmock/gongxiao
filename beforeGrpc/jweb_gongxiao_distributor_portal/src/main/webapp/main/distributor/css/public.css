@@ -1,0 +1,234 @@
+/**
+ * @authors {len} (http://csshack.org)
+ * @date    2018/4/10
+ * @version $
+ */
+/*输入框*/
+input[type="text"],
+select {
+  border: 1px solid #d4d4d4;
+  text-indent: 6px;
+  height: 24px;
+  width: 200px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+input:focus,
+select:focus {
+  border: 1px solid #758ba8!important;
+}
+/*按钮*/
+button {
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  line-height: 30px;
+  color: #fff;
+  border-radius: 2px;
+}
+/*查询按钮*/
+.yhquery-btn,
+.yhsubmit-btn,
+.table-opera a.yhquery-btn,
+.table-opera a.yhsubmit-btn {
+  border-radius: 2px;
+  border: 1px solid #3c9fa3;
+}
+.yhquery-btn:hover,
+.yhsubmit-btn:hover,
+.table-opera a.yhquery-btn,
+.table-opera a.yhsubmit-btn:hover {
+  background-color: #61CFD4;
+}
+.yhquery-btn:active,
+.yhsubmit-btn:active,
+.table-opera a.yhquery-btn,
+.table-opera a.yhsubmit-btn:active {
+  background-color: #47A9AD;
+}
+.yhquery-btn {
+  text-indent: 26px;
+  background: #52B4B8 url(../images/fadajing.png) 26px center no-repeat;
+  background-size: 16px 16px;
+}
+/*操作按钮*/
+.yhhandle-btn {
+  color: #686b6d;
+  font-size: 12px;
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1px solid #d4d4d4;
+  box-shadow: 0 1px 1px #c3c3c3;
+  border-radius: 2px;
+}
+.yhhandle-btn:hover {
+  color: #469ca1;
+  background-color: #ecf7f8;
+  border: 1px solid #469ca1;
+}
+/*取消按钮*/
+.yhcancel-btn,
+.sub-btn a.yhcancel-btn {
+  color: #444;
+  background-color: #EDEEEF;
+  border: 1px solid #CDCDCD;
+}
+.yhcancel-btn:hover,
+.sub-btn a.yhcancel-btn:hover {
+  background-color: #F5F6F7;
+}
+.yhcancel-btn:active,
+.sub-btn a.yhcancel-btn:active {
+  background-color: #ddd;
+}
+.bootstrap-table .table {
+  border-bottom: 0;
+}
+.content-nav {
+  font-size: 0;
+  height: 60px;
+  border-bottom: 3px solid #e8eaed;
+}
+.content-nav a {
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 20px;
+  display: inline-block;
+  color: #444;
+  height: 57px;
+  line-height: 57px;
+  position: relative;
+}
+.content-nav a:after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  display: block;
+  background-color: #e8eaed;
+  top: 19px;
+  right: -2px;
+}
+.content-nav a.navlinked {
+  color: #ff4242;
+  box-shadow: 0 3px 0 0 #ff4242;
+}
+body,
+.customer-wrapper {
+  background-color: #fff;
+  font-size: 16px;
+  min-width: 1300px;
+}
+/* 顶部内容 */
+.customer-header {
+  background-color: #29415c;
+  height: 50px;
+  width: 100%;
+}
+/* 导航栏*/
+.customer-nav {
+  max-width: 1850px;
+  width: 96%;
+  margin: 20px auto 10px;
+  background-color: #425f82;
+  height: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+.customer-nav .accountname {
+  float: left;
+  font-size: 0;
+}
+.customer-nav .accountname > span {
+  color: #fff;
+  font-size: 16px;
+  display: inline-block;
+  height: 80px;
+  line-height: 80px;
+}
+.customer-nav .customer-navlist {
+  float: right;
+}
+.customer-nav .customer-navlist a {
+  color: #fff;
+  font-size: 16px;
+  float: left;
+  margin-left: 56px;
+  height: 80px;
+  line-height: 80px;
+  cursor: pointer;
+}
+.customer-nav .customer-navlist a:hover {
+  color: #00e3e7;
+}
+/*遮罩层*/
+.mask {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.46);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+}
+.mask .mask-content {
+  width: 1000px;
+  padding-bottom: 40px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+}
+.mask-hide {
+  display: none;
+}
+.mask-container {
+  padding: 20px 20px 40px;
+}
+.maskinfo {
+  border: 1px solid #eee;
+  font-size: 0;
+}
+.maskinfo p {
+  font-size: 12px;
+  display: inline-block;
+  margin-left: 50px;
+}
+.mask-menu {
+  position: relative;
+  font-size: 0;
+  height: 50px;
+  background-color: #e7ebf0;
+  border-bottom: 3px solid #d0d6dd;
+}
+.mask-menu a,
+.mask-menu h3 {
+  display: inline-block;
+}
+.mask-menu h3 {
+  color: #444;
+  font-size: 14px;
+  line-height: 50px;
+  text-indent: 16px;
+}
+.mask-menu a {
+  position: absolute;
+  width: 47px;
+  height: 47px;
+  text-align: center;
+  line-height: 47px;
+  right: 0;
+  top: 0;
+  font-size: 30px;
+  color: #444;
+}
+.mask-menu a:hover {
+  color: #fff;
+  background-color: #ed5564;
+}
+.maskclose-btn {
+  width: 100px;
+  margin: 10px auto 0;
+}

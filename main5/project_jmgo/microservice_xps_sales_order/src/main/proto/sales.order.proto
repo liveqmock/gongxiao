@@ -1,0 +1,311 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.sales.microservice";
+option java_outer_classname = "SalesOrderServiceStructure";
+
+import "gongxiao.global.structure.proto";
+
+
+service SalesOrderService {
+
+    // 审核时查询订单详情
+    rpc getOrderByOrderNo (CommonSalesOrderRequest) returns (GetOrderByOrderNoResponse) {
+    }
+
+    //查询销售单详情
+    rpc getOrderDetailBySalesOrderNo (CommonSalesOrderRequest) returns (GetOrderByOrderNoResponse) {
+    }
+    //查询销售单明细
+    rpc getOrderDetailBySalesOrderNoAndProjectCode (GetOrderItemRequest) returns (GetOrderItemResponse) {
+    }
+
+    // 选择性查询
+    rpc getListSelectively (GetListSelectivelyRequest) returns (GetListSelectivelyResponse) {
+    }
+
+    // 修改销售单结算方式
+    rpc changeSettlementMode (ChangeSettlementModeRequest) returns (RpcResult) {
+    }
+
+    //新建销售单
+    rpc createSalesOrder (CreateSalesOrderRequest) returns (RpcResult) {
+    }
+
+    //修改收件人信息
+    rpc updateRecipientInfo (UpdateRecipientInfoRequest) returns (RpcResult) {
+    }
+
+    //审核销售单
+    rpc approveSalesOrder (ApproveSalesOrderRequest) returns (RpcResult) {
+    }
+
+    //AD取消销售单
+    rpc cancelSalesOrderByDistributor (CommonSalesOrderRequest) returns (RpcResult) {
+    }
+
+    //驳回销售单
+    rpc rejectSalesOrder (CommonSalesOrderRequest) returns (RpcResult) {
+    }
+
+    //越海取消审核
+    rpc cancelSalesOrderApprove (CommonSalesOrderRequest) returns (RpcResult) {
+    }
+
+    //收款确认
+    rpc confirmSalesOrderAmount (CommonSalesOrderRequest) returns (RpcResult) {
+    }
+
+    //ad查询销售单列表(带分页)
+    rpc searchOrderListWithPage (SearchOrderListWithPageRequest) returns (SearchOrderListWithPageResponse) {
+    }
+
+    //ad查询销售单列表(不带分页)
+    rpc searchOrderList (SearchOrderListRequest) returns (SearchOrderListResponse) {
+    }
+
+    // 判断是否出库
+    rpc whetherOutbound (CommonSalesOrderRequest) returns (WhetherOutboundResponse) {
+    }
+
+    //取消收款
+    rpc cancelReceivedCash (CommonSalesOrderRequest) returns (RpcResult) {
+    }
+}
+
+//销售单接受参数模型
+message CommonSalesOrderRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string salesOrderNo = 2; // 销售单号
+    int64 projectId = 3;
+}
+message GetOrderItemRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string salesOrderNo = 2; // 销售单号
+    string productCode = 3;
+    int64 projectId = 4;
+}
+
+message ApproveSalesOrderRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string salesOrderNo = 2; // 销售单号
+    double discountAmountJmgo = 3; // 优惠金额
+    string salesContractNo = 4; // 销售合同号
+    int64 projectId = 5; // 项目id
+}
+
+
+message CreateSalesOrderRequest {
+    int64 projectId = 6; // 项目id
+    RpcHeader rpcHeader = 1; // 头
+    //    string salesOrderNo = 2; // 销售单号
+    string salesContactNo = 3; // 销售合同号
+    int32 marketingChannel = 4; // 销售渠道
+    int32 paymentChannel = 5; // 支付渠道
+    string projectName = 7; // 项目名称
+    int64 distributorId = 8; // 供应商id
+    string distributorName = 9; // 供应商名称
+    string shippingAddress = 10; // 配送地址
+    string provinceId = 11; // 省id
+    string provinceName = 12; // 省名称
+    string cityId = 13; // 市id
+    string cityName = 14; // 市名称
+    string districtId = 15; // 区id
+    string districtName = 16; // 区名称
+    string recipientName = 17; // 收件人
+    string recipientMobile = 18; // 收件人电话
+    string currencyCode = 19; // 货币编码
+    double cashAmount = 20; // 预存使用金额
+    double totalOrderAmount = 21; // 订单总金额
+    double totalPaidAmount = 22; // 实际付款金额
+    int64 createTime = 23; // 创建时间
+    repeated SalesOrderItemInfoRequest list = 24; // 销售单明细
+}
+message GetOrderItemResponse {
+    int32 returnCode = 1;
+    string returnMsg = 2;
+    string currencyCode = 3;
+    string currencyName = 4;
+    string salesGuidePrice = 5;
+    string wholesalePrice = 6;
+}
+message SalesOrderItemInfoRequest {
+    string productCode = 1; // 货品编码
+    int32 totalQuantity = 2; // 下单数量
+}
+
+message ChangeSettlementModeRequest {
+    RpcHeader rpcHeader = 1; // 头
+    repeated string salesOrderNo = 2; // 销售单号集合
+    int32 days = 3; // 账期天数
+    string remark = 4; // 修改备注
+    int64 projectId = 5;
+}
+
+message GetListSelectivelyRequest {
+    RpcHeader rpcHeader = 1; // 头
+    int64 projectId = 2; // 项目id
+    string orderNo = 3; // 销售单号
+    string outDate = 4; // 出库日期
+    string createTime = 5; // 下单时间
+    int32 orderStatus = 6; // 订单状态
+    int32 pageNum = 7; // 页码
+    int32 pageSize = 8; // 页面条数
+}
+
+message GetListSelectivelyResponse {
+    SalesOrderPageInfo salesOrders = 1; // 销售单pageinfo
+    repeated SalesOrderCount salesOrderCounts = 2;
+}
+
+message SalesOrderCount {
+    int32 sattus = 1; // 状态
+    int32 count = 2; // 个数
+}
+
+message SalesOrderPageInfo {
+    int32 pageNum = 1; // 页码
+    int32 pageSize = 2; // 页面条数
+    int64 total = 3; // 总数
+    repeated SalesOrderResponse list = 4; // 结果对象
+}
+
+message SalesOrderResponse {
+    int32 salesOrderStatus = 1; // 销售单状态
+    int32 settlementMode = 2; // 结算模式
+    string salesOrderNo = 3; // 销售单号
+    int32 paymentDays = 4; // 账期天数
+    string distributorName = 5; // 客户名称
+    string totalOrderAmountDouble = 6; // 订单总金额
+    int32 totalQuantity = 7; // 总数量
+    int32 unhandledQuantity = 8; // 剩余发货数量
+    int64 createTime = 9; // 下单时间
+    int64 paidTime = 10; // 支付时间
+    string cashAmountDouble = 11;
+}
+
+
+message GetOrderByOrderNoResponse {
+    string salesOrderNo = 1; // 销售单号
+    string salesContactNo = 2; // 销售合同号
+    int32 salesOrderStatus = 3; // 订单状态
+    string salesOrderStatusString = 4; // 销售单状态str
+    string totalOrderAmountDouble = 5; // 订单总金额
+    string couponAmountDouble = 6; // 返利使用金额
+    string prepaidAmountDouble = 7; // 代垫使用金额
+    string prestoredAmountDouble = 8; // 预存使用金额
+    string cashAmountDouble = 9; // 实付金额
+    string recipientCompany = 10; // 客户公司
+    string shippingAddress = 11; // 配送地址
+    string provinceId = 12; // 省id
+    string provinceName = 13; // 省名称
+    string cityId = 14; // 市id
+    string cityName = 15; // 市名称
+    string districtId = 16; // 区id
+    string districtName = 17; // 区名称
+    string recipientName = 18; // 收件人
+    string recipientMobile = 19; // 收件人电话
+    int64 outBoundTimeStr = 20; // 出库时间
+    int64 createTimeStr = 21; // 下单时间
+    int64 orderCheckTimeStr = 22; // 审核时间
+    int64 paidTimeStr = 23; // 付款时间
+    int64 informWarehouseTimeStr = 25; // 通知仓库时间
+    int64 signTimeStr = 28; // 签收时间
+    string supplierDiscountAmountDouble = 29; // 供应商支持金
+    string yhDiscountAmountDouble = 30; // 越海支持金
+    string distributorCouponAmountDouble = 31; // 供应商账户返利余额
+    string distributorPrepaidAmountDouble = 32; // 供应商账户代垫余额
+    repeated TraceLog traceLog = 33; // 操作日志
+    repeated SalesOrderItemsResponse items = 34; // 明细
+    int64 lastUpdateTime = 35; // 最后更新时间
+}
+
+message SalesOrderItemsResponse {
+    string productName = 1; // 商品名称
+    string productCode = 2; // 商品编码
+    int32 totalQuantity = 3; // 数量
+    string currencyCode = 4; // 币种
+    string guidePriceDouble = 5; // 指导价
+    string supplierDiscountPercentDouble = 6; // 品牌商支持折扣点
+    string supplierDiscountAmountDouble = 7; // 品牌商支持单价
+    string yhDiscountPercentDouble = 8; // 越海代垫
+    string yhDiscountAmountDouble = 9; // 越海支持单价
+    string wholesalePriceDouble = 10; // 出货价
+    string totalOrderAmountDouble = 11; // 出货小计
+    //ad页面数据
+    int32 deliveredQuantity = 12; // 实收数量
+    int32 sendQuantity = 13; // 发货数量
+}
+
+message WhetherOutboundResponse {
+    bool outbound = 1;
+}
+
+
+message SearchOrderListRequest {
+    RpcHeader rpcHeader = 1;
+    string salesOrderNo = 2;
+    string productCode = 3;
+    int32 status = 4;
+    string dateStart = 5;
+    string dateEnd = 6;
+    int64 projectId = 7;
+    int64 distributorId = 8;
+}
+
+message SearchOrderListResponse {
+    repeated SalesOrderInfoResponse list = 1;
+}
+
+message SearchOrderListWithPageRequest {
+    RpcHeader rpcHeader = 1;
+    string salesOrderNo = 2;
+    string productCode = 3;
+    int32 status = 4;
+    string dateStart = 5;
+    string dateEnd = 6;
+    int32 page = 7;
+    int32 pageSize = 8;
+    int64 projectId = 9;
+    int64 distributorId = 10;
+}
+
+message SearchOrderListWithPageResponse {
+    int32 pageNum = 1;
+    int32 pageSize = 2;
+    int64 total = 3;
+    repeated SalesOrderInfoResponse list = 4;
+}
+
+message SalesOrderInfoResponse {
+    string salesOrderNo = 1;
+    int32 salesOrderStatus = 2;
+    double totalOrderAmountDouble = 3;
+    double discountAmountTotal = 4;
+    double couponAmountDouble = 5;
+    double prepaidAmountDouble = 6;
+    string distributorName = 7;
+    int64 createTime = 8;
+    int64 paidTime = 9;
+    int32 totalQuantity = 10;
+    int32 unhandledQuantity = 11;
+}
+
+
+message UpdateRecipientInfoRequest {
+    RpcHeader rpcHeader = 1;
+    string orderNo = 2;
+    string recipientName = 3;
+    string recipientMobile = 4;
+    string provinceId = 5;
+    string provinceName = 6;
+    string cityId = 7;
+    string cityName = 8;
+    string districtId = 9;
+    string districtName = 10;
+    string shippingAddress = 11;
+    string recipientCompany = 12;
+    int64 projectId = 13;
+}
+
+
+

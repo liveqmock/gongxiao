@@ -1,0 +1,118 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.purchase.microservice";
+option java_outer_classname = "NotifiInboundStructure";
+
+import "gongxiao.global.structure.proto";
+
+service NotifiInboundService {
+    //1. 通过采购单号获取采购详情
+    rpc transferReceivedNotification (TransferReceivedNotificationReq) returns (TransferReceivedNotificationResp) {
+    }
+    //2. 通过采购单号获取采购详情
+    rpc notifyPurchaseInbound (NotifyPurchaseInboundReq) returns (NotifyPurchaseInboundResp) {
+    }
+    //3. 通过采购单号获取采购详情
+    rpc transferClosedNotification (TransferClosedNotificationReq) returns (TransferClosedNotificationResp) {
+    }
+}
+
+//3
+message TransferClosedNotificationReq {
+    string projectId = 1;
+    string traceNo = 2;
+    string gongxiaoInboundOrderNo = 3;
+    string batchNo = 4;
+    string uniqueNumber = 5;
+}
+
+message TransferClosedNotificationResp {
+    RpcResult rpcResult = 1;
+}
+
+//2
+message NotifyPurchaseInboundReq {
+    string projectId = 1;
+    string traceNo = 2;
+    string gongxiaoInboundOrderNo = 3;
+    repeated InboundNotificationBackItem inboundNotificationBackItem = 4;
+    string uniqueNumber = 5;
+}
+
+message NotifyPurchaseInboundResp {
+    RpcResult rpcResult = 1;
+}
+
+//1
+message TransferReceivedNotificationReq {
+    string projectId = 1;
+    string traceNo = 2;
+    string gongxiaoInboundOrderNo = 3;
+    repeated InboundNotificationBackItem InboundNotificationBackItem = 4;
+    string uniqueNumber = 5;
+}
+
+message TransferReceivedNotificationResp {
+    PurchaseBasicOrderInbound purchaseBasicOrderInbound = 1;
+    repeated PurchaseBasicOrderItemInbound purchaseBasicOrderItemInbound = 2;
+    int32 errorCode = 3;
+}
+
+//model
+
+message PurchaseBasicOrderInbound {
+    string projectId = 1;
+    string supplierCode = 2;
+    int32 number = 3;
+    //含税金=额
+    double totalTaxAmount = 5;
+    //税=额
+    double totalTax = 11;
+    //采购订单的I=D
+    string id = 6;
+    //采购单=号
+    string purchaseOrderNum = 7;
+
+    int64 businessDate = 9;
+    int64 requireArrivalDate = 10;
+}
+
+message PurchaseBasicOrderItemInbound {
+    //税率
+    double taxRate = 1;
+    //含税单价(挂牌价)
+    double taxPrice = 2;
+    //仓库编号
+    string warehouseCode = 3;
+    //库位
+    string locationId = 4;
+    //批次
+    string lot = 5;
+    //数量
+    int32 number = 6;
+    //物料编号
+    string materialId = 7;
+    //采购订单ID
+    string purchaseOrderId = 8;
+    //折扣=率
+    double discount = 18;
+    //采购单分录ID
+    string purchaseOrderEntryId = 9;
+    string unit = 10;
+}
+
+message InboundNotificationBackItem {
+    // 业务发起方货明细D
+    string businessItemId = 1;
+    // 入库通知单明细ID
+    string inboundNotificationItemId = 2;
+    // 货品code
+    string productCode = 3;
+    //本次入库商品数量
+    int32 inStockQuantity = 4;
+    // 次品数量
+    int32 imperfectQuantity = 5;
+    string warehouseId = 6;
+    string batchNo = 7;
+    // 是否赠品 true 是 false 否
+    bool isGift = 8;
+}

@@ -1,0 +1,104 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.foundation.project.microservice";
+option java_outer_classname = "ProjectStructure";
+
+import "gongxiao.global.structure.proto";
+
+service ProjectService{
+    //1 查询所有的项目
+    rpc selectProjectList (SelectProjectListReq) returns (SelectProjectListResp) {
+    }
+    //2 通过项目id获取该项目的信息
+    rpc getByProjectId (GetByProjectIdReq) returns (GetByProjectIdResp) {
+    }
+    //3 更新项目信息
+    rpc updateProject (UpdateProjectReq) returns (UpdateProjectResp) {
+    }
+    //4 项目信息多条件查询
+    rpc selectProjectByCondition (SelectProjectByConditionReq) returns (SelectProjectByConditionResp) {
+    }
+}
+//4
+message SelectProjectByConditionReq{
+    RpcHeader rpcHeader=100;
+    int64 projectId=1;
+    string projectName=2;
+    //公司主体
+    string company=3;
+    string easCode=4;
+    int32 pageSize=5;
+    int32 pageNumber=6;
+}
+
+message SelectProjectByConditionResp{
+    repeated Project project=1;
+    int64 total=2;
+}
+
+//3
+message UpdateProjectReq{
+    RpcHeader rpcHeader=1;
+    string easProjectCode=51;
+    string supplierId=2;
+    string supplierName=3;
+    string beforeCouponAmount=4;
+    string afterCouponAmount=5;
+    string monthCouponRate=6;
+    string quarterCouponRate=7;
+    string annualCouponRate=8;
+    string projectId=11;
+    string operater=12;
+    int64 lastUpdateTime=13;
+}
+
+message UpdateProjectResp{
+    RpcResult rpcResult=1;
+}
+
+//2
+message GetByProjectIdReq{
+    RpcHeader rpcHeader=1;
+    string projectId=2;
+}
+message GetByProjectIdResp{
+    Project project=1;
+}
+
+//1
+message SelectProjectListReq{
+    RpcHeader rpcHeader=1;
+}
+
+message SelectProjectListResp{
+    repeated Project projectList =1;
+}
+
+message Project{
+    int64 projectId =1;
+    string projectName=2;
+    string easProjectCode=3;
+    string projectCode=33;
+    string easProjectName=4;
+    string projectTablePrefix=44;
+    int32 recordStatus=7;
+    string company=8;
+    int64 supplierId=10;
+    string supplierName=11;
+    string distributionInfo=12;
+    int32 prepaidUseReferRate=13;
+    int64 couponUseReferRate=14;
+    int64 monthCouponRate=15;
+    int64 quarterCouponRate=16;
+    int64 annualCouponRate=17;
+    int64 beforeCouponAmount=117;
+    int64 afterCouponAmount=118;
+    int64 createdById=18;
+    string createdByName=19;
+    int64 createTime=20;
+    int64 lastUpdateTime=21;
+    string tracelog=22;
+    string wmdProjectCode = 23;
+    string wmsProjectName = 24;
+    string tmsProjectCode = 25;
+    string tmsProjectName = 26;
+}

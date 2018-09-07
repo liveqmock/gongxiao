@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=f1463f4aab"></script>
+    <title>供应商上账账户</title>
+</head>
+
+<body>
+    <div class="wrapper clearfix">
+        <!-- 侧边栏 -->
+        <div id="sidebar" class="sidebar"></div>
+        <!-- 主体内容 -->
+        <div class="yh-content">
+            <!-- 头部内容 -->
+            <div class="fenxiao-header clearfix">
+                <h2>分销协同平台</h2>
+                <div class="shape-box">
+                    <select name="" id="projectlist"></select>
+                    <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                    <span></span>
+                    <a href="javascript:void(0);">注销</a>
+                </div>
+            </div>
+            <!-- 主要内容 -->
+            <div class="yh-container">
+                <!-- 面包屑菜单 -->
+                <div class="fenxiao-nav">
+                    <span>当前位置：</span>
+                    <a href="javascript:void(0);">账户管理</a> &gt; <a href="javascript:void(0);">供应商上账账户</a>
+                </div>
+                <!-- 表单 -->
+                <div class="form-box infolist-wrap">
+                    <!-- 基本信息 -->
+                    <h3 class="title-h3">基本信息</h3>
+                    <div class="account-list">
+                        <ul class="clearfix">
+                            <li>
+                                <h3>供应商返利上账账户</h3>
+                                <p class="clearfix"><input type="text" value="" id="rebate-input" disabled></p>
+                                <a href="javascript:void(0);" class="transferin" id="rebate-btn">转入</a>
+                            </li>
+                            <li>
+                                <h3>供应商代垫上账账户</h3>
+                                <p class="clearfix"><input type="text" value="" id="prepaid-input" disabled><a href="javascript:void(0);" class="transferin" id="prepaid-btn">转入</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="fx-form clearfix">
+                        <div class="yh-forms">
+                            <li><label for="accounttype">账户类型</label>
+                                <select name="" id="accounttype">
+                                    <option value="1">返利上账</option>
+                                    <option value="2">代垫上账</option>
+                                </select>
+                            </li>
+                            <li><label for="starttime">时间</label>
+                                <input type="text" id="starttime" class="yhdate-input"> 至
+                                <input type="text" id="endtime" class="yhdate-input">
+                            </li>
+                            <li><label for="moneyflow">资金流向</label>
+                                <select id="moneyflow">
+                                    <option value="">请选择</option>
+                                    <option value="306">转入</option>
+                                    <option value="305">转出</option>
+                                </select>
+                            </li>
+                        </div>
+                        <div class="yh-forms-btn">
+                            <button id="yhquery-btn" class="yhquery-btn">查询</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 操作表格 -->
+                <div class="yhtable-header clearfix">
+                    <div class="opera-btn">
+                        <a class="yhhandle-btn" id="export-btn">导出</a>
+                        <a class="yhhandle-btn" id="addupamount-btn">统计金额</a>
+                    </div>
+                    <div class="addup-info addup-infohide" id="addup-info">
+                        <ul class="clearfix">
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 渲染表格 -->
+                <div class="yh-table">
+                    <table id="yhtable" class="table yhtable"></table>
+                </div>
+            </div>
+        </div>
+        <!--遮罩层-->
+        <div class="yhmask yhmask-hide" id="yhmask">
+            <div class="yhmask-div">
+                <div class="yhmask-menu">
+                    <span>确认信息</span>
+                    <a href="javascript:void(0);" id="yhmask-switch">×</a>
+                </div>
+                <div class="yhmask-content clearfix">
+                    <div class="yhmask-amount">
+                        <label for="cnytype">转入金额</label>
+                        <select id="cnytype">
+                            <option value="1">CNY</option>
+                            <option value="2">HKD</option>
+                            <option value="3">USD</option>
+                        </select>
+                        <input type="text" id="intoamount" value="0">
+                    </div>
+                    <p>
+                        <label for="mask-remark">备注</label>
+                        <textarea name="" id="mask-remark" cols="30" rows="10"></textarea>
+                    </p>
+                </div>
+                <div class="yhmask-btn">
+                    <button class="yhsubmit-btn" id="yhmask-submit">确认</button>
+                    <button class="yhcancel-btn" id="yhmask-cancel">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/accountmanagement/entryaccount.js?v=691f187528"></script>
+</body>
+
+</html>

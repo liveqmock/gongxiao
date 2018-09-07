@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./js/file.js"></script>
+    <link rel="stylesheet" href="./css/customer.css">
+    <title>账户查询</title>
+</head>
+
+<body>
+    <div class="customer-wrapper">
+        <!-- 顶部内容 -->
+        <div class="customer-header">
+            <img src="" alt="">
+        </div>
+        <!-- 导航栏 -->
+        <div class="customer-nav clearfix">
+            <div class="accountname">
+                <img src="" alt="">
+                <span>账户名称</span>
+            </div>
+            <div class="customer-navlist clearfix">
+                <a href="./ordermanagement.html">商品查询</a>
+                <a href="./orderlistmanagement.html">订单管理</a>
+                <a href="./addressmanagement.html">收货地址维护</a>
+                <a href="./accountquery.html">账户查询</a>
+            </div>
+        </div>
+        <!-- 面包屑导航 -->
+        <div class="customer-crumbs">
+            <p><span>当前位置：</span><a href="javascript:void(0);">账户查询</a></p>
+        </div>
+        <!-- 主体内容 -->
+        <div class="customer-container">
+            <div class="account-list">
+                <ul class="clearfix">
+                    <li>
+                        <h3>返利账户余额</h3>
+                        <p class="clearfix"><input type="text" value="" id="rebate-input" disabled></p>
+                    </li>
+                    <li>
+                        <h3>代垫账户余额</h3>
+                        <p class="clearfix"><input type="text" value="" id="prepaid-input" disabled></p>
+                    </li>
+                    <li>
+                        <h3>现金账户余额</h3>
+                        <p class="clearfix"><input type="text" value="" id="cash-input" disabled></p>
+                    </li>
+                </ul>
+            </div>
+            <div class="fx-form clearfix">
+                <div class="form-inputs">
+                    <ul class="clearfix">
+                        <li><label>账户类型</label>
+                            <select name="" id="accounttype">
+                                <option value="1">现金</option>
+                                <option value="2">返利</option>
+                                <option value="3">代垫</option>
+                            </select>
+                        </li>
+                        <li><label>资金流向</label>
+                            <select id="moneyflow">
+                                <option value="">请选择</option>
+                                <option value="306">收入</option>
+                                <option value="305">支出</option>
+                            </select>
+                        </li>
+                        <li><label>时间</label>
+                            <input type="text" id="starttime" class="yhdate-input"> 至
+                            <input type="text" id="endtime" class="yhdate-input">
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-btn">
+                    <button id="yhquery-btn" class="yhquery-btn">查询</button>
+                </div>
+            </div>
+            <div class="yh-table-info clearfix">
+                <h3>账户信息</h3>
+                <div class="opera-btn">
+                    <a class="yhhandle-btn" id="addupamount-btn">统计金额</a>
+                </div>
+                <div class="addup-info addup-infohide" id="addup-info">
+                    <ul class="clearfix">
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="customer-table">
+                <table class="accountquery-table" id="accountquery-table"></table>
+            </div>
+        </div>
+    </div>
+    <script src="./js/laydate/laydate.js"></script>
+    <script src="./js/select2.min.js"></script>
+    <script src="./js/customer/accountquery.js"></script>
+</body>
+
+</html>

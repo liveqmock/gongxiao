@@ -1,0 +1,78 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+    <context:component-scan base-package="com.yhglobal.gongxiao"/>
+
+    <task:annotation-driven/>
+
+    <context:property-placeholder location="classpath:distributorportalconfig_${server.mode}.properties"/>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <!-- fastjson converter -->
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json</value>
+                    </list>
+                </property>
+                <property name="features">
+                    <list>
+                        <value>WriteMapNullValue</value>
+                        <value>QuoteFieldNames</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <mvc:annotation-driven/>
+
+    <!--开通静态资源的访问-->
+    <mvc:resources mapping="${contextPath}/distributor/**" location="${contextPath}/distributor/"/>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="*.html"/>
+            <mvc:exclude-mapping path="/login/**"/>
+            <mvc:exclude-mapping path="${contextPath}/distributor/css/**"/>
+            <mvc:exclude-mapping path="${contextPath}/distributor/js/**"/>
+            <mvc:exclude-mapping path="${contextPath}/distributor/images/**"/>
+            <mvc:exclude-mapping path="${contextPath}/distributor/login.html"/>
+            <bean class="com.yhglobal.gongxiao.base.interceptor.PortalUserInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <bean class="com.yhglobal.gongxiao.base.model.PortalUserInfo" scope="request">
+        <aop:scoped-proxy/>
+    </bean>
+
+    <bean id="threadPoolTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="2"/>
+        <property name="keepAliveSeconds" value="180"/>
+        <property name="maxPoolSize" value="10"/>
+        <property name="queueCapacity" value="256"/>
+    </bean>
+
+
+
+</beans>

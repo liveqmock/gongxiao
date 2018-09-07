@@ -1,0 +1,213 @@
+/**
+ * @authors {len} (http://csshack.org)
+ * @date    2018/4/10
+ * @version $
+ */
+
+/* 导航栏*/
+
+// 主体内容的宽度
+.mian-content(@max_width: 1850px, @width: 96%, @margin_top: 20px, @margin_bottom: 10px) {
+  max-width: @max_width;
+  width: @width;
+  margin: @margin_top auto @margin_bottom;
+}
+/* 面包屑导航 */
+
+.addressmanagement-crumbs {
+  .mian-content(1850px, 96%, 0, 0);
+  p {
+    font-size: 0;
+    & > span,
+    & > a {
+      color: #444;
+      display: inline-block;
+      font-size: 14px;
+    }
+  }
+}
+
+/* 主体内容 */
+.addressmanagement-content {
+  width: 88.6%;
+  margin: 20px auto;
+  & > h3 {
+    font-size: 14px;
+    color: #444;
+    strong {
+      color: #ff7623;
+      display: inline-block;
+      width: 90px;
+      text-align: center;
+      margin-right: 6px;
+    }
+  }
+  .address-info {
+    input, select, textarea {
+      display: inline-block;
+      border: 1px solid #c3c3c3;
+      box-sizing: border-box;
+    }
+    input {
+      height: 36px;
+    }
+    textarea {
+      resize: none;
+      width: 680px;
+      height: 100px;
+      font-size: 14px;
+      text-indent: 28px;
+      vertical-align: top;
+    }
+    .address-item {
+      font-size: 0;
+      margin-top: 6px;
+      &>i, &>input, &>select, &>label {
+        display: inline-block;
+        font-size: 14px;
+        color: #444444;
+        height: 36px;
+        line-height: 36px;
+      }
+      &>input + label{
+        vertical-align: 12px;
+        margin-left: 6px;
+      }
+      &>i {
+        width: 90px;
+        text-align: right;
+        margin-right: 6px;
+      }
+      label.must-span{
+        position: relative;
+      }
+      label.must-span:after{
+        content: "*";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -12px;
+        color: red;
+      }
+    }
+    //省市区选择
+    .yhcity-select{
+      height: 40px;
+      &>select{
+        width: 100px;
+        display: inline-block;
+        text-align: center;
+        option{
+          width: 100px;
+          text-align: center;
+          height: 36px;
+          line-height: 36px;
+        }
+      }
+      input{
+        font-size: 12px;
+      }
+      span{
+        font-size: 12px;
+      }
+    }
+  }
+  button{
+    width: 120px;
+    height: 40px;
+    background-color: #ff4242;
+    text-align: center;
+    line-height: 40px;
+    display: block;
+    font-size: 16px;
+    color:#fff;
+    margin-left: 90px;
+  }
+}
+
+.address-table{
+  margin-top: 40px;
+}
+
+//默认地址
+.address-default .note {
+  padding: 2px 5px;
+  border-color: #ff3800;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: #ffd6cc;
+  color: #f30;
+}
+.address-default .note-hide {
+  display: none;
+}
+
+//设为默认
+.tbl-deliver-address .note {
+  padding: 4px 5px;
+  background: #f60;
+  color: #fff;
+  border: 1px solid #f60;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+/* bootstrap-table样式调整 */
+.fixed-table-container {
+  border-radius: 0;
+}
+
+.fixed-table-container thead th, .fixed-table-container tbody td {
+  border-left: 0;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #fff;
+}
+
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #fff;
+}
+
+.fixed-table-body thead th .th-inner, .fixed-table-container thead th .th-inner {
+  height: 60px;
+  line-height: 40px;
+}
+
+.table > tbody > tr > td {
+  height: 24px;
+  font-size: 18px;
+  color: #444;
+}
+
+.bootstrap-table .table > thead > tr > th {
+  position: relative;
+}
+
+.bootstrap-table .table > thead > tr > th:after {
+  position: absolute;
+  bottom: 0;
+  left: 1%;
+  content: "";
+  display: block;
+  width: 98%;
+  height: 4px;
+  background-color: #abc1f3;
+}
+
+.fixed-table-body thead th .th-inner {
+  color: #444;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.table > tbody > tr > td {
+  color: #444;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.table-striped > tbody > tr:hover {
+  background-color: #f0f4fd
+}

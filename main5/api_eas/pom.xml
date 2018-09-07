@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>gongxiao</artifactId>
+        <groupId>com.yhglobal.gongxiao</groupId>
+        <version>2.0</version>
+    </parent>
+    <artifactId>api_eas</artifactId>
+    <packaging>jar</packaging>
+    <version>2.0</version>
+
+    <dependencies>
+
+        <!-- axis 生成ws stub使用说明 -->
+        <!-- 1. 版本号使用了和EAS一样的版本号: axis1.4  而不是用axis2 -->
+        <!-- 2. 下载链接 http://archive.apache.org/dist/ws/axis/1_4/axis-bin-1_4.tar.gz -->
+        <!-- 3. 下载后解压，然后执行下面命令生成webservice的client stub: -->
+        <!-- java -Djava.ext.dirs=/path/to/axis-1_4/lib org.apache.axis.wsdl.WSDL2Java -osrc -pcom.yhglobal.eas http://192.168.100.188:6888/ormrpc/services/WSTestStockTransferFacade?wsdl  -->
+        <!-- 其中：-o 指定生成stub的根目录 -->
+        <!--      -p 指定生成stub的包名 -->
+        <dependency>
+            <groupId>org.apache.axis</groupId>
+            <artifactId>axis</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-discovery</groupId>
+            <artifactId>commons-discovery</artifactId>
+            <version>0.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.axis</groupId>
+            <artifactId>axis-jaxrpc</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.axis</groupId>
+            <artifactId>axis-saaj</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.24</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

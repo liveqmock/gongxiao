@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/*基本信息*/
+.order-info{width:660px;}
+.order-info1,.order-info2{font-size:0;}
+.order-info1 span,.order-info2 span{width:50px;}
+.order-info1 input{width:500px;}
+.order-info2 p{float:left;}
+.order-info2 p:nth-child(even){margin-left:44px;}
+.infobox{border-top:none;}
+/*须刀项目*/
+.xudao-info{width: 750px;}
+.xudao-info p span{width: 100px;text-align: right;}
+.yhtable-header{border-top: none;}
+.yhbtn-box{margin: 50px auto 0;}

@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.microservice";
+option java_outer_classname = "JdQualityGuaranteeDepositServiceStructure";
+
+import "gongxiao.global.structure.proto";
+
+
+service SalesOrderReturnService {
+
+    rpc selectByManyConditions(QueryParamsReq) returns (QueryResultResp){} // 条件查询质保金
+
+
+}
+// 查询请求参数
+message QueryParamsReq{
+    RpcHeader rpcHeader = 1;
+    string settlementNo = 2;
+    int32 documentCode = 3;
+    int32 depositStatus = 4;
+    int64 jdProjectId = 5;
+}
+// 查询结果
+message QueryResultResp{
+    int32 pageNum = 1;
+    int32 pageSize = 2;
+    int32 size = 3;
+    int32 startRow = 4;
+    int32 endRow = 5;
+    int64 total = 6;
+    int32 pages = 7;
+    repeated QualityGuaranteeDepositItem list = 8;
+    int32 returnCode = 9; // 返回码
+    string msg = 10; // 返回码状态信息
+}
+
+message QualityGuaranteeDepositItem{
+    int64 depositId = 1;  // 质保金主键Id
+    int32 depositStatus = 2; // 质保金状态 1未退回2已退回
+    int32 documentCode = 3;// '应付单据类型 1采购入库单 2新退货 3售后退货 4返点单 5批次单 6质保金',
+    double amount = 4; // '金额',
+    int64 documentTime = 5; // '单据时间',
+    string buyerName = 6; // '采购员名称',
+    int64 projectId = 7; // '关联的项目id',
+    string projectName = 8; // 关联的项目名称'
+    int64 supplierId = 9; // 供应商主体id
+    string supplierName = 10; // 供应商主体名称
+    string settlementNo = 11; // 结算单号
+    int64 createdById  = 12; // 创建人id
+    string createdByName = 13; // 创建人名称
+    int64 createTime = 14; // 创建时间
+    string remark = 15; // 备注
+    int64 jdProjectId = 16; // 京东分类项目id
+}

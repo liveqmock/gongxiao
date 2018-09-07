@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.yhglobal.gongxiao</groupId>
+        <artifactId>gongxiao</artifactId>
+        <version>2.0</version>
+    </parent>
+    <groupId>com.yhglobal.gongxiao.jmgo</groupId>
+    <artifactId>project_jmgo</artifactId>
+    <packaging>pom</packaging>
+    <version>2.0</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>1.8</jdk.version>
+        <spring.version>3.2.10.RELEASE</spring.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
+        <maven-dependency-plugin.version>3.1.0</maven-dependency-plugin.version>
+    </properties>
+
+    <!-- 坚果项目模块 -->
+    <modules>
+
+        <module>microservice_xps_payment_management</module>
+        <module>japp_xps_payment_management</module>
+
+        <module>microservice_xps_purchase_order</module>
+        <module>japp_xps_purchase_order</module>
+
+        <module>microservice_xps_sales_order</module>
+        <module>japp_xps_sales_order</module>
+
+        <module>jweb_xps_distributor_portal</module>
+        <module>jweb_xps_yhportal</module>
+
+        <module>jweb_xps_warehouse_notify_gateway</module>
+
+        <module>lib_common</module>
+    </modules>
+
+</project>

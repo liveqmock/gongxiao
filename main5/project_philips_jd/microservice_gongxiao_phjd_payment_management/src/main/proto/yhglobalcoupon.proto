@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.accountmanage.microservice";
+option java_outer_classname = "YhglobalCouponServiceStructure";
+
+import "gongxiao.global.structure.proto";
+
+//供采购模块生成返利用 注：目前实现类放在支付模块2018718
+service YhglobalCouponService{
+    //根据采购单生成应收返利：月度/季度/年度/现金后收
+    rpc generateYhglobalCouponLedger (GenerateYhglobalCouponLedgerReq) returns (GenerateYhglobalCouponLedgerResp){}
+}
+
+message GenerateYhglobalCouponLedgerReq{
+    // 需求参数精简
+    // projectId currencyCode SupplierOrderNo PurchaseOrderNo PurchaseTime从 PurchaseShouldPayAmount
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    string currencyCode = 3;
+    string brandOrderNo = 4;
+    string purchaseOrderNo = 5;
+    string purchaseTime = 6;
+    int64  purchaseShouldPayAmount = 7;
+}
+message GenerateYhglobalCouponLedgerResp{
+    int32 returnCode = 1; //返回码
+    string msg = 2; //若调用不成功 错误信息
+}

@@ -1,0 +1,67 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.foundation.supplier.microservice";
+option java_outer_classname = "SupplierStructure";
+
+import "gongxiao.global.structure.proto";
+
+service SupplierService{
+    //1 获取供应商列表
+    rpc selectAll (SelectAllReq) returns (SelectAllResp) {
+    }
+    //2 一个项目应该只有一个供应商,一个供应商有多个项目,通过项目可以拿到唯一的供应商
+    rpc getSupplierByCode (GetSupplierByCodeReq) returns (GetSupplierByCodeResp) {
+    }
+    //3 通过供应商ID获取供应商信息
+    rpc getSupplierById (GetSupplierByIdReq) returns (GetSupplierByIdResp) {
+    }
+}
+//3
+message GetSupplierByIdReq{
+    RpcHeader rpcHeader=1;
+    string supplierId=2;
+}
+
+message GetSupplierByIdResp{
+    Supplier supplier =1;
+}
+
+//2
+message GetSupplierByCodeReq{
+    RpcHeader rpcHeader=1;
+    string supplierCode=2;
+}
+
+message GetSupplierByCodeResp{
+    Supplier supplier =1;
+}
+
+//1
+message SelectAllReq{
+    RpcHeader rpcHeader=1;
+}
+
+message SelectAllResp{
+    repeated Supplier supplierList=1;
+}
+
+message Supplier{
+   int64 id=1;
+   int64 supplierId=2;
+   string supplierName=3;
+   string supplierCode=4;
+   string easSupplierCode=5;
+   string easSupplierName=6;
+   int32 recordStatus=7;
+   string address=8;
+   string email=9;
+   string contactName=10;
+   string countryCode=11;
+   string phoneNumber=12;
+   string currentProjectInfo=13;
+   string historyProjectInfo=14;
+   int64 createdById=15;
+   string createdByName=16;
+   int64 createTime=17;
+   int64 lastUpdateTime=18;
+   string tracelog=19;
+}

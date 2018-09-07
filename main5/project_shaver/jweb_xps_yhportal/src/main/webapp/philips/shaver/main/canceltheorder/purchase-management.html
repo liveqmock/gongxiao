@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <link rel="stylesheet" href="../css/sales/management.css?v=0ab3c1a2f8">
+    <title>退换货管理</title>
+</head>
+
+<body>
+    <div class="wrapper clearfix">
+        <!-- 侧边栏 -->
+        <div id="sidebar" class="sidebar"></div>
+        <!-- 主体内容 -->
+        <div class="yh-content">
+            <!-- 头部内容 -->
+            <div class="fenxiao-header clearfix">
+                <h2>分销协同平台</h2>
+                <div class="shape-box">
+                    <select id="projectlist"></select>
+                    <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                    <span></span>
+                    <a href="javascript:void(0);">注销</a>
+                </div>
+            </div>
+            <!-- 主要内容 -->
+            <div class="yh-container">
+                <!-- 面包屑菜单 -->
+                <div class="fenxiao-nav">
+                    <span>当前位置：</span>
+                    <a href="javascript:void(0);">采购管理</a> &gt; <a href="javascript:void(0);">退换货管理</a>
+                </div>
+                <!-- 表单 -->
+                <div class="form-box">
+                    <div class="fx-form clearfix">
+                        <div class="form-inputs" id="form-input">
+                            <li><label for="warehouselist">发货仓库</label>
+                                <select id="warehouselist"></select>
+                            </li>
+                            <li><label for="orderreturnedtype">退换货类型</label>
+                                <select name="" id="orderreturnedtype">
+                                    <option value="1">销售退货</option>
+                                    <option value="2">换货退货</option>
+                                </select>
+                            </li>
+                            <li><label for="orderno">单号</label>
+                                <input type="text" id="orderno">
+                            </li>
+                            <li><label for="createtime">退单创建时间</label>
+                                <input type="text" id="createtime" placeholder="请选择时间" class="yhdate-input"><i> 至 </i>
+                                <input type="text" id="createtime2" placeholder="请选择时间" class="yhdate-input">
+                            </li>
+                        </div>
+                        <div class="form-btn">
+                            <button id="salesquery-btn" class="yhquery-btn">查询</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 操作表格 -->
+                <div class="yhtable-header clearfix">
+                    <div class="data-show">
+                        <ul class="clearfix">
+                            <li><b>全部</b> <span>(1)</span></li>
+                            <li>新建 <span>(1)</span></li>
+                            <li>等待退货到仓 <span>(1)</span></li>
+                            <li>退货完成 <span>(1)</span></li>
+                            <li>仓库拒单 <span>(1)</span></li>
+                            <li>预约发货中 <span>(1)</span></li>
+                            <li>全部已出库 <span>(1)</span></li>
+                            <li>客户已签收 <span>(1)</span></li>
+                        </ul>
+                    </div>
+                    <div class="opera-btn">
+                        <a class="yhhandle-btn" href="purchase-createnote.html">创建退货</a>
+                        <a class="yhhandle-btn" href="javascript:void(0);">创建换货</a>
+                        <a class="yhhandle-btn" href="javascript:void(0);">审批</a>
+                        <a class="yhhandle-btn" href="javascript:void(0);">导出</a>
+                    </div>
+                </div>
+                <!-- 渲染表格 -->
+                <div class="yh-table">
+                    <table id="returned-purmanagement" class="yhtable"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/canceltheorder/purchase/management.js?v=7542d9ec3b"></script>
+</body>
+
+</html>

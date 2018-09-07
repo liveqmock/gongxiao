@@ -1,0 +1,114 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.accountmanage.microservice";
+option java_outer_classname = "DistributorCouponTransferServiceStructure";
+
+import "gongxiao.global.structure.proto";
+import "payment.account.common.proto";
+
+service DistributorCouponTransferService {
+
+        // 转账接口
+rpc singleDistributorCouponTransferReceived(SingleDistributorCouponTransferReceivedReq) returns (SingleDistributorCouponTransferReceivedResp){}
+
+       // 查询流水分页
+    rpc selectCouponFlowHasPage (SelectCouponFlowHasPageReq) returns (FrontPageFlowPageInfo){
+    }
+
+ // 查询流水不分页
+    rpc SelectCouponFlowNoPage (SelectCouponFlowNoPageReq) returns (SelectCouponFlowNoPageResp){
+
+    }
+
+    // 获取流水统计金额数据的方法
+    rpc getSubtotal (GetSubtotalReq) returns (GetSubtotalResp) {
+    }
+
+}
+// 经销商返利转入
+message SingleDistributorCouponTransferReceivedReq{
+    RpcHeader rpcHeader = 1;
+    int64 distributorId = 2;
+    int64 receivedAmount = 3;
+    string currencyCode = 4;
+    int64 supplierId = 5;
+    string supplierName = 6;
+    int64 projectId = 7;
+    string distributorName = 8;
+    string remark = 9;
+}
+message SingleDistributorCouponTransferReceivedResp{
+    int32 returnCode = 1; //返回码
+    string msg = 2; //若调用不成功 错误信息
+}
+// 分页查询流水
+message SelectCouponFlowHasPageReq{
+    RpcHeader rpcHeader = 1;
+    string currencyCode = 2;
+    int64 supplierId = 3;
+    int64 projectId = 4;
+    int32 moneyFlow = 5;
+    int64 beginDate = 6;
+    int64 endDate = 7;
+    int32 pageNumber = 8;
+    int32 pageSize = 9;
+}
+// 不分页查询流水
+message SelectCouponFlowNoPageReq{
+    RpcHeader rpcHeader = 1;
+    string currencyCode = 2;
+    int64 supplierId = 3;
+    int64 projectId = 4;
+    int32 moneyFlow = 5;
+    int64 beginDate = 6;
+    int64 endDate = 7;
+}
+message SelectCouponFlowNoPageResp{
+    int32 returnCode = 1; //返回码
+    string msg = 2; //若调用不成功 错误信息
+    repeated ResultResp result = 3;
+}
+message ResultResp{
+
+    string flowNo = 1;
+    int32 type = 2;
+    string typeStr = 3;
+    string currencyCode = 4;
+    double transactionAmount = 5;
+    string transactionAmountStr = 6;
+    double amountAfterTransaction = 7;
+    string amountAfterTransactionStr = 8;
+    int64 createTime = 9;
+    string createByName = 10;
+    string remark = 11;
+}
+// 统计金额
+message GetSubtotalReq{
+    RpcHeader rpcHeader = 1;
+    string currencyCode = 2;
+    int64 supplierId = 3;
+    int64 projectId = 4;
+    int32 moneyFlow = 5;
+    int64 beginDate = 6;
+    int64 endDate = 7;
+}
+message GetSubtotalResp{
+    int32 returnCode = 1; //返回码
+    string msg = 2; //若调用不成功 错误信息
+    /**
+     * 收入条数
+     */
+    int32 incomeQuantity = 3;
+    /**
+     * 支出条数
+     */
+    int32 expenditureQuantity = 4;
+    /**
+     * 收入金额
+     */
+    double incomeAmount = 5;
+    /**
+     * 支出金额
+     */
+    double expenditureAmount = 6;
+}

@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.payment.microservice";
+option java_outer_classname = "SupplierReservedAccountServiceStructure";
+
+import "payment.account.common.proto";
+import "gongxiao.global.structure.proto";
+
+service SupplierReservedAccountService {
+
+    // 查询单价折扣冻结账户和采购预留冻结账户的余额
+    rpc getReservedAccountAmount (GetReservedAccountAmountReq) returns (GetReservedAccountAmountResp) {
+    }
+    // 分页条件查询流水
+    rpc getReservedAccountFlow (GetReservedAccountFlowReq) returns(GetReservedAccountFlowResp) {
+    }
+
+    // 统计流水条数及金额
+    rpc getReservedAccountSubtotal (GetReservedAccountSubtotalReq) returns(GetReservedAccountSubtotalResp){}
+}
+
+message GetReservedAccountAmountReq{
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2; // 项目ID
+}
+message GetReservedAccountAmountResp{
+    int32 returnCode = 1; //返回码
+    string msg = 2; //若调用不成功 错误信息
+    double discountAccount = 3;// 折扣预留账户
+    double reservedAccount = 4;// 采购预留账户
+    double salesDifference = 5;// 销售差价账户
+
+}
+message GetReservedAccountFlowReq{
+    RpcHeader rpcHeader = 1;
+    string accountType = 2;// 账户类型
+    string flowType = 3;// 流水类型
+    int64 dateS = 4;// 开始日期
+    int64 dateE = 5;// 结算日期
+    int64 projectId = 6; // 项目ID
+    int32 pageNum = 7; // 分页参数
+    int32 pageSize = 8; // 分页参数
+}
+message GetReservedAccountFlowResp{
+    int32 pageNum = 1; // 分页参数
+    int32 pageSize = 2; // 分页参数
+    int32 size = 3;
+    int32 startRow = 4;
+    int32 endRow = 5;
+    int64 total = 6;
+    int32 pages = 7;
+    repeated FrontPageFlow flowList = 8;
+    int32 returnCode = 9; //返回码
+    string msg = 10; //若调用不成功 错误信息
+}
+message GetReservedAccountSubtotalReq{
+    RpcHeader rpcHeader = 1;
+    string accountType = 2;// 账户类型
+    string flowType = 3;// 流水类型
+    int64 dateS = 4;// 开始日期
+    int64 dateE = 5;// 结束日期
+    int64 projectId = 6; // 项目ID
+}
+message GetReservedAccountSubtotalResp{
+    int32 returnCode = 1; //返回码
+    string msg = 2; //若调用不成功 错误信息
+    FrontPageFlowSubtotal subtotal = 3;
+}
+
+

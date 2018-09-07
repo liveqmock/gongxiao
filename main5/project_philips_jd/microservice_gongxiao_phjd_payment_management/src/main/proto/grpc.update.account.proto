@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.payment.microservice";
+option java_outer_classname = "GrpcUpdateAccountStructure";
+
+import "gongxiao.global.structure.proto";
+
+service GrpcUpdateAccountService {
+
+    // 更新供应商单价折扣冻结账户
+    rpc updateSupplierUnitPriceDiscountFrozenAccount(UpdateRequest) returns(UpdateResponse){
+    }
+    // 更新供应商采购预留冻结账户
+    rpc updateSupplierPurchaseReservedFrozenAccount(UpdateRequest) returns(UpdateResponse){
+    }
+    // 更新销售差价账户
+    rpc updateSalesDifferenceAccount(UpdateRequest) returns(UpdateResponse){
+    }
+    // 更新越海返利实收账户
+    rpc updateYhglobalReceivedCouponAccount(UpdateRequest) returns(UpdateResponse){
+    }
+    // 更新越海代垫实收账户
+    rpc updateYhglobalReceivedPrepaidAccount(UpdateRequest) returns(UpdateResponse){
+    }
+}
+
+message UpdateRequest {
+    //Long supplierId, Long projectId, String prefix, GongxiaoRpc.RpcHeader rpcHeader, BigDecimal transferAmount, String remark
+    RpcHeader rpcHeader = 1; // 头
+    int64 projectId = 2; // 项目id
+    int64 supplierId = 3; // 供应商ID
+    string prefix = 4; // 表前缀
+    double amount = 6; // 修改的金额
+    int64 transactionTime = 8; // 交易时间
+    string remark = 9; // 备注
+}
+message UpdateResponse {
+    int32 code = 1; // 返回码
+    string msg = 2; // 错误信息
+}
+

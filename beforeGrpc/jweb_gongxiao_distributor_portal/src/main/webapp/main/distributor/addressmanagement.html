@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./js/file.js"></script>
+    <link rel="stylesheet" href="./css/addressmanagement.css">
+    <title>收货地址管理</title>
+</head>
+
+<body>
+<div class="customer-wrapper">
+    <!-- 顶部内容 -->
+    <div class="customer-header">
+        <img src="" alt="">
+    </div>
+    <!-- 导航栏 -->
+    <div class="customer-nav clearfix">
+        <div class="accountname">
+            <img src="" alt="">
+            <span>账户名称</span>
+        </div>
+        <div class="customer-navlist clearfix">
+            <a href="./ordermanagement.html">商品查询</a>
+            <a href="./orderlistmanagement.html">订单管理</a>
+            <a href="./addressmanagement.html">收货地址维护</a>
+            <a href="./accountquery.html">账户查询</a>
+        </div>
+    </div>
+    <!-- 面包屑导航 -->
+    <div class="addressmanagement-crumbs">
+        <p><span>当前位置：</span><a href="javascript:void(0);">管理收货地址</a></p>
+    </div>
+    <!--主体内容-->
+    <div class="addressmanagement-content">
+        <h3><strong>新增收货地址</strong>电话号码、手机号选填一项，其余均为必填项</h3>
+        <div class="address-info">
+            <div class="address-item yhcity-select clearfix">
+                <i><label class="must-span">所在地区</label></i>
+                <select name="" id="arealist">
+                    <option value="">中国大陆</option>
+                </select>
+                <div style="position: relative;left: 210px;top:-40px;">
+                    <input readonly type="text" placeholder="点击从下拉面板中选择省/市/区" id="yharea-info" class="styles.pickerInput" style="width: 30%;">
+                </div>
+            </div>
+            <div class="address-item">
+                <i><label class="must-span">详细地址</label></i>
+                <textarea autocomplete="off" aria-label="详细地址" name="address-detail" id="address-detail" placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码，楼层和房间号等信息"></textarea>
+            </div>
+            <div class="address-item">
+                <i><label class="must-span" for="receiver">
+                    收货人姓名
+                </label></i>
+                <input type="text" id="receiver">
+            </div>
+            <div class="address-item"><i><label class="must-span" for="phone-number">手机号码</label></i><input type="text" id="phone-number"></div>
+            <div class="address-item"><i><label for="tel-number">电话号码</label></i><input type="text" id="tel-number"></div>
+            <div class="address-item"><i><label for="postalcode">邮政编码</label></i><input type="text" id="postalcode"></div>
+            <div class="address-item" style="margin-left: 90px;"><input type="checkbox" id="default-address"><label for="default-address">设置为默认收货地址</label></div>
+            <button id="submit-btn">提交</button>
+        </div>
+        <!--收货地址信息-->
+        <div class="address-table">
+            <table id="address-table" class="table"></table>
+        </div>
+    </div>
+</div>
+<script src="./js/yhcity/area.picker.data.6.0.14.js"></script>
+<script src="./js/yhcity/regions.picker.data.6.0.14.js"></script>
+<script src="./js/yhcity/app-63da9bddbb.js"></script>
+<script src="./js/customer/addressmanagement.js?v20180717"></script>
+</body>
+
+</html>

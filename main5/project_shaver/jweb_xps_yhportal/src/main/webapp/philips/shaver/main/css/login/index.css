@@ -1,0 +1,33 @@
+.yh-login{position:fixed;right:0;left:0;top:0;bottom:0;overflow:hidden;background:url(../../images/login/bj.jpg) no-repeat;background-size:100% 100%;min-width: 1024px;}
+.login-box{width:354px;height:354px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+.login-box img{display:inline-block;margin-right:12px;}
+.login-box h2{padding-left:38px;font-size:30px;color:#fff;}
+.login-box input{width:348px;height:50px;display:block;margin-top:20px;border:1px solid #7d98bf;color:#7d98bf;font-size:18px;text-indent:40px;background-color:#344663;outline:none;}
+.login-box input.inputfocus{color:#fff;border:1px solid #fff;}
+.login-box input:-webkit-autofill{-webkit-box-shadow:0 0 0 400px #344663 inset;}
+.yh-zhanghu,.yh-mima{position:relative;}
+.yh-zhanghu img{position:absolute;left:10px;top:18px;}
+.yh-mima img{position:absolute;left:12px;top:18px;}
+.rember-psw{height:18px;font-size:18px;color:#fff;line-height:18px;margin-top:20px;}
+.rember-psw input{display:inline-block;margin-top:0;margin-right:10px;width:18px;height:18px;}
+
+/*登录*/
+.login-btn{border:1px solid #25d8db;color:#fff;background-color:#07b7ba;font-size:24px;width:350px;margin:0 auto;height:52px;line-height:52px;margin-top:40px;cursor:pointer;}
+
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {   
+ /* WebKit browsers */   
+color: #7d98bf;   
+}   
+input:-moz-placeholder, textarea:-moz-placeholder {   
+/* Mozilla Firefox 4 to 18 */   
+color: #7d98bf;   
+}   
+input::-moz-placeholder, textarea::-moz-placeholder {   
+ /* Mozilla Firefox 19+ */   
+color: #7d98bf;   
+}   
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {   
+ /* Internet Explorer 10+ */   
+color: #7d98bf;   
+} 

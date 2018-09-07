@@ -1,0 +1,36 @@
+package com.yhglobal.gongxiao.payment.service;
+
+import com.yhglobal.gongxiao.microservice.GongxiaoRpc;
+
+import java.util.Date;
+
+/**
+ * @author: 葛灿
+ */
+public interface DistributorCashFlowService {
+
+    /**
+     * 插入返利账户销售流水
+     *
+     * @param rpcHeader               头
+     * @param projectId               项目id
+     * @param projectName             项目名称
+     * @param distributorId           经销商id
+     * @param distributorName         经销商名称
+     * @param currencyCode            货币编码
+     * @param amountBeforeTransaction 交易前金额
+     * @param transactionAmount       交易金额
+     * @param transactionTime         交易时间
+     * @param salesOrderNo            销售单号
+     * @param extroInfo               其他信息（JSON）
+     * @return
+     */
+    String insertFlow(String prefix,
+                      GongxiaoRpc.RpcHeader rpcHeader,
+                      long projectId, String projectName,
+                      long distributorId, String distributorName,
+                      String currencyCode, long amountBeforeTransaction,
+                      long transactionAmount, Date transactionTime,
+                      String salesOrderNo,
+                      String extroInfo);
+}

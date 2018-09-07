@@ -1,0 +1,27 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.wmsconfirm";
+option java_outer_classname = "WmsConfirmStructure";
+
+import "gongxiao.global.structure.proto";
+
+service WmsConfirmService{
+    //1 wms确认入库
+    rpc confirmWmsInboundInfo(InStockConfirmRequest)  returns(ConfirmResult) {}
+
+    //2 wms确认出库
+    rpc confirmWmsOutboundInfo(OutStockConfirmRequest) returns(ConfirmResult) {}
+
+}
+
+//1
+message InStockConfirmRequest{
+    string inStockRequest=1;
+}
+
+message OutStockConfirmRequest{
+    string outStockRequest=1;
+}
+
+message ConfirmResult {
+    int32 errorCode = 1; //错误码
+}

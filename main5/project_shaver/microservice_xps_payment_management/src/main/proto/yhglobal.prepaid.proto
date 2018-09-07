@@ -1,0 +1,268 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.payment.microservice";
+option java_outer_classname = "YhglobalPrepaidServiceStructure";
+
+import "gongxiao.global.structure.proto";
+
+
+service YhglobalPrepaidService{
+
+    rpc addReceive (AddReceiveReq) returns (RpcResult){}
+    rpc receiveConfirm(ReceiveConfirmReq)returns(RpcResult){}
+    rpc receiveCancelConfirmBatch(ReceiveCancelConfirmBatchReq) returns(RpcResult){}
+    rpc selectByProjectId(SelectByProjectIdReq)returns(ReceivePageInfoResp){}
+    rpc selectByIds(SelectByIdsReq)returns(ReceiveListResp){}
+    rpc selectWriteoffRecordByReceiveId(SelectWriteoffRecordByReceiveIdReq)returns(WriteoffRecordResp){}
+    rpc selectReceiveAndRecordByProjectId(SelectReceiveAndRecordByProjectIdReq)returns(ReceivePageInfoResp){}
+    rpc selectReceiveAndRecordCount(SelectReceiveAndRecordCountReq)returns(YhglobalToReceivePrepaidCountResp){}
+    rpc addPrepaidInfo(AddPrepaidInfoReq)returns(RpcResult){}
+    rpc getsPrepaidInfoList(GetsPrepaidInfoListReq)returns(PrepaidPageInfoResp){}
+    rpc getPrepaidInfoById(GetPrepaidInfoByIdReq)returns(PrepaidInfoResp){}
+    rpc searchPrepaidConfirm(SearchPrepaidConfirmReq)returns(WriteoffRecordPageInfoResp){}
+
+}
+
+message AddReceiveReq{
+    RpcHeader rpcHeader = 1;
+    string orderId = 2;
+    int64 projectId = 3;
+    string projectName = 4;
+    int32 supplierId = 5;
+    string supplierName = 6;
+    string salesContractNo = 7;
+    int64 receiveAmount = 8;
+    string currencyCode = 9;
+}
+message ReceiveConfirmReq{
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    string projectName = 3;
+    string useDate = 4;
+    int32 accountType = 5;
+    string philipNo = 6;
+    string confirmInfo = 7;
+}
+message ReceiveCancelConfirmBatchReq{
+    RpcHeader rpcHeader = 1;
+    repeated string flowCode = 2;
+}
+message YhglobalToReceivePrepaidLedger{
+    int64 receiveId = 1;//应收id
+    string orderId = 2;//订单号
+    int64 projectId = 3;//项目ID
+    string projectName = 4;//项目名称
+    int32 supplierId = 5;//供应商ID
+    string supplierName = 6;//供应商名称
+    string salesContractNo = 7;//销售合同号
+    double receiveAmount = 8;//应收金额
+    string currencyCode = 10;//币种编码
+    int32 receiveStatus = 11;//应收状态
+    double toBeConfirmAmount = 12;//待确认金额
+    double confirmAmount = 14;//确认金额
+    double receiptAmount = 16;//实收金额
+    string dateInto = 18;//转入日期
+    string differenceAmountAdjustPattern = 19;//差额调整方式
+    string confirmRecord = 20;//确认记录 确认表ID json串
+    string confirmCurrencyCode = 21;//确认币种
+    string confirmTime = 22;//确认时间
+    int32 accountType = 23;//帐户类型
+    string flowCode = 24;//流水号
+    string useDate = 25;//使用日期
+    string createTime = 26;
+    int64 createdById = 27;
+    int64 dataVersion = 28;
+    string tracelog = 29;
+    string lastUpdateTime = 30;
+    string createdByName = 31;
+}
+message SelectByProjectIdReq{
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    int32 pageNumber = 3;
+    int32 pageSize = 4;
+}
+message ReceivePageInfoResp{
+    int32 pageNum = 1;
+    int32 pageSize = 2;
+    int32 size = 3;
+    int32 startRow = 4;
+    int32 endRow = 5;
+    int64 total = 6;
+    int32 pages = 7;
+    repeated YhglobalToReceivePrepaidLedger receiveList = 8;
+    int32 returnCode = 9; //返回码
+    string msg = 10; //当返回错误时 对应的错误信息
+}
+message SelectByIdsReq{
+    RpcHeader rpcHeader = 1;
+    repeated string ids = 2;
+}
+message ReceiveListResp{
+    int32 returnCode = 1; //返回码
+    string msg = 2; //当返回错误时 对应的错误信息
+    repeated YhglobalToReceivePrepaidLedger receiveList = 3;
+}
+message YhglobalPrepaidLedgerWriteoffRecord{
+    int64 writeoffId = 1;// 核销id
+    int64 receiveId = 2;//应收ID;
+    double confirmAmount = 3;//确认金额;
+    double receiptAmount = 4;//实收金额;
+    string currencyCode = 5;//币种编码;
+    string flowCode = 6;//流水号;
+    int64 projectId = 7;//项目ID
+    string useDate = 8;//使用日期
+    int32 accountType = 9;//帐户类型
+    string useCurrencyCode = 10;//使用币种
+    int32 isRollback = 11;//是否回滚
+    string philipNo = 12;//philip单据号
+    int64 createdById = 13;
+    int64 dataVersion = 14;
+    string tracelog = 15;
+    string createTime = 16;
+    string lastUpdateTime = 17;
+    string createdByName = 18;
+}
+message SelectWriteoffRecordByReceiveIdReq{
+    RpcHeader rpcHeader = 1;
+    int64 receiveId = 2;
+}
+message WriteoffRecordResp{
+    int32 returnCode = 1; //返回码
+    string msg = 2; //当返回错误时 对应的错误信息
+    repeated YhglobalPrepaidLedgerWriteoffRecord recordList = 3;
+}
+message SelectReceiveAndRecordByProjectIdReq{
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    string orderId = 3;
+    string flowCode = 4;
+    int32 accountType = 5;
+    string dateStart = 6;
+    string dateEnd = 7;
+    string dateStartConfirm = 8;
+    string dateEndConfirm = 9;
+    string receiveStatus = 10;
+    int32 pageNumber = 11;
+    int32 pageSize = 12;
+}
+message WriteoffRecordPageInfoResp{
+    int32 pageNum = 1;
+    int32 pageSize = 2;
+    int32 size = 3;
+    int32 startRow = 4;
+    int32 endRow = 5;
+    int64 total = 6;
+    int32 pages = 7;
+    repeated YhglobalPrepaidLedgerWriteoffRecord recordList = 8;
+    int32 returnCode = 9; //返回码
+    string msg = 10; //当返回错误时 对应的错误信息
+}
+message SelectReceiveAndRecordCountReq{
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    string receiveIds = 3;
+}
+message YhglobalToReceivePrepaidCountResp{
+    double receiveAmount = 1;//应收金额
+    double receiptAmount = 2;//实收金额
+    double toBeConfirmAmount = 3;//未收金额
+    double confirmAmount = 4;//确认金额
+    int32 returnCode = 5; //返回码
+    string msg = 6; //当返回错误时 对应的错误信息
+}
+message AddPrepaidInfoReq{
+    RpcHeader rpcHeader = 1;
+    YhglobalPrepaidInfo yhglobalPrepaidInfo = 2;
+    repeated YhglobalPrepaidInfoItem itemList = 3;
+}
+message YhglobalPrepaidInfo{
+    int32 prepaidId = 1;
+    string prepaidNo = 2;
+    int64 projectId = 3;
+    string projectName = 4;
+    int32 supplierId = 5;
+    string supplierName = 6;
+    string payer = 7;
+    string receivables = 8;
+    string settlementNo = 9;
+    string dateBusiness = 10;
+    string taxNo = 11;
+    string contactInfo = 12;
+    int32 provinceId = 13;
+    string provinceName = 14;
+    int32 cityId = 15;
+    string cityName = 16;
+    int32 districtId = 17;
+    string districtName = 18;
+    string streetAddress = 19;
+    string accountCNY = 20;
+    string bankNameCNY = 21;
+    int64 standardCurrency = 22;
+    double standardCurrencyAmount = 23;
+    string remark = 24;
+    int64 createdById = 25;
+    int64 dataVersion = 26;
+    string tracelog = 27;
+    string createTime = 28;
+    string lastUpdateTime = 29;
+    string createdByName = 30;
+}
+message YhglobalPrepaidInfoItem{
+    int32 rowId = 1;
+    int32 infoId = 2;
+    int32 costType = 3;
+    string currencyCode = 4;
+    double exchangeRate = 5;
+    double applicationAmount = 6;
+    int32 invoiceType = 7;
+    double taxPoint = 8;
+    double standardCurrencyAmount = 9;
+    double taxSubsidy = 10;
+    int32 isTaxSubsidy = 11;
+    string reason = 12;
+}
+message GetsPrepaidInfoListReq{
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    string prepaidNo = 3;
+    string receivables = 4;
+    string dateStart = 5;
+    string dateEnd = 6;
+    int32 page = 7;
+    int32 pageSize = 8;
+}
+message PrepaidPageInfoResp{
+    int32 pageNum = 1;
+    int32 pageSize = 2;
+    int32 size = 3;
+    int32 startRow = 4;
+    int32 endRow = 5;
+    int64 total = 6;
+    int32 pages = 7;
+    repeated YhglobalPrepaidInfo prepaidList = 8;
+    int32 returnCode = 9; //返回码
+    string msg = 10; //当返回错误时 对应的错误信息
+}
+message GetPrepaidInfoByIdReq{
+    RpcHeader rpcHeader = 1;
+    int32 id = 2;
+}
+message PrepaidInfoResp{
+    int32 returnCode = 1; //返回码
+    string msg = 2; //当返回错误时 对应的错误信息
+    YhglobalPrepaidInfo yhglobalPrepaidInfo = 3;
+    repeated YhglobalPrepaidInfoItem itemList = 4;
+}
+message SearchPrepaidConfirmReq{
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    string flowCode = 3;
+    int32 accountType = 4;
+    string useDateStart = 5;
+    string useDateEnd = 6;
+    string dateStart = 7;
+    string dateEnd = 8;
+    int32 page = 9;
+    int32 pageSize = 10;
+}

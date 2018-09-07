@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <title>确认台账</title>
+</head>
+
+<body>
+<div class="wrapper clearfix">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="sidebar"></div>
+    <!-- 主体内容 -->
+    <div class="yh-content">
+        <!-- 头部内容 -->
+        <div class="fenxiao-header clearfix">
+            <h2>分销协同平台</h2>
+            <div class="shape-box">
+                <select id="projectlist"></select>
+                <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                <span></span>
+                <a href="javascript:void(0);">注销</a>
+            </div>
+        </div>
+        <!-- 主要内容 -->
+        <div class="yh-container">
+            <!-- 面包屑菜单 -->
+            <div class="fenxiao-nav">
+                <span>当前位置：</span>
+                <a href="javascript:void(0);">收付款管理</a> &gt; <a href="javascript:void(0);">确认台账</a>
+            </div>
+            <!-- 表单 -->
+            <div class="form-box">
+                <div class="fx-form clearfix">
+                    <div class="form-inputs" id="form-input">
+                        <ul class="clearfix">
+                            <li><label>确认时间</label>
+                                <input type="text" id="confirmstarttime" placeholder="请选择时间" class="yhdate-input"><i>
+                                    至 </i>
+                                <input type="text" id="confirmendtime" placeholder="请选择时间" class="yhdate-input">
+                            </li>
+                            <li>
+                                <label for="switchnumber">客户名称</label>
+                                <input type="text" id="switchnumber">
+                            </li>
+                            <li><label>收款日期</label>
+                                <input type="text" id="orderstarttime" placeholder="请选择时间" class="yhdate-input"><i>
+                                    至 </i>
+                                <input type="text" id="orderendtime" placeholder="请选择时间" class="yhdate-input">
+                            </li>
+                            <li>
+                                <label for="salesno">确认流水号</label>
+                                <input type="text" id="salesno">
+                            </li>
+                            <li><label for="approveStatus">审批状态</label>
+                                <select id="approveStatus">
+                                    <option value="">请选择</option>
+                                    <option value="true">已审批</option>
+                                    <option value="false">未审批</option>
+                                </select>
+                            </li>
+                            <li><label for="bankName">收款银行</label>
+                                <select id="bankName">
+                                    <option value="">请选择</option>
+                                    <option value="中信银行">中信银行</option>
+                                    <option value="江苏银行">江苏银行</option>
+                                    <option value="交通银行">交通银行</option>
+                                    <option value="浦发银行">浦发银行</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-btn">
+                        <button id="yhquery-btn" class="yhquery-btn">查询</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 操作表格 -->
+            <div class="yhtable-header clearfix">
+                <!--<div class="opera-btn">-->
+                    <!--<a class="yhhandle-btn" href="javascript:void(0);" id="cancelConfirm-btn">取消确认</a>-->
+                    <!--<a class="yhhandle-btn" href="javascript:void(0);" id="approve-btn">审批</a>-->
+                <!--</div>-->
+            </div>
+            <!-- 渲染表格 -->
+            <div class="yh-table">
+                <table id="yhtable" class="table yhtable"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/receivablesconfirmation/cashledger.js?v=cf64710b7d"></script>
+</body>
+
+</html>

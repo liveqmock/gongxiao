@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <title>新增采购单</title>
+    <style type="text/css">
+        .yhtable-header {
+            border-top: none;
+            border-bottom: none;
+        }
+
+        .table {
+            table-layout: fixed;
+        }
+
+        .yhmask thead {
+            table-layout: fixed;
+        }
+
+        .table td {
+            width: 30%;
+        }
+
+        .yhtable thead {
+            background-color: #e1e4ea;
+        }
+
+        .fixed-table-pagination {
+            font-size: 12px;
+        }
+
+        input.yhpurinput,
+        input.inputamount {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper clearfix">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="sidebar"></div>
+    <!-- 主体内容 -->
+    <div class="yh-content">
+        <!-- 头部内容 -->
+        <div class="fenxiao-header clearfix">
+            <h2>分销协同平台</h2>
+            <div class="shape-box">
+                <select name="projectList" id="projectlist"></select>
+                <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                <span></span>
+                <a href="javascript:void(0);">注销</a>
+            </div>
+        </div>
+        <!-- 主要内容 -->
+        <div class="yh-container">
+            <!-- 面包屑菜单 -->
+            <div class="fenxiao-nav">
+                <span>当前位置：</span>
+                <a href="javascript:void(0);">采购管理</a> &gt; <a href="javascript:void(0);">采购单管理</a> &gt; <a
+                    href="javascript:void(0);">新增采购单</a>
+            </div>
+            <!-- 编辑页 -->
+            <div class="infolist-wrap">
+                <!-- 基本信息 -->
+                <h3 class="title-h3">基本信息</h3>
+                <div class="infobox">
+                    <div class="infolist">
+                        <ul class="clearfix">
+                            <li>
+                                <span class="label-span"><label class="limit-label">供应商</label></span>
+                                <select id="supplierlist"></select>
+                                <strong class="verification" id="supplier-list-verification"></strong>
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">仓库</label></span>
+                                <select id="warehouselist"></select>
+                                <strong class="verification" id="warehouse-list-verification"></strong>
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">物流方式</label></span>
+                                <select name="" id="logistic">
+                                    <option value="2">第三方物流</option>
+                                    <option value="1">自提</option>
+                                </select>
+                                <strong class="verification" id="logistic-verification"></strong>
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">收货地址</label></span>
+                                <input type="text" id="shopaddress" disabled>
+                                <strong class="verification" id="shopaddress-verification"></strong>
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">业务日期</label></span>
+                                <input type="text" id="yhbusiness-date" class="yhdate-input">
+                                <strong class="verification" id="yhbusiness-date-verification"></strong>
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">采购方式</label></span>
+                                <select id="purchase-type">
+                                    <option value="1">普通采购</option>
+                                    <option value="2">货补采购</option>
+                                </select>
+                                <strong class="verification" id="purchase-type-verification"></strong>
+                            </li>
+                            <!--<li><span class="label-span"><label class="limit-label">供应商订单号</label></span>-->
+                                <!--<input type="text" id="brandno">-->
+                                <!--<strong class="verification" id="brandno-verification"></strong>-->
+                            <!--</li>-->
+                            <li><span class="label-span"><label class="limit-label">是否开票</label></span>
+                                <select id="invoice">
+                                    <option value="1">不开发票</option>
+                                    <option value="2">开具发票</option>
+                                </select>
+                                <strong class="verification" id="invoice-verification"></strong>
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">合同参考号</label></span>
+                                <input type="text" id="orderno">
+                                <strong class="verification" id="orderno-verification"></strong>
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">要求到货日期</label></span>
+                                <input type="text" id="yharrival-date" class="yhdate-input">
+                                <strong class="verification" id="yharrival-date-verification"></strong>
+                            </li>
+                            <li><span class="label-span">到货截至日期</span>
+                                <input type="text" id="yhexpiry-date" class="yhdate-input">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="remaskinfo">
+                        <p><span>备注</span>
+                            <textarea name="" cols="30" rows="10" id="remask"></textarea>
+                        </p>
+                    </div>
+                </div>
+                <div class="purchaseaddtable">
+                    <div class="yhtable-header purchaseadd-header">
+                        <a class="yhhandle-btn" id="purchase-addbtn">添加商品</a>
+                        <!--<a class="yhhandle-btn">导入商品</a>-->
+                    </div>
+                    <!-- 渲染表格 -->
+                    <div class="yh-table">
+                        <table id="yhtable" class="yhtable"></table>
+                    </div>
+                </div>
+                <div class="info-inputlayout total-box purchase-addinfo purchase-ul">
+                    <ul class="clearfix">
+                        <li><span>采购品种</span><i id="purchase-variety">0</i>种</li>
+                        <li><span>采购总数量</span><i id="purchase-total-number">0</i>个</li>
+                        <li><span>订单应付金额</span><i id="purchase-should-pay">0.00</i>元</li>
+                        <li><span>返利使用金额</span>
+                            <input type="text" id="couponamount" number>元
+                        </li>
+                        <li><span>代垫使用金额</span>
+                            <input type="text" id="purchase-prepaid" number>元
+                        </li>
+                        <li><span>采购订单金额</span><i id="purchase-order-amount">0.00</i>元</li>
+                    </ul>
+                </div>
+                <div class="sub-btn clearfix">
+                    <button class="yhsubmit-btn" id="purchase-submit">保存并提交</button>
+                    <button class="yhcancel-btn">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 遮罩层 -->
+    <div class="yhmask yhmask-hide" id="yhmask">
+        <div class="yhmask-div">
+            <div class="yhmask-menu">
+                <span>添加货品</span>
+                <a href="javascript:void(0);" id="yhmask-switch">×</a>
+            </div>
+            <div class="yhmask-content clearfix">
+                <div class="yhmask-leftbox">
+                    <h3>请选择要添加的货品</h3>
+                    <div class="leftbox-input">
+                        <input type="text" id="productCode" placeholder="请输入货品编码">
+                        <input type="text" id="productName" placeholder="请输入货品名称">
+                        <button id="searchProduct">查询</button>
+                    </div>
+                    <div class="tobeaddtable">
+                        <table id="leftbox-table" class="table"></table>
+                    </div>
+                </div>
+                <div class="yhmask-rightbox">
+                    <h3>已选的货品<span id="right-addnum">(0)</span></h3>
+                    <div class="rightbox-table">
+                        <table id="rightbox-table" class="table"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="yhmask-btn sub-btn">
+                <button class="yhsubmit-btn" id="yhmask-submit">确认</button>
+                <button class="yhcancel-btn" id="yhmask-cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/common/loader.js?v=8e48bd0d07"></script>
+<script src="../js/purchase/add.js?v=fc9e404626"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.inventory.inventoryage.microservice";
+option java_outer_classname = "InventoryAgeStructure";
+
+import "gongxiao.global.structure.proto";
+
+service InventoryAgeService{
+    //1 多条件查询进销存台账
+    rpc getInventoryAge (GetInventoryAgeRequest) returns (InventoryAgePageInfo) {}
+}
+
+message GetInventoryAgeRequest{
+    RpcHeader rpcHeader=1;
+    int32 pageNumber=2;
+    int32 pageSize=3;
+    string projectId=4;
+    string batchNo=5;
+    string inboundOrderNo=6;
+    string outboundOrderNo=7;
+    string startDate=8;
+    string endDate=9;
+}
+
+message InventoryAgePageInfo {
+    int32 pageNum = 1; // 页码
+    int32 pageSize = 2; // 页面条数
+    int64 total = 3; // 总数
+    repeated InventoryAge list = 4;
+}
+
+message InventoryAge{
+    int32 status=1;
+    string batchNo=2;
+    string productCode=3;
+    string productName=4;
+    string warehouseName=5;
+    int32 inboundQuantity=6;
+    string purchaseOrderNo=7;
+    string inboundOrderNo=8;
+    int64 createTime=9;
+    int64 receiveFinishTime=10;
+    int64 purchaseGuidPrice=11;
+    int64 purchasePrice=12;
+    int64 costPrice=13;
+    int64 batchInboundAmount=14;
+    int32 inventoryAge=15;
+    int32 restAmount=16;
+    string salesOrderNo=17;
+    string outboundOrderNo=18;
+    int64 salesGuidPrice=19;
+    int64 outboundPrice=20;
+    int64 outboundQuantity=21;
+    int64 batchOutboundAmount=22;
+    int64 customerUseCoupon=23;
+    int64 customerUsePrepaid=24;
+    int64 outboundDate=25;
+    int64 sightTime=26;
+
+}

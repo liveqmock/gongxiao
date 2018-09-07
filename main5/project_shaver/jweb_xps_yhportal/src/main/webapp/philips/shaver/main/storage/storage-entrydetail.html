@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <title>入库单详情</title>
+</head>
+<body>
+<div class="wrapper clearfix">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="sidebar"></div>
+    <!-- 主体内容 -->
+    <div class="yh-content">
+        <!-- 头部内容 -->
+        <div class="fenxiao-header clearfix">
+            <h2>分销协同平台</h2>
+            <div class="shape-box">
+                <input type="text" id="projecttext">
+                <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                <span></span>
+                <a href="javascript:void(0);">注销</a>
+            </div>
+        </div>
+        <div class="yh-container">
+            <!-- 面包屑 -->
+            <div class="fenxiao-nav">
+                <span>当前位置：</span>
+                <a href="javascript:void(0);">仓储管理</a> &gt; <a href="javascript:void(0);">入库单管理</a> &gt; <a
+                    href="javascript:void(0);">入库详情</a>
+            </div>
+            <div class="info-list-wrap">
+                <h3 class="info-list-title">基本信息</h3>
+                <div class="info-list-content">
+                    <div class="info-list-inputs" id="storageinfo">
+                        <ul class="clearfix">
+                            <li>
+                                <i class="label-span">入库单号</i>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <i class="label-span">入库通知单号</i>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <i class="label-span">单据类型</i>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <i class="label-span">WMS入库单号</i>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <i class="label-span">采购订单号</i>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <i class="label-span">供应商号</i>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <i class="label-span">TMS单号</i>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <i class="label-span">EAS入库单号</i>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <i class="label-span">更新时间</i>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <i class="label-span">收货仓库</i>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <i class="label-span">批次号</i>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <i class="label-span">创建时间</i>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <i class="label-span">入库日期</i>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <i class="label-span">收获地址</i>
+                                <input type="text" disabled>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="info-table-wrap">
+                <h3 class="info-list-title">明细信息</h3>
+                <div class="yh-table">
+                    <table id="yhtable" class="yhtable"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/storage/inbound-entry-detail.js?v=af331abc69"></script>
+</body>
+</html>

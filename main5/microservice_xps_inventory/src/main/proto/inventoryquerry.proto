@@ -1,0 +1,123 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.inventory.inventoryquerry.microservice";
+option java_outer_classname = "InventoryquerryStructure";
+
+import "gongxiao.global.structure.proto";
+import "commen.model.proto";
+
+service InventoryquerryService{
+    //1 [货品库存]页 根据productName 分页查询 货品库存
+    rpc getProductInventoryByName (GetProductInventoryByNameRequest) returns (GetProductInventoryByNameResponse) {}
+    //2 [仓库库存] 按商品编码+商品名称+仓库名称条件 分页查询仓库库存
+    rpc getWarehouseInventory (GetWarehouseInventoryRequest) returns (GetWarehouseInventoryResponse) {}
+    //3 实时查询 单个商品的库存
+    rpc selectQuantityByProjectAndProductCode (GetQuantityRequest) returns (GetQuantityResponse) {}
+    //4 更新商品的库存
+    rpc updateInventoryInfo (UpdateRequest) returns (UpdateResponse) {}
+    //5 根据条件查询商品库存信息
+    rpc selectInventoryInfo (GetInventoryInfoRequest) returns (GetInventoryInfoResponse) {}
+    //6 查询所有商品库存信息
+    rpc selectAllInventoryInfo (GetAllInventoryInfoRequest) returns (GetAllInventoryInfoResponse) {}
+}
+//3
+message GetProductInventoryByNameRequest{
+    RpcHeader rpcHeader=1;
+    int32 pageNumber=2;
+    int32 pageSize=3;
+    int64 projectId=4;
+    string productCode=5;
+    string productName=6;
+}
+message GetProductInventoryByNameResponse{
+    int32 pageNum = 1; // 页码
+    int32 pageSize = 2; // 页面条数
+    int64 total = 3; // 总数
+    repeated ProductInventoryShowModel list=4;
+}
+//2
+message GetWarehouseInventoryRequest{
+    RpcHeader rpcHeader=1;
+    int32 pageNumber=2;
+    int32 pageSize=3;
+    string projectId=4;
+    string productCode=5;
+    string productName=6;
+    string warehouseId=7;
+    string batchNo=8;
+}
+
+message GetWarehouseInventoryResponse{
+    int32 pageNum = 1; // 页码
+    int32 pageSize = 2; // 页面条数
+    int64 total = 3; // 总数
+    repeated WarehouseInventoryShowModel list=4;
+}
+//3
+message GetQuantityRequest{
+    RpcHeader rpcHeader=1;
+    string projectId=2;
+    string productCode=3;
+}
+
+message GetQuantityResponse{
+    int32 quantity=1;
+}
+//4
+message UpdateRequest{
+    RpcHeader rpcHeader=1;
+    ProductInventory productInventory=2;
+}
+
+message UpdateResponse{
+    int32 currency=1;
+}
+
+//5
+message GetInventoryInfoRequest{
+    RpcHeader rpcHeader=1;
+    int32 purchaseType=2;
+    int32 inventoryStatus=3;
+    int64 projectId=4;
+    string batchNo=5;
+    string productCode=6;
+    string warehouseId=7;
+}
+
+message GetInventoryInfoResponse{
+    ProductInventory productInventory=1;
+}
+
+//6
+message GetAllInventoryInfoRequest{
+    int64 projectId=1;
+}
+
+message GetAllInventoryInfoResponse{
+    repeated ProductInventory list=1;
+}
+
+
+message ProductInventoryShowModel{
+    int32 projectId=1;          //项目id
+    string productName=2;     //商品名称
+    string productCode=3;     //商品编码
+    int32 availableQuantity=4;  //可用数量
+    int32 occupancyQuantity=5;  //占用数量
+    int32 defectiveQuantity=6;  //残品数量
+    int32 physicalInventory=7;  //实物库存
+    int32 onWayQuantity=8;      //在途数量
+    int32 frozenQuantity=9;     //冻结数量
+}
+
+message WarehouseInventoryShowModel{
+    int32 projectId=1;         //项目id
+    string productName=2;     //商品名称
+    string productCode=3;     //商品编码
+    string warehouseName=4;   //仓库名称
+    string batchNo=5;         //批次号
+    string purchaseType=6;    //采购方式
+    int32 availableQuantity=7;  //数量
+    int32 occupancyQuantity=8;  //占用数量
+    string status=9;             //库存状态
+}
+

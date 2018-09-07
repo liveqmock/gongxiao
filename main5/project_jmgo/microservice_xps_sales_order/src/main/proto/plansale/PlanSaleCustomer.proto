@@ -1,0 +1,86 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.plansale.microservice";
+option java_outer_classname = "PlanSaleCustomerStructure";
+
+import "gongxiao.global.structure.proto";
+
+service PlanSaleCustomerService {
+    //1. 查询客户预售单计划列表
+    rpc selectCustomerPlanList (SelectCustomerPlanListReq) returns (SelectCustomerPlanListResp) {
+    }
+    //2. 查询客户预售单明细列表
+    rpc selectCustomerPlanItemList (SelectCustomerPlanItemListReq) returns (SelectCustomerPlanItemListResp) {
+    }
+}
+//2
+message SelectCustomerPlanItemListReq{
+    RpcHeader rpcHeader=1;
+    string projectId=2;
+    string distributorId=3;
+    string salePlanNo=4;
+    string productModle=5;
+    string productName=6;
+    int32 orderStatus=7;
+    int64 startDate=8;
+    int64 endDate=9;
+    int32 pageNumber=10;
+    int32 pageSize=11;
+}
+
+message SelectCustomerPlanItemListResp{
+    repeated CustomerPlanItemInfo CustomerPlanItemInfoList=1;
+    int64 total =2;
+}
+
+//1
+message SelectCustomerPlanListReq {
+    RpcHeader rpcHeader = 1;
+    string projectId = 2;
+    string distributorId = 3;
+    string distributorName = 4;
+    int32 pageNumber = 5;
+    int32 pageSize = 6;
+}
+
+message SelectCustomerPlanListResp {
+    repeated CustomerPlanInfo customerPlanInfoList=1;
+    int64 total = 2;
+}
+
+//model
+message CustomerPlanItemInfo{
+    string productModle=1;
+    string productName=2;
+    int32 allocatedQuantity=3;
+    int32 saleOccupationQuantity=4;//销售占用
+    int32 soldQuantity=5; //已售数量
+    int32 couldBuyNumber=6;// 客户可下单数量
+    string currencyCode=7;
+    string guidePrice=8;
+    string brandPrepaidDiscount=9; //品牌商支持点
+    string yhPrepaidDiscount=10;//越海支持点
+    string wholesalePrice=11; //出货价
+    string recordStatus=12;
+    string salePlaneNo=13; //可售单号 管理的那个
+    string startDate=14;
+    string endDate=15;
+}
+
+message CustomerPlanInfo {
+    string brandName=1;
+    string brandId=2;
+    string projectId=3;
+    string projectName=4;
+    string distributorId=5;
+    string distributorName=6;
+    //可售总数
+    int32 onSaleQuantity=7;
+    //可售种类
+    int32 onSaleCategory=8;
+    //销售占用
+    int32 saleOccupationQuantity=9;
+    //已售数量
+    int32 soldQuantity=10;
+    //剩余可售数量
+    int32 remainQuantity=11;
+}

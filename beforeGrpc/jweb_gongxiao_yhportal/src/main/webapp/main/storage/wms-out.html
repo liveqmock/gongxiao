@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=f1463f4aab"></script>
+    <title>wms出库确认</title>
+</head>
+
+<body>
+    <div class="wrapper clearfix">
+        <!-- 侧边栏 -->
+        <div id="sidebar" class="sidebar"></div>
+        <!-- 主体内容 -->
+        <div class="yh-content">
+            <!-- 头部内容 -->
+            <div class="fenxiao-header clearfix">
+                <h2>分销协同平台</h2>
+                <div class="shape-box">
+                    <select id="projectlist"></select>
+                    <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                    <span></span>
+                    <a href="javascript:void(0);">注销</a>
+                </div>
+            </div>
+            <!-- 主要内容 -->
+            <div class="yh-container">
+                <!-- 面包屑菜单 -->
+                <div class="fenxiao-nav">
+                    <span>当前位置：</span>
+                    <a href="javascript:void(0);">wms客户端</a> &gt; <a href="javascript:void(0);">wms出库确认</a>
+                </div>
+
+                <!-- 操作表格 -->
+                <div class="yhtable-header clearfix">
+                    <div class="opera-btn">
+                        <button class="yhquery-btn" id="yhquery-btn" href="javascript:void(0);">查询</button>
+                    </div>
+                </div>
+                <!-- 渲染表格 -->
+                <div class="yh-table">
+                    <table id="yhtable" class="yhtable"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/storage/wms-out.js?v=1a13f84ca6"></script>
+</body>
+
+</html>

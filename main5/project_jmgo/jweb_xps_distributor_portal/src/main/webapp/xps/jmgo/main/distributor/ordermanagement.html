@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./js/file.js"></script>
+    <link rel="stylesheet" href="./css/order.css">
+    <title>订单管理-订单查询</title>
+</head>
+
+<body>
+    <div class="customer-wrapper">
+        <!-- 顶部内容 -->
+        <div class="customer-header">
+            <img src="" alt="">
+        </div>
+        <!-- 导航栏 -->
+        <div class="customer-nav clearfix">
+            <div class="accountname">
+                <img src="" alt="">
+                <span>账户名称</span>
+            </div>
+            <div class="customer-navlist clearfix">
+                <a href="./ordermanagement.html">商品查询</a>
+                <a href="./orderlistmanagement.html">订单管理</a>
+                <a href="./addressmanagement.html">收货地址维护</a>
+                <a href="./accountquery.html">账户查询</a>
+            </div>
+        </div>
+        <!-- 主体内容 -->
+        <div class="order-content">
+            <div class="order-proinfo">
+                <!-- 搜索 -->
+                <div class="order-search clearfix">
+                    <input type="text" id="orderquery-input">
+                    <button id="orderquerybtn">搜索</button>
+                </div>
+                <!-- 商品列表 -->
+                <div class="order-prolist">
+                    <ul class="clearfix" id="order-prolist"></ul>
+                </div>
+            </div>
+            <!-- 商品表格 -->
+            <div class="order-table">
+                <table id="order-table" class="table"></table>
+                <!-- 商品合计 -->
+                <div class="order-prototal clearfix">
+                    <!--<div class="rebate-info">-->
+                        <!--<p>可用返利<span id="availrebate">0</span></p>-->
+                        <!--<p>可用代垫<span id="availamount">0</span></p>-->
+                    <!--</div>-->
+                    <div class="order-btn">
+                        <ul class="clearfix">
+                            <li>已选商品<strong id="selectedpronum">0</strong>种</li>
+                            <li>合计<strong>CNY</strong></li>
+                            <li style="margin-right: 20px;width: 230px;"><strong id="totalamount">0</strong></li>
+                            <button id="orderbtn">下单</button>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/customer/order.js?v20180717"></script>
+</body>
+
+</html>

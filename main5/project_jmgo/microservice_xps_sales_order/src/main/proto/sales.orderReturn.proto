@@ -1,0 +1,203 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.sales.microservice";
+option java_outer_classname = "SalesOrderReturnServiceStructure";
+
+import "gongxiao.global.structure.proto";
+
+
+service SalesOrderReturnService {
+
+    // 查询退货列表
+    rpc getsOrderReturn (SearchOrderReturnReq) returns (SalesReturnPageInfoResp) {
+    }
+    //查询退货列表统计
+    rpc selectClassificationCount (SelectClassificationCountReq) returns (SalesReturnClassificationCountResp) {
+    }
+    //保存销售退货
+    rpc saveSalesReturnOrder (SalesReturnOrderReq) returns (RpcResult) {
+    }
+    //审核
+    rpc checkSalesReturnOrder (CheckSalesReturnOrderReq) returns (RpcResult) {
+    }
+    //预约入库回调
+    rpc salesReturnInbound (SalesReturnInboundReq) returns (RpcResult) {
+    }
+    //获取退货单详情j
+    rpc getSalesReturn (GetSalesReturnReq) returns (SalesReturnResp) {
+    }
+}
+message GetSalesReturnReq {
+    RpcHeader rpcHeader = 1;
+    int64 salesReturnedOrderId = 2;
+    int64 projectId = 3;
+}
+message SalesReturnResp {
+    int32 returnCode = 1; //返回码
+    string msg = 2; //当返回错误时 对应的错误信息
+    SalesReturnOrder salesReturnOrder = 3;
+    repeated SalesReturnOrderItem itemList = 4;
+
+}
+message SalesReturnInboundReq {
+    RpcHeader rpcHeader = 1;
+    string inboundOrderNo = 2;
+    string traceNo = 3;
+    string productCode = 4;
+    string productName = 5;
+    string productUnit = 6;
+    int32 inStockQuantity = 7;
+    int64 projectId = 8;
+}
+message CheckSalesReturnOrderReq {
+    RpcHeader rpcHeader = 1;
+    repeated CheckSalesReturnOrder checkList = 2;
+    int64 projectId = 3;
+}
+message CheckSalesReturnOrder {
+    int64 salesReturnedOrderId = 1;
+    int64 dataVersion = 2;
+}
+message SalesReturnOrderReq {
+    RpcHeader rpcHeader = 1;
+    SalesReturnOrder salesReturnOrder = 2;
+    repeated SalesReturnOrderItem itemList = 3;
+    int64 projectId = 4;
+}
+message SalesReturnOrder {
+    string createTime = 1;
+    int64 salesReturnedOrderId = 2;
+    int32 returnedOrderStatus = 3;
+    int32 returnedType = 5;
+    string salesReturnedOrderNo = 6;
+    int64 projectId = 7;
+    string projectName = 8;
+    int64 brandId = 9;
+    string brandName = 10;
+    int64 supplierId = 11;
+    string supplierName = 12;
+    int64 distributorId = 13;
+    string distributorName = 14;
+    string originalSalesOrderNo = 15;
+    string originalGongxiaoOutboundOrderNo = 16;
+    string originalOutboundWarehouseId = 17;
+    string originalOutboundWarehouseName = 18;
+    string targetWarehouseId = 19;
+    string targetWarehouseName = 20;
+    string warehouseAddress = 21;
+    string senderName = 22;
+    string senderMobile = 23;
+    string provinceId = 24;
+    string provinceName = 25;
+    string cityId = 26;
+    string cityName = 27;
+    string districtId = 28;
+    string districtName = 29;
+    string senderAddressItem = 30;
+    int32 logisticsType = 31;
+    double freight = 32;
+    int32 freightPaidBy = 34;
+    string logisticsOrderNo = 35;
+    string logisticsCompany = 36;
+    int64 returnedCouponAmount = 37;
+    int64 returnedPrepaidAmount = 39;
+    int64 returnedCashAmount = 41;
+    int32 totalReturnedQuantity = 43;
+    int32 totalImperfectQuantity = 44;
+    int32 inTransitQuantity = 45;
+    int32 inStockQuantity = 46;
+    string inboundOrderInfo = 47;
+    string gongxiaoWarehouseInboundOrderNo = 48;
+    string createdByName = 50;
+    string lastUpdateTime = 51;
+    string tracelog = 52;
+}
+message SalesReturnOrderItem {
+    int64 rowId = 1;
+    int32 itemStatus = 2;
+    int32 syncToGongxiaoWarehouseFlag = 3;
+    string gongxiaoWarehouseInboundOrderNo = 4;
+    string salesReturnedOrderNo = 5;
+    string warehouseId = 6;
+    string warehouseName = 7;
+    string productId = 8;
+    string productCode = 9;
+    string productName = 10;
+    string productUnit = 11;
+    int32 totalReturnedQuantity = 12;
+    int32 totalImperfectQuantity = 13;
+    int32 totalInStockQuantity = 14;
+    int32 inStockImperfectQuantity = 15;
+    int32 deliveredQuantity = 16;
+    string wmsInboundRecord = 17;
+    string returnCause = 18; //退货原因
+    string currencyCode = 19;
+    string currencyName = 20;
+    double wholesalePrice = 21;
+    int32 totalQuantity = 22;
+    double returnAmount = 23;
+    int32 inventoryType = 24;
+}
+message SearchOrderReturnReq {
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    int32 returnedType = 3;
+    string salesReturnedOrderNo = 4;
+    string warehouseId = 5;
+    string timeStart = 6;
+    string timeEnd = 7;
+    int32 returnedOrderStatus = 8;
+    int32 pageNumber = 9;
+    int32 pageSize = 10;
+}
+
+message SalesReturnPageInfoResp {
+    int32 pageNum = 1;
+    int32 pageSize = 2;
+    int32 size = 3;
+    int32 startRow = 4;
+    int32 endRow = 5;
+    int64 total = 6;
+    int32 pages = 7;
+    repeated SalesReturn list = 8;
+    int32 returnCode = 9; //返回码
+    string msg = 10; //当返回错误时 对应的错误信息
+}
+
+message SalesReturn {
+    int64 salesReturnedOrderId = 2;
+    int32 returnedOrderStatus = 3;
+    int32 returnedType = 4;
+    string salesReturnedOrderNo = 5;
+    string originalGongxiaoOutboundOrderNo = 6;
+    string senderName = 7;
+    string originalOutboundWarehouseName = 8;
+    string targetWarehouseName = 9;
+    int32 dataVersion = 10;
+    int64 lastUpdateTime = 11;
+    int64 createTime = 12;
+    string originalSalesOrderNo = 13;
+}
+message SelectClassificationCountReq {
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    int32 returnedType = 3;
+    string salesReturnedOrderNo = 4;
+    string warehouseId = 5;
+    string timeStart = 6;
+    string timeEnd = 7;
+}
+message SalesReturnClassificationCountResp {
+    int32 returnCode = 1; //返回码
+    string msg = 2; //当返回错误时 对应的错误信息
+    repeated SalesReturnClassificationCount countList = 3;
+}
+message SalesReturnClassificationCount {
+    int32 status = 1;
+    int32 count = 2;
+}
+
+
+
+
+

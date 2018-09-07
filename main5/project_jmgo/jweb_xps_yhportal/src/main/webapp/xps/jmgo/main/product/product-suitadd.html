@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <link rel="stylesheet" href="../css/product/add.css?v=3fb524bb22">
+    <title>组合货品新增</title>
+</head>
+
+<body>
+    <div class="wrapper clearfix">
+        <!-- 侧边栏 -->
+        <div id="sidebar" class="sidebar"></div>
+        <!-- 主体内容 -->
+        <div class="yh-content">
+            <!-- 头部内容 -->
+            <div class="fenxiao-header clearfix">
+                <h2>分销协同平台</h2>
+                <div class="shape-box">
+                    <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                    <span></span>
+                    <a href="javascript:void(0);">注销</a>
+                </div>
+            </div>
+            <!-- 主要内容 -->
+            <div class="yh-container">
+                <!-- 面包屑菜单 -->
+                <div class="fenxiao-nav">
+                    <span>当前位置：</span>
+                    <a href="javascript:void(0);">基础数据</a> &gt; <a href="javascript:void(0);">货品管理</a> &gt; <a href="javascript:void(0);">组合货品新增</a>
+                </div>
+                <!-- 编辑页 -->
+                <div class="infolist-wrap">
+                    <!-- 基本信息 -->
+                    <h3 class="title-h3">基本信息</h3>
+                    <div class="infobox">
+                        <div class="order-info info-inputlayout">
+                            <div class="order-info1">
+                                <p><span class="must-span">货品名称</span><input type="text"></p>
+                                <p><span class="must-span">货品编码</span><input type="text"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 子货品 -->
+                    <h3 class="title-h3">子货品</h3>
+                    <div class="infobox">
+                        <a class="yhhandle-btn" href="javascript:void(0);" id="yhhandle-btn">添加</a>
+                    </div>
+                    <!-- 提交取消区域 -->
+                    <div class="sub-btn clearfix">
+                        <button class="yhsubmit-btn">提交</button>
+                        <button class="yhcancel-btn">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 遮罩层 -->
+        <div class="yhmask yhmask-hide" id="yhmask">
+            <div class="yhmask-div">
+                <div class="yhmask-menu">
+                    <span>添加货品</span>
+                    <a href="javascript:void(0);" id="mask-close">×</a>
+                </div>
+                <div class="yhmask-content clearfix">
+                    <div class="yhmask-leftbox">
+                        <h3>请选择要添加的货品</h3>
+                        <div class="leftbox-input">
+                            <input type="text" placeholder="请输入货品编码">
+                            <input type="text" placeholder="请输入货品名称">
+                            <button>查询</button>
+                        </div>
+                        <div class="tobeaddtable"></div>
+                    </div>
+                    <div class="yhmask-rightbox">
+                        <h3>已选的货品<span>(6)</span></h3>
+                    </div>
+                </div>
+                <div class="yhmask-btn">
+                    <button class="yhsubmit-btn">确认</button>
+                    <button class="yhcancel-btn">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/globaljs.js?v=6e9b61347c"></script>
+</body>
+
+</html>

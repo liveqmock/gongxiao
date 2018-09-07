@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=f1463f4aab"></script>
+    <title>客户账户管理</title>
+</head>
+
+<body>
+    <div class="wrapper clearfix">
+        <!-- 侧边栏 -->
+        <div id="sidebar" class="sidebar"></div>
+        <!-- 主体内容 -->
+        <div class="yh-content">
+            <!-- 头部内容 -->
+            <div class="fenxiao-header clearfix">
+                <h2>分销协同平台</h2>
+                <div class="shape-box">
+                    <select id="projectlist"></select>
+                    <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                    <span></span>
+                    <a href="javascript:void(0);">注销</a>
+                </div>
+            </div>
+            <!-- 主要内容 -->
+            <div class="yh-container">
+                <!-- 面包屑菜单 -->
+                <div class="fenxiao-nav">
+                    <span>当前位置：</span>
+                    <a href="javascript:void(0);">账户管理</a> &gt; <a href="javascript:void(0);">客户账户管理</a>
+                </div>
+                <div class="form-box">
+                    <div class="fx-form clearfix">
+                        <div class="form-inputs">
+                            <ul class="clearfix">
+                                <li><label for="customerid">客户帐号</label>
+                                    <input type="text" id="customerid">
+                                </li>
+                                <li><label for="customername">客户名称</label>
+                                    <input type="text" id="customername">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="form-btn">
+                            <button id="yhquery-btn" class="yhquery-btn">查询</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 操作表格 -->
+                <div class="yhtable-header clearfix">
+                    <div class="opera-btn">
+                        <a id="yhhandle-btn" class="yhhandle-btn">导出</a>
+                    </div>
+                </div>
+                <!-- 渲染表格 -->
+                <div class="yh-table">
+                    <table id="yhtable" class="table yhtable"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/accountmanagement/customeraccountmanagement.js?v=e12a014897"></script>
+</body>
+
+</html>

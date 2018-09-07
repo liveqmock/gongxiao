@@ -1,0 +1,422 @@
+swagger: "2.0"
+info:
+  description: "Api for bestlyn statement checking project"
+  version: "1.0.0"
+  title: "api"
+host: "10.1.11.229:8080"
+basePath: "/"
+schemes:
+- "http"
+
+paths:
+  /purchase/order/getPurchaseList:
+    get:
+      tags:
+      - "获取采购单列表"
+      summary: "获取采购单列表"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "purchaseOrderNo"
+          in: "query"
+          description: "采购单号"
+          required: false
+          type: "string"
+        - name: "brandId"
+          in: "query"
+          description: "品牌商ID"
+          required: false
+          type: "string"
+        - name: "warehouseId"
+          in: "query"
+          description: "仓库订单号"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /purchase/order/getPlanInboundItemList:
+    get:
+      tags:
+      - "获取计划入库单货品列表"
+      summary: "获取计划入库单货品列表"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "purchaseOrderNumber"
+          in: "query"
+          description: "采购单号"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /purchase/order/getPurchaseDetail:
+    get:
+      tags:
+      - "通过采购单号获取采购详情"
+      summary: "通过采购单号获取采购详情"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "purchaseOrderNo"
+          in: "query"
+          description: "采购单号"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /purchase/foundation/getBrandList:
+    get:
+      tags:
+      - "获取品牌商列表"
+      summary: "获取品牌商列表"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /purchase/order/generatePurchaseOrders:
+    post:
+      tags:
+      - "新增采购单"
+      summary: "新增采购单"
+      produces:
+      - "application/json"
+      parameters:
+        - name: projectId
+          in: formData
+          description: 项目ID
+          type: string
+        - name: warehouseId
+          in: formData
+          description: 仓库ID
+          type: string
+        - name: supplierId
+          in: formData
+          description: 供应商ID
+          type: string
+        - name: accountId
+          in: formData
+          description: 账号ID
+          type: string
+        - name: paymentMode
+          in: formData
+          description: 付款方式
+          type: number
+        - name: logisticType
+          in: formData
+          description: 物流方式 0,自提 1,第三方物流
+          type: number
+        - name: purchaseType
+          in: formData
+          description: 采购类型 0,普通采购
+          type: number
+        - name: businessDate
+          in: formData
+          description: 业务发生日期
+          type: string
+        - name: requirArrivalDate
+          in: formData
+          description: 要求到货日期
+          type: string
+        - name: arrivalDeadline
+          in: formData
+          description: 到货截止日期
+          type: string
+        - name: remark
+          in: formData
+          description: 备注
+          type: string
+        - name: purchaseCategory
+          in: formData
+          description: 采购种类数目
+          type: integer
+        - name: purchaseNumber
+          in: formData
+          description: 采购总数量
+          type: integer
+        - name: purchaseAmount
+          in: formData
+          description: 采购基础金额
+          type: number
+        - name: couponAmount
+          in: formData
+          description: 订单返利金额
+          type: number
+        - name: prepaidAmount
+          in: formData
+          description: 订单代垫金额
+          type: number
+        - name: alreadyPay
+          in: formData
+          description: 已付金额(一般是先款后货,而且会多付)
+          type: number
+        - name: purchaseActualPay
+          in: formData
+          description: 采购实付金额
+          type: number
+        - name: brandOrderNo
+          in: formData
+          description: 品牌商订单号
+          type: string
+        - name: contractReferenceOrderNo
+          in: formData
+          description: 合同参考号
+          type: string
+        - name: purchaseItemInfoJson
+          in: formData
+          description: 采购货品列表(jsonArray)
+          type: string
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /purchase/order/planInbound:
+    post:
+      tags:
+      - "计划入库"
+      summary: "计划入库"
+      produces:
+      - "application/json"
+      parameters:
+        - name: purchaseOrderNo
+          in: formData
+          description: 采购单号
+          type: string
+        - name: warehouseId
+          in: formData
+          description: 仓库ID
+          type: string
+        - name: warehouseName
+          in: formData
+          description: 仓库名
+          type: string
+        - name: requireInboundDate
+          in: formData
+          description: 要求到货日期
+          type: string
+        - name: totalQuantity
+          in: formData
+          description: 各种类商品本次入库数量总和
+          type: integer
+        - name: inTransitQuantity
+          in: formData
+          description: 计划入库数量
+          type: integer
+        - name: planInboundItemListJson
+          in: formData
+          description: 货品信息列表的json
+          type: string
+    responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/foundation/getProjectInfo:
+    get:
+      tags:
+      - "根据用户ID获取项目信息"
+      summary: "根据用户ID获取项目信息"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "userId"
+          in: "query"
+          description: "用户ID"
+          type: "string"
+
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/order/getInboundList:
+    get:
+      tags:
+      - "获取采购单入库信息"
+      summary: "根据用户ID获取项目信息"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "purchaseNumber"
+          in: "query"
+          description: "采购单号"
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/foundation/getProjectList:
+    get:
+      tags:
+      - "获取项目信息列表"
+      summary: "获取项目信息列表"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/foundation/warehouseList:
+    get:
+      tags:
+      - "获取仓库信息列表"
+      summary: "获取仓库信息列表"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/foundation/getProductInfoList:
+    get:
+      tags:
+      - "获取产品信息列表"
+      summary: "获取产品信息列表"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "projectId"
+          in: "query"
+          description: "项目ID"
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/foundation/getProjectCash:
+    get:
+      tags:
+      - "获取项目的余额"
+      summary: "获取项目的余额"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "projectId"
+          in: "query"
+          description: "项目ID"
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/order/calculateProductInfo:
+    get:
+      tags:
+        - "计算货品的各价格"
+      summary: "计算货品的各价格"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "productCode"
+          in: "query"
+          description: "产品ID"
+          type: "string"
+        - name: "productCode"
+          in: "query"
+          description: "产品编码"
+          type: "string"
+        - name: "productName"
+          in: "query"
+          description: "产品名称"
+          type: "string"
+        - name: "brandId"
+          in: "query"
+          description: "品牌ID"
+          type: "string"
+        - name: "brandName"
+          in: "query"
+          description: "品牌名称"
+          type: "string"
+        - name: "guidePrice"
+          in: "query"
+          description: "指导价"
+          type: "number"
+        - name: "purchaseNumber"
+          in: "query"
+          description: "采购数量"
+          type: "integer"
+        - name: "purchaseDiscount"
+          in: "query"
+          description: "采购折扣"
+          type: "number"
+        - name: "couponRate"
+          in: "query"
+          description: "当前项目的返利比例"
+          type: "number"
+        - name: "prepaidRate"
+          in: "query"
+          description: "当前项目的代垫比例"
+          type: "number"
+        - name: "couponTotalMoney"
+          in: "query"
+          description: "项目返利余额"
+          type: "number"
+        - name: "prepaidTotalMoney"
+          in: "query"
+          description: "项目代垫余额"
+          type: "number"
+        - name: "couponTotalRate"
+          in: "query"
+          description: "总计返利比例"
+          type: "number"
+
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"

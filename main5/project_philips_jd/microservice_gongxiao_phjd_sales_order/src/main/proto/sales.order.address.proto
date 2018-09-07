@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.sales.microservice";
+option java_outer_classname = "SalesOrderAddressServiceStructure";
+
+import "gongxiao.global.structure.proto";
+
+service SalesOrderAddressService {
+    //修改收件人信息
+    rpc updateRecipientInfo (UpdateShippingAddressRequest) returns (RpcResult) ;
+}
+// 收货地址信息
+message UpdateShippingAddressRequest{
+    RpcHeader rpcHeader = 1;
+    int64 salesOrderId = 2;
+    string receivingAddress =3;
+    string receiverTel =4;
+    string receiver = 5;
+    string arrived = 6;
+    int64 projectId = 7;
+}

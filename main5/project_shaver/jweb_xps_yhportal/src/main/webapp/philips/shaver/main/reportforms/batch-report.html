@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <script src="../js/echarts.min.js?v=30ec8dee7c"></script>
+    <title>批次报表</title>
+    <style type="text/css">
+        .batch-report{
+            width: 48%;
+            height: 500px;
+        }
+        .batch-report1{
+            width:100%;
+            height: 700px;
+        }
+        .report-forms2 .batch-report{
+            float: left;
+            margin-top: 80px;
+            border:1px solid #ccc;
+        }
+        .report-forms2 .batch-report:nth-child(even){
+            margin-left: 2%;
+        }
+        @media screen and (max-width: 1380px) {
+            .batch-report1{
+                width:100%;
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper clearfix">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="sidebar"></div>
+    <!-- 主体内容 -->
+    <div class="yh-content">
+        <!-- 头部内容 -->
+        <div class="fenxiao-header clearfix">
+            <h2>分销协同平台</h2>
+                <div class="shape-box">
+                    <select id="projectlist"></select>
+                <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                <span></span>
+                <a href="javascript:void(0);">注销</a>
+            </div>
+        </div>
+        <!-- 主要内容 -->
+        <div class="yh-container">
+            <!-- 面包屑菜单 -->
+            <div class="fenxiao-nav">
+                <span>当前位置：</span>
+                <a href="javascript:void(0);">报表中心</a> &gt; <a href="javascript:void(0);">月度进销存</a>
+            </div>
+            <div class="report-forms">
+                <div id="batch-report1" class="batch-report batch-report1"></div>
+            </div>
+            <!--<div class="report-forms2 clearfix">-->
+                <!--<div id="batch-report3" class="batch-report batch-report1"></div>-->
+            <!--</div>-->
+            <div class="report-forms2 clearfix">
+                <div id="batch-report2" class="batch-report batch-report2"></div>
+                <div id="batch-report3" class="batch-report batch-report3"></div>
+                <div id="batch-report4" class="batch-report batch-report4"></div>
+                <div id="batch-report5" class="batch-report batch-report5"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/reportforms/batch-report.js?v=6fd4dbe9c9"></script>
+</body>
+
+</html>

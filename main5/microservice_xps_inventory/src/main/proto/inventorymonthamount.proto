@@ -1,0 +1,24 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.inventory.inventorymonthamount.microservice";
+option java_outer_classname = "InventoryMonthAmountStructure";
+
+import "gongxiao.global.structure.proto";
+
+service InventoryMonthAmoundService{
+    //1 查询月度库存金额
+    rpc getInventoryMonthAmount (GetInventoryMonthAmountRequest) returns (GetInventoryMonthAmountRespon) {}
+}
+
+message GetInventoryMonthAmountRequest{
+    RpcHeader rpcHeader=1;
+    int64 projectId=2;
+    string yearMonth=3;
+}
+
+message GetInventoryMonthAmountRespon {
+    InventoryMonthAmount inventoryMonthAmount = 1;
+}
+
+message InventoryMonthAmount{
+    int64 sumOfmoney=1; //金额
+}

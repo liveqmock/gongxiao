@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jweb_xps_yhportal:war">
+    <output-path>$PROJECT_DIR$/project_shaver/jweb_xps_yhportal/target</output-path>
+    <root id="archive" name="jweb_xps_yhportal-2.0.war">
+      <element id="artifact" artifact-name="jweb_xps_yhportal:war exploded" />
+    </root>
+  </artifact>
+</component>

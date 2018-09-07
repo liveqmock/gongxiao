@@ -1,0 +1,62 @@
+.purdetail-info {
+    width: 700px;
+}
+
+.purdetail-info i {
+    font-style: normal;
+    display: inline-block;
+    width: 84px;
+    text-align: right;
+}
+
+.purdetail-info p {
+    float: left;
+}
+
+.purdetail-info p:nth-child(even) {
+    margin-left: 36px;
+}
+
+.total-box ul {
+    margin-top: 20px;
+}
+
+.total-box li {
+    font-size: 12px;
+    float: left;
+    margin-left: 100px;
+}
+
+.total-box span {
+    width: 84px;
+    text-align: right;
+}
+
+.total-box p span {
+    width: 78px;
+}
+
+.total-box ul > li:first-child {
+    margin-left: -6px;
+}
+
+.total-box textarea {
+    border: 1px solid #d4d4d4;
+    text-indent: 2em;
+    width: 520px;
+    vertical-align: top;
+}
+
+.detail-info{
+    margin-top: 20px;
+}
+
+.detail-info > div {
+    float: left;
+    margin-left: 80px;
+}
+
+.detail-info > div:last-child {
+    float: right;
+    margin-right: 80px;
+}

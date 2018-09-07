@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.payment.microservice";
+option java_outer_classname = "PaymentCommonGrpc";
+
+import "gongxiao.global.structure.proto";
+//支付模块
+message AccountAmountResponse {
+    int64 cashAmount = 1; // 现金余额
+    int64 couponAmount = 2; // 返利余额
+    int64 prepaidAmount = 3; // 代垫余额
+    double cashAmountDouble= 4; //现金余额 页面展示值
+    double couponAmountDouble = 5; // 返利余额 页面展示值
+    double prepaidAmountDouble = 6; // 代垫余额，页面展示值
+}
+
+message FrontPageFlowSubtotal {
+    int32 incomeQuantity = 1; // 收入流水单数量
+    int32 expenditureQuantity = 2; // 支出流水单数量
+    double incomeAmount = 3; // 收入流水金额
+    double expenditureAmount = 4; // 支出流水金额
+}
+
+message FrontPageFlowPageInfo {
+    int32 pageNum = 1; // 页码
+    int32 pageSize = 2; // 单页条数
+    int64 total = 3; // 总条数
+    repeated FrontPageFlow flows = 4; // 流水数据
+}
+
+message FrontPageFlow {
+    string flowNo = 1; //流水号
+    int32 type = 2; //流水类型
+    string currencyCode = 4; //货币编码
+    double transactionAmount = 6; //交易前金额
+    double amountAfterTransaction = 8; //交易后金额
+    int64 createTime = 9; //创建时间
+    string createByName = 10; //创建人
+    string remark = 11; // 备注
+}
+// 核销返回结果
+message WriteOffResponse {
+    int32 returnCode = 1; // 错误码
+    int64 amountBeforeTransaction = 2; // 交易前金额
+    int64 amountAfterTransaction = 3; // 交易后金额
+}
+
+//核销请求
+message WriteOffRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 3; // 项目id
+    int64 amount = 4; // 交易金额
+    int64 transactionTime = 5; //交易时间
+    string writeOffFlowNo = 6; //核销流水号
+}

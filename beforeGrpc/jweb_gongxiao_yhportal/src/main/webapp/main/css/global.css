@@ -1,0 +1,413 @@
+/**
+ * @authors {len} (http://csshack.org)
+ * @date    2018/5/3
+ */
+.layui-layer-dialog {
+  color: #e85445;
+  width: 180px;
+}
+.info-inputlayout input[type="text"],
+.yhtable input[type="text"],
+.infolist input[type="text"],
+.shape-box input[type="text"],
+.yhmask input[type="text"],
+.account-mask input[type="text"],
+.info-inputlayout select,
+.yhtable select,
+.form-box select,
+.infolist select,
+.shape-box select,
+.yhmask select,
+.yhmask-amount select,
+.yhmask-amount input[type="text"],
+.table select{
+  border: 1px solid #d4d4d4;
+  text-indent: 6px;
+  height: 24px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.table select{
+  width: 100px;
+}
+.info-inputlayout input:focus,
+.yhtable input:focus,
+.form-box input:focus,
+.infolist input:focus,
+.shape-box input:focus,
+.yhmask input:focus,
+.retable-right input:focus,
+.info-inputlayout select:focus,
+.yhtable select:focus,
+.form-box select:focus,
+.infolist select:focus,
+.shape-box select:focus,
+.yhmask select:focus,
+.retable-right select:focus {
+  border: 1px solid #758ba8!important;
+}
+.info-inputlayout select option:hover,
+.yhtable select option:hover,
+.form-box select option:hover,
+.infolist select option:hover,
+.shape-box select option:hover,
+.yhmask select option:hover,
+.retable-right select option:hover {
+  background-color: #e5f4f6;
+}
+.infolist input[type="text"],
+.shape-box input[type="text"],
+.purdetail-info input[type="text"],
+.account-mask input[type="text"],
+.form-box select,
+.infolist select,
+.shape-box select {
+  width: 200px;
+}
+.leftbox-input input[type="text"] {
+  width: 150px;
+}
+.yhmask-content textarea{
+  width: 420px;
+}
+.yhmask-amount input[type="text"]{
+  width: 188px;
+}
+
+/*时间控件上的图标*/
+.yhdate-input {
+  cursor: pointer;
+  background: url('../images/date.png') right center no-repeat;
+  background-size: 16px 16px;
+}
+/*可编辑信息*/
+.infolist-wrap {
+  min-width: 1100px;
+  padding: 46px 28px;
+  background-color: #fff;
+  border-top: 2px solid #e8eaed;
+}
+.infolist-wrap h3.title-h3 {
+  font-size: 14px;
+  height: 14px;
+  line-height: 14px;
+  border-left: 2px solid #1a6acb;
+  color: #444;
+  padding-left: 6px;
+  margin-bottom: 10px;
+}
+.infobox {
+  border-top: 1px solid #e6e8ed;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  min-width: 1020px;
+  width: 1020px;
+}
+/*基本信息输入框布局*/
+.info-inputlayout {
+  padding-left: 80px;
+  box-sizing: border-box;
+}
+.info-inputlayout p,
+.info-inputlayout li {
+  font-size: 12px;
+  color: #444;
+  margin-top: 12px;
+}
+.info-inputlayout span,
+.info-inputlayout label {
+  display: inline-block;
+  margin-right: 6px;
+}
+.info-inputlayout .must-span {
+  position: relative;
+}
+.info-inputlayout .must-span:before {
+  content: "*";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -10px;
+  color: #ff0000;
+  font-size: 12px;
+}
+.purdetail-info {
+  width: 700px;
+}
+.purdetail-info i {
+  font-style: normal;
+  display: inline-block;
+  width: 84px;
+  text-align: right;
+}
+.purdetail-info p,
+.purdetail-info li {
+  float: left;
+}
+.purdetail-info p:nth-child(even),
+.purdetail-info li:nth-child(even) {
+  margin-left: 36px;
+}
+/* 创建订单详情 */
+.infolist {
+  padding-left: 80px;
+}
+.infolist ul {
+  width: 620px;
+}
+.infolist li {
+  font-size: 0;
+  float: left;
+  margin-top: 16px;
+  height: 24px;
+}
+.infolist li:nth-child(even) {
+  margin-left: 40px;
+}
+.infolist span.label-span {
+  font-size: 12px;
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  vertical-align: middle;
+  width: 80px;
+  text-align: right;
+  margin-right: 6px;
+}
+.infolist label {
+  margin-bottom: 0;
+  font-weight: normal;
+  font-size: 12px;
+}
+.infolist label.limit-label {
+  position: relative;
+}
+.infolist label.limit-label:before {
+  content: "*";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -10px;
+  color: #ff0000;
+  font-size: 12px;
+}
+.remaskinfo {
+  margin-left: 76px;
+  margin-top: 16px;
+}
+.remaskinfo span {
+  font-size: 12px;
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  vertical-align: middle;
+  width: 80px;
+  text-align: right;
+  margin-right: 6px;
+}
+.number-info li,.money-info li{
+  margin-top: 6px;
+}
+.number-info li span,.money-info li span{
+  width: 100px;
+  display: inline-block;
+  text-align: right;
+}
+.number-info li b,.money-info li b{
+  margin-right: 6px;
+  margin-left: 6px;
+}
+
+/*bootstrap-table个性化*/
+.yh-table {
+  position: relative;
+  padding-bottom: 10px;
+  background-color: #fff;
+}
+.yhmask .table > tbody > tr > td {
+  padding: 2px!important;
+}
+.fixed-table-container {
+  border-radius: 0;
+}
+.fixed-table-container tbody td,
+.fixed-table-container thead th {
+  border: 0;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #fff;
+}
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #f8f9fa;
+}
+/*被checkbox选中的行*/
+.fixed-table-container tbody .selected td {
+  background-color: #e1f5f6;
+}
+/* .fixed-table-container tbody .selected .bs-checkbox{position:relative;}
+.fixed-table-container tbody .selected .bs-checkbox:after{position:absolute;content:"";width:14px;height:14px;display:block;left:10px;top:10px;background:url('../images/selected.png');} */
+.table-striped > tbody > tr:hover,
+.table-striped > tbody > tr.trcur {
+  background-color: #e1f5f6;
+}
+.fixed-table-container input[type="radio"],
+.fixed-table-container input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+}
+#yhtable thead {
+  height: 40px;
+}
+.table-striped > tbody > tr {
+  height: 38px;
+  line-height: 38px;
+  color: #444;
+  font-size: 12px;
+}
+.bootstrap-table .table > thead > tr > th {
+  border-bottom: 1px solid #e8eaed;
+}
+.table > tbody > tr > td {
+  border-top: 1px solid #e8eaed;
+  border-right: 1px solid #e8eaed;
+}
+.table > tbody > tr > td:last-child {
+  border-right: none;
+}
+.table > tbody > tr > td:last-child {
+  border-right: none;
+}
+.yhtable td {
+  font-size: 12px;
+}
+.fixed-table-body thead th .th-inner {
+  color: #444;
+  font-size: 14px;
+  font-weight: normal;
+}
+.fixed-table-container .bs-checkbox .th-inner{
+  padding:8px;
+  text-align: center;
+}
+.table > tbody > tr > td.proname {
+  color: #327aba;
+}
+.fixed-table-container {
+  border: 0;
+}
+.table a.pur-addbtn {
+  font-size: 12px;
+}
+.table a.purchaseaddbtn {
+  color: #2182d8;
+}
+.table a.puralreadyadd {
+  color: #666;
+}
+.fixed-table-pagination {
+  font-size: 12px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.fixed-table-pagination .pagination a {
+  font-size: 12px;
+  padding: 4px 6px;
+}
+.pagination > li:first-child > a, .pagination > li:first-child > span{
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.fixed-table-pagination .pagination-detail,
+.fixed-table-loading {
+  font-size: 12px;
+}
+.popover-content {
+  padding: 4px 4px;
+}
+.popover-title {
+  font-size: 12px;
+  padding: 4px 6px;
+}
+.btn{
+  padding: 2px 12px;
+  border-radius: 2px;
+  font-size: 12px;
+}
+.dropdown-menu{
+  border-radius: 2px;
+  min-width: 120px;
+}
+/*layui个性化*/
+.laydate-month-list > li{
+  margin: 10px 0!important;
+}
+
+.yhlayui-form {
+  width: 200px;
+  height: 24px;
+  font-size: 12px;
+  color: #444;
+  display: inline-block;
+}
+span.yhlayui-form {
+  margin-right: 0;
+}
+.layui-anim {
+  animation: none;
+}
+.layui-form-select .layui-edge {
+  transition: none;
+}
+.layui-input {
+  border: 1px solid #d4d4d4;
+  text-indent: 6px;
+  height: 24px;
+  width: 200px;
+  background-color: #fff;
+}
+.layui-input:focus {
+  border: 1px solid #758ba8;
+}
+.layui-form-select dl {
+  top: 23px;
+}
+.layui-form-select dl dd,
+.layui-form-select dl dt {
+  height: 24px;
+  line-height: 24px;
+  /* border:1px solid #d4d4d4; */
+}
+.layui-form-select .layui-edge {
+  border: none;
+  background: url('../images/procontrol/select.png') no-repeat center center;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-top: 0;
+  top: 1px;
+  right: 4px;
+}
+
+.layui-layer-ico16, .layui-layer-loading .layui-layer-loading2{
+  top: 50%;
+  left: 50%;
+}
+.layui-layer-shade{
+  background-color:rgba(0,0,0,0.1);
+}
+
+.layui-form-select dl,
+.onlayuiinput {
+  border: 1px solid #56b9bd;
+}
+.layui-layer-move{
+  background-color: red;
+}
+@media screen and (max-width: 1600px) {
+  .info-inputlayout {
+    padding-left: 10px;
+  }
+  .total-box li {
+    margin-left: 60px!important;
+  }
+}

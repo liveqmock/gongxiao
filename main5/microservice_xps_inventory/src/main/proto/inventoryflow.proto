@@ -1,0 +1,52 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.inventory.inventoryflow.microservice";
+option java_outer_classname = "InventoryflowStructure";
+
+import "gongxiao.global.structure.proto";
+
+service InventoryFlowService{
+    //1 查询库存流水信息
+    rpc getInventoryFlow (GetInventoryFlowRequest) returns (GetInventoryFlowResponse) {}
+
+}
+//3
+message GetInventoryFlowRequest{
+    RpcHeader rpcHeader=1;
+    int32 pageNumber=2;
+    int32 pageSize=3;
+    string projectId=4;
+    string productModel=5;
+    string productName=6;
+    string warehouseName=7;
+    string inventoryFlowId=8;
+    string startDate=9;
+    string endDate=10;
+}
+message GetInventoryFlowResponse{
+    int32 pageNum = 1; // 页码
+    int32 pageSize = 2; // 页面条数
+    int64 total = 3; // 总数
+    repeated ProductInventoryFlowShow list=4;
+}
+
+message ProductInventoryFlowShow{
+    int64 inventoryFlowId=1;           //库存流水id
+    string orderNo=2;                 //入库对应的入库单号，出库对应的出库单号
+    string batchNo = 3;
+    string inventoryFlowType=4;          //库存类型 良品 残次品
+    string orderType=5;                  //单据类型 采购 销售 调拨 其他
+    int64 projectId=6;                 //项目id
+    string relatedOrderNo=7;                 //入库对应的采购单号,出库对应的销售单号
+    string productId=8;               //商品Id
+    string productCode=9;             //商品编码
+    string productModel=10;            //商品型号
+    string productName=11;             //商品名称
+    string warehouseId=12;             //仓库id
+    string warehouseName=13;           //仓库名称
+    int32 amountBeforeTransaction=14;    //流水发生前的数量
+    int32 transactionAmount=15;          //库存变动的数量(入库为正 出库为负)
+    int32 amountAfterTransaction=16;     //流水发生后的数量
+    int32 perfectQuantity=17;              //良品
+    int32 imperfectQuantity=18;              //残次品
+    int64 createTime=19;                //创建时间
+}

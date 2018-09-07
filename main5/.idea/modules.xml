@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/api_eas/api_eas.iml" filepath="$PROJECT_DIR$/api_eas/api_eas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api_xps_coupon/api_xps_coupon.iml" filepath="$PROJECT_DIR$/api_xps_coupon/api_xps_coupon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api_xps_gross_profit/api_xps_gross_profit.iml" filepath="$PROJECT_DIR$/api_xps_gross_profit/api_xps_gross_profit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api_xps_prepaid/api_xps_prepaid.iml" filepath="$PROJECT_DIR$/api_xps_prepaid/api_xps_prepaid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api_xps_transportation/api_xps_transportation.iml" filepath="$PROJECT_DIR$/api_xps_transportation/api_xps_transportation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api_xps_warehouse/api_xps_warehouse.iml" filepath="$PROJECT_DIR$/api_xps_warehouse/api_xps_warehouse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gongxiao.iml" filepath="$PROJECT_DIR$/gongxiao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/japp_xps_foundation_data/japp_xps_foundation_data.iml" filepath="$PROJECT_DIR$/japp_xps_foundation_data/japp_xps_foundation_data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/japp_xps_inventory_management/japp_xps_inventory_management.iml" filepath="$PROJECT_DIR$/japp_xps_inventory_management/japp_xps_inventory_management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jweb_tms_notify_gateway/jweb_tms_notify_gateway.iml" filepath="$PROJECT_DIR$/jweb_tms_notify_gateway/jweb_tms_notify_gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jweb_wms_notify_gateway/jweb_wms_notify_gateway.iml" filepath="$PROJECT_DIR$/jweb_wms_notify_gateway/jweb_wms_notify_gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jweb_xps_coupon_management/jweb_xps_coupon_management.iml" filepath="$PROJECT_DIR$/jweb_xps_coupon_management/jweb_xps_coupon_management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jweb_xps_gross_profit_management/jweb_xps_gross_profit_management.iml" filepath="$PROJECT_DIR$/jweb_xps_gross_profit_management/jweb_xps_gross_profit_management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jweb_xps_prepaid_management/jweb_xps_prepaid_management.iml" filepath="$PROJECT_DIR$/jweb_xps_prepaid_management/jweb_xps_prepaid_management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jweb_xps_transportation_management/jweb_xps_transportation_management.iml" filepath="$PROJECT_DIR$/jweb_xps_transportation_management/jweb_xps_transportation_management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jweb_xps_warehouse_management/jweb_xps_warehouse_management.iml" filepath="$PROJECT_DIR$/jweb_xps_warehouse_management/jweb_xps_warehouse_management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_global/lib_global.iml" filepath="$PROJECT_DIR$/lib_global/lib_global.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_http/lib_http.iml" filepath="$PROJECT_DIR$/lib_http/lib_http.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_rpc_server_config/lib_rpc_server_config.iml" filepath="$PROJECT_DIR$/lib_rpc_server_config/lib_rpc_server_config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_xps_warehouse/lib_xps_warehouse.iml" filepath="$PROJECT_DIR$/lib_xps_warehouse/lib_xps_warehouse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice_xps_common/microservice_xps_common.iml" filepath="$PROJECT_DIR$/microservice_xps_common/microservice_xps_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice_xps_foundation_data/microservice_xps_foundation_data.iml" filepath="$PROJECT_DIR$/microservice_xps_foundation_data/microservice_xps_foundation_data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice_xps_inventory/microservice_xps_inventory.iml" filepath="$PROJECT_DIR$/microservice_xps_inventory/microservice_xps_inventory.iml" />
+    </modules>
+  </component>
+</project>

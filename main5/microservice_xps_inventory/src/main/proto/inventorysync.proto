@@ -1,0 +1,73 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.inventory.inventorysync.microservice";
+option java_outer_classname = "InventorysyncStructure";
+
+import "gongxiao.global.structure.proto";
+import "commen.model.proto";
+
+service InventorysyncService{
+    //1 同步商品入库信息到库存模块
+    rpc syncInboundInventory (SyncInboundRequest) returns (SyncResponse) {}
+    //2 同步商品出库信息到库存模块
+    rpc syncOutboundInventory (SyncOutboundRequest) returns (SyncResponse) {}
+    //3 更新商品库存信息
+    rpc updateInventoryInfo (UpdateInventoryRequest) returns (UpdateInventoryResponse) {}
+    //4 取消出库单时 释放销售占用数量
+    rpc resumeOnsalesQuantiry (ResumeOnsalesQuantiryRequest) returns (ResumeOnsalesQuantiryResponse) {}
+
+}
+//1
+message SyncInboundRequest{
+    RpcHeader rpcHeader=1;
+    repeated ProductInventory productInventoryList=2;
+    string purchaseOrderNo=3;
+    string gonxiaoInboundOrderNo=4;
+    int32 orderType=5;
+    string projectId = 6;
+}
+
+//2
+message SyncOutboundRequest{
+    RpcHeader rpcHeader=1;
+    repeated ProductInventory productInventoryList=2;
+    string salesOrderNo=3;
+    string gonxiaoOutboundOrderNo=4;
+    int32 orderType=5;
+    string projectId = 6;
+}
+
+//3
+message SyncResponse{
+    int32 errorCode=1;
+}
+
+//4
+message UpdateInventoryRequest{
+    RpcHeader rpcHeader=1;
+    int32 id = 2;
+    string projectId = 3;
+    int32 OnHandQuantity = 4;
+}
+
+message UpdateInventoryResponse{
+    int32 errorCode=1;
+}
+
+//5
+message ResumeOnsalesQuantiryRequest{
+    int32 totalQuantity=1;
+    int32 purchaseType=2;
+    int32 inventoryType=3;
+    int64 projectId=4;
+    string batchNo=5;
+    string productCode=6;
+    int32 warehouseId=7;
+    RpcHeader rpcHeader=8;
+}
+
+message ResumeOnsalesQuantiryResponse{
+    int32 errorCode=1;
+}
+
+
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.yhglobal.gongxiao</groupId>
+        <artifactId>gongxiao</artifactId>
+        <version>2.0</version>
+    </parent>
+    <groupId>com.yhglobal.gongxiao.phjd</groupId>
+    <artifactId>project_philips_jd</artifactId>
+    <packaging>pom</packaging>
+    <version>2.0</version>
+
+    <properties>
+        <spring.version>3.2.10.RELEASE</spring.version>
+    </properties>
+    <modules>
+        <module>japp_gongxiao_phjd_payment_management</module>
+        <module>japp_gongxiao_phjd_purchase_order</module>
+        <module>japp_gongxiao_phjd_sales_order</module>
+        <module>jweb_gongxiao_phjd_yhportal</module>
+        <module>lib_common_phjd</module>
+        <module>microservice_gongxiao_phjd_payment_management</module>
+        <module>microservice_gongxiao_phjd_purchase_order</module>
+        <module>microservice_gongxiao_phjd_sales_order</module>
+        <module>gRpcClientJd</module>
+        <module>ediClient</module>
+    </modules>
+
+</project>

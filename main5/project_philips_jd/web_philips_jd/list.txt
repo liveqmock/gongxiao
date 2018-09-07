@@ -1,0 +1,52 @@
+
+│  index.html 										// 入口页面
+│  package-lock.json
+│  package.json 									// 项目依赖简要信息
+│  README.md 								
+│          
+├─build 											// webpack构建配置文件
+│      
+├─config 											// 项目配置文件							
+│      
+├─dist												// 打包后的生产文件
+│    index.html
+│              
+├─node_modules 										// 项目中安装的依赖模块
+│             
+├─src
+│  │  404.vue 										// 404组件
+│  │  App.vue 										// 根组件
+│  │  globalUrl.js 									// 环境切换
+│  │  Home.vue 										// 主要布局
+│  │  Login.vue 									// 登录组件
+│  │  main.js 										// 入口js文件
+│  │  
+│  ├─assets 										// 静态文件
+│  │          
+│  ├─components
+│  │  │  FenXiaoForm.vue							// 公用组件
+│  │  │  FenXiaoHeader.vue
+│  │  │  FenXiaoSidebar.vue
+│  │  │  
+│  │  ├─account										// 账户模块
+│  │  ├─EDICenter									// EDI中心模块
+│  │  ├─PayAndReceiveMoneyConfirm					// 收付款模块
+│  │  │      
+│  │  ├─purchase									// 采购模块
+│  │  │      AddPurchasePlan.vue
+│  │  │      PurchaseManagement.vue
+│  │  │      PurchaseManagementForm.vue
+│  │  │      PurchaseManagementTable.vue
+│  │  │      PurchasePlanList.vue
+│  │  │      
+│  │  └─sales										// 销售模块
+│  │          	
+│  ├─router
+│  │      index.js 									// vue路由
+│  │      
+│  └─store
+│      │  index.js                                 // 状态管理
+│      │  
+│      └─projectInfo
+│              index.js
+                

@@ -1,0 +1,144 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.foundation.area.microservice";
+option java_outer_classname = "ShippingAddressStructure";
+
+import "gongxiao.global.structure.proto";
+
+service ShippingAddressService {
+    //1 获取默认地址
+    rpc getDefaultShippingAddress (GetDefaultShippingAddressReq) returns (GetDefaultShippingAddressResp) {
+    }
+    //2 通过状态获取地址列表
+    rpc selectAddressListByStatus (SelectAddressListByStatusReq) returns (SelectAddressListByStatusResp) {
+    }
+    //3 审核地址 1 审核通过 2 驳回
+    rpc auditAddress (AuditAddressReq) returns (AuditAddressResp) {
+    }
+    //4 通过经销商id获取已审核的地址列表
+    rpc selectAuditedAddressByDistributorId (SelectAuditedAddressByDistributorIdReq) returns (SelectAuditedAddressByDistributorIResp) {
+    }
+    //5 设置默认地址
+    rpc setDefaultAddress (SetDefaultAddressReq) returns (SetDefaultAddressResp) {
+    }
+    //6 通过经销商id获取已审核的地址列表
+    rpc selectAllAddressByDistributorId (SelectAllAddressByDistributorIdReq) returns (SelectAllAddressByDistributorIdResp) {
+    }
+    //7插入新地址
+    rpc insertShippingAddress (InsertShippingAddressReq) returns (InsertShippingAddressResp) {
+    }
+    //8删除新地址
+    rpc deleteShippingAddress (DeleteShippingAddressReq) returns (DeleteShippingAddressResp) {
+    }
+
+}
+//8
+message DeleteShippingAddressReq{
+    RpcHeader rpcHeader = 100;
+    int64 addressId=1;
+}
+
+message DeleteShippingAddressResp{
+    int32 number=1;
+}
+
+//7
+message InsertShippingAddressReq{
+    DistributorShippingAddress distributorShippingAddress=1;
+    RpcHeader rpcHeader = 100;
+}
+message InsertShippingAddressResp{
+    int32 number=1;
+}
+//6
+message SelectAllAddressByDistributorIdReq{
+    int64 distributorId=1;
+    RpcHeader rpcHeader = 100;
+}
+
+message SelectAllAddressByDistributorIdResp{
+    repeated DistributorShippingAddress distributorShippingAddress=1;
+}
+
+//5
+message SetDefaultAddressReq{
+    RpcHeader rpcHeader = 100;
+    int64 distributorAddressId=1;
+}
+message SetDefaultAddressResp{
+    int32 number=1;
+}
+
+//4
+message SelectAuditedAddressByDistributorIdReq{
+    RpcHeader rpcHeader = 100;
+    int64 distributorAddressId=1;
+}
+
+message SelectAuditedAddressByDistributorIResp{
+    repeated DistributorShippingAddress distributorShippingAddress=1;
+}
+
+//3
+message AuditAddressReq{
+    RpcHeader rpcHeader = 100;
+    int64 distributorAddressId=1;
+    //1 审核通过 2 驳回
+    int32 auditStatus=2;
+}
+
+message AuditAddressResp{
+    int32 number=1;
+}
+
+//2
+message SelectAddressListByStatusReq{
+    RpcHeader rpcHeader = 1;
+    //1未提交 2,已提交 3,已审核 4.已驳回 5.已作废
+    int32 recordStatus=2;
+    int64 distributorId=3;
+    string distributorName=4;
+    int32 pageNumber=6;
+    int32 pageSize=7;
+}
+
+message SelectAddressListByStatusResp{
+    ShippingAddressPage shippingAddressPage=1;
+}
+
+//1.
+message GetDefaultShippingAddressReq {
+    RpcHeader rpcHeader = 1;
+    int64 distributorId = 2;
+}
+
+message GetDefaultShippingAddressResp{
+    DistributorShippingAddress distributorShippingAddress=1;
+}
+
+//model
+message ShippingAddressPage{
+    int32 total=2;
+    repeated DistributorShippingAddress distributorShippingAddress=1;
+
+}
+
+message DistributorShippingAddress {
+    int64 addressId=1;
+    int64 distributorId=2;
+    string distributorName=3;
+    string receiver=4;
+    int32 provinceId=5;
+    string provinceName=6;
+    int32 cityId=7;
+    string cityName=8;
+    int32 districtId=9;
+    string districtName=10;
+    string streetAddress=11;
+    string phoneNumber=12;
+    string postCode=13;
+    int32 auditStatus=14;
+    int32 isDefaultAddress=15;
+    int64 createTime=16;
+    int64 lastUpdateTime=17;
+    string tracelog=18;
+}

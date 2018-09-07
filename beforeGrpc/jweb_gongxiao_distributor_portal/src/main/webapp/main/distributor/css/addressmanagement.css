@@ -1,0 +1,193 @@
+/**
+ * @authors {len} (http://csshack.org)
+ * @date    2018/4/10
+ * @version $
+ */
+/* 导航栏*/
+/* 面包屑导航 */
+.addressmanagement-crumbs {
+  max-width: 1850px;
+  width: 96%;
+  margin: 0 auto 0;
+}
+.addressmanagement-crumbs p {
+  font-size: 0;
+}
+.addressmanagement-crumbs p > span,
+.addressmanagement-crumbs p > a {
+  color: #444;
+  display: inline-block;
+  font-size: 14px;
+}
+/* 主体内容 */
+.addressmanagement-content {
+  width: 88.6%;
+  margin: 20px auto;
+}
+.addressmanagement-content > h3 {
+  font-size: 14px;
+  color: #444;
+}
+.addressmanagement-content > h3 strong {
+  color: #ff7623;
+  display: inline-block;
+  width: 90px;
+  text-align: center;
+  margin-right: 6px;
+}
+.addressmanagement-content .address-info input,
+.addressmanagement-content .address-info select,
+.addressmanagement-content .address-info textarea {
+  display: inline-block;
+  border: 1px solid #c3c3c3;
+  box-sizing: border-box;
+}
+.addressmanagement-content .address-info input {
+  height: 36px;
+}
+.addressmanagement-content .address-info textarea {
+  resize: none;
+  width: 680px;
+  height: 100px;
+  font-size: 14px;
+  text-indent: 28px;
+  vertical-align: top;
+}
+.addressmanagement-content .address-info .address-item {
+  font-size: 0;
+  margin-top: 6px;
+}
+.addressmanagement-content .address-info .address-item > i,
+.addressmanagement-content .address-info .address-item > input,
+.addressmanagement-content .address-info .address-item > select,
+.addressmanagement-content .address-info .address-item > label {
+  display: inline-block;
+  font-size: 14px;
+  color: #444444;
+  height: 36px;
+  line-height: 36px;
+}
+.addressmanagement-content .address-info .address-item > input + label {
+  vertical-align: 12px;
+  margin-left: 6px;
+}
+.addressmanagement-content .address-info .address-item > i {
+  width: 90px;
+  text-align: right;
+  margin-right: 6px;
+}
+.addressmanagement-content .address-info .address-item label.must-span {
+  position: relative;
+}
+.addressmanagement-content .address-info .address-item label.must-span:after {
+  content: "*";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -12px;
+  color: red;
+}
+.addressmanagement-content .address-info .yhcity-select {
+  height: 40px;
+}
+.addressmanagement-content .address-info .yhcity-select > select {
+  width: 100px;
+  display: inline-block;
+  text-align: center;
+}
+.addressmanagement-content .address-info .yhcity-select > select option {
+  width: 100px;
+  text-align: center;
+  height: 36px;
+  line-height: 36px;
+}
+.addressmanagement-content .address-info .yhcity-select input {
+  font-size: 12px;
+}
+.addressmanagement-content .address-info .yhcity-select span {
+  font-size: 12px;
+}
+.addressmanagement-content button {
+  width: 120px;
+  height: 40px;
+  background-color: #ff4242;
+  text-align: center;
+  line-height: 40px;
+  display: block;
+  font-size: 16px;
+  color: #fff;
+  margin-left: 90px;
+}
+.address-table {
+  margin-top: 40px;
+}
+.address-default .note {
+  padding: 2px 5px;
+  border-color: #ff3800;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: #ffd6cc;
+  color: #f30;
+}
+.address-default .note-hide {
+  display: none;
+}
+.tbl-deliver-address .note {
+  padding: 4px 5px;
+  background: #f60;
+  color: #fff;
+  border: 1px solid #f60;
+  border-radius: 3px;
+  text-decoration: none;
+}
+/* bootstrap-table样式调整 */
+.fixed-table-container {
+  border-radius: 0;
+}
+.fixed-table-container thead th,
+.fixed-table-container tbody td {
+  border-left: 0;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #fff;
+}
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #fff;
+}
+.fixed-table-body thead th .th-inner,
+.fixed-table-container thead th .th-inner {
+  height: 60px;
+  line-height: 40px;
+}
+.table > tbody > tr > td {
+  height: 24px;
+  font-size: 18px;
+  color: #444;
+}
+.bootstrap-table .table > thead > tr > th {
+  position: relative;
+}
+.bootstrap-table .table > thead > tr > th:after {
+  position: absolute;
+  bottom: 0;
+  left: 1%;
+  content: "";
+  display: block;
+  width: 98%;
+  height: 4px;
+  background-color: #abc1f3;
+}
+.fixed-table-body thead th .th-inner {
+  color: #444;
+  font-size: 14px;
+  font-weight: normal;
+}
+.table > tbody > tr > td {
+  color: #444;
+  font-size: 12px;
+  font-weight: normal;
+}
+.table-striped > tbody > tr:hover {
+  background-color: #f0f4fd;
+}

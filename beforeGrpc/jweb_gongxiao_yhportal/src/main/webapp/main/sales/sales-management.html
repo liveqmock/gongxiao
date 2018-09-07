@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=f1463f4aab"></script>
+    <link rel="stylesheet" href="../css/sales/sales-management.css?v=dfce0dbac4">
+    <title>订单管理</title>
+</head>
+
+<body>
+<div class="wrapper clearfix">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="sidebar"></div>
+    <!-- 主体内容 -->
+    <div class="yh-content">
+        <!-- 头部内容 -->
+        <div class="fenxiao-header clearfix">
+            <h2>分销协同平台</h2>
+            <div class="shape-box">
+                <select id="projectlist"></select>
+                <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                <span></span>
+                <a href="javascript:void(0);">注销</a>
+            </div>
+        </div>
+        <!-- 主要内容 -->
+        <div class="yh-container">
+            <!-- 面包屑菜单 -->
+            <div class="fenxiao-nav">
+                <span>当前位置：</span>
+                <a href="javascript:void(0);">销售管理</a> &gt; <a href="javascript:void(0);">订单管理</a>
+            </div>
+            <!-- 表单 -->
+            <div class="form-box">
+                <div class="fx-form clearfix">
+                    <div class="form-inputs">
+                        <ul class="clearfix">
+                            <li><label for="orderno">订单号</label>
+                                <input type="text" id="orderno">
+                            </li>
+                            <li><label for="yhdate">出库时间</label>
+                                <input type="text" id="yhdate" class="yhdate-input">
+                            </li>
+                            <li><label for="yhcreate-date">创建时间</label>
+                                <input type="text" id="yhcreate-date" class="yhdate-input">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-btn">
+                        <button id="salesquery-btn" class="yhquery-btn">查询</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 操作表格 -->
+            <div class="yhtable-header clearfix">
+                <div class="management-btn clearfix" id="salesinfo">
+                    <a class="managementoperalink"><b>全部</b> <span>(0)</span></a>
+                    <a>驳回 <span>(0)</span></a>
+                    <a>待审核 <span>(0)</span></a>
+                    <a>待收款 <span>(0)</span></a>
+                    <a>待发货 <span>(0)</span></a>
+                    <a>待出库 <span>(0)</span></a>
+                    <a>待签收 <span>(0)</span></a>
+                    <a>已签收 <span>(0)</span></a>
+                </div>
+                <div class="opera-btn">
+                    <!--<a class="yhhandle-btn" href="./sales-add.html">新增</a>-->
+                    <a class="yhhandle-btn" href="javascript:void(0);">导出</a>
+                    <a class="yhhandle-btn" href="javascript:void(0);" id="settlement-btn">更改结算模式</a>
+                </div>
+            </div>
+            <!-- 渲染表格 -->
+            <div class="yh-table">
+                <table id="salestable" class="yhtable"></table>
+            </div>
+            <!--遮罩层-->
+            <div class="yhmask yhmask-hide" id="yhmask">
+                <div class="yhmask-div">
+                    <div class="yhmask-menu">
+                        <span>确认信息</span>
+                        <a href="javascript:void(0);" id="yhmask-switch">×</a>
+                    </div>
+                    <div class="yhmask-content clearfix">
+                        <div class="yhmask-amount">
+                            <label for="mask-remark">天数</label>
+                            <input type="text" id="intoamount">
+                        </div>
+                        <p>
+                            <label for="mask-remark">备注</label>
+                            <textarea name="" id="mask-remark" cols="30" rows="10"></textarea>
+                        </p>
+                    </div>
+                    <div class="yhmask-btn">
+                        <button class="yhsubmit-btn" id="yhmask-submit">确认</button>
+                        <button class="yhcancel-btn" id="yhmask-cancel">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/sales/management.js?v=609162382f"></script>
+</body>
+
+</html>

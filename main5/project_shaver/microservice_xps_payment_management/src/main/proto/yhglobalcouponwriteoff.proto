@@ -1,0 +1,225 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.accountmanage.microservice";
+option java_outer_classname = "YhglobalCouponWriteoffServiceStructure";
+
+import "gongxiao.global.structure.proto";
+
+service YhglobalCouponWriteoffService{
+        // 返利确认
+    rpc yhCouponWriteroff (YhCouponWriteroffReq) returns (YhCouponWriteroffResp){}
+
+    // 多条件分页查询返利流水
+        rpc selectByManyCondiitonsHasPage (SelectByManyCondiitonsHasPageReq) returns (SelectByManyCondiitonsHasPageResp){}
+    // 多条件无分页查询返利流水
+        rpc selectByManyCondiitonsNoPage (SelectByManyCondiitonsNoPageReq) returns (SelectByManyCondiitonsNoPageResp){}
+
+     // 批量取消确认
+    rpc couponReceiveCancelConfirmBatch (CouponReceiveCancelConfirmBatchReq) returns (CouponReceiveCancelConfirmBatchResp){}
+    // 根据选中的返利ID查询应收返利
+        rpc selectYhglobalCouponLedgerByPurchaseCouponLedgerId (SelectYhglobalCouponLedgerByPurchaseCouponLedgerIdReq) returns (SelectYhglobalCouponLedgerByPurchaseCouponLedgerIdResp) {}
+    // 分页查询返利确认记录
+        rpc searchCouponConfirm (SearchCouponConfirmReq) returns (SearchCouponConfirmResp) {}
+}
+// 返利确认
+message YhCouponWriteroffReq{
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    string projectName = 3;
+    int64 useDateS = 4 ;
+    int32 accountType = 5;
+    string confirmInfoJson = 6;
+    string philipDocumentNo = 7;
+}
+message YhCouponWriteroffResp{
+    int32 returnCode = 1; //返回码
+    string msg = 2; //若调用不成功 错误信息
+}
+// 多条件分页查询
+message SelectByManyCondiitonsHasPageReq{
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    string purchaseOrderNo = 3;
+    string supplierOrderNo = 4;
+    int64 dateS = 5;
+    int64 dateE = 6;
+    string couponStatus = 7;
+    string flowNo = 8;
+    int32 pageNumber = 9;
+    int32 pageSize = 10;
+}
+message SelectByManyCondiitonsHasPageResp{
+        int32 pageNum = 1;
+        int32 pageSize = 2;
+        int32 size = 3;
+        int32 startRow = 4;
+        int32 endRow = 5;
+        int64 total = 6;
+        int32 pages = 7;
+        repeated YhglobalCouponLedgerItem list = 8;
+}
+message YhglobalCouponLedgerItem{
+    int64 purchaseCouponLedgerId = 1;
+    string couponStatus = 2;//返利确认状态
+    string couponStatusString = 3;
+    string purchaseOrderNo = 4;  // 采购单号
+    int64 ylCreateTime = 5;  // 返利创建时间
+    string couponType = 6 ;// 返利类型
+    string couponTypeString= 7;
+    string ylCurrencyCode = 8; // 返利应收货币码
+    int64 estimatedCouponAmount = 9;  // 应收返利额度
+    double estimatedCouponAmountDouble = 10;  // 给前台展示的应收返利额度浮点数据
+    int64 toBeConfirmAmount = 11;  // 待确认额度
+    double toBeConfirmAmountDouble = 12;  // 待确认额度的浮点数
+    string confirmCurrencyCode = 13;  // 确认货比码
+    int64 confirmAmount = 14;   // 确认额度
+    double confirmAmountDouble = 15;  // 确认额度浮点数
+    string receivedCurrencyCode = 16;  // 实收货币码
+    int64 receiptAmount = 17;  // 实收额度
+    double receiptAmountDouble = 18;  // 实收额度浮点数
+    int32 accountType = 19;  // 使用账户类型
+    string accountTypeString = 20;
+    int64 ywCreateTime = 21;  // 记录创建时间
+    string flowNo = 22;  // 流水号
+    string estimatedCouponAmountStr = 23;
+    string toBeConfirmAmountStr = 24;
+    string confirmAmountStr = 25;
+    string receiptAmountStr = 26;
+    string philipDocumentNo = 27;
+    string supplierOrderNo = 28;
+}
+// 多条件无分页查询
+message SelectByManyCondiitonsNoPageReq{
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    string purchaseOrderNo = 3;
+    string supplierOrderNo = 4;
+    int64 dateS = 5;
+    int64 dateE = 6;
+    string couponStatus = 7;
+    string flowNo = 8;
+}
+message SelectByManyCondiitonsNoPageResp{
+    int32 returnCode = 1; //返回码
+    string msg = 2; //若调用不成功 错误信息
+    repeated YhglobalCouponLedgerItem list = 3;
+}
+// 返利取消确认
+message CouponReceiveCancelConfirmBatchReq{
+    RpcHeader rpcHeader = 1;
+    // 把选中的流水号使用逗号拼接,然后再service层分割
+    // string flowCodes = 2;
+    repeated string flowCode = 2;
+}
+message CouponReceiveCancelConfirmBatchResp{
+    int32 returnCode = 1; //返回码
+    string msg = 2; //若调用不成功 错误信息
+}
+// 根据选中的返利ID查询返利
+message SelectYhglobalCouponLedgerByPurchaseCouponLedgerIdReq{
+    RpcHeader rpcHeader = 1;
+    // 把返利使用,拼接 然后在service层取出再分割
+    repeated string couponId = 2;
+}
+message SelectYhglobalCouponLedgerByPurchaseCouponLedgerIdResp{
+    int32 returnCode = 1; //返回码
+    string msg = 2; //若调用不成功 错误信息
+    repeated YhglobalCouponLedger list = 3;
+}
+// 查询返利确认记录
+message SearchCouponConfirmReq{
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    string flowCode = 3;
+    int32 accountType = 4;
+    int64 useDateStart = 5;
+    int64 useDateEnd = 6;
+    int64 dateStart = 7;
+    int64 dateEnd = 8;
+    int32 pageNumber = 9;
+    int32 pageSize = 10;
+}
+message SearchCouponConfirmResp{
+    int32 pageNum = 1;
+    int32 pageSize = 2;
+    int32 size = 3;
+    int32 startRow = 4;
+    int32 endRow = 5;
+    int64 total = 6;
+    int32 pages = 7;
+    repeated YhglobalCouponWriteoffRecord list = 8;
+}
+message YhglobalCouponWriteoffRecord{
+    int64  confirmId = 1;
+    int64 toReceiveCouponId = 2;
+    int64 confirmAmount = 3;
+    double confirmAmountDouble = 4;
+    // 差额
+    double differenceAmountDouble = 5;
+    int64 receiptAmount = 6;
+    double receiptAmountDouble = 7;
+    string flowNo = 8;
+    int64 createTime = 9;
+    int64 lastUpdateTime = 10;
+    string receivedCurrencyCode = 11;
+    string confirmCurrencyCode = 12;
+    int64 createdById = 13;
+    string createdByName = 14;
+    int32 isRollback = 15;
+    int64 useDate = 16;
+    int64 projectId = 17;
+    int32 accountType = 18;
+    int64 dataVersion = 19;
+    string accountTypeName = 20;
+    string philipDocumentNo = 21;
+}
+
+message YhglobalCouponLedger{
+    // 采购返利ID
+    int64 purchaseCouponLedgerId = 1;
+    // 返利状态
+    string couponStatus = 2;
+    // 返利类型
+    string couponType = 3;
+    string couponStatusString = 4;
+    string couponTypeString = 5;
+    string couponModel = 6;
+    // 返利率
+    int32 couponRatio = 7;
+    // 项目ID
+    int64 projectId = 8;
+    // 项目名称
+    string projectName = 9;
+    // 供应商ID
+    int64 supplierId = 10;
+    // 供应商名称
+    string supplierName = 11;
+    // 应收货币编码
+    string currencyCode = 12;
+    // 品牌商订单号
+    string supplierOrderNo = 13;
+    // 采购单号
+    string purchaseOrderNo = 14;
+    // 采购时间
+    int64 purchaseTime = 15;
+    // 预计返利额度
+    int64 estimatedCouponAmount = 16;
+    double estimatedAmountDouble = 17;
+    // 预计上账时间
+    int64 estimatedPostingDate = 18;
+    // 确认返利额度
+    int64 confirmedCouponAmount = 19;
+    double confirmAmountDouble = 20;
+    int64 toBeConfirmAmount = 21;//待确认金额
+    double toBeConfirmAmountDouble = 22;
+    // 实收返利额度
+    int64 receivedCouponAmount = 23;
+    double receiptAmountDouble = 24;
+    int64 dataVersion = 25;
+    string confirmRecord = 26;
+    // 创建时间
+    int64 createTime = 27;
+    // 最近更新时间
+    int64 lastUpdateTime = 28;
+    string tracelog = 29;
+}

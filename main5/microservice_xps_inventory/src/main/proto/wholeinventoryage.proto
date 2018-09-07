@@ -1,0 +1,25 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.inventory.wholeinventoryage.microservice";
+option java_outer_classname = "WholeInventoryAgeStructure";
+
+import "gongxiao.global.structure.proto";
+
+service WholeInventoryAgeService{
+    //1 查询整体库龄
+    rpc getWholeInventoryAge (GetWholeInventoryAgeRequest) returns (GetWholeInventoryAgeRespon) {}
+}
+
+message GetWholeInventoryAgeRequest{
+    RpcHeader rpcHeader=1;
+    int64 projectId=2;
+}
+
+message GetWholeInventoryAgeRespon {
+    repeated WholeInventoryAge list = 1;
+}
+
+message WholeInventoryAge{
+    int32 stage=1;         //日期阶段
+    double sumOfmoney=2; //金额
+    double proportion=3; //金额占比
+}

@@ -1,0 +1,45 @@
+
+
+/* 导航栏*/
+
+// 主体内容的宽度
+.mian-content(@width: 96%, @margin_top: 20px, @margin_bottom: 10px) {
+    width: @width;
+    margin: @margin_top auto @margin_bottom;
+}
+
+
+/* 面包屑导航 */
+
+.logistics-crumbs {
+    .mian-content(96%, 0, 0);
+    p {
+        font-size: 0;
+        &>span,
+        &>a {
+            color: #444;
+            display: inline-block;
+            font-size: 14px;
+        }
+    }
+}
+
+/* 主体内容 */
+.logistics-container {
+    width: 96%;
+    margin: 30px auto 0;
+    border-top: 2px solid #e8eaed;
+}
+
+/* bootstrap-table样式调整 */
+.fixed-table-container{border-radius:0;}
+.fixed-table-container thead th,.fixed-table-container tbody td{border-left:0;}
+.table-striped>tbody>tr:nth-of-type(odd){background-color:#fff;}
+.table-striped>tbody>tr:nth-of-type(even){background-color:#fff;}
+.fixed-table-body thead th .th-inner,.fixed-table-container thead th .th-inner{height:60px;line-height:40px;}
+.table>tbody>tr>td{height:24px;font-size:18px;color:#444;}
+.bootstrap-table .table > thead > tr > th{position:relative;}
+.bootstrap-table .table > thead > tr > th:after{position:absolute;bottom:0;left:1%;content:"";display:block;width:98%;height:4px;background-color:#abc1f3;}
+.fixed-table-body thead th .th-inner{color:#444;font-size:14px;font-weight:normal;}
+.table>tbody>tr>td{color:#444;font-size:12px;font-weight:normal;}
+.table-striped>tbody>tr:hover{background-color: #f0f4fd}

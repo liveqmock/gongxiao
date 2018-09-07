@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jweb_tms_notify_gateway:war">
+    <output-path>$PROJECT_DIR$/jweb_tms_notify_gateway/target</output-path>
+    <root id="archive" name="jweb_tms_notify_gateway-2.0.war">
+      <element id="artifact" artifact-name="jweb_tms_notify_gateway:war exploded" />
+    </root>
+  </artifact>
+</component>

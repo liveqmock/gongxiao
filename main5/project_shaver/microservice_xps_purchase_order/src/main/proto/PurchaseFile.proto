@@ -1,0 +1,26 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.purchase.microservice";
+option java_outer_classname = "PurchaseFileStructure";
+
+import "gongxiao.global.structure.proto";
+
+service PurchaseFileService {
+    //1 采购单解析
+    rpc parsePurchaseOrderList (PurchaseFileReq) returns (PurchaseFileResp) {}
+}
+
+message PurchaseFileReq{
+    RpcHeader rpcHeader=1;
+    string filePath=2;
+    string projectId=3;
+    string projectName=4;
+}
+
+message PurchaseFileResp{
+    RpcResultPurchaseFile rpcResultPurchaseFile=1;
+}
+
+message RpcResultPurchaseFile {
+    int32 returnCode = 1; //返回码
+    string msg = 2; //当返回错误时 对应的错误信息
+}

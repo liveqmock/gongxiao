@@ -1,0 +1,74 @@
+/*基本信息*/
+.order-info {
+  width: 660px;
+}
+.order-info1,
+.order-info2 {
+  font-size: 0;
+}
+.order-info1 span,
+.order-info2 span {
+  width: 50px;
+}
+.order-info1 input {
+  width: 500px;
+}
+.order-info2 p {
+  float: left;
+}
+.order-info2 p:nth-child(even) {
+  margin-left: 44px;
+}
+/*销售单元*/
+.sell-info input {
+  width: 100px;
+}
+.sell-info span {
+  width: 24px;
+  text-align: right;
+}
+.sell-info p {
+  float: left;
+}
+.sell-info p:not(:first-child) {
+  margin-left: 110px;
+}
+.sell-info1 {
+  font-size: 0;
+  /*must-span*/
+}
+.sell-info1 .twofont-span:before {
+  left: 2px;
+}
+/*运输单元*/
+.traffic-info span {
+  text-align: right;
+  width: 36px;
+}
+/*价格品牌税率*/
+.rate-info span {
+  width: 36px;
+}
+.rate-info2 span {
+  text-align: left;
+}
+.rate-info2 p:last-child {
+  margin-left: 74px;
+}
+.rate-info2 p:last-child span {
+  width: 72px;
+}
+/*提交*/
+.sub-btn {
+  width: 236px;
+  margin: 14px auto 0;
+}
+.sub-btn button {
+  float: left;
+  width: 100px;
+  margin-left: 36px;
+}
+.sub-btn button:first-child {
+  margin-left: 0;
+}
+/*# sourceMappingURL=add.css.map */

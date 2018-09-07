@@ -1,0 +1,58 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.foundation.currency.microservice";
+option java_outer_classname = "CurrencyStructure";
+
+import "gongxiao.global.structure.proto";
+
+service CurrencyService{
+    //1 通过currencyCode查询货币
+    rpc getCurrencyByCode (GetCurrencyByCodeRequest) returns (GetCurrencyByCodeResponse) {}
+    //2 通过currencyName查询货币
+    rpc getCurrencyByName (GetCurrencyByNameRequest) returns (GetCurrencyByNameResponse) {}
+    //3 通过currencyId查询货币
+    rpc getCurrencyById (GetCurrencyByIdRequest) returns (GetCurrencyByIdResponse) {}
+    //4 获取所有货币
+    rpc selectAllCurrency (SelectAllCurrencyRequest) returns (SelectAllCurrencyResponse) {}
+
+}
+//4
+message SelectAllCurrencyRequest{
+    RpcHeader rpcHeader=1;
+}
+message SelectAllCurrencyResponse{
+    repeated Currency currency=1;
+}
+//3
+message GetCurrencyByIdRequest{
+    RpcHeader rpcHeader=1;
+    int64 currencyId=2;
+}
+message GetCurrencyByIdResponse{
+    Currency currency=1;
+}
+//2
+message GetCurrencyByNameRequest{
+    RpcHeader rpcHeader=1;
+    string currencyName=2;
+}
+message GetCurrencyByNameResponse{
+    Currency currency=1;
+}
+
+//1
+message GetCurrencyByCodeRequest{
+    RpcHeader rpcHeader =1;
+    string currencyCode=2;
+}
+message GetCurrencyByCodeResponse{
+    Currency currency=1;
+}
+
+//model
+message Currency{
+    int64 currencyId =1;
+    string currencyName=2;
+    string currencyCode=3;
+    int32 recordStatus=4;
+    int64 createTime=5;
+}

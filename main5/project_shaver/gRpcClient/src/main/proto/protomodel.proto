@@ -1,0 +1,19 @@
+
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.grpc.model.proto";
+option java_outer_classname = "ProtoModelStructure";
+
+
+message ProtoModel {
+    string traceId = 1;  //字符串
+    int32 projectId = 2;  //整形
+    bool isDeleted = 3; //布尔
+    bytes body = 4; //byte[]
+    repeated ProtoInnerModel innerModel = 5;  //list
+    map<string, ProtoInnerModel> mapping = 6; //map
+}
+
+message ProtoInnerModel {
+    string innerId = 1;
+}

@@ -1,0 +1,25 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.inventory.productinventory180age.microservice";
+option java_outer_classname = "ProductInventory180AgeStructure";
+
+import "gongxiao.global.structure.proto";
+
+service ProductInventory180AgeService{
+    //1 查询整体库龄
+    rpc getProductInventory180Age (GetProductInventory180AgeRequest) returns (GetProductInventory180AgeRespon) {}
+}
+
+message GetProductInventory180AgeRequest{
+    RpcHeader rpcHeader=1;
+    int64 projectId=2;
+}
+
+message GetProductInventory180AgeRespon {
+    repeated ProductInventory180Age list = 1;
+}
+
+message ProductInventory180Age{
+    string productCode=1; //商品型号
+    double sumOfmoney=2; //金额
+    double proportion=3; //金额占比
+}

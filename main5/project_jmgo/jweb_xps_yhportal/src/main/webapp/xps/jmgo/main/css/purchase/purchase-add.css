@@ -1,0 +1,74 @@
+.purdetail-info {
+  width: 700px;
+}
+.purdetail-info i {
+  font-style: normal;
+  display: inline-block;
+  width: 84px;
+  text-align: right;
+}
+.purdetail-info p {
+  float: left;
+}
+.purdetail-info p:nth-child(even) {
+  margin-left: 36px;
+}
+.total-box ul {
+  margin-top: 10px;
+  margin-left: 50px;
+  float:left;
+}
+.total-box li {
+  font-size: 12px;
+  /*float: left;*/
+  margin-left: 100px;
+  /*width: 200px;*/
+}
+/*.total-box li:first-child{*/
+  /*margin-left: 0;*/
+/*}*/
+.total-box span {
+  width: 90px;
+  text-align: left;
+}
+.total-box p span {
+  width: 78px;
+}
+/*.total-box ul li:first-child{*/
+  /*margin-left: 0!important;*/
+/*}*/
+.info-inputlayout textarea {
+  border: 1px solid #d4d4d4;
+  text-indent: 2em;
+  width: 528px;
+  vertical-align: top;
+  resize: none;
+}
+.remaskinfo textarea{
+  width: 528px;
+}
+.purchaseadd-header{
+  border-top: none;
+}
+.sub-btn{
+  font-size: 0;
+  width: 340px;
+  margin: 50px auto 0;
+}
+.sub-btn button{
+  margin-left: 20px;
+}
+.sub-btn button:first-child{
+  margin-left: 0;
+}
+.yhtable-header{border-bottom: none;}
+.purchase-addinfo{width: 1180px;}
+.purchase-addinfo input{width:120px;margin-right: 4px;}
+.purchase-addinfo li.pur-spli{margin-left: 146px;}
+.yhmask-rightbox h3 span{color:#ed5564;}
+.infolist>ul>li{
+  position:relative;
+}
+.verification{
+  left: 86px;
+}

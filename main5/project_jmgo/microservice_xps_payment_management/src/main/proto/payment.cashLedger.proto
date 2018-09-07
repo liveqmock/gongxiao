@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.payment.microservice";
+option java_outer_classname = "CashLedgerSerivceStructure";
+
+import "gongxiao.global.structure.proto";
+
+service CashLedgerService {
+    //选择性查询(均为可选条件)
+    rpc selectCashLedgerList (SelectCashLedgerListRequest) returns (SelectCashLedgerListResponse) {
+    }
+    //取消收款确认
+    rpc cancelConfirm (CashLedgerRequest) returns (RpcResult) {
+    }
+    //审批通过
+    rpc approveLedger (CashLedgerRequest) returns (RpcResult) {
+    }
+    //取消审批
+    rpc cancelApproveLedger (CashLedgerRequest) returns (RpcResult) {
+    }
+
+}
+
+message SelectCashLedgerListRequest {
+    RpcHeader rpcHeader = 1; // 头
+    int64 projectId = 2; // 项目id
+    string bankName = 3; // 收款银行
+    string flowNo = 4; // 流水号
+    string confirmBegin = 5; // 确认起始时间
+    string confirmEnd = 6; // 确认截止时间
+    string receiveBegin = 7; // 收款起始时间
+    string receiveEnd = 8; // 收款截止时间
+    string approveStatus = 9; // 收款状态
+    int32 pageNum = 10; // 页码
+    int32 pageSize = 11; // 页面条数
+    string clientName = 12; // 客户名称
+}
+
+message SelectCashLedgerListResponse {
+    int32 pageNum = 1; // 页码
+    int32 pageSize = 2; // 页面条数
+    int64 total = 3; // 总条数
+    repeated CashLedgerResponse list = 4; // 表单数据
+}
+
+message CashLedgerResponse {
+    string flowNo = 1; // 流水号
+    bool approvalStatus = 2; // 审批状态
+    string distributorName = 3; // 客户名称
+    string confirmAmountDoubleStr = 4; // 确认金额
+    string recipientAmountDoubleStr = 5; // 收款金额
+    int64 confirmTime = 6; // 确认时间
+    int64 approveTime = 7; // 审批时间
+    string approvalUserName = 8; // 审批人
+    int64 receiveTime = 9; // 收款时间
+    string bankName = 10; // 收款银行
+    string projectName = 11; // 项目名称
+    string bankFlowNo = 12; // 银行流水号
+    string clientName = 13; // 客户名称
+    string createdByName = 14; // 创建人
+}
+
+message CashLedgerRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string flowNo = 2; // 流水号
+    int64 projectId = 3;
+}
+

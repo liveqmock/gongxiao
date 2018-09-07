@@ -1,0 +1,21 @@
+
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.microservice";
+option java_outer_classname = "GongxiaoRpc";
+
+//gRpc 全局结构体
+
+//rpc调用时 约定传递的header信息
+message RpcHeader {
+    string traceId = 1;  //请求追踪id
+    int32 projectId = 2;  //项目id
+    string uid = 3;  //用户id 注:这里部分的id是distributorId:index的形式 故类型为string
+    string username = 4;  //用户名字
+}
+
+//rpc返回结果 若无须返回具体的业务数据 则可用RpcResult作为返回值
+message RpcResult {
+    int32 returnCode = 1; //返回码
+    string msg = 2; //当返回错误时 对应的错误信息
+}

@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.payment.microservice";
+option java_outer_classname = "YhglobalAccountServiceStructure";
+
+import "gongxiao.global.structure.proto";
+import "payment.account.common.proto";
+
+service YhglobalAccountService {
+    //查询越海实收账户余额
+    rpc getYhglobalReceivedAccountAmount (GetYhglobalReceivedAccountAmountRequest) returns (AccountAmountResponse) {
+    }
+    //查询返利实收账户流水
+    rpc selectCouponReceivedRecords (SelectYhglobalFlowsRequest) returns (FrontPageFlowPageInfo) {
+    }
+    //查询返利实收账户小计
+    rpc getCouponSubtotal (GetYhglobalSubtotalRequest) returns (FrontPageFlowSubtotal) {
+    }
+    //查询代垫实收账户流水
+    rpc selectPrepaidReceivedRecords (SelectYhglobalFlowsRequest) returns (FrontPageFlowPageInfo) {
+    }
+    //查询代垫实收账户小计
+    rpc getPrepaidSubtotal (GetYhglobalSubtotalRequest) returns (FrontPageFlowSubtotal) {
+    }
+
+    // 越海实收返利转出
+    rpc transferYhglobalReceivedCoupon (TransferReceivedAccountRequest) returns (RpcResult);
+
+    // 越海实收代垫转出
+    rpc transferYhglobalReceivedPrepaid (TransferReceivedAccountRequest) returns (RpcResult);
+
+    //更新返利实收账户
+    rpc updateYhglobalReceivedCouponAccount (WriteOffRequest) returns (WriteOffResponse);
+
+    //更新返利实收账户
+    rpc updateYhglobalReceivedPrepaidAccount (WriteOffRequest) returns (WriteOffResponse);
+}
+
+
+message GetYhglobalReceivedAccountAmountRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 3; // 项目id
+}
+
+message SelectYhglobalFlowsRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币id
+    int64 projectId = 3; // 项目id
+    int32 moneyFlow = 4; // 资金流向
+    string beginDate = 5; // 开始日期
+    string endDate = 6; // 截止日期
+    int32 pageNum = 7; // 页码
+    int32 pageSize = 8; // 页面条数
+}
+
+message GetYhglobalSubtotalRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 3; // 项目id
+    int32 moneyFlow = 4; // 资金流向
+    string beginDate = 5; // 开始日期
+    string endDate = 6; // 截止日期
+}
+
+message TransferReceivedAccountRequest {
+    RpcHeader rpcHeader = 1;
+    int64 projectId = 2;
+    double amountDouble = 3;
+    string remark = 4;
+}
+
+
+

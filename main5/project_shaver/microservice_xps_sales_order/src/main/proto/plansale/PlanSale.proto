@@ -1,0 +1,240 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.plansale.microservice";
+option java_outer_classname = "PlanSaleStructure";
+
+import "gongxiao.global.structure.proto";
+
+service PlanSaleService {
+    //1. 插入货品销售计划列表
+    rpc createSalePlan (CreateSalePlanReq) returns (CreateSalePlanResp) {
+    }
+    //2. 获取当前项目的销售计划列表
+    rpc selectSalePlanListByProject (SelectSalePlanListByProjectReq) returns (SelectSalePlanListByProjectResp) {
+    }
+    //3. 变更销售计划单可售数量
+    rpc updatePlanQuantity (UpdatePlanQuantityReq) returns (UpdatePlanQuantityResp) {
+    }
+    //4. 通过销售计划单号获取预约销售单未处理的数量
+    rpc getUnHandleQuantity (GetUnHandleQuantityReq) returns (GetUnHandleQuantityResp) {
+    }
+    //5. 通过销售计划单号获取销售计划信息
+    rpc getSalePlanInfo (GetSalePlanInfoReq) returns (GetSalePlanInfoResp) {
+    }
+    //6. 变更销售计划信息;主要市变更可售数量
+    rpc editSalePlan (EditSalePlanReq) returns (EditSalePlanResp) {
+    }
+    //7. 获取销售计划单详情
+    rpc getSalePlanDetail (GetSalePlanDetailReq) returns (GetSalePlanDetailResp) {
+    }
+    //8. 判定货品是否重复
+    rpc isProductRepeat (IsProductRepeatReq) returns (IsProductRepeatResp) {
+    }
+    //9. 作废预售单
+    rpc cancelPlanSaleOrder (CancelPlanSaleOrderReq) returns (CancelPlanSaleOrderResp) {
+    }
+    //10. 自动或者手动失效;返还订单的可售数量
+    rpc updateReturnSaleQuantity (UpdateReturnSaleQuantityReq) returns (UpdateReturnSaleQuantityResp) {
+    }
+}
+//10
+message UpdateReturnSaleQuantityReq{
+    RpcHeader rpcHeader=1;
+    string salePlanNo=2;
+    int32 changeQuantity=3;
+    int64 projectId=88;
+}
+
+message UpdateReturnSaleQuantityResp{
+    int32 number=1;
+}
+
+//9
+message CancelPlanSaleOrderReq{
+    RpcHeader rpcHeader=1;
+    string salesPlanNo=2;
+    int64 projectId=88;
+}
+
+message CancelPlanSaleOrderResp{
+    int32 number=1;
+}
+
+//8
+message IsProductRepeatReq{
+    RpcHeader rpcHeader=1;
+    string projectId=2;
+    string productId=3;
+    int64 startTime=4;
+    int64 endTime=5;
+}
+
+message IsProductRepeatResp{
+    bool isRepeated = 1;
+}
+
+//7
+message GetSalePlanDetailReq{
+    RpcHeader rpcHeader=1;
+    string salesPlanNo=2;
+    int64 projectId=88;
+}
+
+message GetSalePlanDetailResp{
+    SalePlanInfoOut salePlanInfoOut=1;
+}
+
+//6
+message EditSalePlanReq{
+    RpcHeader rpcHeader=1;
+    string salesPlanNo=2;
+    int32 onSaleQuantity=3;
+    string startDate=4;
+    string endDate=5;
+    int64 projectId=88;
+
+}
+
+message EditSalePlanResp{
+    RpcResult rpcResult=1;
+}
+
+//5
+message GetSalePlanInfoReq {
+    RpcHeader rpcHeader = 1;
+    string salesPlanNo = 2;
+    int64 projectId=88;
+
+}
+
+message GetSalePlanInfoResp {
+    SaleEditInfo saleEditInfo = 1;
+}
+
+//4
+message GetUnHandleQuantityReq {
+    RpcHeader rpcHeader = 1;
+    string salesPlanNo = 2;
+    int64 projectId=88;
+
+}
+
+message GetUnHandleQuantityResp {
+    int32 number = 1;
+}
+
+//3
+message UpdatePlanQuantityReq {
+    RpcHeader rpcHeader = 1;
+    string salesPlanNo = 2;
+    int32 onSaleQuantity = 3;
+    int32 allocatedQuantity = 4;
+    int32 unallocatedQuantity = 5;
+    int64 projectId=88;
+
+}
+
+message UpdatePlanQuantityResp {
+    int32 number = 1;
+}
+
+//2
+message SelectSalePlanListByProjectReq {
+    RpcHeader rpcHeader = 1;
+    string projectId = 2;
+    string productModle = 3;
+    string productName = 4;
+    string createTime = 5;
+    int32 pageNumber = 6;
+    int32 pageSize = 7;
+
+}
+
+message SelectSalePlanListByProjectResp {
+    int64 total =2;
+    repeated SalePlanInfoOut salePlanInfoOutList = 1;
+}
+
+//1
+message CreateSalePlanReq {
+    RpcHeader rpcHeader = 1;
+    repeated SalePlanInfoIn salePlanInfoOuts = 2;
+    int64 projectId=88;
+
+}
+
+message CreateSalePlanResp {
+    int32 number = 1;
+}
+
+//model
+message SalePlanInfoOut{
+    //状态 0正常 1作废
+    int32 orderStatus=1;
+     //销售计划单号
+    string salesPlanNo=2;
+    //项目id
+    int64 projectId=3;
+     //项目名称
+    string projectName=4;
+    //商品id
+    int64 productId=5;
+     //商品编码
+    string productModle=6;
+    //商品名称
+    string productName=7;
+     //商品指导价
+    string guidePrice=8;
+    //销售指导价
+    string saleGuidePrice=88;
+    //可售总数
+    int32 onSaleQuantity=9;
+     //已分配的数量
+    int32 allocatedQuantity=10;
+    //待分配的数量
+    int32 unallocatedQuantity=11;
+     //货品实物库存
+    int32 productActualQuantity=12;
+    //有效日期起
+    string  startTime=13;
+     //有效日期止
+    string endTime=14;
+    //创建时间
+    string  createTime=15;
+}
+
+message SaleEditInfo {
+    //预销单号
+    string salePlanNo = 1;
+    //产品ID
+    string productId = 2;
+    //产品编码
+    string productModle = 3;
+    //产品名称
+    string productName = 4;
+    //预销总数
+    int32 onSaleQuantity = 5;
+    //实物库存
+    int32 inStockQuantity = 6;
+    //已分配数量
+    int32 allocatedQuantity = 7;
+    //有效日期起
+    int64 startTime = 8;
+    //有效日期止
+    int64 endTime = 9;
+}
+
+message SalePlanInfoIn {
+    //项目id
+    int64 projectId = 1;
+    //商品id
+    int64 productId = 2;
+    //货品编码
+    string productModle = 3;
+    //可售总数
+    int32 onSaleQuantity = 4;
+    //有效日期起
+    string startTime = 5;
+    //有效日期止
+    string endTime = 6;
+}
+

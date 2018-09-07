@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.yhglobal.gongxiao.phjd</groupId>
+        <artifactId>project_philips_jd</artifactId>
+        <version>2.0</version>
+    </parent>
+    <artifactId>lib_common_phjd</artifactId>
+    <packaging>jar</packaging>
+    <version>2.0</version>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.yhglobal.gongxiao</groupId>
+            <artifactId>lib_global</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.yhglobal.gongxiao.phjd</groupId>
+            <artifactId>microservice_gongxiao_phjd_payment_management</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.yhglobal.gongxiao.phjd</groupId>
+            <artifactId>microservice_gongxiao_phjd_sales_order</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.yhglobal.gongxiao.phjd</groupId>
+            <artifactId>microservice_gongxiao_phjd_purchase_order</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.yhglobal.gongxiao</groupId>
+            <artifactId>microservice_xps_foundation_data</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.7</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>

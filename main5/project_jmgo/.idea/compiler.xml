@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="japp_xps_payment_management" />
+        <module name="japp_xps_purchase_order" />
+        <module name="japp_xps_sales_order" />
+        <module name="jweb_xps_distributor_portal" />
+        <module name="jweb_xps_warehouse_notify_gateway" />
+        <module name="jweb_xps_yhportal" />
+        <module name="lib_common" />
+        <module name="microservice_xps_payment_management" />
+        <module name="microservice_xps_purchase_order" />
+        <module name="microservice_xps_sales_order" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="japp_xps_payment_management" target="1.8" />
+      <module name="japp_xps_purchase_order" target="1.8" />
+      <module name="japp_xps_sales_order" target="1.8" />
+      <module name="jweb_xps_distributor_portal" target="1.8" />
+      <module name="jweb_xps_warehouse_notify_gateway" target="1.8" />
+      <module name="jweb_xps_yhportal" target="1.8" />
+      <module name="lib_common" target="1.8" />
+      <module name="microservice_xps_payment_management" target="1.8" />
+      <module name="microservice_xps_purchase_order" target="1.8" />
+      <module name="microservice_xps_sales_order" target="1.8" />
+      <module name="project_jmgo" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

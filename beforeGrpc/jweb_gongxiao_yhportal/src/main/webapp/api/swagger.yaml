@@ -1,0 +1,1014 @@
+swagger: "2.0"
+info:
+  description: "Api for bestlyn statement checking project"
+  version: "1.0.0"
+  title: "api"
+host: "127.0.0.1:8080"
+basePath: "/"
+schemes:
+- "http"
+
+paths:
+  /purchase/order/getPurchaseList:
+    get:
+      tags:
+      - "采购订单管理-获取采购单列表"
+      summary: "获取采购单列表"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "projectId"
+          in: "query"
+          description: "项目ID"
+          required: false
+          type: "string"
+        - name: "purchaseOrderNo"
+          in: "query"
+          description: "采购单号"
+          required: false
+          type: "string"
+        - name: "brandId"
+          in: "query"
+          description: "品牌商ID"
+          required: false
+          type: "string"
+        - name: "warehouseId"
+          in: "query"
+          description: "仓库订单号"
+          required: false
+          type: "string"
+        - name: "productCode"
+          in: "query"
+          description: "产品编码"
+          required: false
+          type: "string"
+        - name: "requireArrivalDate"
+          in: "query"
+          description: "要求到货时间"
+          required: false
+          type: "string"
+        - name: "arrivalDeadline"
+          in: "query"
+          description: "到货截止时间"
+          required: false
+          type: "string"
+        - name: "businessDate"
+          in: "query"
+          description: "业务发生时间"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /purchase/order/getPurchaseDetail:
+    get:
+      tags:
+      - "采购订单管理-采购订单详情-通过采购单号获取采购详情"
+      summary: "采购订单管理-采购订单详情-通过采购单号获取采购详情"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "purchaseOrderNo"
+          in: "query"
+          description: "采购单号"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /purchase/foundation/getBrandList:
+    get:
+      tags:
+      - "获取品牌商列表"
+      summary: "获取品牌商列表"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /purchase/order/generatePurchaseOrders:
+    post:
+      tags:
+      - "采购订单管理-新增采购单"
+      summary: "采购订单管理-新增采购单"
+      produces:
+      - "application/json"
+      parameters:
+        - name: projectId
+          in: formData
+          description: 项目ID
+          type: string
+        - name: warehouseId
+          in: formData
+          description: 仓库ID
+          type: string
+        - name: brandId
+          in: formData
+          description: 品牌商ID
+          type: string
+        - name: paymentMode
+          in: formData
+          description: 付款方式
+          type: number
+        - name: logisticType
+          in: formData
+          description: 物流方式 0,自提 1,第三方物流
+          type: number
+        - name: businessDate
+          in: formData
+          description: 业务发生日期
+          type: string
+        - name: requireArrivalDate
+          in: formData
+          description: 要求到货日期
+          type: string
+        - name: arrivalDeadline
+          in: formData
+          description: 到货截止日期
+          type: string
+        - name: brandOrderNo
+          in: formData
+          description: 品牌商订单号
+          type: string
+        - name: contractReferenceOrderNo
+          in: formData
+          description: 合同参考号
+          type: string
+        - name: remark
+          in: formData
+          description: 备注
+          type: string
+        - name: purchaseCategory
+          in: formData
+          description: 采购种类数目
+          type: integer
+        - name: purchaseNumber
+          in: formData
+          description: 采购总数量
+          type: integer
+        - name: couponAmountUse
+          in: formData
+          description: 返利使用金额
+          type: number
+        - name: prepaidAmountUse
+          in: formData
+          description: 代垫使用金额
+          type: number
+        - name: purchaseGuideAmount
+          in: formData
+          description: 采购指导金额
+          type: number
+        - name: purchasePrivilegeAmount
+          in: formData
+          description: 采购优惠金额
+          type: number
+        - name: returnCash
+          in: formData
+          description: 现金返点金额
+          type: number
+        - name: purchaseShouldPayAmount
+          in: formData
+          description: 采购应付金额
+          type: number
+        - name: purchaseActualPayAmount
+          in: formData
+          description: 采购实付金额
+          type: number
+        - name: purchaseItemInfoJson
+          in: formData
+          description: 采购货品列表(jsonArray)
+          type: string
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /purchase/order/planInbound:
+    post:
+      tags:
+      - "采购订单管理-收货通知-提交 计划入库"
+      summary: "采购订单管理-收货通知-提交 计划入库"
+      produces:
+      - "application/json"
+      parameters:
+        - name: projectId
+          in: formData
+          description: 项目ID
+          type: string
+        - name: purchaseOrderNo
+          in: formData
+          description: 采购单号
+          type: string
+        - name: warehouseId
+          in: formData
+          description: 仓库ID
+          type: string
+        - name: warehouseName
+          in: formData
+          description: 仓库名
+          type: string
+        - name: requireInboundDate
+          in: formData
+          description: 要求到货日期
+          type: string
+        - name: totalQuantity
+          in: formData
+          description: 采购总量
+          type: integer
+        - name: planInstockNumberTotal
+          in: formData
+          description: 计划入库数量总量
+          type: integer
+        - name: planInboundItemListJson
+          in: formData
+          description: 货品信息列表的json
+          type: string
+    responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/foundation/getProjectInfo:
+    get:
+      tags:
+      - "根据用户ID获取项目信息"
+      summary: "根据用户ID获取项目信息"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "userId"
+          in: "query"
+          description: "用户ID"
+          type: "string"
+
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/order/getInboundList:
+    get:
+      tags:
+      - "采购订单管理 - 收货通知- 通过采购单号获取计划收货单列表"
+      summary: "采购订单管理 - 收货通知- 通过采购单号获取计划收货单列表"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "purchaseNumber"
+          in: "query"
+          description: "采购单号"
+          type: "string"
+        - name: "productCode"
+          in: "query"
+          description: "货品编码"
+          type: "string"
+
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/foundation/getProjectList:
+    get:
+      tags:
+      - "获取项目信息列表"
+      summary: "获取项目信息列表"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/foundation/warehouseList:
+    get:
+      tags:
+      - "获取仓库信息列表"
+      summary: "获取仓库信息列表"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/foundation/getProductInfoList:
+    get:
+      tags:
+      - "获取产品信息列表"
+      summary: "获取产品信息列表"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "projectId"
+          in: "query"
+          description: "项目ID"
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/foundation/getProjectCash:
+    get:
+      tags:
+      - "获取项目的余额"
+      summary: "获取项目的余额"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "projectId"
+          in: "query"
+          description: "项目ID"
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchase/order/calculateProductInfo:
+    post:
+      tags:
+        - "采购订单管理-新增采购单-计算货品的各价格"
+      summary: "采购订单管理-新增采购单-计算货品的各价格"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "projectId"
+          in: "query"
+          description: "项目ID"
+          type: "string"
+        - name: "brandId"
+          in: "query"
+          description: "品牌商ID"
+          type: "string"
+        - name: "brandName"
+          in: "query"
+          description: "品牌商名称"
+          type: "string"
+        - name: "cashRate"
+          in: "query"
+          description: "现金返利折扣"
+          type: "number"
+        - name: "couponRate"
+          in: "query"
+          description: "返利使用比例"
+          type: "number"
+        - name: "prepaidRate"
+          in: "query"
+          description: "代垫使用比例"
+          type: "number"
+        - name: "monthCouponRate"
+          in: "query"
+          description: "月度返利"
+          type: "number"
+        - name: "seasonCouponRate"
+          in: "query"
+          description: "季度返利"
+          type: "number"
+        - name: "yearCouponRate"
+          in: "query"
+          description: "年度返利"
+          type: "number"
+        - name: "couponAmountUse"
+          in: "query"
+          description: "订单返利使用额"
+          type: "number"
+        - name: "prepaidAmountUse"
+          in: "query"
+          description: "订单代垫使用额"
+          type: "number"
+        - name: "productJson"
+          in: "query"
+          description: "货品信息"
+          type: "string"
+
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchaseReturn/getPurchaseReturnList:
+    get:
+      tags:
+        - "查询退货单数据列表"
+      summary: "查询退货单数据列表"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "projectId"
+          in: "query"
+          description: "项目ID"
+          type: "string"
+        - name: "warehouseId"
+          in: "query"
+          description: "仓库ID"
+          type: "string"
+        - name: "returnType"
+          in: "query"
+          description: "退货类型"
+          type: "number"
+        - name: "orderNumber"
+          in: "query"
+          description: "单号(采购单号/退货单号)"
+          type: "string"
+        - name: "startDate"
+          in: "query"
+          description: "开始时间"
+          type: "string"
+        - name: "endDate"
+          in: "query"
+          description: "结束时间"
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchaseReturn/getInboundOrderList:
+    get:
+      tags:
+        - "通过采购单获取入库单列表"
+      summary: "通过采购单获取入库单列表"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "projectId"
+          in: "query"
+          description: "项目ID"
+          type: "string"
+        - name: "purchaseOrderNumber"
+          in: "query"
+          description: "采购单号"
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchaseReturn/getInboundItemList:
+    get:
+      tags:
+        - "通过入库单获取入库单明细列表"
+      summary: "通过入库单获取入库单明细列表"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "projectId"
+          in: "query"
+          description: "项目ID"
+          type: "string"
+        - name: "gongxiaoInboundOrderNo"
+          in: "query"
+          description: "入库单号"
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchaseReturn/putPurchaseDetail:
+    post:
+      tags:
+        - "新增采购退货信息"
+      summary: "新增采购退货信息"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "originalPurchaseOrderNo"
+          in: "query"
+          description: "原始采购单号"
+          type: "string"
+        - name: "originalGongxiaoInboundOrderNo"
+          in: "query"
+          description: "原始入库单号"
+          type: "string"
+        - name: "recipientName"
+          in: "query"
+          description: "收件人姓名"
+          type: "string"
+        - name: "recipientCompanyName"
+          in: "query"
+          description: "收件人公司名称"
+          type: "string"
+        - name: "recipientAddress"
+          in: "query"
+          description: "收件人地址"
+          type: "string"
+        - name: "recipientDetailAddress"
+          in: "query"
+          description: "收件人详细地址"
+          type: "string"
+        - name: "recipientMobile"
+          in: "query"
+          description: "收件人电话"
+          type: "string"
+        - name: "shippingMode"
+          in: "query"
+          description: "物流方式"
+          type: "number"
+        - name: "logisticsOrderNo"
+          in: "query"
+          description: "物流单号"
+          type: "string"
+        - name: "logisticsCompany"
+          in: "query"
+          description: "物流公司"
+          type: "string"
+        - name: "warehouseId"
+          in: "query"
+          description: "仓库ID"
+          type: "string"
+        - name: "warehouseName"
+          in: "query"
+          description: "仓库名称"
+          type: "string"
+        - name: "freightPaidBy"
+          in: "query"
+          description: "运费承担方"
+          type: "number"
+        - name: "freight"
+          in: "query"
+          description: "运费金额"
+          type: "number"
+        - name: "projectId"
+          in: "query"
+          description: "项目ID"
+          type: "string"
+        - name: "projectName"
+          in: "query"
+          description: "项目名称"
+          type: "string"
+        - name: "returnType"
+          in: "query"
+          description: "退货类型"
+          type: "number"
+        - name: "purchaseReturnOrderItemJson"
+          in: "query"
+          description: "采购退货单货品信息"
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /purchaseReturn/getPurchaseReturnDetail:
+    get:
+      tags:
+        - "获取采购退货详情"
+      summary: "获取采购退货详情"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "purchaseReturnedOrderNo"
+          in: "query"
+          description: "退货单号"
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid projectid supplied"
+
+  /planSale/getSalePlanList:
+    get:
+      tags:
+      - "预销管理-获取当前项目的销售计划列表"
+      summary: "预销管理-获取当前项目的销售计划列表"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "projectId"
+          in: "query"
+          description: "项目ID"
+          required: false
+          type: "string"
+        - name: "productCode"
+          in: "query"
+          description: "产品编码"
+          required: false
+          type: "string"
+        - name: "productName"
+          in: "query"
+          description: "产品名称"
+          required: false
+          type: "string"
+        - name: "createTime"
+          in: "query"
+          description: "创建时间"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /planSale/insertSalePlanInfo:
+    post:
+      tags:
+      - "预销管理-插入销售计划信息"
+      summary: "预销管理-插入销售计划信息"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "salePlanJson"
+          in: "query"
+          description: "销售计划json"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /planSale/getProductList:
+    get:
+      tags:
+      - "预销管理-获取当前项目的货品信息以及实际库存"
+      summary: "预销管理-获取当前项目的货品信息以及实际库存"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "projectId"
+          in: "query"
+          description: "项目ID"
+          required: false
+          type: "string"
+        - name: "productCode"
+          in: "query"
+          description: "产品CODE"
+          required: false
+          type: "string"
+        - name: "productName"
+          in: "query"
+          description: "产品名称"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /planSale/updatePlanQuantity:
+    get:
+      tags:
+      - "预销管理-更新销售计划数据"
+      summary: "预销管理-更新销售计划数据"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "salesPlanNo"
+          in: "query"
+          description: "销售计划单号"
+          required: false
+          type: "string"
+        - name: "salesPlanNo"
+          in: "query"
+          description: "销售计划单号"
+          required: false
+          type: "string"
+        - name: "allocatedQuantity"
+          in: "query"
+          description: "已分配数量"
+          required: false
+          type: "string"
+        - name: "unallocatedQuantity"
+          in: "query"
+          description: "未分配数量"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /planSale/getPlanSaleInfo:
+    get:
+      tags:
+      - "预销管理-修改-通过销售计划单号拿到该条销售计划信息"
+      summary: "预销管理-修改-通过销售计划单号拿到该条销售计划信息"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "salesPlanNo"
+          in: "query"
+          description: "销售计划单号"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /planSale/getSalePlanDetail:
+    get:
+      tags:
+      - "预销管理跳转到预销维护"
+      summary: "预销管理跳转到预销维护"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "salesPlanNo"
+          in: "query"
+          description: "销售计划单号"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /planSale/editPlanQuantity:
+    get:
+      tags:
+      - "预销管理-修改-修改销售计划"
+      summary: "预销管理-修改-editPlanQuantity"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "salesPlanNo"
+          in: "query"
+          description: "销售计划单号"
+          required: false
+          type: "string"
+        - name: "onSaleQuantity"
+          in: "query"
+          description: "可售数量"
+          required: false
+          type: "string"
+        - name: "startDate"
+          in: "query"
+          description: "开始日期"
+          required: false
+          type: "string"
+        - name: "endDate"
+          in: "query"
+          description: "结束日期"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /planSaleItem/getCustomerList:
+    get:
+      tags:
+      - "预售维护-获取该项目客户列表"
+      summary: "预销管理-修改-editPlanQuantity"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "projectId"
+          in: "query"
+          description: "项目ID"
+          required: false
+          type: "string"
+        - name: "customerId"
+          in: "query"
+          description: "客户ID"
+          required: false
+          type: "string"
+        - name: "customerName"
+          in: "query"
+          description: "客户名称"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /planSaleItem/getPlanSaleItemList:
+    get:
+      tags:
+      - "预售维护-通过预销单号,客户ID,客户名称获取预销列表"
+      summary: "预售维护-通过预销单号,客户ID,客户名称获取预销列表y"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "salesPlanNo"
+          in: "query"
+          description: "销售计划单号"
+          required: false
+          type: "string"
+        - name: "customerId"
+          in: "query"
+          description: "客户ID"
+          required: false
+          type: "string"
+        - name: "customerName"
+          in: "query"
+          description: "客户名称"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /planSaleItem/putCustomerSalePlan:
+    post:
+      tags:
+      - "预售维护-添加计划销售明细"
+      summary: "预售维护-添加计划销售明细"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "salePlanItemJson"
+          in: "query"
+          description: "客户可售计划json"
+          required: false
+          type: "string"
+
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /planSaleItem/getEditItemInfo:
+    get:
+      tags:
+      - "预售维护-编辑获取明细信息"
+      summary: "预售维护-编辑获取明细信息"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "itemId"
+          in: "query"
+          description: "明细ID"
+          required: false
+          type: "string"
+
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /planSaleItem/editItemInfo:
+    get:
+      tags:
+      - "预售维护-编辑明细信息"
+      summary: "预售维护-编辑明细信息"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "itemId"
+          in: "query"
+          description: "明细ID"
+          required: false
+          type: "string"
+        - name: "adjustNumber"
+          in: "query"
+          description: "调整数量"
+          required: false
+          type: "number"
+        - name: "brandPrepaidUnit"
+          in: "query"
+          description: "品牌商单位代垫"
+          required: false
+          type: "number"
+        - name: "brandPrepaidDiscount"
+          in: "query"
+          description: "品牌商代垫折扣"
+          required: false
+          type: "number"
+        - name: "yhPrepaidUnit"
+          in: "query"
+          description: "越海单位代垫"
+          required: false
+          type: "number"
+        - name: "yhPrepaidDiscount"
+          in: "query"
+          description: "越海代垫折扣"
+          required: false
+          type: "number"
+        - name: "startDate"
+          in: "query"
+          description: "开始日期"
+          required: false
+          type: "string"
+        - name: "endDate"
+          in: "query"
+          description: "结束日期"
+          required: false
+          type: "string"
+
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"
+
+  /planSaleItem/cancelPlanSaleItemOrder:
+    get:
+      tags:
+      - "预售维护-作废客户销售计划单"
+      summary: "预售维护-作废客户销售计划单"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "itemId"
+          in: "query"
+          description: "明细ID"
+          required: false
+          type: "string"
+
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid username/password supplied"

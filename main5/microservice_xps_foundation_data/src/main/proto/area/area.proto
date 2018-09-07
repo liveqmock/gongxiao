@@ -1,0 +1,83 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.foundation.area.microservice";
+option java_outer_classname = "AreaStructure";
+
+import "gongxiao.global.structure.proto";
+
+service AreaService {
+    //1获取所有省列表
+    rpc selectProvinceList (SelectProvinceRequest) returns (SelectProvinceResponse) {}
+    //2 获取某省下的所有城市
+    rpc selectCityByProvince (SelectCityByProvinceRequest) returns (SelectCityByProvinceResponse) {}
+    //3 获取所有的city列表
+    rpc selectAllCity (SelectAllCityRequest) returns (SelectAllCityResponse) {}
+    //4 获取某市下的所有区域
+    rpc selectDistrictsByCity (SelectDistrictsByCityRequest) returns (SelectDistrictsByCityResponse) {}
+    //5 获取所有的区域
+    rpc selectAllDistrict (SelectAllDistrictRequest) returns (SelectAllDistrictResponse) {}
+}
+//5
+message SelectAllDistrictRequest{
+    RpcHeader rpcHeader=1;
+}
+message SelectAllDistrictResponse{
+    repeated District district=1;
+}
+//4
+message SelectDistrictsByCityRequest{
+    RpcHeader rpcHeader=1;
+    string cityCode=2;
+}
+message SelectDistrictsByCityResponse{
+    repeated District districtList=1;
+}
+//3
+message SelectAllCityRequest{
+    RpcHeader rpcHeader=1;
+}
+
+message SelectAllCityResponse{
+    repeated City city=1;
+}
+
+//2
+message SelectCityByProvinceRequest{
+    RpcHeader rpcHeader=1;
+    string provinceCode=2;
+}
+message SelectCityByProvinceResponse{
+    repeated City city=1;
+}
+
+//1
+message SelectProvinceRequest{
+    RpcHeader rpcHeader=1;
+}
+message SelectProvinceResponse{
+    repeated  Province province=1;
+}
+
+//model
+message District{
+    int32 districtId=1;
+    int32 districtCode=2;
+    string districtName=3;
+    int32 cityCode=4;
+}
+
+message City{
+    int32 cityId=1;
+    int32 cityCode=2;
+    string cityName=3;
+    int32 provinceCode=4;
+}
+
+message Province{
+    int32 provinceId=1;
+    int32 provinceCode=2;
+    string provinceName=3;
+}
+
+
+
+

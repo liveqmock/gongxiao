@@ -1,0 +1,54 @@
+.purdetail-info{
+    width:auto;
+    padding-left: 80px;
+}
+.info-inputlayout{
+    padding-left: 80px;
+}
+.purdetail-info p{
+    margin-left: 36px;
+}
+.purdetail-info p:nth-child(3n+1){
+    margin-left: 0;
+}
+.storage-info{
+    width: 700px;
+}
+.storage-info p:nth-child(odd){
+    margin-left: 0;
+}
+.storage-info p:last-child input{
+    width: 520px;
+}
+.storemark{
+    border: 1px solid #d4d4d4;
+    text-indent: 2em;
+    width: 520px;
+    height: 160px;
+    vertical-align: top;
+}
+.total-box{
+    margin-top: 12px;
+}
+.total-box span,.storemark{
+    float: left;
+
+}
+.total-box span{
+    width: 78px;
+}
+.edit-infobox{
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 1400px) {
+    .info-inputlayout{
+        padding-left: 44px;
+    }
+    .purdetail-info li {
+        margin-left: 36px;
+    }
+    .total-box{
+        margin-left: 36px;
+    }
+}

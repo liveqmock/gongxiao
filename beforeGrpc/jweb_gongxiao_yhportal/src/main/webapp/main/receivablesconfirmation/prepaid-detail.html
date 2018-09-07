@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=f1463f4aab"></script>
+    <link rel="stylesheet" href="../css/purchase/purchase-detail.css?v=9d03b86301">
+    <title>代垫付款单详情</title>
+    <style type="text/css">
+    .purdetail-info{
+        width:auto;
+    }
+    .purdetail-info p{
+        margin-left: 36px;
+    }
+    .purdetail-info p:nth-child(3n+1){
+        margin-left: 0;
+    }
+    .storage-info{
+        width: 700px;
+    }
+    .storage-info p:nth-child(odd){
+        margin-left: 0;
+    }
+    .storage-info p:last-child input{
+        width: 520px;
+    }
+    .storemark{
+        border: 1px solid #d4d4d4;
+        text-indent: 2em;
+        width: 520px;
+        height: 160px;
+        vertical-align: top;
+    }
+    .total-box{
+        margin-top: 12px;
+    }
+    .total-box span,.storemark{
+        float: left;
+    }
+    .total-box span{
+        width: 78px;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper clearfix">
+        <!-- 侧边栏 -->
+        <div id="sidebar" class="sidebar"></div>
+        <!-- 主体内容 -->
+        <div class="yh-content">
+            <!-- 头部内容 -->
+            <div class="fenxiao-header clearfix">
+                <h2>分销协同平台</h2>
+                <div class="shape-box">
+                    <input type="text" id="projecttext" disabled>
+                    <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                    <span></span>
+                    <a href="javascript:void(0);">注销</a>
+                </div>
+            </div>
+            <div class="yh-container">
+                <!-- 面包屑 -->
+                <div class="fenxiao-nav">
+                    <span>当前位置：</span>
+                    <a href="javascript:void(0);">收付款确认管理</a> &gt; <a href="javascript:void(0);">代垫付款单管理</a> &gt; <a href="javascript:void(0);">代垫付款单详情</a>
+                </div>
+                <div class="infolist-wrap">
+                    <!-- 基本信息 -->
+                    <h3 class="title-h3">基本信息</h3>
+                    <div class="infobox">
+                        <div class="info-inputlayout purdetail-info clearfix" id="prepaidinfo">
+                            <p><i><span class="must-span">供应商</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">结算方式</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">付款方</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">结算单号</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">收款方</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">业务日期</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">税号</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">联系方式</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">地址</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">CNY开户行</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">CNY帐号</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">USD开户行</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">USD帐号</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">HKD开户行</span></i><input type="text" disabled></p>
+                            <p><i><span class="must-span">HKD帐号</span></i><input type="text" disabled></p>
+                        </div>
+                    </div>
+                    <!-- 费用明细 -->
+                    <h3 class="title-h3">费用明细</h3>
+                    <div class="infobox">
+                        <table id="charges-table" class="table"></table>
+                    </div>
+                    <!-- 备注 -->
+                    <h3 class="title-h3">备注</h3>
+                    <div class="infobox">
+                        <textarea name="" id="remark" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="sub-btn clearfix">
+                        <a href="./prepaidmanagement.html" class="yhreturn-btn">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/receivablesconfirmation/prepaid-detail.js?v=e96b3c1faa"></script>
+</body>
+</html>

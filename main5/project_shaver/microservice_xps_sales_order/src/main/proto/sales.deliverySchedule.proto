@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.sales.microservice";
+option java_outer_classname = "DeliverScheduleStructure";
+
+import "gongxiao.global.structure.proto";
+
+service SalesScheduleDeliveryService {
+    //新建预约发货单
+    rpc createScheduleOrder (CreateScheduleOrderRequest) returns (RpcResult) {
+    }
+
+    // 取消销售出库单
+    rpc cancelSalesOutboundOrder (OutboundNoRequest) returns (RpcResult);
+
+    //查询销售单可发货商品
+    rpc selectSaleScheduleProductList (SelectSaleScheduleProductListRequest) returns (SelectSaleScheduleProductListResponse) {
+    }
+
+    rpc syncSalesOutboundOrderToEas (SyncSalesOutboundOrderToEasRequest) returns (SyncSalesOutboundOrderToEasResponse);
+
+    //通知tms派车
+    rpc submitOutboundOrderToTms (OutboundNoRequest) returns (RpcResult);
+
+    //出库完成
+    rpc itemsOutboundFinished (OutboundNoRequest) returns (RpcResult) {
+    }
+
+    //签收完成
+    rpc outboundSigned (OutboundSignedRequest) returns (RpcResult) {
+    }
+}
+
+message SyncSalesOutboundOrderToEasRequest {
+    RpcHeader rpcHeader = 1; //头
+    string salesOrderNo = 2; // 销售单号
+    repeated EasOutboundItem easOutboundItems = 3;
+    int64 projectId = 4;
+}
+message EasOutboundItem {
+    string productCode = 1; // 编码
+    int32 quantity = 2; // 数量
+    string batchNo = 3; // 批次
+    string warehouseId = 4; // 想哭id
+    bool goodProduct = 5; // 是否良品
+    bool gift = 6; // 是否赠品
+}
+
+message SyncSalesOutboundOrderToEasResponse {
+    string jsonStr = 1;
+}
+
+message OutboundNoRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string outboundOrderNo = 2; // 出库单号
+    int64 projectId = 3;
+}
+
+message OutboundSignedRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string outboundOrderNo = 2; // 出库单号
+    string tmsOrderNo = 3; // tms出库单号
+    string tmsRemark = 4; // 备注
+    string signedBy = 5; // 签收人
+    string postedBy = 6; // 签收人
+    string signedPhone = 7; // 签收人电话
+    int64 signedTime = 8; // 签收时间
+    string transporter = 9; // 运输商
+    int64 projectId = 10;
+}
+
+
+message SelectSaleScheduleProductListRequest {
+    RpcHeader rpcheader = 1; // 头
+    string salesOrderNo = 2; // 销售单号
+    int64 projectId = 3;
+}
+
+message SelectSaleScheduleProductListResponse {
+    repeated ScheduleItems list = 1; // 商品列表
+}
+
+message CreateScheduleOrderRequest {
+    RpcHeader rpcHeader = 1; // 头
+    int64 projectId = 2; // 项目id
+    string salesOrderNo = 3; // 销售单号
+    repeated ScheduleItems productInfo = 4; // 货品信息
+    int64 arrivalDate = 5; // 预计收货日期
+}
+
+message ScheduleItems {
+    string batchNo = 1; // 批次号
+    string productId = 2; // 货品id
+    string productName = 3; // 货品名称
+    string productCode = 4; // 货品编码
+    string warehouseId = 5; // 仓库id
+    string warehouseName = 6; // 仓库名称
+    int32 purchaseType = 7; // 采购类型
+    int32 scheduleQuantity = 8; // 本次预约数量
+    int32 inventoryStatus = 9; // 库存类型
+    int32 orderTotalQuantity = 10;
+    int32 orderUnhandledQuantity = 11;
+    int32 inventoryBatchAmount = 12;
+}
+

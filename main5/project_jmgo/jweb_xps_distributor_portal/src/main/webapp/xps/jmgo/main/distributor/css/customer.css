@@ -1,0 +1,277 @@
+/* 面包屑导航 */
+.customer-crumbs {
+  max-width: 1850px;
+  width: 96%;
+  margin: 0 auto 0;
+}
+.customer-crumbs p {
+  font-size: 0;
+}
+.customer-crumbs p > span,
+.customer-crumbs p > a {
+  color: #444;
+  display: inline-block;
+  font-size: 14px;
+}
+/* 主体内容 */
+.fx-form {
+  margin-bottom: 50px;
+}
+.customer-container {
+  max-width: 1850px;
+  width: 96%;
+  margin: 20px auto 0;
+  /* 代金券 */
+}
+.customer-container .couponlist {
+  height: 200px;
+  width: 1450px;
+  margin: 30px auto 22px;
+}
+.customer-container .couponlist li {
+  width: 450px;
+  height: 200px;
+  float: left;
+  background: url(../images/customer/amount.png) center center no-repeat;
+  background-size: 450px 200px;
+  margin-left: 50px;
+}
+.customer-container .couponlist li .amount-text {
+  font-size: 0;
+  padding-top: 30px;
+  height: 120px;
+}
+.customer-container .couponlist li .amount-text h4 {
+  color: #c98d4c;
+  font-size: 30px;
+  display: inline-block;
+  margin-left: 40px;
+  margin-right: 40px;
+  position: relative;
+}
+.customer-container .couponlist li .amount-text h4:before {
+  content: "垫";
+  display: block;
+  position: absolute;
+  right: -18px;
+  top: -9px;
+  font-size: 14px;
+  color: #c98d4c;
+}
+.customer-container .couponlist li .amount-text h5 {
+  display: inline-block;
+  vertical-align: -16px;
+  width: 190px;
+}
+.customer-container .couponlist li .amount-text h5 span {
+  color: #9e6930;
+  font-size: 14px;
+  display: inline-block;
+}
+.customer-container .couponlist li .amount-text h5 p {
+  color: #ff4242;
+  font-size: 30px;
+  margin-top: 14px;
+}
+.customer-container .couponlist li .amount-text > span {
+  font-size: 36px;
+  color: #ff4242;
+  display: inline-block;
+  margin-left: 54px;
+}
+.customer-container .couponlist li .amount-text + p {
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  color: #c98d4c;
+  font-size: 14px;
+}
+.customer-container .couponlist > li:first-child {
+  margin-left: 0;
+}
+.customer-container .couponlist > li:first-child .amount-text h4:before {
+  content: "存";
+}
+.customer-container .couponlist > li:last-child .amount-text h4:before {
+  content: "利";
+}
+.customer-container .customer-table {
+  border-top: 2px solid #e8eaed;
+  margin-top: 20px;
+}
+.yh-table-info .opera-btn {
+  float: left;
+}
+.yh-table-info > h3 {
+  height: 32px;
+  line-height: 32px;
+  float: left;
+  margin-right: 20px;
+  color: #444;
+  font-size: 16px;
+}
+.yh-table-info .addup-info {
+  float: left;
+}
+.yh-table-info .addup-info li {
+  float: left;
+  line-height: 30px;
+  margin-left: 10px;
+  min-width: 86px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+.yh-table-info .addup-info input {
+  border: 0;
+  width: auto;
+}
+.form-inputs li {
+  float: left;
+  margin-left: 20px;
+  margin-top: 12px;
+}
+.form-inputs li label {
+  font-size: 12px;
+  min-width: 48px;
+  width: 72px;
+  margin-right: 6px;
+  margin-bottom: 0;
+  display: inline-block;
+  text-align: right;
+}
+.form-inputs li input + i {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+}
+.form-inputs input[type="text"],
+.form-inputs select {
+  width: 200px;
+  border: 1px solid #d4d4d4;
+  text-indent: 6px;
+  height: 24px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.form-inputs {
+  width: 906px;
+  float: left;
+}
+.form-btn {
+  min-width: 100px;
+  width: 100px;
+  margin-top: 10px;
+  margin-left: 926px;
+}
+/* 账户 */
+.account-list {
+  padding-bottom: 20px;
+  width: 760px;
+}
+.account-list ul {
+  margin: 20px auto 0;
+}
+.account-list li {
+  float: left;
+  width: 360px;
+  margin-left: 20px;
+  height: 120px;
+  margin-bottom: 8px;
+  background-color: #fc9b8e;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 24px 0 24px 20px;
+  position: relative;
+}
+.account-list h3 {
+  font-size: 16px;
+  width: 260px;
+  height: 28px;
+  padding-bottom: 6px;
+  color: #fff;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #f9c4b1;
+}
+.account-list input[type="text"] {
+  border: 0;
+  font-size: 30px;
+  font-family: "Helbetica";
+  font-weight: bold;
+  color: #fff;
+  width: 260px;
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  background-color: #fc9b8e;
+}
+.account-list input:focus {
+  border: 0;
+  background-color: #fc9b8e;
+}
+.account-list a {
+  position: absolute;
+  display: inline-block;
+  font-size: 14px;
+  width: 60px;
+  height: 120px;
+  line-height: 120px;
+  color: #fff;
+  border-left: 1px solid #fff;
+  text-align: center;
+  top: 0;
+  right: -20px;
+  margin-right: 20px;
+}
+.account-list a:hover {
+  background-color: #fdb9b0;
+}
+/* bootstrap-table样式调整 */
+.fixed-table-container {
+  border-radius: 0;
+}
+.fixed-table-container thead th,
+.fixed-table-container tbody td {
+  border-left: 0;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #fff;
+}
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #fff;
+}
+.fixed-table-body thead th .th-inner,
+.fixed-table-container thead th .th-inner {
+  height: 60px;
+  line-height: 40px;
+}
+.table > tbody > tr > td {
+  height: 24px;
+  font-size: 18px;
+  color: #444;
+}
+.bootstrap-table .table > thead > tr > th {
+  position: relative;
+}
+.bootstrap-table .table > thead > tr > th:after {
+  position: absolute;
+  bottom: 0;
+  left: 1%;
+  content: "";
+  display: block;
+  width: 98%;
+  height: 4px;
+  background-color: #abc1f3;
+}
+.fixed-table-body thead th .th-inner {
+  color: #444;
+  font-size: 14px;
+  font-weight: normal;
+}
+.table > tbody > tr > td {
+  color: #444;
+  font-size: 12px;
+  font-weight: normal;
+}
+.table-striped > tbody > tr:hover {
+  background-color: #f0f4fd;
+}

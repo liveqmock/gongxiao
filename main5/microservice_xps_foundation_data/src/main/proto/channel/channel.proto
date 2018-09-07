@@ -1,0 +1,38 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.foundation.channel.microservice";
+option java_outer_classname = "ChannelServiceStructure";
+
+import "gongxiao.global.structure.proto";
+
+service ChannelService {
+    //1 通过currencyCode查询货币
+    rpc getChannelByChannelId (GetChannelByChannelIdReq) returns (GetChannelByChannelIdResp) {
+    }
+
+}
+
+message GetChannelByChannelIdReq {
+    RpcHeader rpcHeader = 1;
+    string xpsChannelId = 2;
+}
+
+message GetChannelByChannelIdResp{
+    FoundationXpsSourceChannel sourceChannel=1;
+}
+
+message FoundationXpsSourceChannel {
+    int32 channelStatus = 1;
+    int32 deleteFlag = 2;
+    int64 xpsProjectId = 3;
+    string xpsChannelId = 4;
+    string xpsChannelSecret = 5;
+    string xpsChannelName = 6;
+    string wmsCustCode = 7;
+    string wmsOrderSource = 8;
+    string xpsWarehouseNotifyUrl = 9;
+    string tmsCustomerCode = 10;
+    string tmsCustomerName = 11;
+    string tmsProjectName = 12;
+    string xpsTransportationNotifyUrl = 13;
+}
+

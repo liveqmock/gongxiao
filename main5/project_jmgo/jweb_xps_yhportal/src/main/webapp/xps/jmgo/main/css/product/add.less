@@ -1,0 +1,89 @@
+//基本信息pan的长度
+@orderspan:50px;
+@span_marginRight:6px;
+//销售单元span的长度
+@sellspan:36px;
+@p_marginLeft: 110px;
+/*基本信息*/
+.order-info{
+	width: 660px;
+}
+.order-info1,.order-info2{
+	font-size:0;
+	span{
+		width: @orderspan;
+	}
+}
+.order-info1{
+	input{
+		width: 500px;
+	}
+}
+.order-info2{
+	p{
+		float: left;
+	}
+	p:nth-child(even){
+		margin-left:100- @orderspan - @span_marginRight;
+	}
+}
+/*销售单元*/
+.sell-info{
+	input{
+		width: 100px;
+	}
+	span{
+		width: 24px;
+		text-align: right;
+	}
+	p{
+		float: left;
+	}
+	p:not(:first-child){
+		margin-left: @p_marginLeft;
+	}
+}
+.sell-info1{
+	font-size: 0;
+	/*must-span*/
+	.twofont-span:before{left:2px;}
+}
+/*运输单元*/
+.traffic-info{
+	span{
+		text-align: right;
+		width: @sellspan;
+	}
+}
+/*价格品牌税率*/
+.rate-info{
+	span{
+		width: @sellspan;
+	}
+}
+.rate-info2{
+	span{
+		text-align: left;
+	}
+	p:last-child{
+		margin-left: @p_marginLeft - 36;
+		span{
+			width: 72px;
+		}
+	}
+}
+/*提交*/
+@btn_marginLeft: 36px;
+@btn_width: 100px;
+.sub-btn{
+	width: @btn_width * 2 + @btn_marginLeft;
+	margin: 14px auto 0;
+	button{
+		float: left;
+		width: @btn_width;
+		margin-left: @btn_marginLeft;
+	}
+	button:first-child{
+		margin-left: 0;
+	}
+}

@@ -1,0 +1,189 @@
+/* 主体内容 */
+
+.fx-container{
+  padding-left: 180px;
+}
+
+.el-menu-item, .el-submenu__title,.el-submenu .el-menu-item{
+  height: 46px;
+  line-height: 46px;
+}
+
+
+/* 表单 */
+
+.el-form-item {
+  float: left;
+  .el-input {
+    width: 200px;
+  }
+}
+
+.el-form{
+  margin-top: 20px;
+  margin-left: 20px;
+  *zoom:1
+}
+.el-form:after {
+  display: block;
+  overflow: hidden;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  content: "."
+}
+
+/* 操作 */
+.fx-button{
+  margin:20px 0 20px 40px;
+  ul{
+    display: inline-block;
+    margin-left: 40px;
+    vertical-align: middle;
+  }
+  li{
+    float: left;
+    height: 32px;
+    line-height: 32px;
+    color: #606266;
+    font-size: 14px;
+  }
+}
+
+/* 表格 */
+
+.el-table{
+  /* margin-top:100px; */
+  .warning-row {
+    background: oldlace;
+  }
+  .success-row {
+    background: #f0f9eb;
+  }
+}
+.el-table .cell a{
+  color:red;
+  text-decoration: none;
+}
+
+
+/* 去除float带来的影响 */
+.clear-float{
+  *zoom:1
+}
+.clear-float:after{
+  display: block;
+  overflow: hidden;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  content: ""
+}
+
+
+/* 分页 */
+
+.fx-pagination{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.pagination-total{
+  margin-left: 40px;
+  display: inline-block;
+  color:#606266;
+  font-size: 13px;
+  height: 28px;
+  line-height: 28px;
+}
+.el-pager li{
+  color:#606266;
+  font-weight: normal;
+}
+.el-pager li.active{
+  font-weight: bold;
+}
+
+/* ================================== 遮罩层 ===================================== */
+.mask-old-table,.mask-new-table{
+  width: 48%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+
+
+/* ================================== 账户相关 ===================================== */
+
+@account_list_li_width: 360px;
+@account_list_li_marginLeft: 30px;
+@account_list_a_width: 64px;
+@account_list_bgColor: #f76363;
+@account_list_title_width: @account_list_li_width - @account_list_a_width;
+
+
+.account-list {
+  padding-bottom: 20px;
+  width: (@account_list_li_marginLeft + @account_list_li_width) * 3;
+  ul {
+    margin: 20px auto 0;
+  }
+  li {
+    float: left;
+    width: @account_list_li_width;
+    margin-left: @account_list_li_marginLeft;
+    height: 108px;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+    background-color: @account_list_bgColor;
+    border: 1px solid #f98a75;
+    outline: 10px solid @account_list_bgColor;
+    box-shadow: 0 0 0 10px @account_list_bgColor;
+    padding: 20px;
+    position: relative;
+  }
+  li:nth-child(even){
+    margin-left: @account_list_li_marginLeft + 70px;
+  }
+  h3 {
+    font-size: 16px;
+    width: @account_list_title_width;
+    height: 28px;
+    padding-bottom: 6px;
+    color: #ffe5a0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f7ac9e;
+  }
+  input[type="text"] {
+    border: 0;
+    font-size: 30px;
+    font-family: "Helbetica";
+    font-weight: bold;
+    color: #ffe5a0;
+    -webkit-appearance:none;
+    width: @account_list_title_width;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    background-color: #f76363;
+  }
+  input:focus {
+    border: 0;
+    background-color: #f76363;
+  }
+  a {
+    position: absolute;
+    display: inline-block;
+    font-size: 20px;
+    width: @account_list_a_width;
+    background: url("../images/account.jpg") center center no-repeat;
+    padding-top: 62px;
+    height: 104px;
+    line-height: 24px;
+    color: #fff;
+    text-align: center;
+    top: -31px;
+    right: -74px;
+  }
+}

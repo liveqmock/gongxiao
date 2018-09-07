@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gRpcClient/gRpcClient.iml" filepath="$PROJECT_DIR$/gRpcClient/gRpcClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/japp_xps_payment_management/japp_xps_payment_management.iml" filepath="$PROJECT_DIR$/japp_xps_payment_management/japp_xps_payment_management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/japp_xps_purchase_order/japp_xps_purchase_order.iml" filepath="$PROJECT_DIR$/japp_xps_purchase_order/japp_xps_purchase_order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/japp_xps_sales_order/japp_xps_sales_order.iml" filepath="$PROJECT_DIR$/japp_xps_sales_order/japp_xps_sales_order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jweb_xps_distributor_portal/jweb_xps_distributor_portal.iml" filepath="$PROJECT_DIR$/jweb_xps_distributor_portal/jweb_xps_distributor_portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jweb_xps_warehouse_notify_gateway/jweb_xps_warehouse_notify_gateway.iml" filepath="$PROJECT_DIR$/jweb_xps_warehouse_notify_gateway/jweb_xps_warehouse_notify_gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jweb_xps_yhportal/jweb_xps_yhportal.iml" filepath="$PROJECT_DIR$/jweb_xps_yhportal/jweb_xps_yhportal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_common/lib_common.iml" filepath="$PROJECT_DIR$/lib_common/lib_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice_xps_payment_management/microservice_xps_payment_management.iml" filepath="$PROJECT_DIR$/microservice_xps_payment_management/microservice_xps_payment_management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice_xps_purchase_order/microservice_xps_purchase_order.iml" filepath="$PROJECT_DIR$/microservice_xps_purchase_order/microservice_xps_purchase_order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice_xps_sales_order/microservice_xps_sales_order.iml" filepath="$PROJECT_DIR$/microservice_xps_sales_order/microservice_xps_sales_order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/project_shaver.iml" filepath="$PROJECT_DIR$/.idea/project_shaver.iml" />
+    </modules>
+  </component>
+</project>

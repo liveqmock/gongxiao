@@ -1,0 +1,28 @@
+/*表单部分*/
+.form-box{border-top:2px solid #e8eaed;border-bottom:1px solid #e8eaed;padding-top:10px;padding-bottom:30px;box-sizing:border-box;background-color:#fff;}
+.form-input{color:#1f3050;font-size:12px;background-color:#fff;}
+.form-input p{margin:20px 0 0 35px;display:inline-block;}
+.form-input p span{margin-right:6px;width: 30px;}
+.form-input input[type="text"],.form-input select{width:200px;height:24px;border:1px solid #d4d4d4;text-indent:6px;}
+.form-input select{color:#444;background:url(../../images/procontrol/select.png) no-repeat scroll 182px center transparent;}
+.form-btn{margin-top:18px;margin-right:10px;}
+.form-btn button{width:100px;height:30px;background-color:#07b7ba;border-radius:2px;border:1px solid #08989a;font-size:14px;text-align:center;line-height:30px;color:#fff;}
+.form-btn button:hover{background-color:#62cfd4;}
+.form-btn button:active{background-color:#47a8ae;}
+
+/*操作表格*/
+.yhtable-header{margin-top:10px;background-color:#fff;padding:18px 0 18px 10px;border-top:2px solid #e8eaed;border-bottom:3px solid #e8eaed;}
+.opera-btn{float:left;}
+.opera-btn > a{display:inline-block;margin-left:16px;height:26px;line-height:26px;padding-left:16px;padding-right:16px;border:1px solid #d4d4d4;box-shadow:0 1px 1px #c3c3c3;color:#686b6d;font-size: 14px;box-sizing: border-box;cursor: pointer;}
+.opera-btn > a:hover{background-color:#e9f7f8;color:#049fa2;border:1px solid #049fa2;}
+/* 操作表格右边按钮部分 */
+.table-btnbox{float:right;position:relative;margin-right:25px;color:#71757b;font-size:14px;}
+.table-btnbox p{display:inline-block;}
+.table-btnbox p.toggle-p button{width:56px;height:20px;line-height:20px;border:1px solid #d5d6d5;background-color:#fff;margin-left: 4px;margin-right: 4px;vertical-align: middle;text-align: center;}
+.table-btnbox p:last-child{margin-left:4px;}
+.table-btnbox p:last-child button{border:1px solid #d7dde3;background-color:#fff;color:#cdcfd1;margin-left:-4px;}
+.toggle-numul{position:absolute;top:22px;left:92px;z-index:1000;display:none;min-width:80px;padding:2px 0;margin:2px 0 0;font-size:14px;text-align:left;list-style:none;background-color:#fff;background-clip:padding-box;border:1px solid #ccc;border:1px solid rgba(0,0,0,0.15);border-radius:2px;box-shadow:0 3px 6px rgba(0,0,0,0.175);}
+.toggle-numul li{padding:0 20px;box-sizing:border-box;width:100%;}
+.toggle-numul li:hover{background-color:#e5f4f6;}
+.toggle-numul li.linked{background-color:#97d7da;}
+.toggle-numshow{display:block;}

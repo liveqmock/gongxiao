@@ -1,0 +1,431 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.foundation.distributor.microservice";
+option java_outer_classname = "DistributorStructure";
+
+import "gongxiao.global.structure.proto";
+
+service DistributorService {
+    //1. 新增经销商信息
+    rpc insertDistributorInfo (InsertDistributorInfoReq) returns (InsertDistributorInfoResp) {
+    }
+    //2. 添加经销商跟项目的关系
+    rpc insertDistributorBusiness (InsertDistributorBusinessReq) returns (InsertDistributorBusinessResp) {
+    }
+    //3. 新增一个登陆账号(新增后,账号不可变)
+    rpc insertDistributorAccount (InsertDistributorAccountReq) returns (InsertDistributorAccountResp) {
+    }
+    //4. 审核经销商新增(审核,驳回共用一个接口)
+    rpc auditAddDistributor (AuditAddDistributorReq) returns (AuditAddDistributorResp) {
+    }
+    //5. 审核经销商项目关系新增(审核,驳回共用一个接口)
+    rpc auditAddDistributorBusiness (AuditAddDistributorBusinessReq) returns (AuditAddDistributorBusinessResp) {
+    }
+    //6. 变更经销商eascode,
+    rpc updateDistributorEasInfo (UpdateDistributorEasInfoReq) returns (UpdateDistributorEasInfoResp) {
+    }
+    //7. 变更经销商密码
+    rpc updateDistributorAccountPwd (UpdateDistributorAccountPwdReq) returns (UpdateDistributorAccountPwdResp) {
+    }
+    //8. 获取所有经销商基础信息列表
+    rpc selectAllDistributorBasicList (SelectAllDistributorBasicListReq) returns (SelectAllDistributorBasicListResp) {
+    }
+    //9. 获取某个项目下经销商列表
+    rpc selectBusinessListByProject (SelectBusinessListByProjectReq) returns (SelectBusinessListByProjectResp) {
+    }
+    //10. 获取某项目,某经销商的登录账号列表
+    rpc selectAccountListByBusinessId (SelectAccountListByBusinessIdReq) returns (SelectAccountListByBusinessIdResp) {
+    }
+    //11. 通过经销商基础信息ID获取经销商基础信息详情
+    rpc getDistributorBasicById (GetDistributorBasicByIdReq) returns (GetDistributorBasicByIdResp) {
+    }
+    //12. 通过经销商项目关系id,获取经销商项目关系详情
+    rpc getDistributorBusinessById (GetDistributorBusinessByIdReq) returns (GetDistributorBusinessByIdResp) {
+    }
+    //13. 通过经销商登录账号id,获取经销商登录账号详情
+    rpc getDistributorAccountById (GetDistributorAccountByIdReq) returns (GetDistributorAccountByIdResp) {
+    }
+    //14. 通过经销商account,name 获取经销商账号信息
+    rpc selectDistributorAccountByCondition (SelectDistributorAccountByConditionReq) returns (SelectDistributorAccountByConditionResp) {
+    }
+    //15. 条件查询接口
+    rpc selectUserByCondition (SelectUserByConditionReq) returns (SelectUserByConditionResp) {
+    }
+    //16 编辑接口
+    rpc editDistributor (EditDistributorReq) returns (EditDistributorResp) {
+    }
+    //17 查看详情
+    rpc getDistributorDetail (GetDistributorDetailReq) returns (GetDistributorDetailResp) {
+    }
+    //18
+    rpc selectDistributorBusinessByCondition (SelectDistributorBusinessByConditionReq) returns (SelectDistributorBusinessByConditionResp) {
+    }
+    //19
+    rpc getDistiruborAccountByName (GetDistiruborAccountByNameReq) returns (GetDistiruborAccountByNameResp) {
+    }
+    //20 通过账号获取账号列表
+    rpc getAccountListByaccount (GetAccountListByaccountReq) returns (GetAccountListByaccountResp) {
+    }
+}
+//20
+message GetAccountListByaccountReq{
+    RpcHeader rpcHeader = 101;
+    string account = 1;
+}
+
+message GetAccountListByaccountResp{
+    repeated DistributorUserDetail distributorUserDetail =1;
+
+}
+
+//19
+message GetDistiruborAccountByNameReq{
+    RpcHeader rpcHeader = 101;
+    string userName = 1;
+    int64 projectId=2;
+}
+
+message GetDistiruborAccountByNameResp{
+    DistributorUserDetail distributorUserDetail =1;
+}
+
+   //18
+   message SelectDistributorBusinessByConditionReq {
+    RpcHeader rpcHeader = 101;
+    int64 projectId = 9;
+    int64 distributorBusinessId = 5;
+    string distributorName = 2;
+    int32 status = 15;
+    int32 pageNumber = 3;
+    int32 pageSize = 4;
+}
+message SelectDistributorBusinessByConditionResp {
+    repeated DistributorBusiness DistributorBusiness = 1;
+    int64 total = 2;
+}
+
+//17
+message GetDistributorDetailReq {
+    RpcHeader rpcHeader = 101;
+    string distributorBusinessId = 1;
+}
+
+message GetDistributorDetailResp {
+    DistributorDetail distributorDetail = 1;
+}
+
+//16
+message EditDistributorReq {
+    RpcHeader rpcHeader = 101;
+    DistributorDetail distributorDetail = 1;
+}
+
+message EditDistributorResp {
+    RpcResult rpcResult = 1;
+}
+
+//15
+message SelectUserByConditionReq {
+    RpcHeader rpcHeader = 101;
+    string easCode = 1;
+    string distributorName = 2;
+    int32 status = 3;
+    int32 pageSize = 5;
+    int32 pageNumber = 6;
+    int64 projectId = 7;
+}
+message SelectUserByConditionResp {
+    repeated DistributorUser distributorUser = 1;
+    int64 total = 2;
+}
+
+//14
+message SelectDistributorAccountByConditionReq {
+    RpcHeader rpcHeader = 101;
+    int64 projectId = 9;
+    string userName = 5;
+    int64 distributorUserId = 1;
+    string distributorName = 2;
+    int32 pageNumber = 3;
+    int32 pageSize = 4;
+    int32 status = 15;
+}
+
+message SelectDistributorAccountByConditionResp {
+    repeated DistributorUser DistributorUser = 1;
+    int64 total = 2;
+}
+
+//13
+message GetDistributorAccountByIdReq {
+    RpcHeader rpcHeader = 101;
+    int64 distributorUserId = 1;
+}
+
+message GetDistributorAccountByIdResp {
+    DistributorUser DistributorUser = 1;
+}
+
+//12
+message GetDistributorBusinessByIdReq {
+    RpcHeader rpcHeader = 101;
+    int64 distributorBusinessId = 1;
+}
+
+message GetDistributorBusinessByIdResp {
+    DistributorBusiness distributorBusiness = 1;
+}
+
+//11
+message GetDistributorBasicByIdReq {
+    RpcHeader rpcHeader = 101;
+    int64 distributorBasicId = 1;
+}
+
+message GetDistributorBasicByIdResp {
+    DistributorBasic distributorBasic = 1;
+}
+
+//10
+message SelectAccountListByBusinessIdReq {
+    RpcHeader rpcHeader = 101;
+    int64 DistributorBusinessId = 1;
+    int32 pageNumber = 2;
+    int32 pageSize = 3;
+}
+
+message SelectAccountListByBusinessIdResp {
+    UserPage userPage = 1;
+}
+
+//9
+message SelectBusinessListByProjectReq {
+    RpcHeader rpcHeader = 101;
+    int64 projectId = 1;
+    int32 pageNumber = 2;
+    int32 pageSize = 3;
+}
+message SelectBusinessListByProjectResp {
+    BusinessPage businessPage = 1;
+}
+
+//8
+message SelectAllDistributorBasicListReq {
+    RpcHeader rpcHeader = 101;
+    int32 pageNumber = 2;
+    int32 pageSize = 3;
+}
+message SelectAllDistributorBasicListResp {
+    BasicPage basicPage = 1;
+}
+//7
+message UpdateDistributorAccountPwdReq {
+    RpcHeader rpcHeader = 101;
+    int64 distributorUserId = 1;
+    string account = 2;
+    string pwd = 3;
+}
+message UpdateDistributorAccountPwdResp {
+    RpcResult rpcResult = 1;
+}
+
+//6
+message UpdateDistributorEasInfoReq {
+    RpcHeader rpcHeader = 101;
+    int64 distributorBasicId = 1;
+    string easCode = 2;
+}
+
+message UpdateDistributorEasInfoResp {
+    int32 number = 1;
+}
+
+//5 1,审核通过 2,审核驳回
+message AuditAddDistributorBusinessReq {
+    RpcHeader rpcHeader = 101;
+    int64 distribugorBusinessId = 1;
+    int32 auditStatus = 2;
+}
+message AuditAddDistributorBusinessResp {
+    int32 number = 1;
+}
+//4 1,审核通过 2,审核驳回
+message AuditAddDistributorReq {
+    RpcHeader rpcHeader = 101;
+    int64 distributorBasicId = 1;
+    int32 auditStatus = 2;
+}
+message AuditAddDistributorResp {
+    int32 number = 1;
+}
+//3
+message InsertDistributorAccountReq {
+    RpcHeader rpcHeader = 101;
+    DistributorUserDetail destributorUserDetail = 1;
+}
+message InsertDistributorAccountResp {
+    int32 number = 1;
+}
+
+//2
+message InsertDistributorBusinessReq {
+    RpcHeader rpcHeader = 101;
+    DistributorBusinessDetail distributorBusinessDetail = 1;
+}
+message InsertDistributorBusinessResp {
+    int32 number = 1;
+}
+//1
+message InsertDistributorInfoReq {
+    RpcHeader rpcHeader = 101;
+    DistributorDetail destributorDetail = 1;
+}
+message InsertDistributorInfoResp {
+    RpcResult rpcResult = 1;
+}
+
+//model
+message BusinessPage {
+    repeated DistributorBusiness distributorBusiness = 1;
+    int32 total = 2;
+}
+
+message BasicPage {
+    repeated DistributorBasic distributorBasic = 1;
+    int32 total = 2;
+}
+
+message UserPage {
+    repeated DistributorUser distributorUser = 1;
+    int32 total = 2;
+}
+
+message DistributorUser {
+    int64 distributorUserId = 1;
+    int64 distributorBusinessId = 2;
+    string easDistributorCode = 33;
+    string easDistributorName = 34;
+    //eas状态 1 未生效 2 已生效
+    int32 easStatus = 35;
+    int64 projectId = 9;
+    string projectName = 10;
+    string distributorName = 3;
+    int32 accountPeriod = 24;
+    string account = 25;
+    string password = 26;
+    int32 priority = 27;
+    string roleInfo = 28;
+    int64 createdById = 4;
+    string createdByName = 5;
+    int64 createTime = 6;
+    int64 lastUpdateTime = 7;
+    string tracelog = 8;
+}
+
+message DistributorBusiness {
+    int64 distributorBusinessId = 1;
+    string distributorCode = 55;
+    string easDistributorCode = 33;
+    string easDistributorName = 34;
+    int64 distributorBasicId = 100;
+    string distributorName = 2;
+    int32 recordStatus = 3;
+    string projectId = 17;
+    string projectName = 18;
+    int64 distributorPurchaseCouponDiscount = 19;
+    int64 actualSaleReturn = 20;
+    int64 shouldSaleReturn = 21;
+    int32 accordingRealInventorySale = 22;
+    int32 settlementType = 23;
+    int32 accountPeriod = 24;
+    int64 createdById = 25;
+    string createdByName = 26;
+    int64 createTime = 27;
+    int64 lastUpdateTime = 28;
+    string tracelog = 29;
+    string distributorEasCode = 30;
+}
+
+message DistributorBasic {
+    int64 distributorBasicId = 100;
+    string distributorCode = 1;
+    string distributorName = 2;
+    string easDistributorCode = 3;
+    string easDistributorName = 4;
+    int64 supplierId = 6;
+    string supplierName = 7;
+    string email = 8;
+    string contactNumber = 9;
+    string contactName = 10;
+    string businessAddress = 11;
+    string countryCode = 12;
+    string taxNumber = 13;
+    string cnyBank = 14;
+    string cnyAccount = 15;
+    string bankHisInfo = 16;
+    int64 createdById = 17;
+    string createdByName = 18;
+    int64 createTime = 19;
+    int64 lastUpdateTime = 20;
+    string tracelog = 21;
+}
+
+message DistributorUserDetail {
+    int64 distributorBusinessId = 1;
+    int64 projectId = 9;
+    string projectName = 10;
+    string account = 25;
+    string password = 26;
+    int32 priority = 27;
+    string roleInfo = 28;
+    int64 distributorUserId=2;
+    string distributorName=3;
+}
+
+message DistributorBusinessDetail {
+    int64 distributorBasicId = 100;
+    string projectId = 17;
+    string projectName = 18;
+    int64 distributorPurchaseCouponDiscount = 19;
+    int64 actualSaleReturn = 20;
+    int64 shouldSaleReturn = 21;
+    int32 accordingRealInventorySale = 22;
+    int32 settlementType = 23;
+    int32 accountPeriod = 24;
+    string account = 25;
+    string password = 26;
+    int32 priority = 27;
+    string roleInfo = 28;
+}
+
+message DistributorDetail {
+    int64 distributorBasicId = 100;
+    string distributorCode = 1;
+    string distributorName = 2;
+    string easDistributorCode = 3;
+    string easDistributorName = 4;
+    int64 supplierId = 6;
+    string supplierName = 7;
+    string email = 8;
+    string contactNumber = 9;
+    string contactName = 10;
+    string businessAddress = 11;
+    string countryCode = 12;
+    string taxNumber = 13;
+    string cnyBank = 14;
+    string cnyAccount = 15;
+    string bankHisInfo = 16;
+    string projectId = 17;
+    string projectName = 18;
+    int64 distributorPurchaseCouponDiscount = 19;
+    int64 actualSaleReturn = 20;
+    int64 shouldSaleReturn = 21;
+    int32 accordingRealInventorySale = 22;
+    int32 settlementType = 23;
+    int32 accountPeriod = 24;
+    string account = 25;
+    string password = 26;
+    int32 priority = 27;
+    string roleInfo = 28;
+}
+
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/jweb_tms_notify_gateway" />
+    <file type="web" url="file://$PROJECT_DIR$/jweb_wms_notify_gateway" />
+    <file type="web" url="file://$PROJECT_DIR$/jweb_xps_coupon_management" />
+    <file type="web" url="file://$PROJECT_DIR$/jweb_xps_gross_profit_management" />
+    <file type="web" url="file://$PROJECT_DIR$/jweb_xps_prepaid_management" />
+    <file type="web" url="file://$PROJECT_DIR$/jweb_xps_transportation_management" />
+    <file type="web" url="file://$PROJECT_DIR$/jweb_xps_warehouse_management" />
+    <file type="web" url="file://$PROJECT_DIR$/project_philips_jd/jweb_gongxiao_phjd_yhportal" />
+    <file type="web" url="file://$PROJECT_DIR$/project_shaver/jweb_xps_distributor_portal" />
+    <file type="web" url="file://$PROJECT_DIR$/project_shaver/jweb_xps_warehouse_notify_gateway" />
+    <file type="web" url="file://$PROJECT_DIR$/project_shaver/jweb_xps_yhportal" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/classes" />
+  </component>
+</project>

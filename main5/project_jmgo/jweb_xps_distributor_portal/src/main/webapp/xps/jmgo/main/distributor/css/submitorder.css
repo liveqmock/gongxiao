@@ -1,0 +1,158 @@
+/* 主体内容 */
+.submitorder-container {
+  width: 96%;
+  margin: 0 auto;
+}
+/* 选择收货地址 */
+.submitorder-addressbox {
+  margin-top: 20px;
+}
+.submitorder-addressbox h3 {
+  color: #444;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.submitorder-address .shipping-address {
+  width: 428px;
+  padding: 24px;
+  box-sizing: border-box;
+  height: 214px;
+  background: url(../images/customer/address.png) center center no-repeat;
+  margin-left: 20px;
+  cursor: pointer;
+  float: left;
+}
+.submitorder-address .shipping-address h4 {
+  font-size: 18px;
+  padding-bottom: 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.submitorder-address .shipping-address h5,
+.submitorder-address .shipping-address p {
+  font-size: 16px;
+}
+.submitorder-address .shipping-address input {
+  width: 100%;
+  border: none;
+}
+.submitorder-address .shipping-address input:focus {
+  border: none!important;
+  outline: none;
+}
+.submitorder-address .address-selected {
+  background: url(../images/customer/address2.png) center center no-repeat;
+}
+/* 订单信息确认 */
+.submitorder-info {
+  margin-top: 20px;
+}
+.submitorder-info h3 {
+  color: #444;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.submitorder-info .total-info label {
+  display: inline-block;
+  text-align: right;
+  width: 190px;
+  margin-right: 6px;
+}
+.submitorder-info .total-info .amount-info {
+  float: left;
+  font-size: 20px;
+}
+.submitorder-info .total-info .amount-info span {
+  color: #ff823e;
+  display: inline-block;
+}
+.submitorder-info .total-info .amount-info input {
+  width: 180px;
+  height: 40px;
+  text-indent: 6px;
+  border: 1px solid #ccc;
+}
+.submitorder-info .total-info .discount-info {
+  float: right;
+  font-size: 24px;
+}
+.submitorder-info .total-info .discount-info label + i {
+  display: inline-block;
+  color: #ff823e;
+}
+.submitorder-info .total-info .discount-info span {
+  display: inline-block;
+  color: #ff823e;
+}
+.submitorder-info .total-info .discount-info p:last-child {
+  height: 80px;
+  line-height: 80px;
+  border: 1px solid #ff4242;
+  padding-right: 10px;
+}
+.submitorder-info .total-info + button {
+  display: block;
+  width: 180px;
+  height: 60px;
+  background-color: #ff4242;
+  line-height: 60px;
+  text-align: center;
+  color: #fff;
+  margin-right: 0;
+  float: right;
+}
+/* bootstrap-table样式调整 */
+.fixed-table-container {
+  border-radius: 0;
+}
+.fixed-table-container thead th,
+.fixed-table-container tbody td {
+  border-left: 0;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f0f4fd;
+}
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #f0f4fd;
+}
+.fixed-table-footer .table-striped > tbody > tr:last-child {
+  background-color: #e4e9f6;
+  height: 70px;
+  line-height: 70px;
+}
+.fixed-table-body thead th .th-inner,
+.fixed-table-container thead th .th-inner {
+  height: 60px;
+  line-height: 40px;
+}
+.table > tbody > tr > td {
+  height: 24px;
+  font-size: 18px;
+  color: #444;
+}
+.bootstrap-table .table > thead > tr > th {
+  position: relative;
+}
+.bootstrap-table .table > thead > tr > th:after {
+  position: absolute;
+  bottom: 0;
+  left: 1%;
+  content: "";
+  display: block;
+  width: 98%;
+  height: 4px;
+  background-color: #abc1f3;
+}
+.fixed-table-body thead th .th-inner {
+  color: #444;
+  font-size: 14px;
+  font-weight: normal;
+}
+.table > tbody > tr > td {
+  color: #444;
+  font-size: 12px;
+  font-weight: normal;
+}
+.table-striped > tbody > tr:hover {
+  background-color: #f0f4fd;
+}

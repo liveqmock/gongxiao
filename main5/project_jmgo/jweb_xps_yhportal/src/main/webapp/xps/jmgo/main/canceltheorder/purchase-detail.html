@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <link rel="stylesheet" href="../css/sales/review.css?v=7df1f2644e">
+    <title>采购退货详情</title>
+    <style type="text/css">
+    .info-line {
+        width: 270px;
+    }
+
+    .info-div {
+        width: 720px;
+    }
+
+    .customer-info i {
+        width: 80px;
+    }
+
+    .review-right {
+        width: 230px;
+        float: right;
+        margin-right: 60px;
+    }
+
+    .review-tableinfo li {
+        font-size: 0;
+        margin-top: 4px;
+    }
+
+    .returnedtable-info span {
+        text-align: right;
+        display: inline-block;
+        font-size: 12px;
+        margin-right: 8px;
+    }
+
+    .returnedtable-info i {
+        width: 100px;
+        text-align: right;
+        display: inline-block;
+    }
+
+    .sub-btn {
+        width: 100px;
+        margin: 30px auto 0;
+    }
+
+    .review-cus {
+        padding-bottom: 60px;
+    }
+    .returnedtable-info{
+        margin-top: 20px;
+    }
+    .returnedtable-info li{
+        margin-top: 16px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper clearfix">
+        <!-- 侧边栏 -->
+        <div id="sidebar" class="sidebar"></div>
+        <!-- 主体内容 -->
+        <div class="yh-content">
+            <!-- 头部内容 -->
+            <div class="fenxiao-header clearfix">
+                <h2>分销协同平台</h2>
+                <div class="shape-box">
+                    <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                    <span></span>
+                    <a href="javascript:void(0);">注销</a>
+                </div>
+            </div>
+            <!-- 主要内容 -->
+            <div class="yh-container">
+                <!-- 面包屑菜单 -->
+                <div class="fenxiao-nav">
+                    <span>当前位置：</span>
+                    <a href="javascript:void(0);">采购管理</a> &gt; <a href="javascript:void(0);">退换货管理</a> &gt; <a href="javascript:void(0);">采购退货详情</a>
+                </div>
+                <!-- 订单信息 -->
+                <div class="infolist-wrap review-box">
+                    <h3 class="title-h3">订单信息</h3>
+                    <div class="edit-infobox review-info">
+                        <div class="info-div">
+                            <div class="info-box clearfix">
+                                <p>退货订单号: <b id="ordernumber">BMS201801081099655093</b></p>
+                                <p>状态: <b id="orderstatus">订单新建</b></p>
+                                <p>退单创建时间: <span id="createtime">2018-01-07 14:00:00</span></p>
+                            </div>
+                            <!-- 进度条 -->
+                            <div class="info-img">
+                                <div class="info-line">
+                                    <div class="line-bar">
+                                        <div class="line-pro line-pro0">
+                                            <span></span>
+                                            <h6>退货单已提交</h6>
+                                            <p>2018-01-31
+                                                <br>14:48:44</p>
+                                        </div>
+                                        <div class="line-pro line-pro1">
+                                            <span></span>
+                                            <h6>退货单出库中</h6>
+                                            <p>2018-01-31
+                                                <br>14:48:44</p>
+                                        </div>
+                                        <div class="line-pro line-pro2">
+                                            <span></span>
+                                            <h6>退货出库完成</h6>
+                                            <p>2018-01-31
+                                                <br>14:48:44</p>
+                                        </div>
+                                        <div class="line-pro line-pro3">
+                                            <span></span>
+                                            <h6>退货出库完成</h6>
+                                            <p>2018-01-31
+                                                <br>14:48:44</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="title-h3">退货单详情</h3>
+                    <div class="edit-infobox">
+                        <!-- 渲染表格 -->
+                        <div class="yh-table">
+                            <table id="reviewtable" class="yhtable"></table>
+                        </div>
+                    </div>
+                    <!-- 表格信息 -->
+                    <div class="returnedtable-info clearfix" id="returnedtable-info">
+                        <h3 class="title-h3">品牌商退货及物流信息</h3>
+                        <div class="edit-infobox">
+                            <div class="retable-left">
+                                <ul>
+                                    <li><i class="prompt-text"><span>收货人:</span></i><b>94342</b>
+                                    </li>
+                                    <li><i class="prompt-text"><span>收货人地址:</span></i><b>4594</b>
+                                    </li>
+                                    <li><i class="prompt-text"><span>详细地址:</span></i><b>5943</b>
+                                    </li>
+                                    <li><i><span>手机:</span></i><b>4594</b></li>
+                                    <li><i><span>收货公司名称:</span></i><b>4594</b></li>
+                                </ul>
+                            </div>
+                            <div class="review-right">
+                                <ul>
+                                    <li><i><span>运输方式:</span></i><b>4594</b></li>
+                                    <li><i><span>退回物流公司:</span></i><b>4594</b></li>
+                                    <li><i><span>物流运单号:</span></i><b>4594</b></li>
+                                    <li><i class="prompt-text"><span>发货仓库:</span></i><b>4594</b></li>
+                                    <li><i><span>运费承担方:</span></i><b>4594</b></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 相关单据信息 -->
+                <div class="infolist-wrap review-cus">
+                    <h3 class="title-h3">相关单据信息</h3>
+                    <div class="edit-infobox">
+                        <div class="customer-info clearfix" id="billinfo">
+                            <p><i>退货单编号:</i><span id="reveiver">黄佳林</span></p>
+                            <p><i>发货单编号:</i><span id="warehouse">深圳平湖仓</span></p>
+                            <p><i>退货单状态:</i><span>132324324325</span></p>
+                            <p><i>项目名称:</i><span id="componey">北京飞浦商贸有限公司</span></p>
+                            <p><i>退货单类型:</i><span id="address">黄佳林</span></p>
+                            <p><i>客户名称:</i><span id="detailaddress">福华一路88号中心商务大厦2001</span></p>
+                            <p><i>退货单创建人:</i><span>福华一路88号中心商务大厦2001</span></p>
+                            <p><i>状态更新时间:</i><span>福华一路88号中心商务大厦2001</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 操作日志 -->
+                <div class="infolist-wrap review-cus">
+                    <h3 class="title-h3">操作日志</h3>
+                    <div class="edit-infobox">
+                        <table id="reviewlog" class="yhtable reviewlog"></table>
+                    </div>
+                    <div class="sub-btn">
+                        <a class="yhreturn-btn" href="./purchase-management.html" id="review-return">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script src="../js/canceltheorder/purchase/detail.js?v=7f125c8fba"></script>
+</body>
+
+</html>

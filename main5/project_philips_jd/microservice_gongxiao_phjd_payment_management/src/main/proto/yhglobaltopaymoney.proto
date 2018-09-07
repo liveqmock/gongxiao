@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.payment.microservice";
+option java_outer_classname = "YhglobalToPayMoneyServiceStructure";
+
+import "gongxiao.global.structure.proto";
+
+service YhglobalToPayMoneyService {
+
+
+    // 插入新的一条数据
+    rpc insertNew (InsertNewReq) returns (InsertNewResp) {
+    }
+
+    // 更新旧的数据
+    rpc updateData (UpdateDataReq) returns (UpdateDataResp) {
+    }
+
+    // 条件查询付款申请单
+    rpc queryToPayMoney (QueryReq) returns (QueryResp) {
+    }
+
+}
+message InsertNewReq{
+    RpcHeader rpcHeader = 1;
+    ToPayMoneyApply toPayMoneyApply = 2;
+}
+
+message InsertNewResp {
+    int32 returnCode = 1; // 返回码
+    string msg = 2; // 错误信息}
+}
+message UpdateDataReq{
+    RpcHeader rpcHeader = 1;
+    ToPayMoneyApply toPayMoneyApply = 2;
+}
+
+message UpdateDataResp{
+    int32  returnCode = 1; // 返回码
+    string msg = 2; // 错误信息
+}
+
+message QueryReq{
+    RpcHeader rpcHeader = 1;
+    string paymentApplyNo = 2;
+    string purchasePlanNo = 3;
+    int64 supplierId = 4;
+    string receiveStatus = 5;
+    string settlementType = 6;
+    string paymentType = 7;
+    int64 dateStart = 8;
+    int64 dateEnd = 9;
+    int32 pageNumber = 10;
+    int32 pageSize = 11;
+}
+
+message QueryResp{
+    int32 pageNumber = 1;
+    int32 pageSize = 2;
+    int32 size = 3;
+    int32 startRow = 4;
+    int32 endRow = 5;
+    int64 total = 6;
+    int32 pages = 7;
+    repeated ToPayMoneyApply toPayList = 8;
+    int32  returnCode  = 9; // 返回码
+    string msg = 10; // 错误信息
+}
+
+message ToPayMoneyApply{
+    int64 paymentId = 1;
+    // 确认状态 1:未确认2:部分确认3:已确认
+    string confirmStatus = 2;
+    // 付款状态 1:未付款 2:部分付款 3:已付款 4 :已驳回
+    string status = 3;
+    // 付款申请单号
+    string paymentApplyNo = 4;
+    // 创建时间
+    int64 createTime = 5;
+    // 计划付款时间
+    int64 estimatedPaymentTime = 6;
+    // 供应商Id
+    int64 supplierId = 7;
+    // 供应商名称
+    string supplierName = 8;
+    // 结算方式
+    string settlementType = 9;
+    // 信用账期(当结算方式为信用结账时需要)
+    int32 creditPaymentDays = 10;
+    // 付款方式
+    string paymentType = 11;
+    // 银行承兑期(当付款方式为银行承兑时需要)
+    int32 bankAcceptancePeriod = 12;
+    // 采购计划单号
+    string purchasePlanNo = 13;
+    // 采购单日期
+    int64 orderTime = 14;
+    // 应收币种编码
+    string currencyCode = 15;
+    // 申请应付金额
+    double toPayAmount = 16;
+    // 未付金额
+    double toBePayAmount = 17;
+    // 确认金额
+    double confirmAmount = 18;
+    // 实付金额
+    double receiptAmount = 19;
+    // 项目id
+    int64 projectId = 20;
+    // 项目名称
+    string projectName = 21;
+    // 数据版本
+    int64 dataVersion = 22;
+    // 上次更新时间
+    int64 lastUpdateTime = 23;
+    // 确认记录
+    string confirmRecord = 24;
+    // 计划单金额
+    double planOrderAmount = 25;
+    // 操作日记
+    string tracelog = 26;
+    // 收款方名称
+    string receiverName = 27;
+}

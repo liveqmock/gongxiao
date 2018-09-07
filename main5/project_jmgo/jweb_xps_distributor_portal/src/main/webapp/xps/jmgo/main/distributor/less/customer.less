@@ -1,0 +1,271 @@
+
+.mian-content(@max_width: 1850px, @width: 96%, @margin_top: 20px, @margin_bottom: 10px) {
+    max-width: @max_width;
+    width: @width;
+    margin: @margin_top auto @margin_bottom;
+}
+
+/* 面包屑导航 */
+
+.customer-crumbs {
+    .mian-content(1850px, 96%, 0, 0);
+    p {
+        font-size: 0;
+        &>span,
+        &>a {
+            color: #444;
+            display: inline-block;
+            font-size: 14px;
+        }
+    }
+}
+
+
+
+
+
+/* 主体内容 */
+.fx-form{
+    margin-bottom: 50px;
+}
+
+@coupontlist_marginLeft: 50px;
+.customer-container {
+    .mian-content(1850px, 96%, 20px, 0);
+    /* 代金券 */
+    .couponlist {
+        height: 200px;
+        width: 1350+ @coupontlist_marginLeft * 2;
+        margin: 30px auto 22px;
+        li {
+            width: 450px;
+            height: 200px;
+            float: left;
+            background: url(../images/customer/amount.png) center center no-repeat;
+            background-size: 450px 200px;
+            margin-left: @coupontlist_marginLeft;
+            .amount-text {
+                font-size: 0;
+                padding-top: 30px;
+                height: 120px;
+                h4 {
+                    color: #c98d4c; // font-size: 36px;   
+                    font-size: 30px;
+                    display: inline-block;
+                    margin-left: 40px;
+                    margin-right: 40px;
+                    position: relative;
+                }
+                h4:before {
+                    content: "垫";
+                    display: block;
+                    position: absolute;
+                    right: -18px;
+                    top: -9px;
+                    font-size: 14px;
+                    color: #c98d4c;
+                }
+                h5 {
+                    display: inline-block;
+                    vertical-align: -16px;
+                    width: 190px;
+                    span {
+                        color: #9e6930;
+                        font-size: 14px;
+                        display: inline-block;
+                    }
+                    p {
+                        color: #ff4242;
+                        font-size: 30px;
+                        margin-top: 14px;
+                    }
+                }
+                &>span {
+                    font-size: 36px;
+                    color: #ff4242;
+                    display: inline-block;
+                    margin-left: 54px;
+                }
+                &+p {
+                    height: 80px;
+                    line-height: 80px;
+                    text-align: center;
+                    color: #c98d4c;
+                    font-size: 14px;
+                }
+            }
+        }
+        &>li:first-child {
+            margin-left: 0;
+            .amount-text h4:before {
+                content: "存";
+            }
+        }
+        &>li:last-child {
+            .amount-text h4:before {
+                content: "利";
+            }
+        }
+    }
+    .customer-table {
+        border-top: 2px solid #e8eaed;
+        margin-top: 20px;
+    }
+}
+.yh-table-info{
+    .opera-btn{
+        float: left;
+    }
+    &>h3 {
+        height: 32px;
+        line-height: 32px;
+        float: left;
+        margin-right: 20px;
+        color: #444;
+        font-size: 16px;
+    }
+    .addup-info {
+        float: left;
+        li{
+            float: left;
+            line-height: 30px;
+            margin-left: 10px;
+            min-width: 86px;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        input{
+            border: 0;
+            width: auto;
+        }
+    }
+}
+
+
+@label_font_size: 12px;
+.form-inputs{
+    li {
+        float: left;
+        margin-left: 20px;
+        margin-top: 12px;
+        label {
+            font-size: @label_font_size;
+            min-width: 4 * @label_font_size;
+            width: 6 * @label_font_size;
+            margin-right: 6px;
+            margin-bottom: 0;
+            display: inline-block;
+            text-align: right;
+        }
+        input + i {
+            display: inline-block;
+            width: 30px;
+            text-align: center;
+        }
+    }
+    input[type="text"], select {
+        width: 200px;
+        border: 1px solid #d4d4d4;
+        text-indent: 6px;
+        height: 24px;
+        background-color: #fff;
+        box-sizing: border-box;
+    }
+}
+
+@input_width: 200px;
+@label_width: 6 * @label_font_size;
+@form_inputs_width: (@input_width + @label_width + 30) * 3;
+
+.form-inputs {
+    width: @form_inputs_width;
+    float: left;
+}
+
+.form-btn {
+    min-width: 100px;
+    width: 100px;
+    margin-top: 10px;
+    margin-left: @form_inputs_width + 20px;
+}
+
+@account_list_li_width: 360px;
+@account_list_li_marginLeft: 20px;
+@account_list_a_width: 60px;
+@account_list_title_width: @account_list_li_width - @account_list_a_width - 40px;
+/* 账户 */
+.account-list{
+    padding-bottom: 20px;
+    width: (@account_list_li_marginLeft + @account_list_li_width) * 2;
+    ul{
+        margin: 20px auto 0;
+    }
+    li{
+        float: left;
+        width: @account_list_li_width;
+        margin-left: @account_list_li_marginLeft;
+        height: 120px;
+        margin-bottom: 8px;
+        background-color: #fc9b8e;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        padding: 24px 0 24px 20px;
+        position: relative;
+    }
+    h3{
+        font-size: 16px;
+        width: @account_list_title_width;
+        height: 28px;
+        padding-bottom: 6px;
+        color: #fff;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #f9c4b1;
+    }
+    input[type="text"]{
+        border: 0;
+        font-size: 30px;
+        font-family: "Helbetica";
+        font-weight: bold;
+        color: #fff;
+        width: @account_list_title_width;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        background-color: #fc9b8e;
+    }
+    input:focus{
+        border: 0;
+        background-color: #fc9b8e;
+    }
+    a{
+        position: absolute;
+        display: inline-block;
+        font-size: 14px;
+        width: @account_list_a_width;
+        height: 120px;
+        line-height: 120px;
+        color: #fff;
+        border-left: 1px solid #fff;
+        text-align: center;
+        top: 0;
+        right: -20px;
+        margin-right: 20px;
+    }
+    a:hover{
+        background-color: #fdb9b0;
+    }
+}
+
+
+/* bootstrap-table样式调整 */
+.fixed-table-container{border-radius:0;}
+.fixed-table-container thead th,.fixed-table-container tbody td{border-left:0;}
+.table-striped>tbody>tr:nth-of-type(odd){background-color:#fff;}
+.table-striped>tbody>tr:nth-of-type(even){background-color:#fff;}
+.fixed-table-body thead th .th-inner,.fixed-table-container thead th .th-inner{height:60px;line-height:40px;}
+.table>tbody>tr>td{height:24px;font-size:18px;color:#444;}
+.bootstrap-table .table > thead > tr > th{position:relative;}
+.bootstrap-table .table > thead > tr > th:after{position:absolute;bottom:0;left:1%;content:"";display:block;width:98%;height:4px;background-color:#abc1f3;}
+.fixed-table-body thead th .th-inner{color:#444;font-size:14px;font-weight:normal;}
+.table>tbody>tr>td{color:#444;font-size:12px;font-weight:normal;}
+.table-striped>tbody>tr:hover{background-color: #f0f4fd}

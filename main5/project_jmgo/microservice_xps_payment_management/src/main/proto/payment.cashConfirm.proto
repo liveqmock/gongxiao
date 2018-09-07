@@ -1,0 +1,135 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.payment.microservice";
+option java_outer_classname = "CashConfirmSerivceStructure";
+
+import "gongxiao.global.structure.proto";
+
+service CashConfirmService {
+    //创建现金应收单
+    rpc createSalesOrderCashConfirmOrder (CreateSalesOrderCashConfirmOrderRequest) returns (RpcResult) {
+    }
+    //选择性查询现金确认列表(均为可选条件)
+    rpc selectListSelective (SelectListSelectiveRequest) returns (SelectListSelectiveResponse) {
+    }
+    //收款确认详情页面
+    rpc selectConfirmList (SelectConfirmListRequest) returns (SelectConfirmListResponse) {
+    }
+    //确认收款提交
+    rpc confirmCash (ConfirmCashRequest) returns (RpcResult) {
+    }
+    //销售模块取消订单确认
+    rpc cancelCashConfirm (CancelCashConfirmRequest) returns (RpcResult) {
+    }
+    //自动转入“待确认金额为-值”的条目到ad账户
+    rpc confirmNegativeAmountAutomatically (ConfirmNegativeAmountAutomaticallyRequest) returns (RpcResult) {
+    }
+}
+
+message CreateSalesOrderCashConfirmOrderRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string salesOrderNo = 2; // 销售单号
+    int64 distributorId = 3; //分销商id
+    string distributorName = 4; // 分销商名称
+    int64 projectId = 5; // 项目id
+    string projectName = 6; // 项目名称
+    string currencyCode = 7; // 货币编码
+    int64 cashAmount = 8; // 应收金额
+    int64 createTime = 9; // 创建时间
+}
+
+message SelectListSelectiveRequest {
+    int64 projectId = 3; // 项目id
+    RpcHeader rpcHeader = 1; // 头
+    string salesOrderNo = 2; // 销售单号
+    string distributorName = 4; // 分销商名称
+    string bankName = 5; // 收款银行
+    string confirmBegin = 6; // 确认开始时间
+    string confirmEnd = 7; // 确认截止时间
+    string orderBegin = 8; // 订单确认起始时间
+    string orderEnd = 9; // 订单确认截止时间
+    string orderStatus = 10; // 订单状态
+    int32 pageNum = 11; // 页码
+    int32 pageSize = 12; // 页面条数
+}
+
+message SelectConfirmListRequest {
+    int64 projectId = 3;
+    RpcHeader rpcHeader = 1; // 头
+    repeated string salesOrderNoList = 2; //销售单号列表
+}
+
+message ConfirmCashRequest {
+    int64 projectId = 6;
+    RpcHeader rpcHeader = 1; // 头
+    string bankName = 2; // 收款银行
+    int64 recipientDate = 3; // 收款日期
+    repeated CashConfirmItems items = 4; // 收款详情
+    string bankFlowNo = 5; // 银行流水号
+    string clientName = 7; // 客户名称
+    string remark = 8; // 备注
+
+}
+
+message CashConfirmItems {
+    int64 confirmId = 1; // id
+    int32 confirmStatus = 2; // 确认状态
+    string salesOrderNo = 3; // 销售单号
+    string confirmAmountDouble = 4; // 确认金额
+    string recipientAmountDouble = 5; // 收款金额
+    int64 dataVersion = 6; // 数据版本
+}
+
+message CashConfirmSelectiveResponse {
+    int64 confirmId = 1; // id
+    string salesOrderNo = 2; // 销售单号
+    string flowNo = 3; // 流水号
+    bool recipientStatus = 4; // 收款状态
+    int32 confirmStatus = 5; // 确认状态
+    string distributorName = 6; // 客户名称
+    string shouldReceiveAmountDouble = 7; // 应收金额
+    string unreceiveAmountDouble = 8; // 未收金额
+    string confirmAmountDouble = 9; // 确认金额
+    string recipientAmountDouble = 10; // 收款金额
+    int64 confirmTime = 11; // 确认时间
+    int64 receiveTime = 12; // 收款日期
+    int64 orderTime = 13; // 订单时间
+    string bankName = 14; // 收款银行
+    string bankFlowNo = 15; // 银行流水号
+}
+
+message CancelCashConfirmRequest {
+    int64 projectId = 3;
+    RpcHeader rpcHeader = 1; // 头
+    string salesOrderNo = 2; // 销售单号
+}
+
+message ConfirmNegativeAmountAutomaticallyRequest {
+    int64 projectId = 3;
+    RpcHeader rpcHeader = 1; // 头
+    string salesOrderNo = 2; // 销售单号
+}
+
+message SelectListSelectiveResponse {
+    int32 pageNum = 1; // 页码
+    int32 pageSize = 2; // 页面条数
+    int64 total = 3; // 总条数
+    repeated CashConfirmSelectiveResponse list = 4; //选择性查询结果
+}
+
+message SelectConfirmListResponse {
+    repeated CashConfirmResponse list = 1;
+}
+
+message CashConfirmResponse {
+    int64 confirmId = 1; // id
+    int32 confirmStatus = 2; // 确认状态
+    string salesOrderNo = 3; // 销售单号
+    string shouldReceiveAmountDouble = 4; // 应收金额
+    string unreceiveAmountDouble = 5; // 未收金额
+    string confirmAmountDouble = 6; // 确认金额
+    string recipientAmountDouble = 7; // 收款金额
+    string currencyCode = 8; // 货币
+    int64 dataVersion = 9; //数据版本
+}
+

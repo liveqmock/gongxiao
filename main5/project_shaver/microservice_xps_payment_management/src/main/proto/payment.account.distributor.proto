@@ -1,0 +1,175 @@
+syntax = "proto3";
+
+option java_package = "com.yhglobal.gongxiao.payment.microservice";
+option java_outer_classname = "DistributorAccountServiceStructure";
+
+import "gongxiao.global.structure.proto";
+import "payment.account.common.proto";
+
+
+service DistributorAccountService {
+
+    //查询账户余额
+    rpc getDistributorAccountAmount (GetDistributorAccountAmountRequest) returns (AccountAmountResponse) {
+    }
+
+    //销售单支付
+    rpc payForSalesOrder (PayForSalesOrderRequest) returns (PayForSalesOrderResponse) {
+    }
+
+    //销售单退款
+    rpc returnForSalesReturnOrder (PayForSalesOrderRequest) returns (PayForSalesOrderResponse) {
+    }
+
+    //从返利缓冲账户过账到ad实收账户
+    rpc depositCouponReceived (DepositCouponReceivedRequest) returns (RpcResult) {
+    }
+
+    //从代垫缓冲账户过账到ad实收账户
+    rpc depositPrepaidReceived (DepositCouponReceivedRequest) returns (RpcResult) {
+    }
+
+    //查询ad返利账户列表
+    rpc selectDistributorCouponAccountList (SelectDistributorAccountListRequest) returns (DistributorAccountListResponse) {
+    }
+
+    //查询代垫账户列表
+    rpc selectDistributorPrepaidAccountList (SelectDistributorAccountListRequest) returns (DistributorAccountListResponse) {
+    }
+
+    //从过账缓冲账户给ad多个账户分配返利
+    rpc depositCouponReceivedAccounts (DepositReceivedAccountsRequest) returns (RpcResult) {
+    }
+
+    //从过账缓冲账户给ad多个账户分配返利
+    rpc depositPrepaidReceivedAccounts (DepositReceivedAccountsRequest) returns (RpcResult) {
+    }
+
+    // 查询ad现金账户流水
+    rpc selectCashFlow (SelectDistributorFlowRqeust) returns (FrontPageFlowPageInfo) {
+    }
+
+    // 查询ad现金账户小计
+    rpc getCashSubtotal (GetDistributorSubtotalRequest) returns (FrontPageFlowSubtotal) {
+    }
+    rpc selectPrepaidFlow (SelectPrepaidFlowRequest) returns (FrontPageFlowPageInfo) {
+    }
+    rpc getPrepaidSubtotal (GetPrepaidSubtotalRequest) returns (FrontPageFlowSubtotal) {
+    }
+}
+message SelectPrepaidFlowRequest {
+    string currencyCode = 1;
+    int64 distributorId = 2;
+    int64 projectId = 3;
+    int32 accountType = 4;
+    int32 moneyFlow = 5;
+    string beginDate = 6;
+    string endDate = 7;
+    int32 pageNum = 8;
+    int32 pageSize = 9;
+    RpcHeader rpcHeader = 10;
+}
+message GetPrepaidSubtotalRequest {
+    string currencyCode = 1;
+    int64 distributorId = 2;
+    int64 projectId = 3;
+    int32 accountType = 4;
+    int32 moneyFlow = 5;
+    string beginDate = 6;
+    string endDate = 7;
+    RpcHeader rpcHeader = 8;
+}
+
+message GetDistributorAccountAmountRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 3; // 项目id
+    int64 distributorId = 4; // 经销商id
+}
+
+
+message PayForSalesOrderRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 distributorId = 3; // 供应商id
+    int64 projectId = 4; // 项目id
+    int64 couponAmount = 5; // 返利使用金额
+    int64 prepaidAmount = 6; // 代垫使用金额
+    int64 cashAmount = 7; // 预存使用金额
+    string salesOrderNo = 8; // 销售单号
+    int64 transactionTime = 9; // 交易发生时间
+}
+
+message PayForSalesOrderResponse {
+    int32 returnCode = 1; // 返回码
+    string msg = 2; // 错误信息
+    CashCouponPrepaidFlows result = 3; // 结果模型
+}
+
+message CashCouponPrepaidFlows {
+    string cashFlowNo = 1; // 现金流水号
+    string couponFlowNo = 2; // 返利流水号
+    string prepaidFlowNo = 3; // 代垫流水号
+}
+
+message DepositCouponReceivedRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 distributorId = 3; // 经销商id
+    int64 projectId = 4; // 项目id
+    int64 amount = 5; // 过账返利金额
+    int64 transactionTime = 7; // 交易时间
+    string remark = 8; // 备注
+}
+
+message SelectDistributorAccountListRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 projectId = 3; // 项目id
+    int32 pageNum = 4; // 页码
+    int32 pageSize = 5; // 页面条数
+}
+
+message DistributorAccountListResponse {
+    int32 pageNum = 1; // 页码
+    int32 pageSize = 2; // 页面条数
+    int64 total = 3; // 总条数
+    repeated DistributorAccount list = 4; // 账户数据
+}
+
+message DistributorAccount {
+    int64 projectId = 1; // 项目id
+    int64 distributorId = 2; // 分销商id
+    string distributorName = 3; // 分销商名称
+    double transferAmountDouble = 4; // 过账金额
+}
+
+
+message DepositReceivedAccountsRequest {
+    RpcHeader rpcHeader = 1; // 头
+    repeated DistributorAccount list = 2; //请求参数
+    int64 projectId = 3; // 项目id
+}
+
+message SelectDistributorFlowRqeust {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 distributorId = 3; // 经销商id
+    int64 projectId = 4; // 项目id
+    int32 moneyFlow = 5; // 资金流向
+    string beginDate = 6; // 开始日期
+    string endDate = 7; // 截止日期
+    int32 pageNum = 8; // 页码
+    int32 pageSize = 9; // 页面条数
+}
+
+message GetDistributorSubtotalRequest {
+    RpcHeader rpcHeader = 1; // 头
+    string currencyCode = 2; // 货币编码
+    int64 distributorId = 3; // 经销商id
+    int64 projectId = 4; // 项目id
+    int32 moneyFlow = 5; // 资金流向
+    string beginDate = 6; // 开始日期
+    string endDate = 7; // 截止日期
+}
+

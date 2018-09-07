@@ -1,0 +1,312 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.foundation.product.microservice";
+option java_outer_classname = "ProductStructure";
+
+import "gongxiao.global.structure.proto";
+
+service ProductService {
+    //1. 新增货品信息
+    rpc insertProductInfo (InsertProductInfoReq) returns (InsertProductInfoResp) {
+    }
+    //2. 提交货品业务信息(提交新的关系,通过businessID判断是否之前有编辑)
+    rpc commitProductBusinessInfo (CommitProductBusinessInfoReq) returns (CommitProductBusinessInfoResp) {
+    }
+    //3. 审核货品信息(审核通过/拒绝)
+    rpc auditProduct (AuditProductReq) returns (AuditProductResp) {
+    }
+    //4. 编辑货品信息(未曾编辑/曾编辑的区分是所传业务单号是否为空;区分是否已生效,判断basic状态)
+    rpc editProduct (EditProductReq) returns (EditProductResp) {
+    }
+    //5. 查询货品信息(型号,货品名称,物料号,状态)
+    rpc selectProductInfo (SelectProductInfoReq) returns (SelectProductInfoResp) {
+    }
+    //6. 通过货品ID获取当前货品信息(不包含基础信息)
+    rpc getByProductId (GetByProductIdReq) returns (GetByProductIdResp) {
+    }
+    //7. 获取货品信息详情(不包含基础信息)
+    rpc getByProductModel (GetByProductModelReq) returns (GetByProductModelResp) {
+    }
+    //9. 通过项目ID获取货品列表
+    rpc selectProductByProjectId (SelectProductByProjectIdReq) returns (SelectProductByProjectIdResp) {
+    }
+    //10通过型号找商品详情
+    rpc getProductDetailByModel (GetProductDetailByModelReq) returns (GetProductDetailByModelResp) {
+    }
+    //11通过wms商品编码获取当前货品信息
+    rpc getByWmsProductCode (GetByWmsProductCodeReq) returns (GetByWmsProductCodeResp) {
+    }
+    //12 货品查询
+    rpc selectProductByCondition (SelectProductByConditionReq) returns (SelectProductByConditionResp) {
+    }
+    //13. 获取货品信息详情(不包含基础信息)
+    rpc getProductDetailById (GetProductDetailByIdReq) returns (GetProductDetailByIdResp) {
+    }
+    //13. 获取所有货品信息
+    rpc selectAllProduct (SelectAllProductReq) returns (SelectAllProductResp) {
+    }
+
+}
+//14
+message SelectAllProductReq{
+    int64 projectId = 3;
+    RpcHeader rpcHeader = 101;
+
+}
+
+message SelectAllProductResp{
+    repeated ProductBusiness productBusiness=1;
+}
+
+
+//13
+message GetProductDetailByIdReq {
+    RpcHeader rpcHeader = 101;
+    int64 productBusinessId = 1;
+    int64 projectId = 3;
+
+}
+
+message GetProductDetailByIdResp {
+    ProductBasicDetail productBasicDetail = 1;
+}
+
+//12
+message SelectProductByConditionReq {
+    RpcHeader rpcHeader = 101;
+    int64 projectId = 7;
+    string productCode = 1;
+    string productName = 2;
+    string productEasCode = 3;
+    int32 status = 6;
+    int32 pageNumber = 4;
+    int32 pageSize = 5;
+}
+
+message SelectProductByConditionResp {
+    repeated ProductBusiness productBusiness = 1;
+    int64 total = 2;
+}
+
+//11
+message GetByWmsProductCodeReq {
+    RpcHeader rpcHeader = 101;
+    string productWmsCode = 2;
+    int64 projectId = 3;
+
+
+}
+
+message GetByWmsProductCodeResp {
+    ProductBusiness productBusiness = 1;
+}
+
+//10
+message GetProductDetailByModelReq {
+    RpcHeader rpcHeader = 101;
+    string productModel = 2;
+    int64 projectId = 3;
+}
+
+message GetProductDetailByModelResp {
+    ProductBasicDetail productBasicDetail = 1;
+}
+
+//9
+message SelectProductByProjectIdReq {
+    RpcHeader rpcHeader = 101;
+    int64 projectId = 1;
+    int32 pageNumber = 2;
+    int32 pageSize = 3;
+    string productCode = 4;
+    string productName = 5;
+}
+
+message SelectProductByProjectIdResp {
+    ProductBusinessPage productBusinessPage = 1;
+}
+
+//7
+message GetByProductModelReq {
+    RpcHeader rpcHeader = 101;
+    int64 projectId = 1;
+    string productModel = 2;
+}
+message GetByProductModelResp {
+    ProductBusiness productBusiness = 1;
+
+}
+//6
+message GetByProductIdReq {
+    RpcHeader rpcHeader = 101;
+    int64 projectId = 1;
+    int64 productId = 2;
+}
+
+message GetByProductIdResp {
+    ProductBusiness productBusiness = 1;
+}
+
+//5
+message SelectProductInfoReq {
+    RpcHeader rpcHeader = 101;
+    string productModel = 1;
+    string productName = 2;
+    string easCode = 3;
+    int32 searchStatus = 4;
+    int32 pageNumber = 5;
+    int32 pageSize = 6;
+    int64 projectId = 7;
+
+}
+
+message SelectProductInfoResp {
+    ProductBusinessPage productBusinessPage = 1;
+}
+
+//4
+message EditProductReq {
+    RpcHeader rpcHeader = 101;
+    ProductBasicDetail productBasicDetail = 1;
+    //1 未提交,未生效货品编辑  2.未提交,已生效货品编辑 3  已提交,未生效货品编辑
+    int32 editType = 2;
+    int64 projectId = 3;
+
+}
+message EditProductResp {
+    RpcResult rpcResult = 102;
+}
+//3
+message AuditProductReq {
+    RpcHeader rpcHeader = 101;
+    int64 productBusinessId = 1;
+    //1,审核通过 2.驳回
+    int32 auditStatus = 2;
+    int64 projectId = 3;
+
+}
+message AuditProductResp {
+    RpcResult rpcResult = 102;
+}
+
+//2
+message CommitProductBusinessInfoReq {
+    RpcHeader rpcHeader = 101;
+    int64 productBusinessId = 1;
+    int64 projectId = 2;
+}
+
+message CommitProductBusinessInfoResp {
+    RpcResult rpcResult = 102;
+}
+
+//1
+message InsertProductInfoReq {
+    RpcHeader rpcHeader = 101;
+    ProductBasicDetail productBasicDetail = 1;
+    int64 projectId = 3;
+}
+
+message InsertProductInfoResp {
+    RpcResult rpcResult = 102;
+}
+
+//model
+message ProductBusinessPage {
+    repeated ProductBusiness productBusiness = 1;
+    int32 total = 2;
+}
+
+message ProductBusiness {
+    int64 productBusinessId = 1;
+    int64 productBasicId = 2;
+    string projectId = 3;
+    string projectName = 4;
+    //数据状态
+    int32 recordStatus = 5;
+    int32 easSynStatus = 6;
+    //货品名称
+    string productName = 7;
+    //型号
+    string productModel = 8;
+    //eas物料编码
+    string easCode = 9;
+    //wms物料编码
+    string wmsCode = 10;
+    //箱装数
+    int32 packageNumber = 122;
+    string customerSKUCode = 11;
+    string customerProductCode = 12;
+    int64 purchaseGuidePrice = 13;
+    int64 taxRate = 14;
+    string taxCode = 15;
+    int64 saleGuidePrice = 16;
+    int64 actualSaleReturn = 17;
+    int64 shouldSaleReturn = 18;
+    int64 factorySendReturn = 19;
+    int64 costPrice = 20;
+    int64 outPrice = 21;
+    int32 generateCoupon = 22;
+    int64 createTime = 23;
+    int64 lastUpdateTime = 24;
+    string traceLog = 25;
+    string easUnitCode = 26;
+    int32 grossProfitValue = 27;
+}
+
+message ProductBasicDetail {
+    int64 productBasicId = 50;
+    int64 productBusinessId = 51;
+    //操作类型,1 保存 2.提交
+    int32 operateType = 52;
+    string easCode = 100;
+    string wmsCode = 1;
+    int64 categoryId = 2;
+    string categoryName = 3;
+    string productLine = 4;
+    int32 productLength = 5;
+    int32 productWidth = 6;
+    int32 productHeight = 7;
+    int32 productWeight = 8;
+    int32 productNetWeight = 9;
+    int32 productGrossWeight = 10;
+    int32 boxLength = 11;
+    int32 boxWidth = 12;
+    int32 boxHeight = 13;
+    int32 boxWeight = 14;
+    int32 guaranteePeriod = 15;
+    int32 packageNumber = 16;
+    string projectId = 17;
+    string projectName = 18;
+    int32 recordStatus = 19;
+    int32 easSynStatus = 20;
+    string productName = 21;
+    string productModel = 22;
+    string customerSKUCode = 25;
+    string customerProductCode = 26;
+    int64 purchaseGuidePrice = 27;
+    int64 taxRate = 28;
+    string taxCode = 29;
+    int64 saleGuidePrice = 30;
+    int64 actualSaleReturn = 31;
+    int64 shouldSaleReturn = 32;
+    int64 factorySendReturn = 33;
+    int64 costPrice = 34;
+    int64 outPrice = 35;
+    int32 generateCoupon = 36;
+    string easUnitCode = 37;
+    repeated OperateHistoryRecord operateHistoryRecord = 38;
+}
+
+message OperateHistoryRecord {
+    //状态 0.新建 1.等待退货到仓 2.退货完成
+    int32 operateStatus = 1;
+    // 操作功能
+    string operateFunction = 2;
+    // 操作时间
+    int64 operateTime = 6;
+    int64 operateTimeString = 3;
+    //才做人ID
+    string operateId = 4;
+    //操作人名称
+    string operateName = 5;
+}

@@ -1,0 +1,78 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.foundation.area.microservice";
+option java_outer_classname = "FileAddressStructure";
+
+import "gongxiao.global.structure.proto";
+
+service FileAddressService {
+    //1 新增文件地址
+    rpc insertFileAddress (InsertFileAddressReq) returns (InsertFileAddressResp) {
+    }
+    //2 获取默认地址
+    rpc getDefaultFileAddress (GetDefaultFileAddressReq) returns (GetDefaultFileAddressResp) {
+    }
+    //3. 设置默认取件地址
+    rpc setDefaultShippingAddress (SetDefaultShippingAddressReq) returns (SetDefaultShippingAddressResp) {
+    }
+    //4. 获取所有地址
+    rpc selectAllShippingAddress (SelectAllShippingAddressReq) returns (SelectAllShippingAddressResp) {
+    }
+
+}
+//4
+message SelectAllShippingAddressReq{
+    RpcHeader rpcHeader = 1;
+    int64 distributorId=2;
+}
+message SelectAllShippingAddressResp{
+    repeated FileAddress fileAddress=1;
+}
+
+//3
+message SetDefaultShippingAddressReq{
+    RpcHeader rpcHeader = 1;
+    int64 distributorId=2;
+}
+message SetDefaultShippingAddressResp{
+    int32 number=1;
+}
+
+//2
+message GetDefaultFileAddressReq{
+    RpcHeader rpcHeader = 1;
+    int64 distributorId=2;
+}
+
+message GetDefaultFileAddressResp{
+    FileAddress fileAddress=1;
+}
+
+//1
+message InsertFileAddressReq{
+    FileAddress fileAddress=1;
+}
+message InsertFileAddressResp{
+    int32 number=1;
+}
+
+//model
+message FileAddress{
+    int64 addressId=1;
+    int32 recordStatus=2;
+    int64 distributorId=3;
+    string distributorName=4;
+    string receiver=5;
+    int32 provinceId=6;
+    string provinceName=7;
+    int32 cityId=8;
+    string cityName=9;
+    int32 districtId=10;
+    string districtName=11;
+    string streetAddress=12;
+    string phoneNumber=13;
+    string postCode=14;
+    int32 isDefaultAddress=15;
+    int64 createTime=16;
+    int64 lastUpdateTime=17;
+    string tracelog=18;
+}

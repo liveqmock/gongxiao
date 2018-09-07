@@ -1,0 +1,72 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.inventory.account.microservice";
+option java_outer_classname = "AccountStructure";
+
+import "gongxiao.global.structure.proto";
+
+service InventoryLedgerService{
+    //1 多条件查询进销存台账
+    rpc getInventoryLedger (GetInventoryLedgerRequest) returns (AccountPageInfo) {}
+}
+
+message GetInventoryLedgerRequest{
+    RpcHeader rpcHeader=1;
+    int32 pageNumber=2;
+    int32 pageSize=3;
+    string projectId=4;
+    string productCode=5;
+    string productNam=6;
+    string warehouseId=7;
+    string startDate=8;
+    string endDate=9;
+}
+
+message AccountPageInfo {
+    int32 pageNum = 1; // 页码
+    int32 pageSize = 2; // 页面条数
+    int64 total = 3; // 总数
+    repeated InventoryLedger list = 4;
+}
+
+message InventoryLedger{
+    int32 id=1;                        //进销存台账id
+    int64 dateTime=2;                  //台账日期
+    int64 projectId=3;                  //项目id
+    string productId=4;               //商品id
+    string productCode=5;
+    string productModel=6;            //商品型号
+    string productName=7;             //商品名称
+    string warehouseName=8;           //仓库名称
+    int32 beginTotalAmount=9;           //期初总量
+    int32 beginNonDefective=10;          //期初良品
+    int32 beginDefective=11;             //期初次品
+    int32 inStockTotalAmount=12;         //入库总量
+    int32 inStockNonDefectiveAmount=13;   //入库良品
+    int32 inStockDefectiveAmount=14;     //入库次品
+    int32 outStockTotalAmount=15;        //出库总量
+    int32 nonDefectiveSaleAmount=16;     //良品销售发货
+    int32 nonDefectiveOtherAmount=17;    //良品其他出库
+    int32 endTotalAmount=18;             //期末总量
+    int32 endNonDefectiveAmount=19;      //期末良品
+    int32 endDefectiveAmount=20;         //期末次品
+    int32 onPurchaseAmount=21;           //采购在途
+    int32 onTransferInAmount=22;         //调拨入库在途
+    int32 onTransferOutAmount=23;         //调拨出库在途
+    int32 nonDefectiveProfitkAmount=24;   //良品盘盈
+    int32 defectiveProfitAmount=25;       //次品盘盈
+    int32 defectiveOutAmount=26;         //次品出库
+    int32 nonDefectiveLossAmount=27;     //良品盘亏
+    int32 defectiveLossAmount=28;        //次品盘亏
+    int32 adjustmentAccountTotalOut=29;          //调账出库总量
+    int32 adjustmentAccountNonDefectiveOut=30;   //调账出库良品
+    int32 adjustmentAccountDefectiveOut=31;      //调账出库非良品
+    int32 modifyTotalAmountOut=32;               //调整出库总量
+    int32 modifyNonDefectiveAmountOut=33;        //调整出库良品
+    int32 modifyDefectiveAmountOut=34;           //调整出库非良品
+    int32 adjustmentAccountTotalIn=35;           //调账入库总量
+    int32 adjustmentAccountNonDefectiveIn=36;   //调账入库良品
+    int32 adjustmentAccountDefectiveIn=37;       //调账入库非良品
+    int32 modifyTotalAmountIn=38;                //调整入库总量
+    int32 modifyNonDefectiveAmountIn=39;         //调整入库良品
+    int32 modifyDefectiveAmountIn=40;            //调账入库非良品
+}

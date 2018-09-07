@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <title>现金收款确认列表</title>
+    <style type="text/css">
+        .data-show li {
+            float: left;
+            margin-left: 14px;
+        }
+
+        .data-show span {
+            color: #fd6103;
+        }
+
+        .opera-btn {
+            margin-top: 10px;
+        }
+
+        .yhtable-header {
+            padding-left: 0;
+        }
+
+        .opera-btn {
+            padding-left: 18px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper clearfix">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="sidebar"></div>
+    <!-- 主体内容 -->
+    <div class="yh-content">
+        <!-- 头部内容 -->
+        <div class="fenxiao-header clearfix">
+            <h2>分销协同平台</h2>
+            <div class="shape-box">
+                <!--<select id="projectlist"></select>-->
+                <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                <span></span>
+                <a href="javascript:void(0);">注销</a>
+            </div>
+        </div>
+        <!-- 主要内容 -->
+        <div class="yh-container">
+            <!-- 面包屑菜单 -->
+            <div class="fenxiao-nav">
+                <span>当前位置：</span>
+                <a href="javascript:void(0);">收付款管理</a> &gt; <a href="javascript:void(0);">现金收款确认处理</a> &gt; <a
+                    href="javascript:void(0);"> 现金收款确认列表 </a>
+            </div>
+            <!-- 表单 -->
+            <div class="form-box">
+                <div class="fx-form clearfix">
+                    <div class="form-inputs" id="form-input">
+                        <ul class="clearfix">
+                            <li><label for="client-name">付款方</label>
+                                <input type="text" id="client-name">
+                            </li>
+                            <li><label for="bank-name">收款银行</label>
+                                <select id="bank-name">
+                                    <option value="">请选择</option>
+                                    <option value="中信银行">中信银行</option>
+                                    <option value="江苏银行">江苏银行</option>
+                                    <option value="交通银行">交通银行</option>
+                                    <option value="浦发银行">浦发银行</option>
+                                </select>
+                            </li>
+                            <li><label for="transfortime">收款日期</label>
+                                <input type="text" id="transfortime" placeholder="请选择时间" class="yhdate-input">
+                            </li>
+                            <li><label for="bank-flow">银行流水号</label>
+                                <input type="text" id="bank-flow">
+                            </li>
+                            <li><label for="remark">备注</label>
+                                <input type="text" id="remark">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 操作表格 -->
+            <div class="yhtable-header clearfix">
+                <div class="opera-btn">
+                    <a class="yhhandle-btn" href="javascript:void(0);" id="confirm-btn">确认</a>
+                </div>
+            </div>
+            <div class="yh-table">
+                <table id="prepaid-confirmtable" class="table yhtable"></table>
+            </div>
+        </div>
+    </div>
+    <!--遮罩层-->
+    <div class="yhmask yhmask-hide" id="yhmask">
+        <div class="yhmask-div">
+            <div class="yhmask-menu">
+                <span>确认信息</span>
+                <a href="javascript:void(0);" id="yhmask-switch">×</a>
+            </div>
+            <div class="yhmask-content clearfix">
+                <ul>
+                    <li>
+                        <label for="confirmamount">确认金额</label>
+                        <input type="text" id="confirmamount">
+                    </li>
+                    <li>
+                        <label for="confirmcurrency">币种</label>
+                        <select name="" id="confirmcurrency">
+                            <option value="1">CNY</option>
+                            <option value="2">USD</option>
+                            <option value="3">HKD</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="amountin">转入金额</label>
+                        <input type="text" id="amountin">
+                    </li>
+                </ul>
+            </div>
+            <div class="yhmask-btn">
+                <button class="yhsubmit-btn" id="yhmask-submit">确认</button>
+                <button class="yhcancel-btn" id="yhmask-cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/receivablesconfirmation/cashconfirmlist.js?v=9f75ae4303"></script>
+</body>
+
+</html>

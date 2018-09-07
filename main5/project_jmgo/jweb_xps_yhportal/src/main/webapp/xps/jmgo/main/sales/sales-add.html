@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <link rel="stylesheet" href="../css/sales/sales-add.css?v=6ad93ae905">
+    <title>新增销售单</title>
+    <style type="text/css">
+        .table {
+            table-layout: fixed;
+        }
+
+        .yhmask thead {
+            table-layout: fixed;
+        }
+
+        .table td {
+            width: 30%;
+        }
+
+        .yhtable thead {
+            background-color: #e1e4ea;
+        }
+
+        .fixed-table-pagination {
+            font-size: 12px;
+        }
+
+        input.yhpurinput,
+        input.inputamount {
+            width: 100%;
+        }
+
+        .infolist {
+            padding-left: 80px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper clearfix">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="sidebar"></div>
+    <!-- 主体内容 -->
+    <div class="yh-content">
+        <!-- 头部内容 -->
+        <div class="fenxiao-header clearfix">
+            <h2>分销协同平台</h2>
+            <div class="shape-box">
+                <select name="projectList" id="projectlist"></select>
+                <img src="../images/shape.png" alt="user-img" width="27" height="27">
+                <span></span>
+                <a href="javascript:void(0);">注销</a>
+            </div>
+        </div>
+        <!-- 主要内容 -->
+        <div class="yh-container">
+            <!-- 面包屑菜单 -->
+            <div class="fenxiao-nav">
+                <span>当前位置：</span>
+                <a href="javascript:void(0);">销售管理</a> &gt; <a href="javascript:void(0);">订单列表</a> &gt; <a
+                    href="javascript:void(0);">新增销售订单</a>
+            </div>
+            <!-- 编辑页 -->
+            <div class="infolist-wrap">
+                <!-- 基本信息 -->
+                <h3 class="title-h3">基本信息</h3>
+                <div class="infobox">
+                    <div class="infolist">
+                        <ul class="clearfix">
+                            <li>
+                                <span class="label-span"><label class="limit-label">订货客户</label></span>
+                                <select id="supplierlist"></select>
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">业务日期</label></span>
+                                <input type="text" id="yhbusiness-date" class="yhdate-input">
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">物流方式</label></span>
+                                <select id="logistic">
+                                    <option value="1">自提</option>
+                                    <option value="2">第三方物流</option>
+                                </select>
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">付款方式</label></span>
+                            <select id="paidstyle">
+                                    <option value="0">现金付款</option>
+                                    <option value="1">信用付款</option>
+                                </select>
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">客户订单号</label></span>
+                                <input type="text" id="brandno">
+                            </li>
+                            <li><span class="label-span"><label class="limit-label">合同参考号</label></span>
+                                <input type="text" id="orderno">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="info-inputlayout total-box">
+                        <p><span>备注</span>
+                            <textarea name="" cols="30" rows="10" id="remask"></textarea>
+                        </p>
+                    </div>
+                </div>
+                <div class="salesaddtable">
+                    <div class="yhtable-header salesadd-header">
+                        <a class="yhhandle-btn" id="sales-addbtn">添加商品</a>
+                        <a class="yhhandle-btn">导入商品</a>
+                    </div>
+                    <!-- 渲染表格 -->
+                    <div class="yh-table">
+                        <table id="salestable" class="yhtable"></table>
+                    </div>
+                </div>
+                <div class="info-inputlayout total-box sales-addinfo">
+                    <ul class="clearfix">
+                        <li><span>销售品种</span><i id="sales-variety">0</i>种</li>
+                        <li><span>销售总数量</span><i id="sales-totalnum">0</i>个</li>
+                        <li><span>销售指导金额</span><i id="sales-guideamount">0.00</i>元</li>
+                        <li><span>销售应付金额</span><i id="sales-shouldpay">0.00</i>元</li>
+                    </ul>
+                    <ul class="clearfix">
+                        <li><span>返利账户余额</span><i id="couponmoney">0.00</i>元</li>
+                        <li><span>返利使用金额</span>
+                            <input type="text" id="couponamount" value="0" number>元
+                        </li>
+                        <li><span>销售金额</span><i id="sales-privilege">0.00</i>元</li>
+                        <li><span>出货金额</span><i id="sales-pay">0.00</i>元</li>
+                    </ul>
+                    <ul class="clearfix">
+                        <li><span>代垫账户余额</span><i id="prepaidamount">0.00</i>元</li>
+                        <li><span>代垫使用金额</span>
+                            <input type="text" id="sales-prepaid" value="0" number>元
+                        </li>
+                    </ul>
+                </div>
+                <!-- 客户信息 -->
+                <div class="review-cus">
+                    <h3 class="title-h3">客户收货信息</h3>
+                    <div class="edit-infobox">
+                        <div class="customer-info clearfix" id="customer-info">
+                            <p><i>收货人:</i><span id="reveiver">黄佳林</span></p>
+                            <p><i>发货仓:</i><span id="warehouse">深圳平湖仓</span></p>
+                            <p><i>手机:</i><span>132324324325</span></p>
+                            <p><i>收货公司:</i><span id="componey">北京飞浦商贸有限公司</span></p>
+                            <p><i>地址:</i><span id="address">黄佳林</span></p>
+                            <p><i>详细地址:</i><span id="detailaddress">福华一路88号中心商务大厦2001</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub-btn clearfix">
+                    <button class="yhsubmit-btn">保存</button>
+                    <button class="yhsubmit-btn" id="sales-submit">保存并提交</button>
+                    <button class="yhcancel-btn">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 遮罩层 -->
+    <div class="yhmask yhmask-hide" id="salesmask">
+        <div class="yhmask-div">
+            <div class="yhmask-menu">
+                <span>添加货品</span>
+                <a href="javascript:void(0);" id="mask-close">×</a>
+            </div>
+            <div class="yhmask-content clearfix">
+                <div class="yhmask-leftbox">
+                    <h3>请选择要添加的货品</h3>
+                    <input type="text" id="proinfo">
+                    <div class="tobeaddtable">
+                        <table id="tobeaddtable" class="table"></table>
+                    </div>
+                </div>
+                <div class="yhmask-rightbox">
+                    <h3>已选的货品<span id="addednumber">(0)</span></h3>
+                    <div class="addedtable">
+                        <table id="addedtable" class="table"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="yhmask-btn">
+                <button class="yhsubmit-btn" id="yhmask-submit">确认</button>
+                <button class="yhcancel-btn" id="yhmask-cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/sales/sales-add.js?v=1b40270903"></script>
+</body>
+
+</html>

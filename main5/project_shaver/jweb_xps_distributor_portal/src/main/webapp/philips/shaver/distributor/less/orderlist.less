@@ -1,0 +1,74 @@
+
+/*主体内容*/
+.orderlist-content {
+  width: 96%;
+  margin: 30px auto 0;
+  border-top: 2px solid #e8eaed;
+  /* 搜索等状态 */
+  .orderlist-state{
+    margin-top: 30px;
+  }
+  .table-opera{
+    margin-bottom: 20px;
+  }
+}
+.orderquerybox{
+  margin-bottom: 20px;
+}
+
+@label_width: 50px;
+@label_margin_right: 6px;
+@p_margin_left: 30px;
+@label_font_size: 12px;
+/*订单管理搜索信息*/
+.orderlist-queryinfo{
+  width: 1300px;
+  margin-top: 20px;
+  float: left;
+  li {
+    float: left;
+    margin-left: 20px;
+    margin-top: 12px;
+    label {
+      font-size: @label_font_size;
+      min-width: 4 * @label_font_size;
+      width: 6 * @label_font_size;
+      margin-right: 6px;
+      margin-bottom: 0;
+      display: inline-block;
+      text-align: right;
+    }
+    input + i {
+      display: inline-block;
+      width: 30px;
+      text-align: center;
+    }
+  }
+  input[type="text"], select {
+    width: 200px;
+    border: 1px solid #d4d4d4;
+    text-indent: 6px;
+    height: 24px;
+    background-color: #fff;
+    box-sizing: border-box;
+  }
+}
+.orderlist-btn{
+  min-width: 100px;
+  width: 100px;
+  margin-top: 20px;
+  margin-left: 20px;
+  float: left;
+}
+
+/*遮罩层*/
+.order-detailinfo{
+  p{
+    width: 220px;
+  }
+}
+
+.order-detailtable{
+  margin-top: 20px;
+}
+

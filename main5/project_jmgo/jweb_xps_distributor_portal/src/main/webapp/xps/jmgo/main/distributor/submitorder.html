@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- PC默认急速内核 -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./js/file.js"></script>
+    <link rel="stylesheet" href="./css/submitorder.css">
+    <title>订单确认</title>
+</head>
+
+<body>
+    <div class="customer-wrapper">
+        <!-- 顶部内容 -->
+        <div class="customer-header">
+            <img src="" alt="">
+        </div>
+        <!-- 导航栏 -->
+        <div class="customer-nav clearfix">
+            <div class="accountname">
+                <img src="" alt="">
+                <span>账户名称</span>
+            </div>
+            <div class="customer-navlist clearfix">
+                <a href="./ordermanagement.html">商品查询</a>
+                <a href="./orderlistmanagement.html">订单管理</a>
+                <a href="./addressmanagement.html">收货地址维护</a>
+                <a href="./accountquery.html">账户查询</a>
+            </div>
+        </div>
+        <!-- 主体内容 -->
+        <div class="submitorder-container">
+             <!-- 选择收货地址 -->
+            <div class="submitorder-addressbox">
+                <h3>选择收货地址</h3>
+                <div class="submitorder-address clearfix" id="submitorder-address"></div>
+            </div>
+            <!-- 订单信息确认 -->
+            <div class="submitorder-info">
+                <h3>订单信息确认</h3>
+                <table class="table" id="submitorder-table"></table>
+                <div class="total-info clearfix">
+                    <div class="amount-info">
+                        <p><label>预存账户可用金额：</label><span id="availamount">CNY 9870.00</span></p>
+                        <p><label for="cashamount">使用额度： </label><input type="text" id="cashamount" maxlength="16" value="0"></p>
+                    </div>
+                    <div class="discount-info" id="discount-info">
+                        <input type="text" id="shouldpaytotalamount" style="display: none">
+                        <p><label>预存账户扣减:</label><i>CNY </i> <span id="account-deduction">0</span></p>
+                        <p><label>实付款:</label><i>CNY </i> <strong id="payamount">0</strong></p>
+                    </div>
+                </div>
+                <button id="submitorderbtn">提交订单</button>
+            </div>
+        </div>
+    </div>
+    <script src="./js/customer/submitorder.js?v201807122200"></script>
+</body>
+
+</html>

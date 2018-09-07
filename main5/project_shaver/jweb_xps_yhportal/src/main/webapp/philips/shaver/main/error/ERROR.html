@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>错误页面</title>
+    <script src="../js/globalfile.js?v=4e2b185c00"></script>
+    <style type="text/css">
+        body{
+            background-color: #fff;
+        }
+        .error-message{
+            width: 600px;
+            height: 600px;
+            position: absolute;
+            padding-top: 420px;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            top: 50%;
+            left: 50%;
+            margin-left: -300px;
+            margin-top: -300px;
+            background: url("../images/404.jpg") no-repeat center center;
+            background-size: 100% 100%;
+            text-align: center;
+        }
+        .error-message h2{
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+
+        }
+    </style>
+</head>
+<body>
+<div class="error-message">
+    <h2 id="error-message"></h2>
+</div>
+<script>
+    var errorParam = $.getUrlParam("errorParam");
+    if (errorParam){
+        $("#error-message").html(errorParam)
+    }
+</script>
+</body>
+</html>

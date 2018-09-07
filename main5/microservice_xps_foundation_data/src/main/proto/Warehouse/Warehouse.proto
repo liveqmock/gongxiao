@@ -1,0 +1,114 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.foundation.warehouse.microservice";
+option java_outer_classname = "WarehouseStructure";
+
+import "gongxiao.global.structure.proto";
+
+service WarehouseService {
+    //1 通过仓库ID获取仓库信息
+    rpc getWarehouseById (GetWarehouseByIdReq) returns (GetWarehouseByIdResp) {
+    }
+    //2 获取所有仓库信息
+    rpc SelectAllWarehouse (SelectAllWarehouseReq) returns (SelectAllWarehouseResp) {
+    }
+    //3 条件查询获取仓库列表
+    rpc SelectWarehouseCondition (SelectWarehouseConditionReq) returns (SelectWarehouseConditionResp) {
+    }
+    //4 插入新的仓库信息
+    rpc insertWarehouseInfo (InsertWarehouseInfoReq) returns (InsertWarehouseInfoResp) {
+    }
+    //5. 编辑接口
+    rpc editWarehouseInfo (EditWarehouseInfoReq) returns (EditWarehouseInfoResp) {
+    }
+
+
+}
+message EditWarehouseInfoReq {
+    RpcHeader rpcHeader = 100;
+    Warehouse warehouse = 1;
+}
+
+message EditWarehouseInfoResp {
+    RpcResult rpcResult = 1;
+}
+
+//4
+message InsertWarehouseInfoReq {
+    RpcHeader rpcHeader = 100;
+    Warehouse warehouse = 1;
+}
+
+message InsertWarehouseInfoResp {
+    RpcResult rpcResult = 1;
+}
+
+//3
+message SelectWarehouseConditionReq {
+    RpcHeader rpcHeader = 100;
+    int64 warehouseId = 1;
+    string warehouseName = 2;
+    int64 projectId = 3;
+    int32 pageSize = 5;
+    int32 pageNumber = 6;
+
+}
+message SelectWarehouseConditionResp {
+    repeated Warehouse warehouse = 1;
+}
+//2
+message SelectAllWarehouseReq {
+    RpcHeader rpcHeader = 1;
+}
+message SelectAllWarehouseResp {
+    repeated Warehouse warehouseList = 1;
+}
+//1
+message GetWarehouseByIdReq {
+    RpcHeader rpcHeader = 1;
+    string warehouseId = 2;
+}
+message GetWarehouseByIdResp {
+    Warehouse warehouse = 1;
+}
+
+//model
+message Warehouse {
+    int64 projectId = 100;
+    int64 warehouseId = 1;
+    string warehouseCode = 2;
+    string warehouseName = 3;
+    //eas仓库编码
+    string easWarehouseCode = 4;
+    //eas仓库名称
+    string easWarehouseName = 5;
+    //wms仓库编码
+    string wmsWarehouseCode = 6;
+    //wms仓库名称
+    string wmsWarehouseName = 7;
+    //是否向仓库发送入库通知
+    int32 sendNotitionToWarehouse = 8;
+    int32 recordStatus = 9;
+    int32 warehouseType = 99;
+    //库位编码
+    string locationNumber = 10;
+    string countryCode = 11;
+    string countryName = 12;
+    int32 provinceId = 13;
+    string provinceName = 14;
+    int32 cityId = 15;
+    string cityName = 16;
+    int32 districtId = 17;
+    string districtName = 18;
+    string streetAddress = 19;
+    string shortAddress = 20;
+    //联系人名字
+    string generalContactName = 21;
+    //联系人电话
+    string generalphoneNumber = 22;
+    string generalMobile = 23;
+    int64 createdById = 24;
+    string createdByName = 25;
+    int64 createTime = 26;
+    int64 lastUpdateTime = 27;
+    string tracelog = 28;
+}

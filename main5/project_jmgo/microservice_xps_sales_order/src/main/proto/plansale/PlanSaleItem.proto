@@ -1,0 +1,408 @@
+syntax = "proto3";
+option java_package = "com.yhglobal.gongxiao.plansale.microservice";
+option java_outer_classname = "PlanSaleItemStructure";
+
+import "gongxiao.global.structure.proto";
+
+service PlanSaleItemService {
+    //1. 插入销售计划列表
+    rpc createSalePlanItem (CreateSalePlanItemReq) returns (CreateSalePlanItemResp) {
+    }
+    //2. 获取预销客户列表
+    rpc selectSalePlanItemList (SelectSalePlanItemListReq) returns (SelectSalePlanItemListResp) {
+    }
+    //3. 获取可编辑的信息
+    rpc getEditItemInfo (GetEditItemInfoReq) returns (GetEditItemInfoResp) {
+    }
+    //4. 更新客户销售计划信息
+    rpc editSaleItem (EditSaleItemReq) returns (EditSaleItemResp) {
+    }
+    //5. 取消客户计划销售单
+    rpc cancelPlanItem (CancelPlanItemReq) returns (CancelPlanItemResp) {
+    }
+    //6. 通过预售单取消预售详情
+    rpc cancelPlan (CancelPlanReq) returns (CancelPlanResp) {
+    }
+    //7. 获取客户某个有效的货品信息
+    rpc getCustomerPlanInfo (GetCustomerPlanInfoReq) returns (GetCustomerPlanInfoResp) {
+    }
+    //8. 获取该货品分配给客户的所有记录数
+    rpc getProductCustomer (GetProductCustomerReq) returns (GetProductCustomerResp) {
+    }
+    //9. 获取客户有效的货品信息列表
+    rpc searchProductByCustomer (SearchProductByCustomerReq) returns (SearchProductByCustomerResp) {
+    }
+    //10. 更新销售占用信息
+    rpc updateSaleOccupation (UpdateSaleOccupationReq) returns (UpdateSaleOccupationResp) {
+    }
+    //11. 更新已售数量信息
+    rpc updateSoldQuantity (UpdateSoldQuantityReq) returns (UpdateSoldQuantityResp) {
+    }
+    //12. 获取有效客户列表
+    rpc selectSalePlanItemListConditions (SelectSalePlanItemListConditionsReq) returns (SelectSalePlanItemListConditionsResp) {
+    }
+    //13. 通过itemid;获取可售信息
+    rpc getOnSaleQuantity (GetOnSaleQuantityReq) returns (GetOnSaleQuantityResp) {
+    }
+
+    //14. 通过itemid;获取可售信息
+    rpc cancelCustomerOrder (CancelCustomerOrderReq) returns (CancelCustomerOrderResp) {
+    }
+}
+//14
+message CancelCustomerOrderReq{
+    RpcHeader rpcHeader=1;
+    string projectId=2;
+    string distributorId=3;
+    string productModle=4;
+    int64 businessDate=5;
+    int32 saleOccupationQuantity=6;
+    int32 soldQuantity=7;
+
+}
+
+message CancelCustomerOrderResp{
+    int32 number=1;
+}
+
+//13
+message GetOnSaleQuantityReq {
+    RpcHeader rpcHeader = 1;
+    string itemId = 2;
+    int64 projectId=88;
+
+}
+
+message GetOnSaleQuantityResp {
+    SalesPlanItem salesPlanItem = 1;
+}
+
+//12
+message SelectSalePlanItemListConditionsReq {
+    RpcHeader rpcHeader = 1;
+    string projectId = 2;
+    string distributorId = 3;
+    string productModle = 4;
+    int64 businessDate = 5;
+    int32 pageNum = 6;
+    int32 pageSize = 7;
+
+}
+
+message SelectSalePlanItemListConditionsResp {
+    repeated SalesPlanItem salesPlanItemList = 1;
+    int64 total=2;
+}
+
+//11
+message UpdateSoldQuantityReq {
+    RpcHeader rpcHeader = 1;
+    string projectId = 2;
+    string distributorId = 3;
+    string productModle = 4;
+    int64 businessDate = 5;
+    int32 soldQuantity = 6;
+
+}
+message UpdateSoldQuantityResp {
+    RpcResult rpcResult = 1;
+}
+
+//10
+message UpdateSaleOccupationReq {
+    RpcHeader rpcHeader = 1;
+    string projectId=2;
+    string distributorId = 3;
+    string productId = 6;
+    int64 businessDate = 5;
+    int32 saleOccupationQuantity = 7;
+
+}
+message UpdateSaleOccupationResp {
+    RpcResult rpcResult = 1;
+}
+
+//9
+message SearchProductByCustomerReq {
+    RpcHeader rpcHeader = 1;
+    string queryStr = 2;
+    int64 projectId=88;
+    int64 distributorId=3;
+}
+
+message SearchProductByCustomerResp {
+    repeated SalesPlanItem salesPlanItemList = 1;
+}
+
+//8
+message GetProductCustomerReq {
+    RpcHeader rpcHeader = 1;
+    string projectId = 2;
+    string distributorId = 3;
+    string productId = 4;
+    int64 startDate=5;
+    int64 endDate=6;
+
+}
+message GetProductCustomerResp {
+    repeated SalesPlanItem salesPlanItemList = 1;
+}
+//7
+message GetCustomerPlanInfoReq {
+    RpcHeader rpcHeader = 1;
+    string projectId = 2;
+    string distributorId = 3;
+    string productId = 4;
+    int64 businessDate = 5;
+
+}
+
+message GetCustomerPlanInfoResp {
+    SalesPlanItem salesPlanItem = 1;
+}
+
+//6
+message CancelPlanReq {
+    RpcHeader rpcHeader = 1;
+    string planSaleNo = 2;
+    int64 projectId=88;
+
+}
+
+message CancelPlanResp {
+    int32 number = 1;
+}
+
+//5
+message CancelPlanItemReq {
+    RpcHeader rpcHeader = 1;
+    string itemId = 2;
+    int64 projectId=88;
+}
+
+message CancelPlanItemResp {
+    int32 number = 1;
+}
+
+//4
+message EditSaleItemReq {
+    RpcHeader rpcHeader = 1;
+    string itemId = 2;
+    int32 adjustNumber = 3;
+    double brandPrepaidUnit = 4;
+    double brandPrepaidDiscount = 5;
+    double yhPrepaidUnit = 6;
+    double yhPrepaidDiscount = 7;
+    int64 startDate = 8;
+    int64 endDate = 9;
+    int64 projectId=88;
+
+}
+
+message EditSaleItemResp {
+    int32 number = 1;
+}
+
+//3
+message GetEditItemInfoReq {
+    RpcHeader rpcHeader = 1;
+    string itemId = 2;
+    int64 projectId=88;
+
+}
+
+message GetEditItemInfoResp {
+    SaleItemEditInfo saleItemEditInfo = 1;
+}
+
+//2
+message SelectSalePlanItemListReq {
+    RpcHeader rpcHeader = 1;
+    string salesPlanNo = 2;
+    string customerId = 3;
+    string customerName = 4;
+    int32 pageNumber = 5;
+    int32 pageSize = 6;
+    int64 projectId=88;
+
+}
+message SelectSalePlanItemListResp {
+    int64 total=2;
+    repeated SalePlanItemBo salePlanItemBoList = 1;
+}
+//1
+message CreateSalePlanItemReq {
+    RpcHeader rpcHeader = 1;
+    repeated SalePlanItemInfo salePlanInfoIns = 2;
+    int64 projectId=88;
+
+}
+
+message CreateSalePlanItemResp {
+    int32 number = 1;
+}
+
+//model
+message SalesPlanItem {
+    int64 itemId = 1;
+    int32 itemStatus = 2;
+    string brandId = 3;
+    string brandName = 4;
+    string salesPlanNo = 5;
+    string customerId = 6;
+    string customerName = 7;
+    int64 projectId = 8;
+    string projectName = 9;
+    int64 supplierId = 10;
+    string supplierName = 11;
+    int64 productId = 12;
+    string productModle = 13;
+    string productName = 14;
+    int64 distributorId = 15;
+    string distributorName = 16;
+    int32 onSaleQuantity = 17;
+    int32 saleOccupationQuantity = 18;
+    int32 soldQuantity = 19;
+    int32 freezedQuantity = 20;
+    int32 unallocatedQuantity = 21;
+    int64 guidePrice = 22;
+    double guidePriceDouble = 23;
+    string currencyCode = 24;
+    string currencyName = 25;
+    int64 brandPrepaidUnit = 26;
+    int64 brandPrepaidDiscount = 27;
+    int64 brandPrepaidAmount = 28;
+    int64 yhPrepaidUnit = 29;
+    int64 yhPrepaidDiscount = 30;
+    //总折扣点
+    double totalDiscountDouble = 31;
+    int64 yhPrepaidAmount = 32;
+    int64 wholesalePrice = 33;
+    // 结算价-页面
+    double wholesalePriceDouble = 34;
+    int64 startTime = 35;
+    int64 endTime = 36;
+    int64 dataVersion = 37;
+    int64 createdById = 38;
+    string createdByName = 39;
+    int64 createTime = 40;
+    int64 lastUpdateTime = 41;
+    string tracelog = 42;
+    //客户优惠金额，页面计算时使用
+    int64 customerDiscountAmount = 43;
+    //客户优惠金额，页面计算时使用
+    double customerDiscountAmountDouble = 44;
+    //小计金额，页面计算使用
+    double subtotalDouble = 45;
+    double saleGuidePrice=46;
+
+}
+
+message SaleItemEditInfo {
+    int64 itemId = 1;
+    //客户ID
+    string customerId = 2;
+    //客户名称
+    string customerName = 3;
+    //剩余销售总数
+    int32 remainSaleAmount = 4;
+    //客户可下单数
+    int32 unallocatedQuantity = 5;
+    //调整数量
+    int32 adjustNumber = 6;
+    //指导价
+    string guidePrice = 7;
+    string saleGuidePrice=70;
+    //品牌商单价支持
+    string brandPrepaidUnit = 8;
+    //品牌商支持点
+    string brandPrepaidDiscount = 9;
+    //YH单价代垫
+    string yhPrepaidUnit = 10;
+    //YH折扣点
+    string yhPrepaidDiscount = 11;
+    //出货价
+    string wholesalePrice = 12;
+    //有效日期
+    int64 startTime = 13;
+    //失效日期
+    int64 endTime = 14;
+}
+
+message SalePlanItemBo {
+    int64 itemId = 1;
+    //计划销售明细单号
+    string salesPlanNo = 2;
+    //客户ID
+    string customerId = 3;
+    //客户名称
+    string customerName = 4;
+    //分配数量(可售数量)
+    int32 onSaleQuantity = 5;
+    //销售占用
+    int32 saleOccupationQuantity = 6;
+    //已售数量
+    int32 soldQuantity = 7;
+    //客户可下单数量(未分配数量)
+    int32 unallocatedQuantity = 8;
+    //货币编码
+    string currencyCode = 9;
+    //货币名称
+    string currencyName = 10;
+    //指导价
+    string guidePrice = 11;
+    //品牌商支持点
+    string brandPrepaidDiscount = 12;
+    //YH折扣点
+    string yhPrepaidDiscount = 13;
+    //出货价
+    string wholesalePrice = 14;
+    //有效期起
+    int64 startTime = 15;
+    //有效期止
+    int64 endTime = 16;
+    //最后修改时间
+    int64 lastUpdateTime = 17;
+    //状态0正常 1 废弃
+    int32 itemStatus = 18;
+}
+
+message SalePlanItemInfo {
+    //项目ID
+    string projectId = 1;
+    //项目名称
+    string projectName = 2;
+    //产品ID
+    string productId = 3;
+    //产品编码
+    string productModel = 4;
+    //产品名称
+    string productName = 5;
+    //销售计划单号
+    string salesPlanNo = 6;
+    //分配数量
+    int32 onSaleQuantity = 7;
+    //客户ID
+    string customerId = 8;
+    //客户名称
+    string customerName = 9;
+    //销售占用
+    int32 saleOccupationQuantity = 10;
+    //已售数量
+    int32 soldQuantity = 11;
+    //待分配的数量
+    int32 unallocatedQuantity = 12;
+    //供应商代垫
+    double brandPrepaidUnit = 13;
+    //品牌商单价支持折扣
+    double brandPrepaidDiscount = 14;
+    //越海商单价支持
+    double yhPrepaidUnit = 15;
+    //越海单价支持折扣
+    double yhPrepaidDiscount = 16;
+    //有效期起
+    string startTime = 17;
+    //有效期止
+    string endTime = 18;
+}
+
